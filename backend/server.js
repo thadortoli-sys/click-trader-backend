@@ -167,6 +167,17 @@ app.get('/signals', (req, res) => {
     res.json(savedSignals);
 });
 
+// DEBUG ENDPOINT (For testing production connectivity)
+app.get('/debug', (req, res) => {
+    res.json({
+        status: 'Online',
+        tokensCount: savedPushTokens.length,
+        signalsCount: savedSignals.length,
+        lastSignalAt: savedSignals.length > 0 ? new Date(savedSignals[0].timestamp).toISOString() : 'Never',
+        environment: process.env.NODE_ENV || 'production'
+    });
+});
+
 // 1. REGISTER DEVICE (App sends token here)
 app.post('/register', (req, res) => {
     const { token } = req.body;
