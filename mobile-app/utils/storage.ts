@@ -216,7 +216,15 @@ export const saveSettings = async (settings: Partial<UserSettings>): Promise<Use
 export const syncHistoryWithBackend = async (): Promise<boolean> => {
     try {
         const BACKEND_URL = 'https://clicktraderappbackend-xjqwf.ondigitalocean.app'; // Production backend
-        const response = await fetch(`${BACKEND_URL}/signals`);
+
+        // Add 5 second timeout
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000);
+
+        const response = await fetch(`${BACKEND_URL}/signals`, {
+            signal: controller.signal
+        });
+        clearTimeout(timeoutId);
         if (!response.ok) return false;
 
         const serverSignals: HistoryItem[] = await response.json();
