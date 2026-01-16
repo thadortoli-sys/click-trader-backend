@@ -97,7 +97,7 @@ export async function sendTokenToBackend(token: string) {
     // Ideally this comes from an environment variable
     // For physical device testing, use your computer's local network IP
     // For physical device testing, use your computer's local network IP
-    const BACKEND_URL = 'https://rachell-hyperscrupulous-larissa.ngrok-free.dev';
+    const BACKEND_URL = 'https://clicktraderappbackend-xjqwf.ondigitalocean.app';
 
     try {
         console.log(`Attempting to send token to ${BACKEND_URL}...`);
@@ -131,7 +131,7 @@ export async function sendSettingsToBackend(token: string, signals: Record<strin
     if (Platform.OS === 'web' || !token) return;
 
     // For physical device testing, use your computer's local network IP
-    const BACKEND_URL = 'https://rachell-hyperscrupulous-larissa.ngrok-free.dev';
+    const BACKEND_URL = 'https://clicktraderappbackend-xjqwf.ondigitalocean.app';
 
     try {
         console.log(`[Sync] Sending updated settings to backend...`);

@@ -215,7 +215,7 @@ export const saveSettings = async (settings: Partial<UserSettings>): Promise<Use
 // --- Sync with Backend ---
 export const syncHistoryWithBackend = async (): Promise<boolean> => {
     try {
-        const BACKEND_URL = 'https://rachell-hyperscrupulous-larissa.ngrok-free.dev'; // Ngrok Tunnel
+        const BACKEND_URL = 'https://clicktraderappbackend-xjqwf.ondigitalocean.app'; // Production backend
         const response = await fetch(`${BACKEND_URL}/signals`);
         if (!response.ok) return false;
 
