@@ -826,6 +826,23 @@ export default function SettingsScreen() {
                                 </View>
                             </View>
 
+                            <View style={{
+                                marginTop: 20,
+                                padding: 12,
+                                backgroundColor: 'rgba(245, 158, 11, 0.05)',
+                                borderRadius: 10,
+                                borderLeftWidth: 3,
+                                borderLeftColor: '#F59E0B'
+                            }}>
+                                <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 8 }}>
+                                    <Ionicons name="link-outline" size={16} color="#F59E0B" style={{ marginRight: 8 }} />
+                                    <Text style={{ color: '#F59E0B', fontSize: 12, fontWeight: 'bold', letterSpacing: 0.5 }}>MARKET CONFLUENCES</Text>
+                                </View>
+                                <Text style={{ color: '#94A3B8', fontSize: 12, lineHeight: 18, fontStyle: 'italic' }}>
+                                    "Refer to the <Text style={{ color: '#FFF' }}>Cash chart (SPX)</Text> for major confluences. Always keep an <Text style={{ color: '#FFF' }}>H1 chart</Text> open to identify the walls. If H1 shows a peak, we do not take BUY entries, and vice versa. When the <Text style={{ color: '#FFF' }}>SP Cash</Text> decides, the <Text style={{ color: '#FFF' }}>ES</Text> aligns, and the <Text style={{ color: '#FFF' }}>Nasdaq</Text> follows."
+                                </Text>
+                            </View>
+
                             <TouchableOpacity
                                 style={{
                                     marginTop: 20,
