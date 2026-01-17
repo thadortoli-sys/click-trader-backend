@@ -839,7 +839,7 @@ export default function SettingsScreen() {
                                     <Text style={{ color: '#F59E0B', fontSize: 12, fontWeight: 'bold', letterSpacing: 0.5 }}>STRATEGY METHODOLOGY</Text>
                                 </View>
                                 <Text style={{ color: '#94A3B8', fontSize: 12, lineHeight: 18 }}>
-                                    The <Text style={{ color: '#FFF' }}>Click&Trader methodology</Text> is built on observing technical correlations between the <Text style={{ color: '#FFF' }}>Cash (SPX)</Text>, <Text style={{ color: '#FFF' }}>Futures (ES)</Text>, and <Text style={{ color: '#FFF' }}>Nasdaq</Text>. This educational setup highlights major structural levels on the <Text style={{ color: '#FFF' }}>H1 timeframe</Text>. Historically, the strategy suggests that alignment between the SP Cash and its correlated derivatives provides higher probability context for technical analysis.
+                                    The <Text style={{ color: '#FFF' }}>Click&Trader methodology</Text> is built on observing technical correlations between the <Text style={{ color: '#FFF' }}>Cash (SPX)</Text>, <Text style={{ color: '#FFF' }}>Futures (ES)</Text>, and <Text style={{ color: '#FFF' }}>Nasdaq</Text>. This educational setup highlights major structural levels on the <Text style={{ color: '#FFF' }}>H1 timeframe</Text>. The price levels from the <Text style={{ color: '#FFF' }}>Institutional Map</Text> function identically across both Cash and Futures markets. Historically, the strategy suggests that alignment between the SP Cash and its correlated derivatives provides higher probability context for technical analysis.
                                 </Text>
                             </View>
 
