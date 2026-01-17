@@ -728,21 +728,28 @@ export default function SettingsScreen() {
                                 <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
                                     <View style={{ width: 4, height: 4, borderRadius: 2, backgroundColor: '#60A5FA', marginTop: 7, marginRight: 10 }} />
                                     <Text style={{ color: '#E0E0E0', fontSize: 13, flex: 1, lineHeight: 18 }}>
-                                        <Text style={{ fontWeight: 'bold', color: '#FFF' }}>Volume Profile (VP/VPRV):</Text> Use "Visible Range" or "Fixed Range" settings. Set high resolution (Row Size 100-150) for precision at institutional levels.
+                                        <Text style={{ fontWeight: 'bold', color: '#FFF' }}>Volume Profile (VPVR):</Text> Row Layout: <Text style={{ color: '#60A5FA' }}>Number of Rows</Text>. Row Size: <Text style={{ color: '#60A5FA' }}>40</Text>. Volume: <Text style={{ color: '#60A5FA' }}>Delta</Text>. VA Volume: <Text style={{ color: '#60A5FA' }}>70</Text>. Style: Right, 37%.
                                     </Text>
                                 </View>
 
                                 <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
                                     <View style={{ width: 4, height: 4, borderRadius: 2, backgroundColor: '#60A5FA', marginTop: 7, marginRight: 10 }} />
                                     <Text style={{ color: '#E0E0E0', fontSize: 13, flex: 1, lineHeight: 18 }}>
-                                        <Text style={{ fontWeight: 'bold', color: '#FFF' }}>Timeframe:</Text> Always maintain an M1 chart for entry execution and an H1 chart for overall institutional context.
+                                        <Text style={{ fontWeight: 'bold', color: '#FFF' }}>Moving Average (MA):</Text> Length: <Text style={{ color: '#60A5FA' }}>200</Text>. Source: <Text style={{ color: '#60A5FA' }}>Close</Text>. Method: <Text style={{ color: '#60A5FA' }}>SMA</Text>.
                                     </Text>
                                 </View>
 
                                 <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
                                     <View style={{ width: 4, height: 4, borderRadius: 2, backgroundColor: '#60A5FA', marginTop: 7, marginRight: 10 }} />
                                     <Text style={{ color: '#E0E0E0', fontSize: 13, flex: 1, lineHeight: 18 }}>
-                                        <Text style={{ fontWeight: 'bold', color: '#FFF' }}>ATR (Average True Range):</Text> Essential for the entry rules mentioned above. Use a period of 14 on M1 for real-time volatility tracking.
+                                        <Text style={{ fontWeight: 'bold', color: '#FFF' }}>RSI Indicator:</Text> Length: <Text style={{ color: '#60A5FA' }}>7</Text>. Upper Limit: <Text style={{ color: '#60A5FA' }}>80</Text>. Lower Limit: <Text style={{ color: '#60A5FA' }}>20</Text>.
+                                    </Text>
+                                </View>
+
+                                <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
+                                    <View style={{ width: 4, height: 4, borderRadius: 2, backgroundColor: '#60A5FA', marginTop: 7, marginRight: 10 }} />
+                                    <Text style={{ color: '#E0E0E0', fontSize: 13, flex: 1, lineHeight: 18 }}>
+                                        <Text style={{ fontWeight: 'bold', color: '#FFF' }}>Timeframe & ATR:</Text> Use <Text style={{ color: '#60A5FA' }}>M1</Text> for entry execution and <Text style={{ color: '#60A5FA' }}>H1</Text> for institutional context. ATR Period: <Text style={{ color: '#60A5FA' }}>14</Text>.
                                     </Text>
                                 </View>
                             </View>
