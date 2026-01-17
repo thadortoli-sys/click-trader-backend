@@ -660,7 +660,7 @@ export default function SettingsScreen() {
                         {/* SECTION 5: CHART CONFIGURATION */}
                         <SectionTitle title="CHART CONFIGURATION" />
                         <Text style={{ color: '#888', fontSize: 11, marginBottom: 15, paddingHorizontal: 5 }}>
-                            How to set up your TradingView chart for optimal signal reading.
+                            How to set up your analysis platform for optimal signal reading.
                         </Text>
 
                         <GlassCard
@@ -680,28 +680,28 @@ export default function SettingsScreen() {
                                 }}>
                                     <Ionicons name="stats-chart" size={20} color="#60A5FA" />
                                 </View>
-                                <Text style={{ color: '#FFF', fontSize: 16, fontWeight: 'bold' }}>TradeView Setup</Text>
+                                <Text style={{ color: '#FFF', fontSize: 16, fontWeight: 'bold' }}>Chart Setup</Text>
                             </View>
 
                             <View style={{ gap: 12 }}>
                                 <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
                                     <View style={{ width: 4, height: 4, borderRadius: 2, backgroundColor: '#60A5FA', marginTop: 7, marginRight: 10 }} />
                                     <Text style={{ color: '#E0E0E0', fontSize: 13, flex: 1, lineHeight: 18 }}>
-                                        <Text style={{ fontWeight: 'bold', color: '#FFF' }}>VPRV (Volume Profile):</Text> Use the "Visible Range" setting. Set Row Size to 100 or 150 for precision at institutional levels.
+                                        <Text style={{ fontWeight: 'bold', color: '#FFF' }}>Volume Profile (VP/VPRV):</Text> Use "Visible Range" or "Fixed Range" settings. Set high resolution (Row Size 100-150) for precision at institutional levels.
                                     </Text>
                                 </View>
 
                                 <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
                                     <View style={{ width: 4, height: 4, borderRadius: 2, backgroundColor: '#60A5FA', marginTop: 7, marginRight: 10 }} />
                                     <Text style={{ color: '#E0E0E0', fontSize: 13, flex: 1, lineHeight: 18 }}>
-                                        <Text style={{ fontWeight: 'bold', color: '#FFF' }}>Timeframe:</Text> Always keep a M1 chart for entry and H1 for context.
+                                        <Text style={{ fontWeight: 'bold', color: '#FFF' }}>Timeframe:</Text> Always maintain an M1 chart for entry execution and an H1 chart for overall institutional context.
                                     </Text>
                                 </View>
 
                                 <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
                                     <View style={{ width: 4, height: 4, borderRadius: 2, backgroundColor: '#60A5FA', marginTop: 7, marginRight: 10 }} />
                                     <Text style={{ color: '#E0E0E0', fontSize: 13, flex: 1, lineHeight: 18 }}>
-                                        <Text style={{ fontWeight: 'bold', color: '#FFF' }}>ATR (Average True Range):</Text> Essential for applying the entry rules mentioned in the cards above. Use a period of 14.
+                                        <Text style={{ fontWeight: 'bold', color: '#FFF' }}>ATR (Average True Range):</Text> Essential for the entry rules mentioned above. Use a period of 14 on M1 for real-time volatility tracking.
                                     </Text>
                                 </View>
                             </View>
