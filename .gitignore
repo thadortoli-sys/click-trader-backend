@@ -30,3 +30,11 @@ backend/user_settings.json
 backend/ngrok_debug.json
 backend/ngrok_url.txt
 backend/ip_out.txt
+
+# Large Video Files
+horus_ovs.mp4
+horus_ovs3.mp4
+institutional_levels.mov
+shadow_buy.mp4
+shadow_sell.mp4
+pro4x_sell.mov

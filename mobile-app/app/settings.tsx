@@ -304,6 +304,7 @@ const SignalCard = React.memo(({ item, value, onToggle, index }: { item: SignalI
                     style={{ minHeight: 180, height: undefined, padding: 0, overflow: 'hidden' }}
                     contentStyle={{ padding: 0 }}
                 >
+
                     {/* ... Gradients ... */}
                     <LinearGradient
                         colors={['#1A1A1A', '#000000']}
@@ -483,7 +484,7 @@ export default function SettingsScreen() {
                         <View style={{
                             marginBottom: 20,
                             padding: 12,
-                            backgroundColor: 'rgba(59, 130, 246, 0.15)', // Lighter Blue (Tailwind Blue-500 equivalent base)
+                            backgroundColor: 'rgba(59, 130, 246, 0.15)', // Lighter Blue
                             borderRadius: 12,
                             borderWidth: 1,
                             borderColor: 'rgba(59, 130, 246, 0.3)',
@@ -667,7 +668,7 @@ export default function SettingsScreen() {
                         <GlassCard
                             intensity={15}
                             borderColor="rgba(255, 255, 255, 0.2)"
-                            borderWidth={1}
+                            borderWidth={0.5}
                             borderRadius={16}
                             disableGradient={true}
                             style={{ marginBottom: 30, padding: 15 }}
@@ -675,17 +676,17 @@ export default function SettingsScreen() {
                             <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 15 }}>
                                 <View style={{
                                     width: 36, height: 36, borderRadius: 10,
-                                    backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                                    backgroundColor: 'rgba(30, 41, 59, 0.4)',
                                     justifyContent: 'center', alignItems: 'center',
                                     marginRight: 12
                                 }}>
-                                    <Ionicons name="stats-chart" size={20} color="#60A5FA" />
+                                    <Ionicons name="stats-chart" size={20} color="#94A3B8" />
                                 </View>
                                 <Text style={{ color: '#FFF', fontSize: 16, fontWeight: 'bold' }}>Chart Setup</Text>
                             </View>
 
                             {/* SWIPABLE GALLERY */}
-                            <View style={{ marginBottom: 20 }}>
+                            <View style={{ marginBottom: 25 }}>
                                 <FlatList
                                     data={[
                                         { id: '1', source: require('../assets/images/chart_overview.png'), title: 'Global Overview', type: 'wide' },
@@ -711,46 +712,49 @@ export default function SettingsScreen() {
                                         >
                                             <View style={{
                                                 backgroundColor: '#050505',
-                                                borderRadius: 12,
+                                                borderRadius: 16,
                                                 overflow: 'hidden',
                                                 borderWidth: 1,
-                                                borderColor: 'rgba(255,255,255,0.08)',
-                                                elevation: 5,
+                                                borderColor: 'rgba(96, 165, 250, 0.2)',
+                                                elevation: 8,
                                                 shadowColor: '#000',
-                                                shadowOffset: { width: 0, height: 4 },
-                                                shadowOpacity: 0.3,
-                                                shadowRadius: 5
+                                                shadowOffset: { width: 0, height: 6 },
+                                                shadowOpacity: 0.4,
+                                                shadowRadius: 8
                                             }}>
                                                 <Image
                                                     source={item.source}
                                                     style={{
                                                         width: '100%',
-                                                        height: 220,
+                                                        height: 240,
                                                     }}
                                                     resizeMode={item.type === 'ui' ? "contain" : "cover"}
                                                 />
                                                 <LinearGradient
-                                                    colors={['transparent', 'rgba(0,0,0,0.8)']}
+                                                    colors={['transparent', 'rgba(0,0,0,0.9)']}
                                                     style={{
                                                         position: 'absolute',
                                                         bottom: 0,
                                                         left: 0,
                                                         right: 0,
-                                                        height: 40,
+                                                        height: 50,
                                                         justifyContent: 'center',
-                                                        paddingHorizontal: 12
+                                                        paddingHorizontal: 15
                                                     }}
                                                 >
-                                                    <Text style={{ color: '#FFF', fontSize: 10, fontWeight: 'bold', letterSpacing: 0.5, textTransform: 'uppercase' }}>{item.title}</Text>
+                                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                                        <Ionicons name="scan-outline" size={12} color="#60A5FA" style={{ marginRight: 6 }} />
+                                                        <Text style={{ color: '#FFF', fontSize: 11, fontWeight: 'bold', letterSpacing: 0.5, textTransform: 'uppercase' }}>{item.title}</Text>
+                                                    </View>
                                                 </LinearGradient>
                                             </View>
                                         </TouchableOpacity>
                                     )}
                                 />
-                                <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 12, gap: 6 }}>
-                                    <View style={{ width: 10, height: 1, backgroundColor: 'rgba(255,255,255,0.2)' }} />
-                                    <Text style={{ color: '#555', fontSize: 9, fontWeight: 'bold', letterSpacing: 1 }}>TAP TO ZOOM · SWIPE FOR ALL</Text>
-                                    <View style={{ width: 10, height: 1, backgroundColor: 'rgba(255,255,255,0.2)' }} />
+                                <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15, gap: 8 }}>
+                                    <View style={{ width: 15, height: 1, backgroundColor: 'rgba(212, 175, 55, 0.5)', borderRadius: 1 }} />
+                                    <Text style={{ color: '#D4AF37', fontSize: 10, fontWeight: '600', letterSpacing: 1.5 }}>TAP TO ZOOM · SWIPE GALLERY</Text>
+                                    <View style={{ width: 15, height: 1, backgroundColor: 'rgba(212, 175, 55, 0.5)', borderRadius: 1 }} />
                                 </View>
                             </View>
 
@@ -796,91 +800,205 @@ export default function SettingsScreen() {
                                 </View>
                             </Modal>
 
-                            <View style={{ gap: 12 }}>
-                                <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
-                                    <View style={{ width: 4, height: 4, borderRadius: 2, backgroundColor: '#60A5FA', marginTop: 7, marginRight: 10 }} />
-                                    <Text style={{ color: '#E0E0E0', fontSize: 13, flex: 1, lineHeight: 18 }}>
-                                        <Text style={{ fontWeight: 'bold', color: '#FFF' }}>Volume Profile (VPVR):</Text> Row Layout: <Text style={{ color: '#60A5FA' }}>Number of Rows</Text>. Row Size: <Text style={{ color: '#60A5FA' }}>40</Text>. Volume: <Text style={{ color: '#60A5FA' }}>Delta</Text>. VA Volume: <Text style={{ color: '#60A5FA' }}>70</Text>. Style: Right, 37%.
-                                    </Text>
-                                </View>
-
-                                <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
-                                    <View style={{ width: 4, height: 4, borderRadius: 2, backgroundColor: '#60A5FA', marginTop: 7, marginRight: 10 }} />
-                                    <Text style={{ color: '#E0E0E0', fontSize: 13, flex: 1, lineHeight: 18 }}>
-                                        <Text style={{ fontWeight: 'bold', color: '#FFF' }}>Moving Average (MA):</Text> Length: <Text style={{ color: '#60A5FA' }}>200</Text>. Source: <Text style={{ color: '#60A5FA' }}>Close</Text>. Method: <Text style={{ color: '#60A5FA' }}>SMA</Text>.
-                                    </Text>
-                                </View>
-
-                                <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
-                                    <View style={{ width: 4, height: 4, borderRadius: 2, backgroundColor: '#60A5FA', marginTop: 7, marginRight: 10 }} />
-                                    <Text style={{ color: '#E0E0E0', fontSize: 13, flex: 1, lineHeight: 18 }}>
-                                        <Text style={{ fontWeight: 'bold', color: '#FFF' }}>RSI Indicator:</Text> Length: <Text style={{ color: '#60A5FA' }}>7</Text>. Upper Limit: <Text style={{ color: '#60A5FA' }}>80</Text>. Lower Limit: <Text style={{ color: '#60A5FA' }}>20</Text>.
-                                    </Text>
-                                </View>
-
-                                <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
-                                    <View style={{ width: 4, height: 4, borderRadius: 2, backgroundColor: '#60A5FA', marginTop: 7, marginRight: 10 }} />
-                                    <Text style={{ color: '#E0E0E0', fontSize: 13, flex: 1, lineHeight: 18 }}>
-                                        <Text style={{ fontWeight: 'bold', color: '#FFF' }}>Timeframe & ATR:</Text> Use <Text style={{ color: '#60A5FA' }}>M1</Text> for entry execution and <Text style={{ color: '#60A5FA' }}>H1</Text> for institutional context. ATR Period: <Text style={{ color: '#60A5FA' }}>14</Text>.
-                                    </Text>
-                                </View>
-                            </View>
-
-                            <View style={{
-                                marginTop: 20,
-                                padding: 12,
-                                backgroundColor: 'rgba(245, 158, 11, 0.05)',
-                                borderRadius: 10,
-                                borderLeftWidth: 3,
-                                borderLeftColor: '#F59E0B'
-                            }}>
-                                <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 8 }}>
-                                    <Ionicons name="school-outline" size={16} color="#F59E0B" style={{ marginRight: 8 }} />
-                                    <Text style={{ color: '#F59E0B', fontSize: 12, fontWeight: 'bold', letterSpacing: 0.5 }}>STRATEGY METHODOLOGY</Text>
-                                </View>
-                                <Text style={{ color: '#94A3B8', fontSize: 12, lineHeight: 18 }}>
-                                    The <Text style={{ color: '#FFF' }}>Click&Trader methodology</Text> is built on observing technical correlations between the <Text style={{ color: '#FFF' }}>Cash (SPX)</Text>, <Text style={{ color: '#FFF' }}>Futures (ES)</Text>, and <Text style={{ color: '#FFF' }}>Nasdaq</Text>. This educational setup highlights major structural levels on the <Text style={{ color: '#FFF' }}>H1 timeframe</Text>. The <Text style={{ color: '#FFF' }}>Institutional Map</Text> levels (<Text style={{ color: '#FFF' }}>12, 23, 38, 64, 91</Text>) function across both Cash and Futures markets. Note that while the levels correspond, a price offset may exist between markets (e.g., a level '12' on Futures might align with a level '91' on Cash). Historically, the strategy suggests that alignment between high-probability layers provides the strongest context for analysis.
-                                </Text>
-                            </View>
-
-                            <View style={{
-                                marginTop: 12,
-                                padding: 12,
-                                backgroundColor: 'rgba(16, 185, 129, 0.05)',
-                                borderRadius: 10,
-                                borderLeftWidth: 3,
-                                borderLeftColor: '#10B981'
-                            }}>
-                                <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
-                                    <Ionicons name="bulb-outline" size={16} color="#10B981" style={{ marginRight: 8 }} />
-                                    <Text style={{ color: '#10B981', fontSize: 11, fontWeight: 'bold', letterSpacing: 0.5 }}>METHODOLOGY CONCEPT</Text>
-                                </View>
-                                <Text style={{ color: '#E0E0E0', fontSize: 12, lineHeight: 18 }}>
-                                    The strategy emphasizes <Text style={{ fontWeight: 'bold' }}>technical patience</Text> during strong trends. It prioritizes observing market stabilization and identifying clear structural extremes. Monitoring the <Text style={{ color: '#10B981', fontWeight: 'bold' }}>ATR</Text> is an integral part of the methodology to understand if current volatility aligns with the historical models of the Institutional Map.
-                                </Text>
-                            </View>
-
-                            <TouchableOpacity
-                                style={{
-                                    marginTop: 20,
-                                    paddingVertical: 10,
-                                    backgroundColor: 'rgba(255,255,255,0.05)',
-                                    borderRadius: 10,
-                                    alignItems: 'center',
-                                    borderWidth: 1,
-                                    borderColor: 'rgba(255,255,255,0.1)'
-                                }}
-                                onPress={() => router.push('/guide-manual-v3')}
-                            >
-                                <Text style={{ color: '#FFF', fontSize: 12, fontWeight: '600' }}>VIEW FULL TUTORIAL</Text>
-                            </TouchableOpacity>
                         </GlassCard>
 
+                        <GlassCard
+                            intensity={15}
+                            borderColor="rgba(255, 255, 255, 0.2)"
+                            borderWidth={0.5}
+                            borderRadius={16}
+                            disableGradient={true}
+                            style={{ marginBottom: 30, padding: 15 }}
+                        >
+                            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 15 }}>
+                                <View style={{ width: 4, height: 16, backgroundColor: '#D4AF37', borderRadius: 2, marginRight: 8 }} />
+                                <Text style={{ color: '#D4AF37', fontSize: 13, fontWeight: '700', letterSpacing: 1 }}>SETTINGS VALUES</Text>
+                            </View>
+
+                            <View style={{ gap: 14 }}>
+                                <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
+                                    <View style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: '#475569', marginTop: 7, marginRight: 12 }} />
+                                    <Text style={{ color: '#E0E0E0', fontSize: 13, flex: 1, lineHeight: 20 }}>
+                                        <Text style={{ fontWeight: 'bold', color: '#FFF' }}>Execution:</Text> <Text style={{ color: '#FFF', fontWeight: '400' }}>1000T</Text> or <Text style={{ color: '#FFF', fontWeight: '400' }}>M1</Text> (Timeframe).
+                                    </Text>
+                                </View>
+                                <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
+                                    <View style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: '#475569', marginTop: 7, marginRight: 12 }} />
+                                    <Text style={{ color: '#E0E0E0', fontSize: 13, flex: 1, lineHeight: 20 }}>
+                                        <Text style={{ fontWeight: 'bold', color: '#FFF' }}>Volume Profile (VPVR):</Text> Row Layout: <Text style={{ color: '#FFF', fontWeight: '400' }}>Number of Rows</Text>. Row Size: <Text style={{ color: '#FFF', fontWeight: '400' }}>40</Text>. Volume: <Text style={{ color: '#FFF', fontWeight: '400' }}>Delta</Text>. VA Volume: <Text style={{ color: '#FFF', fontWeight: '400' }}>70</Text>. Style: Right, 37%.
+                                    </Text>
+                                </View>
+
+                                <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
+                                    <View style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: '#475569', marginTop: 7, marginRight: 12 }} />
+                                    <Text style={{ color: '#E0E0E0', fontSize: 13, flex: 1, lineHeight: 20 }}>
+                                        <Text style={{ fontWeight: 'bold', color: '#FFF' }}>Moving Average (MA):</Text> Length: <Text style={{ color: '#FFF', fontWeight: '400' }}>200</Text>. Source: <Text style={{ color: '#FFF', fontWeight: '400' }}>Close</Text>. Method: <Text style={{ color: '#FFF', fontWeight: '400' }}>SMA</Text>.
+                                    </Text>
+                                </View>
+
+                                <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
+                                    <View style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: '#475569', marginTop: 7, marginRight: 12 }} />
+                                    <Text style={{ color: '#E0E0E0', fontSize: 13, flex: 1, lineHeight: 20 }}>
+                                        <Text style={{ fontWeight: 'bold', color: '#FFF' }}>RSI Indicator:</Text> Length: <Text style={{ color: '#FFF', fontWeight: '400' }}>7</Text>. Upper Limit: <Text style={{ color: '#FFF', fontWeight: '400' }}>80</Text>. Lower Limit: <Text style={{ color: '#FFF', fontWeight: '400' }}>20</Text>.
+                                    </Text>
+                                </View>
+
+                                <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
+                                    <View style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: '#475569', marginTop: 7, marginRight: 12 }} />
+                                    <Text style={{ color: '#E0E0E0', fontSize: 13, flex: 1, lineHeight: 20 }}>
+                                        <Text style={{ fontWeight: 'bold', color: '#FFF' }}>Timeframe & ATR:</Text> Use <Text style={{ color: '#FFF', fontWeight: '400' }}>M1</Text> for entry and <Text style={{ color: '#FFF', fontWeight: '400' }}>H1</Text> for context. ATR Period: <Text style={{ color: '#FFF', fontWeight: '400' }}>14</Text>.
+                                    </Text>
+                                </View>
+
+                                <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
+                                    <View style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: '#475569', marginTop: 7, marginRight: 12 }} />
+                                    <Text style={{ color: '#E0E0E0', fontSize: 13, flex: 1, lineHeight: 20 }}>
+                                        <Text style={{ fontWeight: 'bold', color: '#FFF' }}>Pivots:</Text> Monitor <Text style={{ color: '#FFF', fontWeight: '400' }}>H4</Text>, <Text style={{ color: '#FFF', fontWeight: '400' }}>Daily</Text>, and <Text style={{ color: '#FFF', fontWeight: '400' }}>Weekly</Text> levels.
+                                    </Text>
+                                </View>
+
+                                <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
+                                    <View style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: '#475569', marginTop: 7, marginRight: 12 }} />
+                                    <Text style={{ color: '#E0E0E0', fontSize: 13, flex: 1, lineHeight: 20 }}>
+                                        <Text style={{ fontWeight: 'bold', color: '#FFF' }}>Charts:</Text> Open <Text style={{ color: '#FFF', fontWeight: '400' }}>ES Futures</Text> (H1), <Text style={{ color: '#FFF', fontWeight: '400' }}>SPX Cash</Text> (M15/M5), and <Text style={{ color: '#FFF', fontWeight: '400' }}>NQ Cash</Text> (H1).
+                                    </Text>
+                                </View>
+                            </View>
+                        </GlassCard>
+
+                        <View style={{
+                            marginTop: 15,
+                            padding: 16,
+                            borderRadius: 14,
+                            borderWidth: 1,
+                            borderColor: 'rgba(255, 255, 255, 0.08)',
+                            borderLeftWidth: 2,
+                            borderLeftColor: '#333',
+                            overflow: 'hidden'
+                        }}>
+                            <LinearGradient
+                                colors={['#1A1A1A', '#000000']}
+                                start={{ x: 0, y: 0 }}
+                                end={{ x: 0, y: 1 }}
+                                style={[StyleSheet.absoluteFill, { zIndex: -2 }]}
+                            />
+                            <LinearGradient
+                                colors={['rgba(255,255,255,0.15)', 'rgba(0,0,0,0)']}
+                                start={{ x: 0, y: 0 }}
+                                end={{ x: 0, y: 0.4 }}
+                                style={[StyleSheet.absoluteFill, { zIndex: -1 }]}
+                            />
+                            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
+                                <View style={{ width: 24, height: 24, borderRadius: 12, backgroundColor: 'rgba(255, 255, 255, 0.1)', alignItems: 'center', justifyContent: 'center', marginRight: 10 }}>
+                                    <Ionicons name="school" size={14} color="#FFF" />
+                                </View>
+                                <Text style={{ color: '#FFF', fontSize: 12, fontWeight: '600', letterSpacing: 1 }}>STRATEGY METHODOLOGY</Text>
+                            </View>
+                            <Text style={{ color: '#E0E0E0', fontSize: 12, lineHeight: 19 }}>
+                                The <Text style={{ color: '#FFF', fontWeight: 'bold' }}>Click&Trader methodology</Text> is built on technical correlations between the <Text style={{ color: '#FFF', fontWeight: 'bold' }}>Cash (SPX)</Text>, <Text style={{ color: '#FFF', fontWeight: 'bold' }}>Futures (ES)</Text>, and <Text style={{ color: '#FFF', fontWeight: 'bold' }}>Nasdaq</Text>. The hierarchy follows a strict order on the <Text style={{ color: '#FFF', fontWeight: 'bold' }}>H1 timeframe</Text>: <Text style={{ color: '#FFF', fontWeight: 'bold' }}>SPX (The Boss) {'>'} ES {'>'} NQ</Text>. If the "Boss" reacts at a magnet level, the others often follow.
+                            </Text>
+                            <Text style={{ color: '#E0E0E0', fontSize: 12, lineHeight: 19, marginTop: 10 }}>
+                                The <Text style={{ color: '#FFF', fontWeight: 'bold' }}>Institutional Map</Text> levels (<Text style={{ color: '#FFF', fontWeight: 'bold' }}>12, 23, 38, 64, 91</Text>) function across markets. While levels correspond, a price offset may exist (e.g., '.12' on Futures might align with '.91' on Cash). Alignment between these high-probability layers provides the strongest context for analysis.
+                            </Text>
+                        </View>
+
+                        <View style={{
+                            marginTop: 15,
+                            padding: 16,
+                            borderRadius: 14,
+                            borderWidth: 1,
+                            borderColor: 'rgba(255, 255, 255, 0.08)',
+                            borderLeftWidth: 2,
+                            borderLeftColor: '#333',
+                            overflow: 'hidden'
+                        }}>
+                            <LinearGradient
+                                colors={['#1A1A1A', '#000000']}
+                                start={{ x: 0, y: 0 }}
+                                end={{ x: 0, y: 1 }}
+                                style={[StyleSheet.absoluteFill, { zIndex: -2 }]}
+                            />
+                            <LinearGradient
+                                colors={['rgba(255,255,255,0.15)', 'rgba(0,0,0,0)']}
+                                start={{ x: 0, y: 0 }}
+                                end={{ x: 0, y: 0.4 }}
+                                style={[StyleSheet.absoluteFill, { zIndex: -1 }]}
+                            />
+                            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
+                                <View style={{ width: 24, height: 24, borderRadius: 12, backgroundColor: 'rgba(255, 255, 255, 0.1)', alignItems: 'center', justifyContent: 'center', marginRight: 10 }}>
+                                    <Ionicons name="bulb" size={14} color="#FFF" />
+                                </View>
+                                <Text style={{ color: '#FFF', fontSize: 12, fontWeight: '600', letterSpacing: 1 }}>METHODOLOGY CONCEPT</Text>
+                            </View>
+                            <Text style={{ color: '#E0E0E0', fontSize: 12, lineHeight: 19 }}>
+                                The strategy emphasizes <Text style={{ fontWeight: 'bold', color: '#FFF' }}>technical patience</Text> during strong trends. It prioritizes observing market stabilization (typically <Text style={{ color: '#FFF', fontWeight: 'bold' }}>3 M1 waves</Text>) and identifying clear structural extremes. Institutional algorithms typically stabilize <Text style={{ color: '#FFF', fontWeight: 'bold' }}>1 hour</Text> after the US Open. Monitoring the <Text style={{ color: '#94A3B8', fontWeight: 'bold' }}>ATR</Text> is vital as it provides higher probability context for technical analysis.
+                            </Text>
+                        </View>
+
+
+
+                        {/* ECONOMIC MONITOR WARNING (ORANGE BUBBLE) */}
+                        <View style={{
+                            marginTop: 25,
+                            padding: 12,
+                            backgroundColor: 'rgba(255, 165, 0, 0.1)',
+                            borderRadius: 14,
+                            borderWidth: 1,
+                            borderColor: 'rgba(255, 165, 0, 0.3)',
+                            flexDirection: 'row',
+                            alignItems: 'center'
+                        }}>
+                            <Ionicons name="calendar-outline" size={20} color="#FFA500" style={{ marginRight: 10 }} />
+                            <View style={{ flex: 1 }}>
+                                <Text style={{ color: '#FFA500', fontSize: 11, fontWeight: '600', letterSpacing: 0.5 }}>
+                                    NOTICE: Monitor the Economic Calendar for high-impact events (FOMC, CPI, Tariffs, etc.). These events cause abnormal volatility.
+                                </Text>
+                                <Text style={{ color: 'rgba(255, 165, 0, 0.8)', fontSize: 11, fontWeight: '500', marginTop: 8 }}>
+                                    Context: ~1.5 days/week are directional (~1.5% range). Normal days range 0.50%-0.60%. Once a quarter, moves {'>'}3% occur, with rare extreme days hitting 5%.
+                                </Text>
+                            </View>
+                        </View>
+
+                        <TouchableOpacity
+                            style={{
+                                marginTop: 25,
+                                padding: 16,
+                                paddingVertical: 12, // Slightly reduced vertical padding
+                                borderRadius: 12,
+                                borderWidth: 1,
+                                borderColor: 'rgba(255, 255, 255, 0.1)',
+                                borderLeftWidth: 2,
+                                borderLeftColor: '#444', // Slightly lighter accent
+                                overflow: 'hidden',
+                                alignItems: 'center',
+                                width: '85%', // Reduced width
+                                alignSelf: 'center' // Centered
+                            }}
+                            activeOpacity={0.8}
+                            onPress={() => router.push('/guide-manual-v3')}
+                        >
+                            <LinearGradient
+                                colors={['#252525', '#101010']} // Lighter black/gray (less dense)
+                                start={{ x: 0, y: 0 }}
+                                end={{ x: 0, y: 1 }}
+                                style={[StyleSheet.absoluteFill, { zIndex: -2 }]}
+                            />
+                            <LinearGradient
+                                colors={['rgba(255,255,255,0.1)', 'rgba(0,0,0,0)']} // Subtle highlight
+                                start={{ x: 0, y: 0 }}
+                                end={{ x: 0, y: 0.4 }}
+                                style={[StyleSheet.absoluteFill, { zIndex: -1 }]}
+                            />
+                            <Text style={{ color: '#E0E0E0', fontSize: 12, fontWeight: 'bold', letterSpacing: 0.5 }}>ACCESS MASTERCLASS</Text>
+                        </TouchableOpacity>
+
+
                         <Text style={styles.footerText}>Server Connected: {pushToken ? 'Yes' : 'No'}</Text>
-                    </View>
-                )}
+                    </View >
+                )
+                }
             />
-        </View>
+        </View >
     );
 }
 
