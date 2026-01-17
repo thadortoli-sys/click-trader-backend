@@ -96,7 +96,16 @@ const ADVANCED_ITEMS: SignalItem[] = [
         key: 'shadow_Buy',
         guideTarget: 'Shadow Mode',
         label: 'Shadow BUY',
-        description: <Text style={{ color: '#ccc', fontSize: 12 }}>Institutional Sweep. <Text style={{ color: '#9061C2', fontWeight: 'bold' }}>Review the Magnet Map.</Text></Text>,
+        description: (
+            <View>
+                <Text style={{ color: '#ccc', fontSize: 12, marginBottom: 6 }}>Institutional Sweep. <Text style={{ color: '#9061C2', fontWeight: 'bold' }}>Review Magnet Map.</Text></Text>
+                <Text style={{ color: '#888', fontSize: 10, fontStyle: 'italic', lineHeight: 14 }}>
+                    ATR &lt; 10: 1 M1 candle of stabilization is often sufficient.{"\n"}
+                    ATR 10–20: Wait for 2 M1 candles + clear rejection.{"\n"}
+                    ATR &gt; 20: Wait 3–5 M1 candles or sweep-and-reclaim.
+                </Text>
+            </View>
+        ),
         icon: 'moon',
         color: '#A855F7'
     },
@@ -104,7 +113,16 @@ const ADVANCED_ITEMS: SignalItem[] = [
         key: 'shadow_Sell',
         guideTarget: 'Shadow Mode',
         label: 'Shadow SELL',
-        description: <Text style={{ color: '#ccc', fontSize: 12 }}>Institutional Sweep. <Text style={{ color: '#9061C2', fontWeight: 'bold' }}>Review the Magnet Map.</Text></Text>,
+        description: (
+            <View>
+                <Text style={{ color: '#ccc', fontSize: 12, marginBottom: 6 }}>Institutional Sweep. <Text style={{ color: '#9061C2', fontWeight: 'bold' }}>Review Magnet Map.</Text></Text>
+                <Text style={{ color: '#888', fontSize: 10, fontStyle: 'italic', lineHeight: 14 }}>
+                    ATR &lt; 10: 1 M1 candle of stabilization is often sufficient.{"\n"}
+                    ATR 10–20: Wait for 2 M1 candles + clear rejection.{"\n"}
+                    ATR &gt; 20: Wait 3–5 M1 candles or sweep-and-reclaim.
+                </Text>
+            </View>
+        ),
         icon: 'moon',
         color: '#A855F7'
     },
@@ -112,7 +130,16 @@ const ADVANCED_ITEMS: SignalItem[] = [
         key: 'scalp_OverSold',
         guideTarget: 'HORUS OVS',
         label: 'Horus OVS',
-        description: 'Extreme Statistical Anomaly. Counter-trend scalping.',
+        description: (
+            <View>
+                <Text style={{ color: '#ccc', fontSize: 12, marginBottom: 6 }}>Extreme Statistical Anomaly. Counter-trend alert.</Text>
+                <Text style={{ color: '#888', fontSize: 10, fontStyle: 'italic', lineHeight: 14 }}>
+                    ATR &lt; 10: 1 M1 candle of stabilization typically enough.{"\n"}
+                    ATR 10–20: Need 2 M1 candles + clear rejection.{"\n"}
+                    ATR &gt; 20: Wait 3–5 M1 candles/sweep-reclaim or it may slide.
+                </Text>
+            </View>
+        ),
         icon: 'arrow-down-circle-outline',
         color: '#4ADE80'
     },
@@ -120,7 +147,16 @@ const ADVANCED_ITEMS: SignalItem[] = [
         key: 'scalp_OverBought',
         guideTarget: 'HORUS OVB',
         label: 'Horus OVB',
-        description: 'Extreme Statistical Anomaly. Counter-trend scalping.',
+        description: (
+            <View>
+                <Text style={{ color: '#ccc', fontSize: 12, marginBottom: 6 }}>Extreme Statistical Anomaly. Counter-trend alert.</Text>
+                <Text style={{ color: '#888', fontSize: 10, fontStyle: 'italic', lineHeight: 14 }}>
+                    ATR &lt; 10: 1 M1 candle of stabilization typically enough.{"\n"}
+                    ATR 10–20: Need 2 M1 candles + clear rejection.{"\n"}
+                    ATR &gt; 20: Wait 3–5 M1 candles/sweep-reclaim or it may slide.
+                </Text>
+            </View>
+        ),
         icon: 'arrow-up-circle-outline',
         color: '#EF4444'
     },
@@ -128,7 +164,16 @@ const ADVANCED_ITEMS: SignalItem[] = [
         key: 'horus_Adv_Buy',
         guideTarget: 'Horus ADV',
         label: 'Horus ADV Buy',
-        description: <Text style={{ color: '#ccc', fontSize: 12 }}><Text style={{ color: '#4ADE80', fontWeight: 'bold', opacity: 0.8 }}>Expert.</Text> High precision entry.</Text>,
+        description: (
+            <View>
+                <Text style={{ color: '#ccc', fontSize: 12, marginBottom: 6 }}><Text style={{ color: '#4ADE80', fontWeight: 'bold', opacity: 0.8 }}>Expert.</Text> High precision entry.</Text>
+                <Text style={{ color: '#888', fontSize: 10, fontStyle: 'italic', lineHeight: 14 }}>
+                    ATR &lt; 10: 1 M1 candle of stabilization is sufficient.{"\n"}
+                    ATR 10–20: Wait 2 M1 candles + rejection.{"\n"}
+                    ATR &gt; 20: 3–5 M1 candles or sweep-reclaim required.
+                </Text>
+            </View>
+        ),
         icon: 'flash',
         color: '#00FF9D'
     },
@@ -136,7 +181,16 @@ const ADVANCED_ITEMS: SignalItem[] = [
         key: 'horus_Adv_Sell',
         guideTarget: 'Horus ADV',
         label: 'Horus ADV Sell',
-        description: <Text style={{ color: '#ccc', fontSize: 12 }}><Text style={{ color: '#F87171', fontWeight: 'bold', opacity: 0.8 }}>Expert.</Text> High precision entry.</Text>,
+        description: (
+            <View>
+                <Text style={{ color: '#ccc', fontSize: 12, marginBottom: 6 }}><Text style={{ color: '#F87171', fontWeight: 'bold', opacity: 0.8 }}>Expert.</Text> High precision entry.</Text>
+                <Text style={{ color: '#888', fontSize: 10, fontStyle: 'italic', lineHeight: 14 }}>
+                    ATR &lt; 10: 1 M1 candle of stabilization is sufficient.{"\n"}
+                    ATR 10–20: Wait 2 M1 candles + rejection.{"\n"}
+                    ATR &gt; 20: 3–5 M1 candles or sweep-reclaim required.
+                </Text>
+            </View>
+        ),
         icon: 'flash',
         color: '#FF5252'
     },
