@@ -835,11 +835,11 @@ export default function SettingsScreen() {
                                 borderLeftColor: '#F59E0B'
                             }}>
                                 <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 8 }}>
-                                    <Ionicons name="link-outline" size={16} color="#F59E0B" style={{ marginRight: 8 }} />
-                                    <Text style={{ color: '#F59E0B', fontSize: 12, fontWeight: 'bold', letterSpacing: 0.5 }}>MARKET CONFLUENCES</Text>
+                                    <Ionicons name="school-outline" size={16} color="#F59E0B" style={{ marginRight: 8 }} />
+                                    <Text style={{ color: '#F59E0B', fontSize: 12, fontWeight: 'bold', letterSpacing: 0.5 }}>STRATEGY METHODOLOGY</Text>
                                 </View>
-                                <Text style={{ color: '#94A3B8', fontSize: 12, lineHeight: 18, fontStyle: 'italic' }}>
-                                    "Refer to the <Text style={{ color: '#FFF' }}>Cash chart (SPX)</Text> for major confluences. Always keep an <Text style={{ color: '#FFF' }}>H1 chart</Text> open to identify the walls. If H1 shows a peak, we do not take BUY entries, and vice versa. When the <Text style={{ color: '#FFF' }}>SP Cash</Text> decides, the <Text style={{ color: '#FFF' }}>ES</Text> aligns, and the <Text style={{ color: '#FFF' }}>Nasdaq</Text> follows."
+                                <Text style={{ color: '#94A3B8', fontSize: 12, lineHeight: 18 }}>
+                                    The <Text style={{ color: '#FFF' }}>Click&Trader methodology</Text> is built on observing technical correlations between the <Text style={{ color: '#FFF' }}>Cash (SPX)</Text>, <Text style={{ color: '#FFF' }}>Futures (ES)</Text>, and <Text style={{ color: '#FFF' }}>Nasdaq</Text>. This educational setup highlights major structural levels on the <Text style={{ color: '#FFF' }}>H1 timeframe</Text>. Historically, the strategy suggests that alignment between the SP Cash and its correlated derivatives provides higher probability context for technical analysis.
                                 </Text>
                             </View>
 
