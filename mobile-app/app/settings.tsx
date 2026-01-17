@@ -843,6 +843,23 @@ export default function SettingsScreen() {
                                 </Text>
                             </View>
 
+                            <View style={{
+                                marginTop: 12,
+                                padding: 12,
+                                backgroundColor: 'rgba(16, 185, 129, 0.05)',
+                                borderRadius: 10,
+                                borderLeftWidth: 3,
+                                borderLeftColor: '#10B981'
+                            }}>
+                                <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
+                                    <Ionicons name="bulb-outline" size={16} color="#10B981" style={{ marginRight: 8 }} />
+                                    <Text style={{ color: '#10B981', fontSize: 11, fontWeight: 'bold', letterSpacing: 0.5 }}>PRO TIP</Text>
+                                </View>
+                                <Text style={{ color: '#E0E0E0', fontSize: 12, lineHeight: 18 }}>
+                                    Patience is key. <Text style={{ fontWeight: 'bold' }}>Never fight a strong trend.</Text> Wait for the market to stabilize, identify a clear peak or bottom, and always monitor the <Text style={{ color: '#10B981', fontWeight: 'bold' }}>ATR</Text> to ensure the volatility is conducive to a precise entry.
+                                </Text>
+                            </View>
+
                             <TouchableOpacity
                                 style={{
                                     marginTop: 20,
