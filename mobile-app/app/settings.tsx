@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { StyleSheet, Text, View, Switch, FlatList, StatusBar, Dimensions, TouchableOpacity, Animated, Easing, Platform } from 'react-native';
+import { StyleSheet, Text, View, Switch, FlatList, StatusBar, Dimensions, TouchableOpacity, Animated, Easing, Platform, Image } from 'react-native';
 import { Stack, useRouter } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
@@ -682,6 +682,19 @@ export default function SettingsScreen() {
                                 </View>
                                 <Text style={{ color: '#FFF', fontSize: 16, fontWeight: 'bold' }}>Chart Setup</Text>
                             </View>
+
+                            <Image
+                                source={require('../assets/images/chart_setup.png')}
+                                style={{
+                                    width: '100%',
+                                    height: 150,
+                                    borderRadius: 10,
+                                    marginBottom: 15,
+                                    borderWidth: 1,
+                                    borderColor: 'rgba(255,255,255,0.1)'
+                                }}
+                                resizeMode="cover"
+                            />
 
                             <View style={{ gap: 12 }}>
                                 <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
