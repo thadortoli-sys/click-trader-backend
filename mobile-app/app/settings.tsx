@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { StyleSheet, Text, View, Switch, FlatList, StatusBar, Dimensions, TouchableOpacity, Animated, Easing, Platform, Image } from 'react-native';
+import { StyleSheet, Text, View, Switch, FlatList, StatusBar, Dimensions, TouchableOpacity, Animated, Easing, Platform, Image, Modal } from 'react-native';
 import { Stack, useRouter } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
@@ -377,6 +377,7 @@ const SignalCard = React.memo(({ item, value, onToggle, index }: { item: SignalI
 export default function SettingsScreen() {
     const router = useRouter();
     const [pushToken, setPushToken] = useState<string | undefined>('');
+    const [selectedImage, setSelectedImage] = useState<any>(null); // For Zoom Modal
 
     // Load settings on mount
     useEffect(() => {
@@ -687,45 +688,113 @@ export default function SettingsScreen() {
                             <View style={{ marginBottom: 20 }}>
                                 <FlatList
                                     data={[
-                                        { id: '1', source: require('../assets/images/chart_overview.png'), title: 'Overview' },
-                                        { id: '2', source: require('../assets/images/vpvr_inputs.png'), title: 'VPVR Settings' },
-                                        { id: '3', source: require('../assets/images/vpvr_style.png'), title: 'VPVR Style' },
-                                        { id: '4', source: require('../assets/images/ma_inputs.png'), title: 'MA Settings' },
-                                        { id: '5', source: require('../assets/images/ma_style.png'), title: 'MA Style' },
-                                        { id: '6', source: require('../assets/images/rsi_inputs.png'), title: 'RSI Settings' },
-                                        { id: '7', source: require('../assets/images/rsi_style.png'), title: 'RSI Style' },
-                                        { id: '8', source: require('../assets/images/atr_inputs.png'), title: 'ATR Length' },
-                                        { id: '9', source: require('../assets/images/chart_es_m15.png'), title: 'ES M15 Overview' },
-                                        { id: '10', source: require('../assets/images/chart_sp500_h1.png'), title: 'SP500 H1 Context' },
-                                        { id: '11', source: require('../assets/images/chart_us100_h1.png'), title: 'US100 H1 Context' },
+                                        { id: '1', source: require('../assets/images/chart_overview.png'), title: 'Global Overview', type: 'wide' },
+                                        { id: '9', source: require('../assets/images/chart_es_m15.png'), title: 'ES M15 Setup', type: 'wide' },
+                                        { id: '10', source: require('../assets/images/chart_sp500_h1.png'), title: 'SP500 H1 Context', type: 'wide' },
+                                        { id: '11', source: require('../assets/images/chart_us100_h1.png'), title: 'US100 H1 Context', type: 'wide' },
+                                        { id: '2', source: require('../assets/images/vpvr_inputs.png'), title: 'VPVR Inputs', type: 'ui' },
+                                        { id: '3', source: require('../assets/images/vpvr_style.png'), title: 'VPVR Style', type: 'ui' },
+                                        { id: '4', source: require('../assets/images/ma_inputs.png'), title: 'MA Inputs', type: 'ui' },
+                                        { id: '5', source: require('../assets/images/ma_style.png'), title: 'MA Style', type: 'ui' },
+                                        { id: '6', source: require('../assets/images/rsi_inputs.png'), title: 'RSI Inputs', type: 'ui' },
+                                        { id: '7', source: require('../assets/images/rsi_style.png'), title: 'RSI Style', type: 'ui' },
+                                        { id: '8', source: require('../assets/images/atr_inputs.png'), title: 'ATR Settings', type: 'ui' },
                                     ]}
                                     horizontal
-                                    pagingEnabled
                                     showsHorizontalScrollIndicator={false}
                                     keyExtractor={(item) => item.id}
                                     renderItem={({ item }) => (
-                                        <View style={{ width: width - 70, marginRight: 10 }}>
-                                            <Image
-                                                source={item.source}
-                                                style={{
-                                                    width: '100%',
-                                                    height: 180,
-                                                    borderRadius: 12,
-                                                    borderWidth: 1,
-                                                    borderColor: 'rgba(255,255,255,0.1)'
-                                                }}
-                                                resizeMode="contain"
-                                            />
-                                            <Text style={{ color: '#666', fontSize: 10, textAlign: 'center', marginTop: 8, fontWeight: 'bold', letterSpacing: 0.5 }}>{item.title}</Text>
-                                        </View>
+                                        <TouchableOpacity
+                                            activeOpacity={0.9}
+                                            onPress={() => setSelectedImage(item)}
+                                            style={{ width: width - 80, marginRight: 12 }}
+                                        >
+                                            <View style={{
+                                                backgroundColor: '#050505',
+                                                borderRadius: 12,
+                                                overflow: 'hidden',
+                                                borderWidth: 1,
+                                                borderColor: 'rgba(255,255,255,0.08)',
+                                                elevation: 5,
+                                                shadowColor: '#000',
+                                                shadowOffset: { width: 0, height: 4 },
+                                                shadowOpacity: 0.3,
+                                                shadowRadius: 5
+                                            }}>
+                                                <Image
+                                                    source={item.source}
+                                                    style={{
+                                                        width: '100%',
+                                                        height: 220,
+                                                    }}
+                                                    resizeMode={item.type === 'ui' ? "contain" : "cover"}
+                                                />
+                                                <LinearGradient
+                                                    colors={['transparent', 'rgba(0,0,0,0.8)']}
+                                                    style={{
+                                                        position: 'absolute',
+                                                        bottom: 0,
+                                                        left: 0,
+                                                        right: 0,
+                                                        height: 40,
+                                                        justifyContent: 'center',
+                                                        paddingHorizontal: 12
+                                                    }}
+                                                >
+                                                    <Text style={{ color: '#FFF', fontSize: 10, fontWeight: 'bold', letterSpacing: 0.5, textTransform: 'uppercase' }}>{item.title}</Text>
+                                                </LinearGradient>
+                                            </View>
+                                        </TouchableOpacity>
                                     )}
                                 />
-                                <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 10, gap: 4 }}>
-                                    <Ionicons name="chevron-back" size={12} color="#444" />
-                                    <Text style={{ color: '#444', fontSize: 8, fontWeight: 'bold' }}>SWIPE TO VIEW ALL STEPS</Text>
-                                    <Ionicons name="chevron-forward" size={12} color="#444" />
+                                <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 12, gap: 6 }}>
+                                    <View style={{ width: 10, height: 1, backgroundColor: 'rgba(255,255,255,0.2)' }} />
+                                    <Text style={{ color: '#555', fontSize: 9, fontWeight: 'bold', letterSpacing: 1 }}>TAP TO ZOOM · SWIPE FOR ALL</Text>
+                                    <View style={{ width: 10, height: 1, backgroundColor: 'rgba(255,255,255,0.2)' }} />
                                 </View>
                             </View>
+
+                            {/* ZOOM MODAL */}
+                            <Modal
+                                visible={!!selectedImage}
+                                transparent={true}
+                                animationType="fade"
+                                onRequestClose={() => setSelectedImage(null)}
+                            >
+                                <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.95)', justifyContent: 'center', alignItems: 'center' }}>
+                                    <TouchableOpacity
+                                        style={StyleSheet.absoluteFill}
+                                        activeOpacity={1}
+                                        onPress={() => setSelectedImage(null)}
+                                    />
+                                    {selectedImage && (
+                                        <View style={{ width: '100%', height: '80%', padding: 10 }}>
+                                            <Image
+                                                source={selectedImage.source}
+                                                style={{ width: '100%', height: '100%' }}
+                                                resizeMode="contain"
+                                            />
+                                            <View style={{ position: 'absolute', top: 20, right: 20 }}>
+                                                <TouchableOpacity
+                                                    onPress={() => setSelectedImage(null)}
+                                                    style={{
+                                                        width: 44, height: 44,
+                                                        borderRadius: 22,
+                                                        backgroundColor: 'rgba(255,255,255,0.1)',
+                                                        alignItems: 'center', justifyContent: 'center'
+                                                    }}
+                                                >
+                                                    <Ionicons name="close" size={28} color="#FFF" />
+                                                </TouchableOpacity>
+                                            </View>
+                                            <View style={{ position: 'absolute', bottom: 40, left: 0, right: 0, alignItems: 'center' }}>
+                                                <Text style={{ color: '#FFF', fontSize: 16, fontWeight: 'bold' }}>{selectedImage.title}</Text>
+                                                <Text style={{ color: '#888', fontSize: 12, marginTop: 4 }}>Tap anywhere to close</Text>
+                                            </View>
+                                        </View>
+                                    )}
+                                </View>
+                            </Modal>
 
                             <View style={{ gap: 12 }}>
                                 <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
