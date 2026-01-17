@@ -683,18 +683,43 @@ export default function SettingsScreen() {
                                 <Text style={{ color: '#FFF', fontSize: 16, fontWeight: 'bold' }}>Chart Setup</Text>
                             </View>
 
-                            <Image
-                                source={require('../assets/images/chart_setup.png')}
-                                style={{
-                                    width: '100%',
-                                    height: 150,
-                                    borderRadius: 10,
-                                    marginBottom: 15,
-                                    borderWidth: 1,
-                                    borderColor: 'rgba(255,255,255,0.1)'
-                                }}
-                                resizeMode="cover"
-                            />
+                            {/* SWIPABLE GALLERY */}
+                            <View style={{ marginBottom: 20 }}>
+                                <FlatList
+                                    data={[
+                                        { id: '1', source: require('../assets/images/chart_overview.png'), title: 'Overview' },
+                                        { id: '2', source: require('../assets/images/vpvr_inputs.png'), title: 'VPVR Settings' },
+                                        { id: '3', source: require('../assets/images/vpvr_style.png'), title: 'VPVR Style' },
+                                        { id: '4', source: require('../assets/images/ma_inputs.png'), title: 'MA Settings' },
+                                        { id: '5', source: require('../assets/images/ma_style.png'), title: 'MA Style' },
+                                    ]}
+                                    horizontal
+                                    pagingEnabled
+                                    showsHorizontalScrollIndicator={false}
+                                    keyExtractor={(item) => item.id}
+                                    renderItem={({ item }) => (
+                                        <View style={{ width: width - 70, marginRight: 10 }}>
+                                            <Image
+                                                source={item.source}
+                                                style={{
+                                                    width: '100%',
+                                                    height: 180,
+                                                    borderRadius: 12,
+                                                    borderWidth: 1,
+                                                    borderColor: 'rgba(255,255,255,0.1)'
+                                                }}
+                                                resizeMode="contain"
+                                            />
+                                            <Text style={{ color: '#666', fontSize: 10, textAlign: 'center', marginTop: 8, fontWeight: 'bold', letterSpacing: 0.5 }}>{item.title}</Text>
+                                        </View>
+                                    )}
+                                />
+                                <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 10, gap: 4 }}>
+                                    <Ionicons name="chevron-back" size={12} color="#444" />
+                                    <Text style={{ color: '#444', fontSize: 8, fontWeight: 'bold' }}>SWIPE TO VIEW ALL STEPS</Text>
+                                    <Ionicons name="chevron-forward" size={12} color="#444" />
+                                </View>
+                            </View>
 
                             <View style={{ gap: 12 }}>
                                 <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
