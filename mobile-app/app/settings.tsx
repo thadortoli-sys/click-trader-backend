@@ -657,27 +657,70 @@ export default function SettingsScreen() {
                             ))}
                         </View>
 
-                        {/* ECONOMIC CALENDAR WARNING */}
-                        <View style={{
-                            marginBottom: 20,
-                            padding: 12,
-                            backgroundColor: 'rgba(255, 165, 0, 0.1)',
-                            borderRadius: 12,
-                            borderWidth: 1,
-                            borderColor: 'rgba(255, 165, 0, 0.3)',
-                            flexDirection: 'row',
-                            alignItems: 'center'
-                        }}>
-                            <Ionicons name="calendar-outline" size={20} color="#FFA500" style={{ marginRight: 10 }} />
-                            <View style={{ flex: 1 }}>
-                                <Text style={{ color: '#FFA500', fontSize: 11, fontWeight: '600', letterSpacing: 0.5 }}>
-                                    NOTICE: Monitor the Economic Calendar for high-impact events (FOMC, CPI, Tariffs, etc.). These events cause abnormal volatility.
-                                </Text>
-                                <Text style={{ color: 'rgba(255, 165, 0, 0.8)', fontSize: 11, fontWeight: '500', marginTop: 8 }}>
-                                    Context: ~1.5 days/week are directional (~1.5% range). Normal days range 0.50%-0.60%. Once a quarter, moves &gt;3% occur, with rare extreme days hitting 5%.
-                                </Text>
+                        {/* SECTION 5: CHART CONFIGURATION */}
+                        <SectionTitle title="CHART CONFIGURATION" />
+                        <Text style={{ color: '#888', fontSize: 11, marginBottom: 15, paddingHorizontal: 5 }}>
+                            How to set up your TradingView chart for optimal signal reading.
+                        </Text>
+
+                        <GlassCard
+                            intensity={15}
+                            borderColor="rgba(255, 255, 255, 0.2)"
+                            borderWidth={1}
+                            borderRadius={16}
+                            disableGradient={true}
+                            style={{ marginBottom: 30, padding: 15 }}
+                        >
+                            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 15 }}>
+                                <View style={{
+                                    width: 36, height: 36, borderRadius: 10,
+                                    backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                                    justifyContent: 'center', alignItems: 'center',
+                                    marginRight: 12
+                                }}>
+                                    <Ionicons name="stats-chart" size={20} color="#60A5FA" />
+                                </View>
+                                <Text style={{ color: '#FFF', fontSize: 16, fontWeight: 'bold' }}>TradeView Setup</Text>
                             </View>
-                        </View>
+
+                            <View style={{ gap: 12 }}>
+                                <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
+                                    <View style={{ width: 4, height: 4, borderRadius: 2, backgroundColor: '#60A5FA', marginTop: 7, marginRight: 10 }} />
+                                    <Text style={{ color: '#E0E0E0', fontSize: 13, flex: 1, lineHeight: 18 }}>
+                                        <Text style={{ fontWeight: 'bold', color: '#FFF' }}>VPRV (Volume Profile):</Text> Use the "Visible Range" setting. Set Row Size to 100 or 150 for precision at institutional levels.
+                                    </Text>
+                                </View>
+
+                                <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
+                                    <View style={{ width: 4, height: 4, borderRadius: 2, backgroundColor: '#60A5FA', marginTop: 7, marginRight: 10 }} />
+                                    <Text style={{ color: '#E0E0E0', fontSize: 13, flex: 1, lineHeight: 18 }}>
+                                        <Text style={{ fontWeight: 'bold', color: '#FFF' }}>Timeframe:</Text> Always keep a M1 chart for entry and H1 for context.
+                                    </Text>
+                                </View>
+
+                                <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
+                                    <View style={{ width: 4, height: 4, borderRadius: 2, backgroundColor: '#60A5FA', marginTop: 7, marginRight: 10 }} />
+                                    <Text style={{ color: '#E0E0E0', fontSize: 13, flex: 1, lineHeight: 18 }}>
+                                        <Text style={{ fontWeight: 'bold', color: '#FFF' }}>ATR (Average True Range):</Text> Essential for applying the entry rules mentioned in the cards above. Use a period of 14.
+                                    </Text>
+                                </View>
+                            </View>
+
+                            <TouchableOpacity
+                                style={{
+                                    marginTop: 20,
+                                    paddingVertical: 10,
+                                    backgroundColor: 'rgba(255,255,255,0.05)',
+                                    borderRadius: 10,
+                                    alignItems: 'center',
+                                    borderWidth: 1,
+                                    borderColor: 'rgba(255,255,255,0.1)'
+                                }}
+                                onPress={() => router.push('/guide-manual-v3')}
+                            >
+                                <Text style={{ color: '#FFF', fontSize: 12, fontWeight: '600' }}>VIEW FULL TUTORIAL</Text>
+                            </TouchableOpacity>
+                        </GlassCard>
 
                         <Text style={styles.footerText}>Server Connected: {pushToken ? 'Yes' : 'No'}</Text>
                     </View>
