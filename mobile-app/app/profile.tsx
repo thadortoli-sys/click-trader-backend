@@ -14,35 +14,31 @@ export default function ProfileScreen() {
     const { user, signOut, isPro, setSimulatedPro } = useAuth();
 
     const DopamineCard = ({ children, style }: { children: React.ReactNode, style?: any }) => (
-        <GlassCard
-            intensity={20}
-            borderColor="#FFFFFF"
-            borderWidth={0.1}
-            borderRadius={16}
-            disableGradient={true}
-            style={style}
-        >
-            <LinearGradient
-                colors={['rgba(255,255,255,0.15)', 'rgba(0,0,0,0)']}
-                start={{ x: 0, y: 0 }}
-                end={{ x: 0, y: 0.4 }}
-                style={StyleSheet.absoluteFill}
-                pointerEvents="none"
-            />
+        <View style={[{
+            borderRadius: 16,
+            borderWidth: 1,
+            borderColor: 'rgba(255, 255, 255, 0.08)',
+            overflow: 'hidden',
+        }, style]}>
             <LinearGradient
                 colors={['#1A1A1A', '#000000']}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 0, y: 1 }}
+                style={[StyleSheet.absoluteFill, { zIndex: -2 }]}
+            />
+            <LinearGradient
+                colors={['rgba(255,255,255,0.15)', 'rgba(0,0,0,0)']}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 0, y: 0.4 }}
                 style={[StyleSheet.absoluteFill, { zIndex: -1 }]}
-                pointerEvents="none"
             />
             {children}
-        </GlassCard>
+        </View>
     );
 
     return (
         <View style={styles.container}>
-            {/* Atmospheric Background to fix "Too Dark" */}
+            {/* Background */}
             <LinearGradient
                 colors={['#1F1F1F', '#000000']}
                 start={{ x: 0.5, y: 0 }}
@@ -67,17 +63,17 @@ export default function ProfileScreen() {
                     <View style={styles.avatarContainer}>
                         {/* Premium Holographic Avatar */}
                         <LinearGradient
-                            colors={['rgba(255,255,255,0.15)', 'rgba(255,255,255,0.02)']}
+                            colors={['rgba(255,255,255,0.1)', 'rgba(255,255,255,0.02)']}
                             start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
                             style={styles.avatarOuterRing}
                         >
                             <View style={styles.avatarInner}>
                                 <LinearGradient
-                                    colors={['rgba(255,255,255,0.08)', 'transparent']}
+                                    colors={['rgba(255,255,255,0.05)', 'transparent']}
                                     style={StyleSheet.absoluteFill}
                                     start={{ x: 0, y: 0 }} end={{ x: 0, y: 0.6 }}
                                 />
-                                <Ionicons name="person" size={44} color="#FFF" style={{ opacity: 0.9 }} />
+                                <Ionicons name="person" size={44} color="#E0E0E0" style={{ opacity: 0.9 }} />
                             </View>
                         </LinearGradient>
                         <View style={styles.onlineBadge} />
@@ -98,7 +94,7 @@ export default function ProfileScreen() {
                                 </Text>
                             </View>
                             <View style={[styles.badge, !isPro && { backgroundColor: 'rgba(255,255,255,0.05)', borderColor: '#333' }]}>
-                                <Text style={[styles.badgeText, !isPro && { color: '#666' }]}>{isPro ? 'PRO' : 'FREE'}</Text>
+                                <Text style={[styles.badgeText, !isPro && { color: '#888' }]}>{isPro ? 'PRO' : 'FREE'}</Text>
                             </View>
                         </View>
                     </DopamineCard>
@@ -106,24 +102,12 @@ export default function ProfileScreen() {
 
                 {/* Account Settings */}
                 <View>
-                    <Text style={styles.sectionLabel}>ACCOUNT SETTINGS</Text>
+                    <Text style={styles.sectionLabel}>APP SETTINGS</Text>
                     <DopamineCard style={styles.card}>
-                        <TouchableOpacity style={styles.actionRow}>
-                            <View style={styles.iconBox}><Ionicons name="mail-outline" size={20} color="#fff" /></View>
-                            <Text style={styles.actionText}>Update Email</Text>
-                            <Ionicons name="chevron-forward" size={16} color="#666" />
-                        </TouchableOpacity>
-                        <View style={styles.divider} />
-                        <TouchableOpacity style={styles.actionRow}>
-                            <View style={styles.iconBox}><Ionicons name="lock-closed-outline" size={20} color="#fff" /></View>
-                            <Text style={styles.actionText}>Change Password</Text>
-                            <Ionicons name="chevron-forward" size={16} color="#666" />
-                        </TouchableOpacity>
-                        <View style={styles.divider} />
                         <TouchableOpacity style={styles.actionRow} onPress={() => router.push('/settings')}>
-                            <View style={styles.iconBox}><Ionicons name="notifications-outline" size={20} color="#fff" /></View>
+                            <View style={styles.iconBox}><Ionicons name="notifications-outline" size={20} color="#E0E0E0" /></View>
                             <Text style={styles.actionText}>Notification Preferences</Text>
-                            <Ionicons name="chevron-forward" size={16} color="#666" />
+                            <Ionicons name="chevron-forward" size={16} color="#444" />
                         </TouchableOpacity>
                     </DopamineCard>
                 </View>
@@ -133,27 +117,45 @@ export default function ProfileScreen() {
                     <Text style={styles.sectionLabel}>SUPPORT</Text>
                     <DopamineCard style={styles.card}>
                         <TouchableOpacity style={styles.actionRow} onPress={() => router.push('/guide-manual-v3')}>
-                            <View style={styles.iconBox}><Ionicons name="book-outline" size={20} color="#fff" /></View>
+                            <View style={styles.iconBox}><Ionicons name="book-outline" size={20} color="#E0E0E0" /></View>
                             <Text style={styles.actionText}>Alerts Guide</Text>
-                            <Ionicons name="chevron-forward" size={16} color="#666" />
+                            <Ionicons name="chevron-forward" size={16} color="#444" />
                         </TouchableOpacity>
                         <View style={styles.divider} />
                         <TouchableOpacity style={styles.actionRow} onPress={() => router.push('/qa')}>
-                            <View style={styles.iconBox}><Ionicons name="help-circle-outline" size={20} color="#fff" /></View>
+                            <View style={styles.iconBox}><Ionicons name="help-circle-outline" size={20} color="#E0E0E0" /></View>
                             <Text style={styles.actionText}>Q&A System</Text>
-                            <Ionicons name="chevron-forward" size={16} color="#666" />
+                            <Ionicons name="chevron-forward" size={16} color="#444" />
                         </TouchableOpacity>
                         <View style={styles.divider} />
                         <TouchableOpacity style={styles.actionRow} onPress={() => router.push('/about')}>
-                            <View style={styles.iconBox}><Ionicons name="planet-outline" size={20} color="#fff" /></View>
+                            <View style={styles.iconBox}><Ionicons name="planet-outline" size={20} color="#E0E0E0" /></View>
                             <Text style={styles.actionText}>Origin</Text>
-                            <Ionicons name="chevron-forward" size={16} color="#666" />
+                            <Ionicons name="chevron-forward" size={16} color="#444" />
                         </TouchableOpacity>
                         <View style={styles.divider} />
                         <TouchableOpacity style={styles.actionRow}>
-                            <View style={styles.iconBox}><Ionicons name="chatbubble-ellipses-outline" size={20} color="#fff" /></View>
+                            <View style={styles.iconBox}><Ionicons name="chatbubble-ellipses-outline" size={20} color="#E0E0E0" /></View>
                             <Text style={styles.actionText}>Contact Support</Text>
-                            <Ionicons name="chevron-forward" size={16} color="#666" />
+                            <Ionicons name="chevron-forward" size={16} color="#444" />
+                        </TouchableOpacity>
+                    </DopamineCard>
+                </View>
+
+                {/* Legal */}
+                <View>
+                    <Text style={styles.sectionLabel}>LEGAL</Text>
+                    <DopamineCard style={styles.card}>
+                        <TouchableOpacity style={styles.actionRow} onPress={() => router.push('/privacy')}>
+                            <View style={styles.iconBox}><Ionicons name="shield-checkmark-outline" size={20} color="#E0E0E0" /></View>
+                            <Text style={styles.actionText}>Privacy Policy</Text>
+                            <Ionicons name="chevron-forward" size={16} color="#444" />
+                        </TouchableOpacity>
+                        <View style={styles.divider} />
+                        <TouchableOpacity style={styles.actionRow} onPress={() => router.push('/terms')}>
+                            <View style={styles.iconBox}><Ionicons name="document-text-outline" size={20} color="#E0E0E0" /></View>
+                            <Text style={styles.actionText}>Terms of Service</Text>
+                            <Ionicons name="chevron-forward" size={16} color="#444" />
                         </TouchableOpacity>
                     </DopamineCard>
                 </View>
@@ -166,12 +168,12 @@ export default function ProfileScreen() {
                             style={styles.actionRow}
                             onPress={() => setSimulatedPro(!isPro)}
                         >
-                            <View style={[styles.iconBox, { backgroundColor: 'rgba(212, 175, 55, 0.1)' }]}>
+                            <View style={[styles.iconBox, { backgroundColor: 'rgba(212, 175, 55, 0.1)', borderColor: 'rgba(212, 175, 55, 0.2)' }]}>
                                 <Ionicons name="flask-outline" size={20} color="#D4AF37" />
                             </View>
                             <View style={{ flex: 1 }}>
                                 <Text style={[styles.actionText, { color: '#D4AF37' }]}>Simulate PRO Status</Text>
-                                <Text style={{ color: '#666', fontSize: 10 }}>Enable all features for testing</Text>
+                                <Text style={{ color: '#888', fontSize: 10 }}>Enable all features for testing</Text>
                             </View>
                             <View style={{
                                 width: 20, height: 20,
@@ -205,7 +207,7 @@ export default function ProfileScreen() {
                     >
                         <Text style={{ color: '#666', fontSize: 12, textDecorationLine: 'underline' }}>Delete My Account</Text>
                     </TouchableOpacity>
-                    <Text style={styles.versionText}>Click&Trader v1.0.1</Text>
+                    <Text style={styles.versionText}>Click&Trader v1.0.2</Text>
                 </View>
 
             </ScrollView>

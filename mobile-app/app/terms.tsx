@@ -143,9 +143,10 @@ export default function TermsScreen() {
                     You may cancel anytime through your app store subscription settings.
                 </Section>
 
-                <Section title="9. Governing Law" index={8}>
-                    These terms are governed by French law. Any disputes will be resolved in French courts.{'\n\n'}
-                    If any provision is found invalid, the remaining terms continue in effect.
+                <Section title="9. Governing Law & EULA" index={8}>
+                    These terms are governed by French law.{'\n\n'}
+                    By using this app, you also agree to the Standard Apple Terms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/{'\n\n'}
+                    Any disputes will be resolved in French courts.
                 </Section>
 
                 <Section title="10. Changes to Terms" index={9}>
