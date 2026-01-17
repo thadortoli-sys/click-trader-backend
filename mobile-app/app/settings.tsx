@@ -853,10 +853,10 @@ export default function SettingsScreen() {
                             }}>
                                 <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
                                     <Ionicons name="bulb-outline" size={16} color="#10B981" style={{ marginRight: 8 }} />
-                                    <Text style={{ color: '#10B981', fontSize: 11, fontWeight: 'bold', letterSpacing: 0.5 }}>PRO TIP</Text>
+                                    <Text style={{ color: '#10B981', fontSize: 11, fontWeight: 'bold', letterSpacing: 0.5 }}>METHODOLOGY CONCEPT</Text>
                                 </View>
                                 <Text style={{ color: '#E0E0E0', fontSize: 12, lineHeight: 18 }}>
-                                    Patience is key. <Text style={{ fontWeight: 'bold' }}>Never fight a strong trend.</Text> Wait for the market to stabilize, identify a clear peak or bottom, and always monitor the <Text style={{ color: '#10B981', fontWeight: 'bold' }}>ATR</Text> to ensure the volatility is conducive to a precise entry.
+                                    The strategy emphasizes <Text style={{ fontWeight: 'bold' }}>technical patience</Text> during strong trends. It prioritizes observing market stabilization and identifying clear structural extremes. Monitoring the <Text style={{ color: '#10B981', fontWeight: 'bold' }}>ATR</Text> is an integral part of the methodology to understand if current volatility aligns with the historical models of the Institutional Map.
                                 </Text>
                             </View>
 
