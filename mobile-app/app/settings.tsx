@@ -695,6 +695,9 @@ export default function SettingsScreen() {
                                         { id: '6', source: require('../assets/images/rsi_inputs.png'), title: 'RSI Settings' },
                                         { id: '7', source: require('../assets/images/rsi_style.png'), title: 'RSI Style' },
                                         { id: '8', source: require('../assets/images/atr_inputs.png'), title: 'ATR Length' },
+                                        { id: '9', source: require('../assets/images/chart_es_m15.png'), title: 'ES M15 Overview' },
+                                        { id: '10', source: require('../assets/images/chart_sp500_h1.png'), title: 'SP500 H1 Context' },
+                                        { id: '11', source: require('../assets/images/chart_us100_h1.png'), title: 'US100 H1 Context' },
                                     ]}
                                     horizontal
                                     pagingEnabled
