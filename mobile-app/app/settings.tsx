@@ -692,6 +692,9 @@ export default function SettingsScreen() {
                                         { id: '3', source: require('../assets/images/vpvr_style.png'), title: 'VPVR Style' },
                                         { id: '4', source: require('../assets/images/ma_inputs.png'), title: 'MA Settings' },
                                         { id: '5', source: require('../assets/images/ma_style.png'), title: 'MA Style' },
+                                        { id: '6', source: require('../assets/images/rsi_inputs.png'), title: 'RSI Settings' },
+                                        { id: '7', source: require('../assets/images/rsi_style.png'), title: 'RSI Style' },
+                                        { id: '8', source: require('../assets/images/atr_inputs.png'), title: 'ATR Length' },
                                     ]}
                                     horizontal
                                     pagingEnabled
