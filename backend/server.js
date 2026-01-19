@@ -200,12 +200,17 @@ app.post('/register', (req, res) => {
 
 // 1.5 REGISTER SETTINGS
 app.post('/settings', (req, res) => {
-    const { token, signals } = req.body;
+    const { token, signals, isPro } = req.body;
     if (!token) return res.status(400).send({ error: 'Missing token' });
 
-    userSettings[token] = { signals };
+    // Store isPro status safely
+    userSettings[token] = {
+        signals: signals || (userSettings[token]?.signals || {}),
+        isPro: !!isPro
+    };
+
     saveSettings();
-    console.log(`[Settings] Updated for token: ${token.substring(0, 10)}... (Signals: ${Object.values(signals).filter(Boolean).length})`);
+    console.log(`[Settings] Updated for token: ${token.substring(0, 10)}... (Pro: ${!!isPro}, Signals: ${Object.values(signals || {}).filter(Boolean).length})`);
     res.send({ status: 'Settings saved' });
 });
 
@@ -835,20 +840,41 @@ app.post('/webhook', async (req, res) => {
             continue;
         }
 
+        // --- SECURITY: PRO GATE CHECK ---
+        const userConfig = userSettings[pushToken] || {}; // Get user config
+        const isUserPro = !!userConfig.isPro; // Default to FALSE (Free) if undefined
+
+        let finalTitle = notificationTitle;
+        let finalBody = notificationBody;
+        let finalData = { strategy, ticker, price, timeframe, signal, message: notificationBody, title: notificationTitle, icon, color, tp: 'OPEN', sl: 'OPEN', videoUrl };
+
+        if (!isUserPro) {
+            console.log(`🔒 MASKING Content for FREE User: ...${pushToken.slice(-6)}`);
+            finalTitle = "🔒 Institutional Signal Detected";
+            finalBody = "Premium trading signal detected.\nTap to unlock full details.";
+
+            // Mask Sensitive Data in Payload too (Security Best Practice)
+            // We keep 'strategy' so the app knows where to route (it handles masking UI anyway)
+            // But we hide price and message for safety.
+            finalData.message = "LOCKED CONTENT";
+            finalData.price = "LOCKED";
+            finalData.tp = "LOCKED";
+            finalData.sl = "LOCKED";
+        }
+
         // --- FILTERING LOGIC ---
         // --- FILTERING LOGIC ---
         if (signalKey) {
-            const settings = userSettings[pushToken];
-            if (settings && settings.signals) {
-                const isEnabled = settings.signals[signalKey];
-                console.log(`[Filter] Token: ...${pushToken.slice(-6)} | Key: ${signalKey} | Enabled: ${isEnabled}`);
+            if (userConfig.signals) {
+                const isEnabled = userConfig.signals[signalKey];
+                console.log(`[Filter] Token: ...${pushToken.slice(-6)} | Key: ${signalKey} | Enabled: ${isEnabled} | Pro: ${isUserPro}`);
 
                 if (isEnabled === false) {
                     console.log(`⛔ SKIPPING (User Disabled): ${signalKey}`);
                     continue;
                 }
             } else {
-                console.log(`[Filter] No settings found for token ...${pushToken.slice(-6)} (Defaulting to Allow)`);
+                console.log(`[Filter] No signal settings found for token ...${pushToken.slice(-6)} (Defaulting to Allow)`);
             }
         } else {
             console.log(`[Filter] No SignalKey determined for strategy: ${strategy} (Cannot Filter)`);
@@ -857,12 +883,12 @@ app.post('/webhook', async (req, res) => {
         messages.push({
             to: pushToken,
             sound: 'default',
-            title: notificationTitle,
-            body: notificationBody,
+            title: finalTitle,
+            body: finalBody,
             priority: 'high',
             channelId: 'default',
             _displayInForeground: true,
-            data: { strategy, ticker, price, timeframe, signal, message: notificationBody, title: notificationTitle, icon, color, tp: 'OPEN', sl: 'OPEN', videoUrl }, // Pass full data for app to handle
+            data: finalData,
         });
         console.log(`+ Queueing for: ${pushToken.substring(0, 10)}...`);
     }

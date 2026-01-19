@@ -4,6 +4,8 @@ import { Session } from '@supabase/supabase-js';
 import { Platform } from 'react-native';
 import Purchases, { CustomerInfo } from 'react-native-purchases';
 import { ENTITLEMENT_ID, configurePurchases } from '../utils/purchases';
+import { sendSettingsToBackend, registerForPushNotificationsAsync } from '../utils/notifications';
+import { getSettings } from '../utils/storage';
 
 // Auth Context Type
 interface AuthContextProps {

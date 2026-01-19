@@ -127,20 +127,20 @@ export async function sendTokenToBackend(token: string) {
 }
 
 // Helper to send settings to backend
-export async function sendSettingsToBackend(token: string, signals: Record<string, boolean>) {
+export async function sendSettingsToBackend(token: string, signals: Record<string, boolean>, isPro: boolean = false) {
     if (Platform.OS === 'web' || !token) return;
 
     // For physical device testing, use your computer's local network IP
     const BACKEND_URL = 'https://clicktraderappbackend-xjqwf.ondigitalocean.app';
 
     try {
-        console.log(`[Sync] Sending updated settings to backend...`);
+        console.log(`[Sync] Sending updated settings (isPro: ${isPro}) to backend...`);
         const response = await fetch(`${BACKEND_URL}/settings`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ token, signals }),
+            body: JSON.stringify({ token, signals, isPro }),
         });
 
         const data = await response.json();

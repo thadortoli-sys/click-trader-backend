@@ -392,7 +392,7 @@ export default function SettingsScreen() {
                 setSignals(prev => ({ ...prev, ...settings.signals }));
                 // Sync initial settings if token is already known or when it becomes known
                 if (pushToken) {
-                    sendSettingsToBackend(pushToken, settings.signals);
+                    sendSettingsToBackend(pushToken, settings.signals, isPro);
                 }
             }
         });
