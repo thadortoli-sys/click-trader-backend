@@ -1,9 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Platform, SafeAreaView, Dimensions, Image, Alert, ActivityIndicator } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { CustomerInfo } from 'react-native-purchases';
 import { Stack, useRouter } from 'expo-router';
 // import Animated, { FadeInDown } from 'react-native-reanimated';
 import { ThemedButton } from '../components/ThemedButton';
+import { useAuth } from '../context/AuthContext';
 import { GlassCard } from '../components/GlassCard';
 import { HolographicGradient } from '../components/HolographicGradient';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -13,6 +15,7 @@ const { width } = Dimensions.get('window');
 
 export default function PremiumScreen() {
     const router = useRouter();
+    const { setSimulatedPro } = useAuth();
     const [offering, setOffering] = React.useState<any>(null); // Store the actual Package (e.g. Monthly)
     const [loading, setLoading] = React.useState(false);
 
@@ -55,9 +58,10 @@ export default function PremiumScreen() {
 
         setLoading(true);
         try {
-            const info = await purchasePackage(offering);
+            const info = await purchasePackage(offering) as CustomerInfo;
             if (info?.entitlements.active[ENTITLEMENT_ID]) {
                 // Success!
+                setSimulatedPro(true); // Force update context for immediate unlock
                 router.replace('/confirmation?plan=premium');
             }
         } catch (e: any) {
@@ -216,29 +220,41 @@ export default function PremiumScreen() {
                                 disabled={loading}
                                 style={{ width: '100%', marginTop: 25 }}
                             >
-                                <GlassCard
-                                    intensity={40}
-                                    glowColor="rgba(212, 175, 55, 0.4)"
-                                    style={{ height: 60, padding: 0, justifyContent: 'center', alignItems: 'center', borderRadius: 16, borderColor: 'rgba(212, 175, 55, 0.5)' }}
+                                <LinearGradient
+                                    key="premium-button-v2" // Force re-render
+                                    colors={['#1a1a1a', '#000000']}
+                                    start={{ x: 0, y: 0 }}
+                                    end={{ x: 0, y: 1 }}
+                                    style={{
+                                        width: '100%',
+                                        height: 60,
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        borderRadius: 30,
+                                        borderWidth: 0.5,
+                                        borderColor: 'rgba(255,255,255,0.15)',
+                                        paddingHorizontal: 40, // EXPLICIT MARGIN
+                                    }}
                                 >
-                                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 15 }}>
                                         {loading ? (
-                                            <ActivityIndicator color="#D4AF37" />
+                                            <ActivityIndicator color="#FFFFFF" />
                                         ) : (
                                             <>
-                                                <Ionicons name="flash" size={20} color="#D4AF37" />
+                                                <Ionicons name="flash" size={14} color="#FFFFFF" style={{ opacity: 0.8 }} />
                                                 <Text style={{
-                                                    color: '#D4AF37',
-                                                    fontWeight: 'bold',
-                                                    fontSize: 14,
-                                                    letterSpacing: 2
+                                                    color: '#FFFFFF',
+                                                    fontWeight: '400',
+                                                    fontSize: 11,
+                                                    letterSpacing: 2,
+                                                    textTransform: 'uppercase'
                                                 }}>
-                                                    START FREE TRIAL
+                                                    START 7-DAY TRIAL
                                                 </Text>
                                             </>
                                         )}
                                     </View>
-                                </GlassCard>
+                                </LinearGradient>
                             </TouchableOpacity>
                             <Text style={styles.cancelText}>Cancel anytime. No commitment.</Text>
                         </GlassCard>

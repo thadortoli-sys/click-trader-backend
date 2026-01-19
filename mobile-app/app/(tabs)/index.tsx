@@ -100,7 +100,8 @@ const DEFAULT_SIGNAL_STYLE = { icon: 'radio-outline' as const, color: '#AAAAAA',
 
 
 // --- Updated SignalFeedItem to support PnL ---
-const SignalFeedItem = React.memo(({ pair, strategy, time, profit, message, signalType, isDemoPnL, index, icon, color }: { pair: string, strategy: string, time: string, profit?: string, message?: string, signalType?: string, isDemoPnL?: boolean, index: number, icon?: string, color?: string }) => {
+const SignalFeedItem = React.memo(({ pair, strategy, time, profit, message, signalType, isDemoPnL, index, icon, color, locked = false }: { pair: string, strategy: string, time: string, profit?: string, message?: string, signalType?: string, isDemoPnL?: boolean, index: number, icon?: string, color?: string, locked?: boolean }) => {
+  const router = useRouter();
   // Style Logic
   let styleConfig = SIGNAL_STYLES[strategy] || Object.values(SIGNAL_STYLES).find((_, i) => strategy.includes(Object.keys(SIGNAL_STYLES)[i]));
 
@@ -117,11 +118,11 @@ const SignalFeedItem = React.memo(({ pair, strategy, time, profit, message, sign
   }
 
   // MONOCHROME DASHBOARD: Override colors to neutral
-  const activeIconColor = '#E0E0E0'; // Light Gray/White for all icons
-  const activeIconName = (icon as any) || styleConfig.icon;
+  const activeIconColor = locked ? '#D4AF37' : '#E0E0E0'; // Gold if locked, else White
+  const activeIconName = locked ? 'lock-closed' : ((icon as any) || styleConfig.icon);
 
   // Formatting
-  const displayPrice = profit ? profit.replace('Entry: ', '') : (message?.match(/\$?\d{5}/)?.[0] || '---');
+  const displayPrice = locked ? 'LOCKED' : (profit ? profit.replace('Entry: ', '') : (message?.match(/\$?\d{5}/)?.[0] || '---'));
 
   // Animation Refs
   const fadeAnim = React.useRef(new Animated.Value(0)).current;
@@ -186,41 +187,68 @@ const SignalFeedItem = React.memo(({ pair, strategy, time, profit, message, sign
           {/* MIDDLE: Main Content */}
           <View style={{ flex: 1, justifyContent: 'center' }}>
             {/* Row 1: STRATEGY TITLE (Monochrome) */}
-            <Text style={{
-              color: '#FFFFFF',
-              fontSize: 10, // Reduced from 11/13 for sleekness
-              fontWeight: '300',
-              letterSpacing: 2,
-              marginBottom: 4,
-              textShadowColor: 'rgba(255, 255, 255, 0.5)',
-              textShadowOffset: { width: 0, height: 0 },
-              textShadowRadius: 8
-            }}>
-              {/* Simplified Text Rendering with Direction Append */}
-              {(() => {
-                let text = strategy
-                  .replace('pro4xx', 'PRO4X.2') // Handle new key specifically FIRST
-                  .replace(/_/g, ' ')
-                  .replace('pro4x', 'PRO4X')
-                  .replace('scalp', 'SCALP')
-                  .replace('horus', 'HORUS')
-                  .toUpperCase();
+            <View>
+              <Text style={{
+                color: '#FFFFFF',
+                fontSize: 10,
+                fontWeight: '300',
+                letterSpacing: 2,
+                marginBottom: 4,
+                textShadowColor: 'rgba(255, 255, 255, 0.5)',
+                textShadowOffset: { width: 0, height: 0 },
+                textShadowRadius: 8
+              }}>
+                {(() => {
+                  if (locked) return "INSTITUTIONAL ALERT";
+                  let text = strategy
+                    .replace('pro4xx', 'PRO4X.2')
+                    .replace(/_/g, ' ')
+                    .replace('pro4x', 'PRO4X')
+                    .replace('scalp', 'SCALP')
+                    .replace('horus', 'HORUS')
+                    .toUpperCase();
 
-                // If strategy name doesn't contain direction, and we have a specific direction, append it
-                if (!text.includes('BUY') && !text.includes('SELL') && !text.includes('LONG') && !text.includes('SHORT')) {
-                  const type = (signalType || '').toUpperCase();
-                  if (type.includes('BUY') || type.includes('LONG')) text += ' BUY';
-                  else if (type.includes('SELL') || type.includes('SHORT')) text += ' SELL';
-                }
-                return text.replace('OVERSOLD', 'OVS').replace('OVERBOUGHT', 'OVB');
-              })()}
-            </Text>
+                  if (!text.includes('BUY') && !text.includes('SELL') && !text.includes('LONG') && !text.includes('SHORT')) {
+                    const type = (signalType || '').toUpperCase();
+                    if (type.includes('BUY') || type.includes('LONG')) text += ' BUY';
+                    else if (type.includes('SELL') || type.includes('SHORT')) text += ' SELL';
+                  }
+                  return text.replace('OVERSOLD', 'OVS').replace('OVERBOUGHT', 'OVB');
+                })()}
+              </Text>
+
+              {/* Truly Opaque Masking Layer for Locked Alerts */}
+              {locked && (
+                <View style={{
+                  ...StyleSheet.absoluteFillObject,
+                  backgroundColor: '#000000', // Pitch black
+                  borderRadius: 4,
+                  justifyContent: 'center',
+                  paddingHorizontal: 10,
+                  zIndex: 20
+                }}>
+                  <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                    <Ionicons name="lock-closed" size={12} color="#D4AF37" style={{ marginRight: 6 }} />
+                    <Text style={{ color: '#D4AF37', fontSize: 10, fontWeight: '900', letterSpacing: 1.5 }}>LOCKED SIGNAL</Text>
+                  </View>
+                </View>
+              )}
+            </View>
 
             {/* Row 2: TICKER (Smaller/Grey) */}
-            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <Text style={{ color: '#9CA3AF', fontSize: 10, fontWeight: '400', letterSpacing: 0.3 }}>
-                {pair.toUpperCase()}
-              </Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 4 }}>
+              <View>
+                <Text style={{ color: '#9CA3AF', fontSize: 10, fontWeight: '400', letterSpacing: 0.3 }}>
+                  {pair.toUpperCase()}
+                </Text>
+                {locked && (
+                  <View style={{
+                    ...StyleSheet.absoluteFillObject,
+                    backgroundColor: '#000000',
+                    zIndex: 20
+                  }} />
+                )}
+              </View>
             </View>
           </View>
 
@@ -229,21 +257,30 @@ const SignalFeedItem = React.memo(({ pair, strategy, time, profit, message, sign
             <Text style={{ color: '#9CA3AF', fontSize: 9, marginBottom: 4, fontWeight: '300' }}>
               {time || 'Just now'}
             </Text>
-            <Text style={{
-              color: '#FFFFFF',
-              fontSize: 10,
-              fontWeight: '700',
-              fontVariant: ['tabular-nums']
-            }}>
-              {(() => {
-                const s = strategy.toUpperCase();
-                const type = (signalType || '').toUpperCase();
-                const combined = (s + ' ' + type);
-                if (combined.includes('BUY') || combined.includes('LONG') || combined.includes('BULL') || combined.includes('UP')) return '▲ ';
-                if (combined.includes('SELL') || combined.includes('SHORT') || combined.includes('BEAR') || combined.includes('DOWN')) return '▼ ';
-                return '@ ';
-              })()}{displayPrice}
-            </Text>
+            <View>
+              <Text style={{
+                color: '#FFFFFF',
+                fontSize: 10,
+                fontWeight: '700',
+                fontVariant: ['tabular-nums']
+              }}>
+                {(() => {
+                  const s = strategy.toUpperCase();
+                  const type = (signalType || '').toUpperCase();
+                  const combined = (s + ' ' + type);
+                  if (combined.includes('BUY') || combined.includes('LONG') || combined.includes('BULL') || combined.includes('UP')) return '▲ ';
+                  if (combined.includes('SELL') || combined.includes('SHORT') || combined.includes('BEAR') || combined.includes('DOWN')) return '▼ ';
+                  return '@ ';
+                })()}{displayPrice}
+              </Text>
+              {locked && (
+                <View style={{
+                  ...StyleSheet.absoluteFillObject,
+                  backgroundColor: '#000000',
+                  zIndex: 20
+                }} />
+              )}
+            </View>
           </View>
         </View>
 
@@ -265,12 +302,19 @@ const SignalFeedItem = React.memo(({ pair, strategy, time, profit, message, sign
 
 
 // --- Quick Action Component ---
-const QuickAction = ({ icon, route, label }: { icon: any, route: string, label?: string }) => {
+// --- Quick Action Component ---
+const QuickAction = ({ icon, route, label, locked = false }: { icon: any, route: string, label?: string, locked?: boolean }) => {
   const router = useRouter();
+  const handlePress = () => {
+    // Teaser Mode: Always allow navigation.
+    // The destination page will handle the "locked" overlay.
+    router.push(route as any);
+  };
+
   return (
     <TouchableOpacity
       activeOpacity={0.7}
-      onPress={() => router.push(route as any)}
+      onPress={handlePress}
       style={styles.actionCard}
     >
       {/* Container with Background & Border - Single Layer */}
@@ -281,7 +325,9 @@ const QuickAction = ({ icon, route, label }: { icon: any, route: string, label?:
         style={[
           StyleSheet.absoluteFill,
           {
-            borderRadius: 16
+            borderRadius: 16,
+            borderWidth: 0,
+            borderColor: 'transparent'
           }
         ]}
       />
@@ -295,20 +341,22 @@ const QuickAction = ({ icon, route, label }: { icon: any, route: string, label?:
         pointerEvents="none"
       />
 
-      {/* Content - Fixed Top Alignment */}
-      <View style={{ flex: 1, alignItems: 'center', paddingTop: 15 }}>
-        <View style={{ height: 32, justifyContent: 'center', alignItems: 'center' }}>
-          <Ionicons name={icon} size={26} color="#FFFFFF" />
+      {/* Content - Precision Balanced Layout */}
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingTop: 8 }}>
+        <View style={{ height: 40, justifyContent: 'center', alignItems: 'center' }}>
+          <Ionicons name={icon} size={24} color="#FFFFFF" />
         </View>
 
         {label && (
           <Text style={{
-            color: '#AAAAAA',
-            fontSize: 8,
+            color: '#FFFFFF',
+            fontSize: 8, // Reduced for a more precise match
             textAlign: 'center',
-            marginTop: 6,
-            lineHeight: 11,
-            fontWeight: '500'
+            marginTop: 4,
+            lineHeight: 10,
+            fontWeight: '300',
+            letterSpacing: 0.6,
+            textTransform: 'none'
           }}>
             {label}
           </Text>
@@ -573,7 +621,7 @@ const RecentIntelligence = () => {
       {/* Styled History Link (Subtitle) */}
       <TouchableOpacity
         activeOpacity={0.7}
-        onPress={() => router.push('/history')}
+        onPress={() => isPro ? router.push('/history') : router.push('/premium')}
         style={{
           marginTop: -5,
           marginBottom: 10,
@@ -597,19 +645,24 @@ const RecentIntelligence = () => {
       </TouchableOpacity>
 
       <View style={{ marginTop: 20, minHeight: 180, justifyContent: 'center' }}>
-        {signals.length === 0 ? (
+        {(signals.length === 0 && isPro) ? (
           <Animated.View style={{ alignItems: 'center', opacity: 0.9 }}>
             <ScanningCandles />
             <Text style={{ color: '#FFFFFF', fontSize: 12, letterSpacing: 2, fontWeight: '500' }}>PRO4X/HORUS</Text>
             <Text style={{ color: '#FFFFFF', fontSize: 10, marginTop: 4, opacity: 0.7 }}>SCANNING FOR INSTITUTIONAL LIQUIDITY...</Text>
           </Animated.View>
         ) : (
-          signals.map((signal, index) => {
-            return (
+          // IF SYSTEM HAS SIGNALS (OR IS NOT PRO, SHOW MOCKED/REAL SIGNALS AS LOCKED)
+          <>
+            {(signals.length > 0 ? signals : []).map((signal, index) => (
               <TouchableOpacity
                 key={signal.id}
                 activeOpacity={0.9}
                 onPress={() => {
+                  if (!isPro) {
+                    router.push('/premium');
+                    return;
+                  }
                   setSelectedSignal(signal);
                 }}
               >
@@ -624,10 +677,13 @@ const RecentIntelligence = () => {
                   profit={(signal.data as any)?.price ? `@ ${(signal.data as any).price}` : undefined}
                   icon={(signal.data as any)?.icon}
                   color={(signal.data as any)?.color}
+                  locked={!isPro}
                 />
               </TouchableOpacity>
-            );
-          })
+            ))}
+            {/* If no signals and !isPro, showing empty might be boring. Could show fake placeholders but avoiding deceiving. 
+                Assuming signals array always has something in this demo/prod env. */}
+          </>
         )}
       </View>
 
@@ -649,12 +705,12 @@ const RecentIntelligence = () => {
 
 export default function CommandCenterScreen() {
   const router = useRouter();
+  const { isPro } = useAuth(); // Access Auth Context Here
   const [logoTaps, setLogoTaps] = React.useState(0);
 
 
 
   const handleLogoTap = () => {
-    const now = Date.now();
     setLogoTaps(prev => {
       const newCount = prev + 1;
       if (newCount === 3) {
@@ -727,9 +783,9 @@ export default function CommandCenterScreen() {
         {/* Quick Actions */}
         <View style={styles.section}>
           <View style={styles.actionsGrid}>
-            <QuickAction icon="card-outline" route="/premium" label={'MY\nSUBSCRIPTION'} />
-            <QuickAction icon="hardware-chip-outline" route="/settings" label={'SETTINGS ALERTS\nPro4x & Horus'} />
-            <QuickAction icon="stats-chart-outline" route="/guide-manual-v3" label={'INTERPRET\nALERTS & MASTERCLASS'} />
+            <QuickAction icon="card-outline" route="/premium" label={"MY\nSUBSCRIPTION"} locked={false} />
+            <QuickAction icon="hardware-chip-outline" route="/settings" label={"SETTINGS ALERTS\nPro4x & Horus"} locked={false} />
+            <QuickAction icon="stats-chart-outline" route="/guide-manual-v3" label={"INTERPRET\nALERTS & MASTERCLASS"} locked={false} />
           </View>
         </View>
 
@@ -912,8 +968,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8, // Add padding to container to squeeze cards slightly
   },
   actionCard: {
-    width: (width - 60) / 3, // Reduced width: (Screen - Padding(40) - NewPadding(16) - Gaps) / 3
-    height: 85, // Reduced height for compact look
+    width: (width - 60) / 3,
+    height: 100, // Balanced "Good" height
     alignItems: 'center',
     justifyContent: 'center',
     padding: 0,

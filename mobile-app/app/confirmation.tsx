@@ -11,7 +11,7 @@ export default function ConfirmationScreen() {
     const params = useLocalSearchParams();
     const plan = params.plan === 'premium' ? 'PREMIUM' : 'BASIC';
 
-    const priceText = plan === 'BASIC' ? '€9,90' : '€49,90';
+    const priceText = plan === 'BASIC' ? '$9.99' : '$44.95';
     const periodText = plan === 'BASIC' ? '/ 1st month' : '/ month';
 
     return (
@@ -132,23 +132,34 @@ export default function ConfirmationScreen() {
                                 onPress={() => router.replace('/(tabs)')}
                                 style={{ width: '100%', marginTop: 30 }}
                             >
-                                <GlassCard
-                                    intensity={40}
-                                    glowColor="rgba(212, 175, 55, 0.4)"
-                                    style={{ height: 60, padding: 0, justifyContent: 'center', alignItems: 'center', borderRadius: 16, borderColor: 'rgba(212, 175, 55, 0.5)' }}
+                                <LinearGradient
+                                    colors={['#1a1a1a', '#000000']}
+                                    start={{ x: 0, y: 0 }}
+                                    end={{ x: 0, y: 1 }}
+                                    style={{
+                                        width: '100%',
+                                        height: 60,
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        borderRadius: 30,
+                                        borderWidth: 0.5,
+                                        borderColor: 'rgba(255,255,255,0.15)',
+                                        paddingHorizontal: 40,
+                                    }}
                                 >
-                                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-                                        <Ionicons name="flash" size={20} color="#D4AF37" />
+                                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 15 }}>
+                                        <Ionicons name="flash" size={14} color="#FFFFFF" style={{ opacity: 0.8 }} />
                                         <Text style={{
-                                            color: '#D4AF37',
-                                            fontWeight: 'bold',
-                                            fontSize: 14,
-                                            letterSpacing: 2
+                                            color: '#FFFFFF',
+                                            fontWeight: '400',
+                                            fontSize: 11,
+                                            letterSpacing: 2,
+                                            textTransform: 'uppercase'
                                         }}>
-                                            CONFIRM & START TRIAL
+                                            START TRADING
                                         </Text>
                                     </View>
-                                </GlassCard>
+                                </LinearGradient>
                             </TouchableOpacity>
 
                             <TouchableOpacity

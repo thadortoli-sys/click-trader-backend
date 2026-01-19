@@ -7,6 +7,8 @@ import { GlassCard } from '../components/GlassCard';
 import { LinearGradient } from 'expo-linear-gradient';
 import { HolographicGradient } from '../components/HolographicGradient';
 import VideoPlayer from '../components/VideoPlayer';
+import { useAuth } from '../context/AuthContext';
+import { PremiumTeaserOverlay } from '../components/PremiumTeaserOverlay';
 
 const { width, height } = Dimensions.get('window');
 
@@ -861,7 +863,7 @@ const MasterclassEducationModal = ({
 
 
 
-                {/* BOTTOM SPACING */}
+                            {/* BOTTOM SPACING */}
                             {/* VIEW MODE TABS */}
                             <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 15, paddingHorizontal: 20, gap: 10 }}>
                                 <TouchableOpacity
@@ -1190,7 +1192,9 @@ const TabButton = ({ title, isActive, onPress }: any) => (
 
 export default function GuideManualScreen() {
     const router = useRouter();
+
     const { target } = useLocalSearchParams();
+    const { isPro } = useAuth();
 
     return (
         <View style={styles.container}>
@@ -1232,46 +1236,55 @@ export default function GuideManualScreen() {
                 showsVerticalScrollIndicator={false}
             >
                 <SectionHeader title="VISUAL MASTERCLASS" />
+
+                {/* Horizontal Scroll must remain active for scrolling, so we block the inner content instead */}
                 <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingRight: 20, marginBottom: 30 }}>
-                    {SECTION_6_VISUALS.map((item, index) => <VisualSignalCard key={'visual-' + index} item={item} index={index} />)}
+                    <View style={{ flexDirection: 'row' }} pointerEvents={isPro ? 'auto' : 'none'}>
+                        {SECTION_6_VISUALS.map((item, index) => <VisualSignalCard key={'visual-' + index} item={item} index={index} />)}
+                    </View>
                 </ScrollView>
 
-                <SectionHeader title="PHILOSOPHY" />
-                {SECTION_ETHOS.map((item, index) => <GuideSignalCard key={'ethos-' + index} item={item} forceOpen={item.title === target} />)}
+                <View pointerEvents={isPro ? 'auto' : 'none'}>
+                    <SectionHeader title="PHILOSOPHY" />
+                    {SECTION_ETHOS.map((item, index) => <GuideSignalCard key={'ethos-' + index} item={item} forceOpen={isPro && item.title === target} />)}
 
-                <View style={{ alignItems: 'center', marginTop: 10, marginBottom: 20 }}>
-                    <View style={{ height: 1, backgroundColor: 'rgba(255,255,255,0.1)', width: '40%' }} />
-                    <Text style={{ color: '#FFF', fontSize: 10, letterSpacing: 2, marginTop: 10, fontWeight: 'bold', textTransform: 'uppercase' }}>Understanding the Alerts</Text>
-                </View>
+                    <View style={{ alignItems: 'center', marginTop: 10, marginBottom: 20 }}>
+                        <View style={{ height: 1, backgroundColor: 'rgba(255,255,255,0.1)', width: '40%' }} />
+                        <Text style={{ color: '#FFF', fontSize: 10, letterSpacing: 2, marginTop: 10, fontWeight: 'bold', textTransform: 'uppercase' }}>Understanding the Alerts</Text>
+                    </View>
 
-                <SectionHeader title="1. PRO4X" />
-                {SECTION_1_PRO4X.map((item, index) => <GuideSignalCard key={'pro4x-' + index} item={item} forceOpen={item.title === target} />)}
+                    <SectionHeader title="1. PRO4X" />
+                    {SECTION_1_PRO4X.map((item, index) => <GuideSignalCard key={'pro4x-' + index} item={item} forceOpen={isPro && item.title === target} />)}
 
-                <SectionHeader title="2. HORUS" />
-                {SECTION_2_HORUS.map((item, index) => <GuideSignalCard key={'horus-' + index} item={item} forceOpen={item.title === target} />)}
+                    <SectionHeader title="2. HORUS" />
+                    {SECTION_2_HORUS.map((item, index) => <GuideSignalCard key={'horus-' + index} item={item} forceOpen={isPro && item.title === target} />)}
 
-                <SectionHeader title="3. SCALPING" />
-                {SECTION_3_SCALPING.map((item, index) => <GuideSignalCard key={'scalp-' + index} item={item} forceOpen={item.title === target} />)}
+                    <SectionHeader title="3. SCALPING" />
+                    {SECTION_3_SCALPING.map((item, index) => <GuideSignalCard key={'scalp-' + index} item={item} forceOpen={isPro && item.title === target} />)}
 
-                <SectionHeader title="4. H1 TREND" />
-                {SECTION_4_H1.map((item, index) => <GuideSignalCard key={'h1-' + index} item={item} forceOpen={item.title === target} />)}
+                    <SectionHeader title="4. H1 TREND" />
+                    {SECTION_4_H1.map((item, index) => <GuideSignalCard key={'h1-' + index} item={item} forceOpen={isPro && item.title === target} />)}
 
-                <SectionHeader title="IMPORTANT: EXIT DISCIPLINE" />
-                {SECTION_0_DISCIPLINE.map((item, index) => <GuideSignalCard key={'disc-' + index} item={item} forceOpen={item.title === target} />)}
+                    <SectionHeader title="IMPORTANT: EXIT DISCIPLINE" />
+                    {SECTION_0_DISCIPLINE.map((item, index) => <GuideSignalCard key={'disc-' + index} item={item} forceOpen={isPro && item.title === target} />)}
 
-                <View style={{ alignItems: 'center', marginVertical: 30 }}>
-                    <View style={{ height: 1, backgroundColor: 'rgba(255,255,255,0.2)', width: '60%' }} />
-                    <Text style={{ color: '#666', fontSize: 10, letterSpacing: 2, marginTop: 10, fontWeight: 'bold' }}>MASTERCLASS : EXECUTION RULES</Text>
-                </View>
+                    <View style={{ alignItems: 'center', marginVertical: 30 }}>
+                        <View style={{ height: 1, backgroundColor: 'rgba(255,255,255,0.2)', width: '60%' }} />
+                        <Text style={{ color: '#666', fontSize: 10, letterSpacing: 2, marginTop: 10, fontWeight: 'bold' }}>MASTERCLASS : EXECUTION RULES</Text>
+                    </View>
 
-                {SECTION_5_MASTERCLASS.map((item, index) => <GuideSignalCard key={'master-' + index} item={item} forceOpen={item.title === target} />)}
+                    {SECTION_5_MASTERCLASS.map((item, index) => <GuideSignalCard key={'master-' + index} item={item} forceOpen={isPro && item.title === target} />)}
 
-                <View style={{ alignItems: 'center', marginTop: 20, marginBottom: 50, opacity: 0.5 }}>
-                    <Text style={{ color: '#666', fontSize: 10, letterSpacing: 1 }}>
-                        © 2025-2026 Click&Trader App. All rights reserved.
-                    </Text>
+                    <View style={{ alignItems: 'center', marginTop: 20, marginBottom: 50, opacity: 0.5 }}>
+                        <Text style={{ color: '#666', fontSize: 10, letterSpacing: 1 }}>
+                            © 2025-2026 Click&Trader App. All rights reserved.
+                        </Text>
+                    </View>
                 </View>
             </ScrollView>
+
+            {/* Teaser Overlay if NOT Pro */}
+            {!isPro && <PremiumTeaserOverlay message="MASTERCLASS LOCKED" />}
         </View >
     );
 }

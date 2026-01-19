@@ -1,4 +1,4 @@
-import { Platform } from 'react-native';
+import { Platform, Alert } from 'react-native';
 import Purchases from 'react-native-purchases';
 import Constants from 'expo-constants';
 
@@ -43,7 +43,24 @@ export const ENTITLEMENT_ID = 'pro';
 export const getOfferings = async () => {
     if (isExpoGo) {
         console.log('Mocking getOfferings for Expo Go');
-        return null;
+        console.log('Mocking getOfferings for Expo Go');
+        return {
+            availablePackages: [
+                {
+                    identifier: '$rc_monthly',
+                    packageType: 'MONTHLY',
+                    product: {
+                        identifier: 'com.clicktrader.monthly',
+                        description: 'Monthly Subscription',
+                        title: 'ClickTrader Pro',
+                        price: 44.95,
+                        priceString: '$44.95',
+                        currencyCode: 'USD',
+                    },
+                    offeringIdentifier: 'default',
+                }
+            ]
+        };
     }
     try {
         const offerings = await Purchases.getOfferings();
@@ -56,8 +73,37 @@ export const getOfferings = async () => {
 
 export const purchasePackage = async (pack: any) => {
     if (isExpoGo) {
-        alert('In-App Purchases are not supported in Expo Go. Please use a development build.');
-        return null;
+        return new Promise((resolve) => {
+            Alert.alert(
+                'Simulation Mode',
+                'In Expo Go, real purchases are disabled. Simulate a success?',
+                [
+                    { text: 'Cancel', onPress: () => resolve(null), style: 'cancel' },
+                    {
+                        text: 'Simulate Success',
+                        onPress: () => resolve({
+                            entitlements: {
+                                active: {
+                                    [ENTITLEMENT_ID]: {
+                                        identifier: ENTITLEMENT_ID,
+                                        isActive: true,
+                                        isSandbox: true,
+                                        willRenew: true,
+                                        latestPurchaseDate: new Date().toISOString(),
+                                        originalPurchaseDate: new Date().toISOString(),
+                                        expirationDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
+                                        store: 'APP_STORE',
+                                        productIdentifier: 'com.clicktrader.monthly',
+                                        unsubscribeDetectedAt: null,
+                                        billingIssueDetectedAt: null
+                                    }
+                                }
+                            }
+                        })
+                    }
+                ]
+            );
+        });
     }
     try {
         const { customerInfo } = await Purchases.purchasePackage(pack);

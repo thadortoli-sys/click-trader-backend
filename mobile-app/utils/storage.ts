@@ -333,3 +333,22 @@ export const isSignalEnabled = (strategy: string, settings: UserSettings): boole
 
     return !!settings.signals[key];
 };
+
+// --- Onboarding Persistence ---
+export const hasOnboarded = async (): Promise<boolean> => {
+    try {
+        const value = await AsyncStorage.getItem('app_has_onboarded_v1');
+        return value === 'true';
+    } catch (e) {
+        return false;
+    }
+};
+
+export const setHasOnboarded = async (value: boolean): Promise<void> => {
+    try {
+        await AsyncStorage.setItem('app_has_onboarded_v1', String(value));
+        DeviceEventEmitter.emit('ONBOARDING_CHANGED', value);
+    } catch (e) {
+        console.error('Failed to save onboarding status', e);
+    }
+};

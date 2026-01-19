@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Button, Alert, Pl
 import { Stack, useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { GlassCard } from '../components/GlassCard';
+import { useAuth } from '../context/AuthContext';
+import { PremiumTeaserOverlay } from '../components/PremiumTeaserOverlay';
 
 // --- COMPONENTS ---
 
@@ -68,6 +70,7 @@ const ProtocolCard = ({ number, title, content, color, icon }: { number: string,
 
 export default function SignalGuideScreen() {
     const router = useRouter();
+    const { isPro } = useAuth();
 
     return (
         <View style={styles.container}>
@@ -110,110 +113,115 @@ export default function SignalGuideScreen() {
                     contentContainerStyle={styles.scrollContent}
                     showsVerticalScrollIndicator={false}
                 >
-                    <View style={{ paddingTop: 10 }}>
-                        <Text style={styles.introText}>
-                            The Click&Trader system is a high-precision tool. To use it effectively, you must abide by the core principles of institutional trading.
-                        </Text>
-
-                        <ProtocolCard
-                            number="01"
-                            color="#FFD700"
-                            icon="hourglass-outline"
-                            title="PATIENCE IS THE EDGE"
-                            content="The market is a transfer mechanism from the impatient to the patient. Do not chase price. Wait for the alert. Wait for the confirmation. Let the trade come to you."
-                        />
-                        <ProtocolCard
-                            number="02"
-                            color="#4ADE80"
-                            icon="flash-outline"
-                            title="EXECUTION"
-                            content="When a confirmed signal appears at a key level, execution must be flawless. No hesitation, but no anticipation. We trade what we see, not what we think."
-                        />
-                        <ProtocolCard
-                            number="03"
-                            color="#EF4444"
-                            icon="shield-checkmark-outline"
-                            title="RISK MANAGEMENT"
-                            content="No signal is a guarantee. Probability is not certainty. Standard educational practice suggests risking 1-2% of capital per trade. Live to trade another day."
-                        />
-
-                        <View style={{ alignItems: 'center', marginVertical: 30 }}>
-                            <View style={{ height: 1, backgroundColor: 'rgba(255,255,255,0.2)', width: '60%' }} />
-                            <Text style={{ color: '#666', fontSize: 10, letterSpacing: 2, marginTop: 10, fontWeight: 'bold' }}>ADVANCED MASTERCLASS</Text>
-                        </View>
-
-                        <ProtocolCard
-                            number="04"
-                            color="#A855F7"
-                            icon="magnet-outline"
-                            title="THE MAGNETIC LEVELS"
-                            content={`The levels 12, 23, 38, 64, and 91 are not random. They are magnetic zones where price statistically tends to slow down, stabilize, bounce, or reverse.\n\nThese are psychological and algorithmic attraction zones used by institutional traders and market makers. Price doesn't go there by chance; it is drawn there.`}
-                        />
-
-                        <ProtocolCard
-                            number="05"
-                            color="#D4AF37"
-                            icon="layers-outline"
-                            title="LEVEL HIERARCHY"
-                            content={`Not all levels carry the same weight:\n\n• 91 (MAJOR): The most powerful pivot. Frequent zone for stabilization or reversal.\n• 64 / 38 (INTERMEDIATE): Transition zones, often used for extensions or pullbacks.\n• 23 / 12 (LOW): Very effective for bullish bounces after a drop.\n\nRULE: Low numbers favor bullish bounces. High numbers favor bearish reversals.`}
-                        />
-
-                        <ProtocolCard
-                            number="06"
-                            color="#4ADE80"
-                            icon="trending-up-outline"
-                            title="CONTEXT IS KING (H1)"
-                            content={`The H1 timeframe always dominates M1 or ticks.\n\n• In a Bullish H1 Trend: A pullback to a level like 12 is a natural buying opportunity.\n• In a Bearish H1 Trend: High levels (91, 64) become prime selling zones.\n\nScalping without checking the H1 context exposes you to unnecessary losses.`}
-                        />
-
-                        <ProtocolCard
-                            number="07"
-                            color="#A855F7"
-                            icon="pulse-outline"
-                            title="MARKET RHYTHM"
-                            content={`Watch for a polarity inversion around the European Close / US Mid-session (~17:00 CET). If there are no major news events, the market often "breathes" here.\n\n• Strong drop before? Expect a technical bounce.\n• Strong rally before? Expect a technical pullback.`}
-                        />
-
-                        <ProtocolCard
-                            number="08"
-                            color="#FFD700"
-                            icon="cash-outline"
-                            title="CASH & CONFLUENCE"
-                            content={`Cash indices (Spot) often lead Futures. When Cash, Nasdaq Futures, and S&P Futures all align on magnetic levels simultaneously, the signal probability explodes.\n\nThis is CONFLUENCE. Levels are stronger together than in isolation.`}
-                        />
-
-                        <ProtocolCard
-                            number="09"
-                            color="#EF4444"
-                            icon="alert-circle-outline"
-                            title="ATR & STOP HUNTS"
-                            content={`If volatility (ATR) is high, the market loves to hunt liquidity before reversing.\n\nExample: A sell signal at 64 with high ATR might mean the price will extend to 91 to trigger stops before actually dropping. Patience pays.`}
-                        />
-
-                        <ProtocolCard
-                            number="10"
-                            color="#A855F7"
-                            icon="moon-outline"
-                            title="THE SHADOW PHILOSOPHY"
-                            content={`Think of it like 'Atom' in Real Steel.\nSilent. Precise. Powerful.\n\nInstitutions don't chase price. They wait. \n\nThis app IS your Shadow Mode. It is hard-coded to replicate this behavior, helping you move WITH the giants, not against them.`}
-                        />
-
-                        <ProtocolCard
-                            number="11"
-                            color="#FFD700"
-                            icon="sunny-outline"
-                            title="THE GOLDEN HOURS"
-                            content={`Don't stop trading too early. Some of the best institutional setups appear AFTER the U.S. lunch break (~18:30 CET).\n\nWhen Wall Street returns from lunch, they take full control. From then until the close, volume and intent are driven by U.S. desks.\n\nKEY INSIGHT: Europe follows. The U.S. decides. Shadow Mode excels in capturing these late-session power moves (19:00 - 20:00 CET).`}
-                        />
-
-                        <View style={{ marginTop: 40, marginBottom: 50, alignItems: 'center', opacity: 0.5 }}>
-                            <Text style={{ color: '#666', fontSize: 10, letterSpacing: 1 }}>
-                                © 2025-2026 Click&Trader App. All rights reserved.
+                    <View pointerEvents={isPro ? 'auto' : 'none'}>
+                        <View style={{ paddingTop: 10 }}>
+                            <Text style={styles.introText}>
+                                The Click&Trader system is a high-precision tool. To use it effectively, you must abide by the core principles of institutional trading.
                             </Text>
+
+                            <ProtocolCard
+                                number="01"
+                                color="#FFD700"
+                                icon="hourglass-outline"
+                                title="PATIENCE IS THE EDGE"
+                                content="The market is a transfer mechanism from the impatient to the patient. Do not chase price. Wait for the alert. Wait for the confirmation. Let the trade come to you."
+                            />
+                            <ProtocolCard
+                                number="02"
+                                color="#4ADE80"
+                                icon="flash-outline"
+                                title="EXECUTION"
+                                content="When a confirmed signal appears at a key level, execution must be flawless. No hesitation, but no anticipation. We trade what we see, not what we think."
+                            />
+                            <ProtocolCard
+                                number="03"
+                                color="#EF4444"
+                                icon="shield-checkmark-outline"
+                                title="RISK MANAGEMENT"
+                                content="No signal is a guarantee. Probability is not certainty. Standard educational practice suggests risking 1-2% of capital per trade. Live to trade another day."
+                            />
+
+                            <View style={{ alignItems: 'center', marginVertical: 30 }}>
+                                <View style={{ height: 1, backgroundColor: 'rgba(255,255,255,0.2)', width: '60%' }} />
+                                <Text style={{ color: '#666', fontSize: 10, letterSpacing: 2, marginTop: 10, fontWeight: 'bold' }}>ADVANCED MASTERCLASS</Text>
+                            </View>
+
+                            <ProtocolCard
+                                number="04"
+                                color="#A855F7"
+                                icon="magnet-outline"
+                                title="THE MAGNETIC LEVELS"
+                                content={`The levels 12, 23, 38, 64, and 91 are not random. They are magnetic zones where price statistically tends to slow down, stabilize, bounce, or reverse.\n\nThese are psychological and algorithmic attraction zones used by institutional traders and market makers. Price doesn't go there by chance; it is drawn there.`}
+                            />
+
+                            <ProtocolCard
+                                number="05"
+                                color="#D4AF37"
+                                icon="layers-outline"
+                                title="LEVEL HIERARCHY"
+                                content={`Not all levels carry the same weight:\n\n• 91 (MAJOR): The most powerful pivot. Frequent zone for stabilization or reversal.\n• 64 / 38 (INTERMEDIATE): Transition zones, often used for extensions or pullbacks.\n• 23 / 12 (LOW): Very effective for bullish bounces after a drop.\n\nRULE: Low numbers favor bullish bounces. High numbers favor bearish reversals.`}
+                            />
+
+                            <ProtocolCard
+                                number="06"
+                                color="#4ADE80"
+                                icon="trending-up-outline"
+                                title="CONTEXT IS KING (H1)"
+                                content={`The H1 timeframe always dominates M1 or ticks.\n\n• In a Bullish H1 Trend: A pullback to a level like 12 is a natural buying opportunity.\n• In a Bearish H1 Trend: High levels (91, 64) become prime selling zones.\n\nScalping without checking the H1 context exposes you to unnecessary losses.`}
+                            />
+
+                            <ProtocolCard
+                                number="07"
+                                color="#A855F7"
+                                icon="pulse-outline"
+                                title="MARKET RHYTHM"
+                                content={`Watch for a polarity inversion around the European Close / US Mid-session (~17:00 CET). If there are no major news events, the market often "breathes" here.\n\n• Strong drop before? Expect a technical bounce.\n• Strong rally before? Expect a technical pullback.`}
+                            />
+
+                            <ProtocolCard
+                                number="08"
+                                color="#FFD700"
+                                icon="cash-outline"
+                                title="CASH & CONFLUENCE"
+                                content={`Cash indices (Spot) often lead Futures. When Cash, Nasdaq Futures, and S&P Futures all align on magnetic levels simultaneously, the signal probability explodes.\n\nThis is CONFLUENCE. Levels are stronger together than in isolation.`}
+                            />
+
+                            <ProtocolCard
+                                number="09"
+                                color="#EF4444"
+                                icon="alert-circle-outline"
+                                title="ATR & STOP HUNTS"
+                                content={`If volatility (ATR) is high, the market loves to hunt liquidity before reversing.\n\nExample: A sell signal at 64 with high ATR might mean the price will extend to 91 to trigger stops before actually dropping. Patience pays.`}
+                            />
+
+                            <ProtocolCard
+                                number="10"
+                                color="#A855F7"
+                                icon="moon-outline"
+                                title="THE SHADOW PHILOSOPHY"
+                                content={`Think of it like 'Atom' in Real Steel.\nSilent. Precise. Powerful.\n\nInstitutions don't chase price. They wait. \n\nThis app IS your Shadow Mode. It is hard-coded to replicate this behavior, helping you move WITH the giants, not against them.`}
+                            />
+
+                            <ProtocolCard
+                                number="11"
+                                color="#FFD700"
+                                icon="sunny-outline"
+                                title="THE GOLDEN HOURS"
+                                content={`Don't stop trading too early. Some of the best institutional setups appear AFTER the U.S. lunch break (~18:30 CET).\n\nWhen Wall Street returns from lunch, they take full control. From then until the close, volume and intent are driven by U.S. desks.\n\nKEY INSIGHT: Europe follows. The U.S. decides. Shadow Mode excels in capturing these late-session power moves (19:00 - 20:00 CET).`}
+                            />
+
+                            <View style={{ marginTop: 40, marginBottom: 50, alignItems: 'center', opacity: 0.5 }}>
+                                <Text style={{ color: '#666', fontSize: 10, letterSpacing: 1 }}>
+                                    © 2025-2026 Click&Trader App. All rights reserved.
+                                </Text>
+                            </View>
                         </View>
                     </View>
                 </ScrollView>
             </View>
+
+            {/* Teaser Overlay if NOT Pro */}
+            {!isPro && <PremiumTeaserOverlay message="GUIDE LOCKED" />}
         </View >
     );
 }

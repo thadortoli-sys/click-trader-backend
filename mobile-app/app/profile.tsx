@@ -1,4 +1,5 @@
 import React from 'react';
+import { setHasOnboarded } from '../utils/storage';
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { Stack, useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
@@ -164,6 +165,22 @@ export default function ProfileScreen() {
                 <View style={{ marginTop: 10 }}>
                     <Text style={[styles.sectionLabel, { color: '#D4AF37' }]}>DEVELOPER TOOLS</Text>
                     <DopamineCard style={[styles.card, { borderColor: 'rgba(212, 175, 55, 0.3)', borderWidth: 0.5 }]}>
+                        <TouchableOpacity
+                            style={styles.actionRow}
+                            onPress={async () => {
+                                await setHasOnboarded(false);
+                                alert('Onboarding Reset. Next login will show welcome screen.');
+                            }}
+                        >
+                            <View style={[styles.iconBox, { backgroundColor: 'rgba(212, 175, 55, 0.1)', borderColor: 'rgba(212, 175, 55, 0.2)' }]}>
+                                <Ionicons name="refresh" size={20} color="#D4AF37" />
+                            </View>
+                            <View style={{ flex: 1 }}>
+                                <Text style={[styles.actionText, { color: '#D4AF37' }]}>Reset Onboarding</Text>
+                                <Text style={{ color: '#888', fontSize: 10 }}>Force welcome screen on next login</Text>
+                            </View>
+                        </TouchableOpacity>
+                        <View style={styles.divider} />
                         <TouchableOpacity
                             style={styles.actionRow}
                             onPress={() => setSimulatedPro(!isPro)}

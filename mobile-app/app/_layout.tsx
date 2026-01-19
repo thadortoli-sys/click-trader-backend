@@ -14,7 +14,7 @@ import {
   addNotificationResponseReceivedListener
 } from '../utils/notifications';
 import * as Notifications from 'expo-notifications';
-import { addToHistory } from '../utils/storage';
+import { addToHistory, hasOnboarded as checkOnboarded } from '../utils/storage';
 import { AuthProvider, useAuth } from '../context/AuthContext';
 import { configurePurchases } from '../utils/purchases';
 import { useSegments, useRouter } from 'expo-router';
@@ -195,6 +195,7 @@ function RootLayoutNav() {
             <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
             <Stack.Screen name="premium" options={{ presentation: 'modal', headerShown: false }} />
             <Stack.Screen name="login" options={{ headerShown: false }} />
+            <Stack.Screen name="onboarding" options={{ headerShown: false }} />
             <Stack.Screen name="confirmation" options={{ headerShown: false }} />
             <Stack.Screen name="settings" options={{ presentation: 'modal', headerShown: false }} />
             <Stack.Screen name="profile" options={{ presentation: 'modal', headerShown: false }} />
@@ -229,21 +230,49 @@ function AuthGuard({ children }: { children: React.ReactNode }) {
   const { session, loading } = useAuth();
   const segments = useSegments();
   const router = useRouter();
+  const [isOnboarded, setIsOnboarded] = useState<boolean | null>(null);
+
+  // Check onboarding status & Listen for updates
+  useEffect(() => {
+    checkOnboarded().then(setIsOnboarded);
+
+    const sub = DeviceEventEmitter.addListener('ONBOARDING_CHANGED', (val) => {
+      setIsOnboarded(val);
+    });
+
+    return () => sub.remove();
+  }, [session]);
 
   useEffect(() => {
-    if (loading) return;
+    // Wait for both session check and onboarding check
+    if (loading || isOnboarded === null) return;
 
     const inAuthGroup = segments[0] === 'login' || segments[0] === 'terms' || segments[0] === 'privacy';
-    const inLoginScreen = segments[0] === 'login';
+    const inOnboarding = segments[0] === 'onboarding';
 
     if (!session && !inAuthGroup) {
+      // 1. Not logged in -> Go to Login
       router.replace('/login');
-    } else if (session && inLoginScreen) {
-      router.replace('/');
-    }
-  }, [session, loading, segments]);
+    } else if (session) {
+      // 2. Logged in logic
+      if (!isOnboarded && !inOnboarding) {
+        // New user -> Go to Onboarding (Setup)
+        router.replace('/onboarding');
+      } else if (isOnboarded && (inAuthGroup || inOnboarding)) {
+        // User trying to access Login or Onboarding again -> Go to Dashboard
+        router.replace('/');
 
-  if (loading) {
+        // If coming from Onboarding, show Premium Offer immediately
+        if (inOnboarding) {
+          setTimeout(() => {
+            router.push('/premium');
+          }, 500);
+        }
+      }
+    }
+  }, [session, loading, segments, isOnboarded]);
+
+  if (loading || isOnboarded === null) {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#000' }}>
         <ActivityIndicator size="large" color="#D4AF37" />
