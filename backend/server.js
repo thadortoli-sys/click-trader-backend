@@ -153,6 +153,19 @@ const getSignalKeyFromStrategy = (strategy) => {
     if (normalized.includes('buy')) return 'pro4x_Buy'; // Dangerous default but safer than null for filtering? No, better return null if unknown.
     if (normalized.includes('sell')) return 'pro4x_Sell';
 
+    // VOLATILITY CONTEXT
+    // Check specific keys first
+    if (normalized.includes('vol_low')) return 'vol_Low';
+    if (normalized.includes('vol_high')) return 'vol_High';
+    if (normalized.includes('vol_extreme')) return 'vol_Extreme';
+    if (normalized.includes('vol_panic')) return 'vol_Panic';
+    if (normalized.includes('vol_regime')) return 'vol_Regime';
+
+    // Fallback
+    if (normalized.includes('vol_context') || strategy.includes('vol_Context')) {
+        return 'vol_Low'; // Default to Low/Calm if generic
+    }
+
     return null;
 };
 
@@ -233,7 +246,45 @@ app.post('/webhook', async (req, res) => {
             console.log('Parsed from String (JSON):', data);
         } catch (e) {
             // 2. Try Custom Pipe Format: ENTRY|SELL|LEVEL=...
-            if (data.includes('ENTRY') && data.includes('|')) {
+            const rawUpper = data.toUpperCase();
+
+            if ((rawUpper.includes('VOL_CONTEXT') || rawUpper.includes('VOL CONTEXT')) && data.includes('|')) {
+                console.log('Detected Volatility Context Pipe Format');
+
+                const parts = data.split('|').map(p => p.trim()); // Trim whitespace
+
+                // parts[0] = VOL_CONTEXT
+                // parts[1] = LEVEL (CALM, NORMAL, etc.)
+                // parts[2] = TICKER
+                // parts[3] = INTERVAL
+
+                // Robustness: Handle potential order or extra keys
+                const level = parts[1] || 'UNKNOWN';
+                const ticker = parts[2] || 'MNQ1!';
+                // Flexible finding of PRICE=
+                const pricePart = parts.find(p => p.toUpperCase().startsWith('PRICE=')) || '';
+                const price = pricePart.split('=')[1] || '0';
+
+                // Determine Strategy based on Level
+                let strategy = 'vol_Low'; // Default
+                const uLevel = level.toUpperCase();
+
+                if (uLevel === 'HOT') strategy = 'vol_High';
+                else if (uLevel === 'EXTREME') strategy = 'vol_Extreme';
+                else if (uLevel === 'PANIC') strategy = 'vol_Panic';
+                // Also check for "REGIME" keyword in level or just check values
+                else if (uLevel === 'TREND' || uLevel === 'RANGE') strategy = 'vol_Regime';
+
+                data = {
+                    ticker: ticker,
+                    signal: level, // Keep specific level as signal
+                    strategy: strategy,
+                    price: price,
+                    message: data
+                };
+                console.log('Parsed VOL_CONTEXT:', data);
+
+            } else if (rawUpper.includes('ENTRY') && data.includes('|')) {
                 console.log('Detected Pipe-Delimited Custom Format');
                 const parts = data.split('|');
 
@@ -444,6 +495,43 @@ app.post('/webhook', async (req, res) => {
             message: 'Syncro: Major Resistance Hit. High probability rejection. Look for Short.'
         },
 
+        // VOLATILITY CONTEXT - GRANULAR
+        'vol_Low': {
+            title: 'Vol Context',
+            emoji: '📊',
+            icon: 'speedometer-outline',
+            color: '#3B82F6', // Blue
+            message: 'Low/Normal Volatility.'
+        },
+        'vol_High': {
+            title: 'Vol Context',
+            emoji: '🔥',
+            icon: 'flame-outline',
+            color: '#F59E0B', // Orange
+            message: 'High Volatility.'
+        },
+        'vol_Extreme': {
+            title: 'Vol Context',
+            emoji: '🚨',
+            icon: 'warning-outline',
+            color: '#EF4444', // Red
+            message: 'Extreme Volatility.'
+        },
+        'vol_Panic': {
+            title: 'Vol Context | PANIC',
+            emoji: '😱',
+            icon: 'alert-circle-outline',
+            color: '#D50000', // Deep Red
+            message: 'Panic Volatility Detected. Markets are disorderly.'
+        },
+        'vol_Regime': {
+            title: 'Market Regime',
+            emoji: '🧭',
+            icon: 'compass-outline',
+            color: '#A855F7', // Purple
+            message: 'Regime Update.'
+        },
+
         // SHADOW MODE
         // SHADOW MODE
         'shadow_Mode': {
@@ -584,6 +672,8 @@ app.post('/webhook', async (req, res) => {
         else if (detectedDirection === 'BUY') strategy = 'pro4x_Buy';
         else if (detectedDirection === 'SELL') strategy = 'pro4x_Sell';
         else if (s.includes('GET READY') || s.includes('READY')) strategy = 'pro4x_GetReady';
+        // Generic VOL_CONTEXT fallback if pipe parsing failed or came from other source
+        else if (s.includes('VOL_CONTEXT') || s.includes('VOL CONTEXT')) strategy = 'vol_Low';
     }
 
     if (strategy && STRATEGIES[strategy]) {
@@ -739,6 +829,53 @@ app.post('/webhook', async (req, res) => {
                 `Discipline:\n` +
                 `Let the higher timeframe lead.`;
 
+            // 5.5 VOLATILITY CONTEXT
+        } else if (strategy === 'vol_Low' || strategy === 'vol_High' || strategy === 'vol_Extreme' || strategy === 'vol_Panic' || strategy === 'vol_Regime') {
+            const level = (signal || '').toUpperCase(); // CALM, HOT, etc.
+
+            // Map levels to specific content requested by user
+            if (level === 'CALM' || level === 'NORMAL') {
+                // Keep existing or simple default for Calm
+                notificationTitle = `Vol Context: ${level}`;
+                notificationBody = `Cleaner movement; reactions may appear quickly.\n(ATR < 10 Normal Conditions)`;
+                color = level === 'CALM' ? '#3B82F6' : '#10B981';
+
+            } else if (level === 'HOT') {
+                notificationTitle = `Vol Context: HOT`;
+                notificationBody = `SCALPING EXPERT (ATR M1 ≈ 12–17 pts)\n\n` +
+                    `“Volatility is active; continuation/sweep risk is higher.\n` +
+                    `You may prefer 1–2 M1 stabilization candles + a clear rejection.”`;
+                color = '#F59E0B'; // Orange
+
+            } else if (level === 'EXTREME') {
+                notificationTitle = `Vol Context: EXTREME`;
+                notificationBody = `SCALPING EXPERT (ATR M1 ≈ 18–22 pts)\n\n` +
+                    `“Fast conditions; sweeps/overshoots are frequent.\n` +
+                    `You may prefer 4–6 M1 candles or a clear sweep-and-reclaim.”`;
+                color = '#EF4444'; // Red
+
+            } else if (level === 'PANIC') {
+                notificationTitle = `Vol Context: PANIC`;
+                notificationBody = `SCALPING EXPERT (ATR M1 ≥ 23 pts)\n\n` +
+                    `“Very high volatility; moves can overshoot.\n` +
+                    `You may prefer 6–8 M1 candles or a strong reclaim; otherwise continuation is common.”`;
+                color = '#8B5CF6'; // Purple / Violet
+
+            } else if (level === 'TREND') {
+                notificationTitle = `Regime: TREND`;
+                notificationBody = `Regime context: TREND conditions detected (momentum / directional behavior).`;
+                color = '#10B981'; // Green
+
+            } else if (level === 'RANGE') {
+                notificationTitle = `Regime: RANGE`;
+                notificationBody = `Regime context: RANGE conditions detected (mean-reversion / back-and-forth behavior).`;
+                color = '#A855F7'; // Purple
+
+            } else {
+                notificationTitle = `Vol Context: ${level}`;
+                notificationBody = `Volatility Regime Update: ${level}`;
+            }
+
             // 6. BUY ENTRY (Generic Fallback)
         } else if (strategy === 'pro4x_Buy' || strategy === 'horus_Buy' || (strategy.includes('Buy') && !strategy.includes('GetReady') && !strategy.includes('horus_Adv'))) {
             notificationTitle = `${ticker} — Buy Signal`;
@@ -848,7 +985,7 @@ app.post('/webhook', async (req, res) => {
         let finalBody = notificationBody;
         let finalData = { strategy, ticker, price, timeframe, signal, message: notificationBody, title: notificationTitle, icon, color, tp: 'OPEN', sl: 'OPEN', videoUrl };
 
-        if (!isUserPro) {
+        if (!isUserPro && !strategy.startsWith('vol_') && !strategy.includes('Regime')) {
             console.log(`🔒 MASKING Content for FREE User: ...${pushToken.slice(-6)}`);
             finalTitle = "🔒 Institutional Signal Detected";
             finalBody = "Premium trading signal detected.\nTap to unlock full details.";

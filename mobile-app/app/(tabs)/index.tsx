@@ -93,6 +93,13 @@ const SIGNAL_STYLES: Record<string, { icon: keyof typeof Ionicons.glyphMap, colo
   // 5. INFO SUPPORT
   'info_SupportBuy': { icon: 'caret-up-circle-outline', color: '#4CAF50', type: 'UP' },
   'info_SupportSell': { icon: 'caret-down-circle-outline', color: '#FF5252', type: 'DOWN' },
+
+  // 6. VOLATILITY CONTEXT
+  'vol_Low': { icon: 'speedometer-outline', color: '#3B82F6', type: 'INFO' },
+  'vol_High': { icon: 'flame-outline', color: '#F59E0B', type: 'INFO' },
+  'vol_Extreme': { icon: 'warning-outline', color: '#EF4444', type: 'INFO' },
+  'vol_Panic': { icon: 'nuclear-outline', color: '#8B5CF6', type: 'INFO' },
+  'vol_Regime': { icon: 'compass-outline', color: '#A855F7', type: 'INFO' },
 };
 
 // Fallback style

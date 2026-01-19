@@ -76,36 +76,50 @@ export default function OnboardingScreen() {
 
                 {/* Action Button */}
                 <View style={styles.footer}>
-                    <TouchableOpacity
-                        activeOpacity={0.8}
-                        onPress={handleStart}
-                        disabled={loading}
-                        style={styles.buttonWrapper}
-                    >
-                        <LinearGradient
-                            colors={['#1A1A1A', '#000000']} // Grey Gradient (Pro4x Style)
-                            start={{ x: 0, y: 0 }}
-                            end={{ x: 0, y: 1 }}
-                            style={styles.buttonGradient}
+                    {loading ? (
+                        <ActivityIndicator size="large" color="#FFFFFF" style={{ marginBottom: 20 }} />
+                    ) : (
+                        <TouchableOpacity
+                            activeOpacity={0.7}
+                            onPress={handleStart}
+                            style={{ alignItems: 'center', justifyContent: 'center' }}
                         >
-                            {/* Inner Light Gradient for Depth */}
-                            <LinearGradient
-                                colors={['rgba(255,255,255,0.15)', 'rgba(0,0,0,0)']}
-                                start={{ x: 0, y: 0 }} end={{ x: 0, y: 0.5 }}
-                                style={StyleSheet.absoluteFill}
-                            />
+                            {/* Scanning Ring (Static for now, implies target) */}
+                            <View style={{
+                                width: 80,
+                                height: 80,
+                                borderRadius: 40,
+                                borderWidth: 1,
+                                borderColor: 'rgba(255, 255, 255, 0.3)', // Thin White Ring
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                marginBottom: 15,
+                                backgroundColor: 'rgba(255, 255, 255, 0.05)' // Very subtle white fill
+                            }}>
+                                <Ionicons name="finger-print" size={40} color="#FFFFFF" style={{ opacity: 0.8 }} />
+                            </View>
 
-                            {loading ? (
-                                <ActivityIndicator color="#D4AF37" />
-                            ) : (
-                                <View style={styles.buttonContent}>
-                                    <Text style={styles.buttonText}>START TRADING</Text>
-                                    <Ionicons name="arrow-forward" size={18} color="#D4AF37" />
-                                </View>
-                            )}
-                        </LinearGradient>
-                    </TouchableOpacity>
-                    <Text style={styles.disclaimer}>By continuing, you enable necessary notifications.</Text>
+                            <Text style={{
+                                color: '#FFFFFF',
+                                fontSize: 10,
+                                fontWeight: '300', // Fine text
+                                letterSpacing: 4,
+                                opacity: 0.6,
+                                textTransform: 'uppercase'
+                            }}>Tap to Initialize</Text>
+                        </TouchableOpacity>
+                    )}
+
+
+                    <View style={{ marginTop: 40, alignItems: 'center' }}>
+                        <Text style={{
+                            color: '#FFFFFF',
+                            fontSize: 9,
+                            opacity: 0.3,
+                            letterSpacing: 2,
+                            fontWeight: '300'
+                        }}>DESIGNED & DEVELOPED IN NEW YORK CITY</Text>
+                    </View>
                 </View>
 
             </View>

@@ -27,7 +27,10 @@ export type SignalKey =
     // GUIDE TENDANCE H1
     | 'h1_SyncroBullish' | 'h1_SyncroBearish'
     // GUIDE TENDANCE M1 (New)
+    // GUIDE TENDANCE M1 (New)
     | 'm1_SyncroBullish' | 'm1_SyncroBearish'
+    // VOLATILITY CONTEXT
+    | 'vol_Low' | 'vol_High' | 'vol_Extreme' | 'vol_Panic' | 'vol_Regime'
     // INFO SUPPORT
     | 'info_SupportBuy' | 'info_SupportSell';
 
@@ -94,6 +97,12 @@ const DEFAULT_SETTINGS: UserSettings = {
         // H1 GUIDE (M1 also handled here or new section?)
         m1_SyncroBullish: true,
         m1_SyncroBearish: true,
+        // CONTEXT
+        vol_Low: true,
+        vol_High: true,
+        vol_Extreme: true,
+        vol_Panic: true,
+        vol_Regime: true,
         // INFO SUPPORT
         info_SupportBuy: true,
         info_SupportSell: true,
@@ -318,6 +327,19 @@ export const getSignalKeyFromStrategy = (strategy: string): SignalKey | null => 
         // Actually, user settings has shadow_Buy/Sell.
         // Let's safe return null for generic shadow if we can't map it, or map to a default if they exist.
     }
+
+    // VOLATILITY CONTEXT - Mapped on Backend mostly, but for robust filtering:
+    // We can no longer map generic "VOL_CONTEXT" string effectively without the level info 
+    // BUT backend sends specific strategy keys now (vol_Low etc). 
+    // This helper checks fuzzy matches if strategy name is loose.
+    if (normalized.toLowerCase().includes('vol_low')) return 'vol_Low';
+    if (normalized.toLowerCase().includes('vol_high')) return 'vol_High';
+    if (normalized.toLowerCase().includes('vol_extreme')) return 'vol_Extreme';
+    if (normalized.toLowerCase().includes('panic') || normalized.toLowerCase().includes('vol_panic')) return 'vol_Panic';
+    if (normalized.toLowerCase().includes('vol_regime') || normalized.toLowerCase().includes('regime')) return 'vol_Regime';
+
+    // Legacy Fallback for "Vol Context" string if backend ever sent it: Default to Low?
+    if (normalized.toLowerCase().includes('vol_context')) return 'vol_Low';
 
     return null;
 };

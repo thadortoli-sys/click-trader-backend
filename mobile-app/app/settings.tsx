@@ -232,6 +232,58 @@ const CONTEXT_ITEMS: SignalItem[] = [
         icon: 'caret-down-outline',
         color: '#EF4444'
     },
+    {
+        key: 'vol_High',
+        guideTarget: undefined,
+        label: 'Context: HOT',
+        description: (
+            <View>
+                <Text style={{ color: '#F59E0B', fontSize: 11, fontWeight: 'bold', marginBottom: 4 }}>SCALPING EXPERT (ATR M1 ≈ 12–17 pts):</Text>
+                <Text style={{ color: '#ccc', fontSize: 12 }}>“Volatility is active; continuation/sweep risk is higher. You may prefer 1–2 M1 stabilization candles + a clear rejection.”</Text>
+            </View>
+        ),
+        icon: 'flame-outline',
+        color: '#F59E0B'
+    },
+    {
+        key: 'vol_Extreme',
+        guideTarget: undefined,
+        label: 'Context: EXTREME',
+        description: (
+            <View>
+                <Text style={{ color: '#EF4444', fontSize: 11, fontWeight: 'bold', marginBottom: 4 }}>EXTREME (ATR M1 ≈ 18–22 pts):</Text>
+                <Text style={{ color: '#ccc', fontSize: 12, marginBottom: 8 }}>“Fast conditions; sweeps/overshoots are frequent. You may prefer 4–6 M1 candles or a clear sweep-and-reclaim.”</Text>
+            </View>
+        ),
+        icon: 'warning-outline',
+        color: '#EF4444'
+    },
+    {
+        key: 'vol_Panic',
+        guideTarget: undefined,
+        label: 'Context: PANIC',
+        description: (
+            <View>
+                <Text style={{ color: '#8B5CF6', fontSize: 11, fontWeight: 'bold', marginBottom: 4 }}>PANIC (ATR M1 ≥ 23 pts):</Text>
+                <Text style={{ color: '#ccc', fontSize: 12 }}>“Very high volatility; moves can overshoot. You may prefer 6–8 M1 candles or a strong reclaim; otherwise continuation is common.”</Text>
+            </View>
+        ),
+        icon: 'nuclear-outline', // Or alert-circle-outline if unavailable
+        color: '#8B5CF6'
+    },
+    {
+        key: 'vol_Regime',
+        guideTarget: undefined,
+        label: 'Regime: TREND / RANGE',
+        description: (
+            <View>
+                <Text style={{ color: '#ccc', fontSize: 12, marginBottom: 4 }}><Text style={{ color: '#10B981', fontWeight: 'bold' }}>TREND:</Text> Momentum / Directional behavior.</Text>
+                <Text style={{ color: '#ccc', fontSize: 12 }}><Text style={{ color: '#A855F7', fontWeight: 'bold' }}>RANGE:</Text> Mean-reversion / Back-and-forth behavior.</Text>
+            </View>
+        ),
+        icon: 'compass-outline',
+        color: '#A855F7'
+    },
 ];
 
 const StatusBadge = ({ label }: { label: string }) => (
@@ -419,6 +471,7 @@ export default function SettingsScreen() {
 
         h1_SyncroBullish: true, h1_SyncroBearish: true,
         m1_SyncroBullish: true, m1_SyncroBearish: true,
+        vol_Low: true, vol_High: true, vol_Extreme: true, vol_Regime: true,
         info_SupportBuy: true, info_SupportSell: true,
     });
 
