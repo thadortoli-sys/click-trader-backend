@@ -130,10 +130,18 @@ export default function HistoryScreen() {
 
                                         let text = s.replace(/_/g, ' ').replace('PRO4X', 'PRO4X').replace('SCALP', 'SCALP').replace('HORUS', 'HORUS');
                                         text = text.replace('OVERSOLD', 'OVS').replace('OVERBOUGHT', 'OVB');
-                                        if (!text.includes('BUY') && !text.includes('SELL') && !text.includes('LONG') && !text.includes('SHORT') && !text.includes('BULL') && !text.includes('BEAR')) {
+
+                                        // Force Replacement
+                                        text = text
+                                            .replace('BUY', 'BULLISH')
+                                            .replace('SELL', 'BEARISH')
+                                            .replace('LONG', 'BULLISH')
+                                            .replace('SHORT', 'BEARISH');
+
+                                        if (!text.includes('BULLISH') && !text.includes('BEARISH')) {
                                             const t = String(type).toUpperCase();
-                                            if (t.includes('BUY') || t.includes('LONG')) text += ' BUY';
-                                            else if (t.includes('SELL') || t.includes('SHORT')) text += ' SELL';
+                                            if (t.includes('BUY') || t.includes('LONG')) text += ' BULLISH';
+                                            else if (t.includes('SELL') || t.includes('SHORT')) text += ' BEARISH';
                                         }
                                         return prefix + text;
                                     })()}

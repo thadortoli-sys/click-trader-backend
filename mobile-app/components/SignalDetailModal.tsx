@@ -111,12 +111,14 @@ export const SignalDetailModal = ({ visible, onClose, onArchive, signal }: Signa
     const strategyUpper = strategy.toUpperCase();
 
     if (strategyUpper.includes('PUMP') || typeLower.includes('sell position')) {
-        type = 'PARTIAL TP / BUY';
+        type = 'PARTIAL TP / BULLISH';
     } else if (strategyUpper.includes('PUSH') || typeLower.includes('buy position')) {
-        type = 'PARTIAL TP / SELL';
+        type = 'PARTIAL TP / BEARISH';
     } else if (type.length > 15) {
-        if (typeLower.includes('short')) type = 'EXIT SHORT';
-        else if (typeLower.includes('long')) type = 'EXIT LONG';
+        if (typeLower.includes('short')) type = 'EXIT SHORT'; // Consider removing 'SHORT' too if strictly forbidden, but usually 'Short' is trading terminology. User asked for Buy/Sell/Long/Short removal.
+        // Let's replace Short/Long with Bearish/Bullish positions? Or just EXIT.
+        if (typeLower.includes('short')) type = 'EXIT BEARISH';
+        else if (typeLower.includes('long')) type = 'EXIT BULLISH';
         else type = 'ALERT';
     }
 
@@ -289,7 +291,9 @@ export const SignalDetailModal = ({ visible, onClose, onArchive, signal }: Signa
                                         />
                                     </Animated.View>
                                     <Text style={[styles.strategy, { color: '#FFFFFF', marginTop: 10 }]}>
-                                        {signal.data?.title || signal.title || strategy.replace('Entry', '').replace('_', ' ').trim()}
+                                        {(signal.data?.title || signal.title || strategy.replace('Entry', '').replace('_', ' ').trim())
+                                            .replace(/Buy/g, 'Bullish').replace(/Sell/g, 'Bearish')
+                                            .replace(/BUY/g, 'BULLISH').replace(/SELL/g, 'BEARISH')}
                                     </Text>
                                     <Text style={styles.ticker}>{ticker}</Text>
                                 </View>

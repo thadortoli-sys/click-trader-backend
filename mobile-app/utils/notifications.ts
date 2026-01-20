@@ -154,14 +154,14 @@ export async function sendSettingsToBackend(token: string, signals: Record<strin
 let testIndex = 0;
 const TEST_SCENARIOS = [
     {
-        title: "NQ - PRO4X BUY",
-        body: "Entry: 20550 | TP: 20600 | SL: 20500",
-        data: { ticker: "NQ", signal: "BUY", price: "20550", strategy: "Pro4x Buy" }
+        title: "NQ - PRO4X BULLISH",
+        body: "Signal: 20550 | TP: 20600 | SL: 20500",
+        data: { ticker: "NQ", signal: "BULLISH", price: "20550", strategy: "Pro4x Bullish" }
     },
     {
-        title: "MNQ - PRO4X SELL",
-        body: "Entry: 20400 | TP: 20350 | SL: 20450",
-        data: { ticker: "MNQ", signal: "SELL", price: "20400", strategy: "Pro4x Sell" }
+        title: "MNQ - PRO4X BEARISH",
+        body: "Signal: 20400 | TP: 20350 | SL: 20450",
+        data: { ticker: "MNQ", signal: "BEARISH", price: "20400", strategy: "Pro4x Bearish" }
     },
     {
         title: "NQ - GET READY",

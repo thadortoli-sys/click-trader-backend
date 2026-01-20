@@ -32,7 +32,7 @@ const BEGINNER_ITEMS: SignalItem[] = [
     {
         key: 'pro4xx_Buy',
         guideTarget: 'PRO4X',
-        label: 'Pro4x.2 Buy',
+        label: 'Pro4x.2 Bullish',
         description: 'Trend Following. Targets moves from 20 up to 150 points. "Blindclick" style approach.',
         icon: 'trending-up-outline',
         color: '#4ADE80'
@@ -40,194 +40,131 @@ const BEGINNER_ITEMS: SignalItem[] = [
     {
         key: 'pro4xx_Sell',
         guideTarget: 'PRO4X',
-        label: 'Pro4x.2 Sell',
+        label: 'Pro4x.2 Bearish',
         description: 'Trend Following. Targets moves from 20 up to 150 points. "Blindclick" style approach.',
         icon: 'trending-down-outline',
         color: '#FF5252'
     },
+    {
+        key: 'pro4x_Buy', // Generic Pro4x
+        guideTarget: 'PRO4X',
+        label: 'Pro4x Bullish',
+        description: 'Original Algorithm. Trend Following.',
+        icon: 'trending-up-outline',
+        color: '#4ADE80'
+    },
+    {
+        key: 'pro4x_Sell', // Generic Pro4x
+        guideTarget: 'PRO4X',
+        label: 'Pro4x Bearish',
+        description: 'Original Algorithm. Trend Following.',
+        icon: 'trending-down-outline',
+        color: '#FF5252'
+    }
 ];
 
 // 2. INTERMEDIATE (PRO4X & HORUS)
 const INTERMEDIATE_ITEMS: SignalItem[] = [
     {
-        key: 'pro4x_GetReady',
-        guideTarget: 'Get Ready (GR)',
-        label: 'Get Ready',
-        description: <Text style={{ color: '#ccc', fontSize: 12 }}>Key price levels reached. Depending on context, this offers a scalping opportunity, but primarily acts as a <Text style={{ fontWeight: 'bold', color: '#FFF' }}>pre-signal.</Text></Text>,
-        icon: 'pulse-outline',
-        color: '#FFD700'
-    },
-    {
-        key: 'pro4x_Buy',
-        guideTarget: 'PRO4X',
-        label: 'Pro4x Buy',
-        description: 'This is the confirmed long entry signal. All required conditions are aligned at a key level, indicating a high-probability buying opportunity.',
-        icon: 'trending-up-outline',
+        key: 'horus_Buy',
+        guideTarget: 'HORUS',
+        label: 'Horus Bullish',
+        description: 'Reversal Sniper. Targets bottoms/tops with high precision.',
+        icon: 'eye-outline', // Changed to outline
         color: '#4ADE80'
     },
     {
-        key: 'pro4x_Sell',
-        guideTarget: 'PRO4X',
-        label: 'Pro4x Sell',
-        description: 'This is the confirmed short entry signal. All required conditions are aligned at a key level, indicating a high-probability selling opportunity.',
-        icon: 'trending-down-outline',
+        key: 'horus_Sell',
+        guideTarget: 'HORUS',
+        label: 'Horus Bearish',
+        description: 'Reversal Sniper. Targets bottoms/tops with high precision.',
+        icon: 'eye-outline', // Changed to outline
         color: '#FF5252'
-    },
-
+    }
 ];
 
 // 3. ADVANCED (SCALPING & SHADOW)
 const ADVANCED_ITEMS: SignalItem[] = [
     {
-        key: 'horus_Buy',
-        guideTarget: 'Horus — Buy Entry',
-        label: 'Horus Buy',
-        description: 'Precision Scalping. Validated entry for advanced traders.',
-        icon: 'trending-up-outline',
-        color: '#4ADE80'
-    },
-    {
-        key: 'horus_Sell',
-        guideTarget: 'Horus — Sell Entry',
-        label: 'Horus Sell',
-        description: 'Precision Scalping. Validated entry for advanced traders.',
-        icon: 'trending-down-outline',
-        color: '#EF4444'
-    },
-    {
         key: 'shadow_Buy',
-        guideTarget: 'Shadow Mode',
-        label: 'Shadow BUY',
-        description: (
-            <View>
-                <Text style={{ color: '#ccc', fontSize: 12, marginBottom: 6 }}>Institutional Sweep. <Text style={{ color: '#9061C2', fontWeight: 'bold' }}>Review Magnet Map.</Text></Text>
-                <Text style={{ color: '#888', fontSize: 10, fontStyle: 'italic', lineHeight: 14 }}>
-                    ATR &lt; 10: 1 M1 candle of stabilization is often sufficient.{"\n"}
-                    ATR 10–20: Wait for 2 M1 candles + clear rejection.{"\n"}
-                    ATR &gt; 20: Wait 3–5 M1 candles or sweep-and-reclaim.
-                </Text>
-            </View>
-        ),
-        icon: 'moon',
-        color: '#A855F7'
+        guideTarget: 'SHADOW_MODE',
+        label: 'Shadow BULLISH',
+        description: 'Liquidity Sweep Detection. High risk, high reward.',
+        icon: 'moon-outline',
+        color: '#9CA3AF'
     },
     {
         key: 'shadow_Sell',
-        guideTarget: 'Shadow Mode',
-        label: 'Shadow SELL',
-        description: (
-            <View>
-                <Text style={{ color: '#ccc', fontSize: 12, marginBottom: 6 }}>Institutional Sweep. <Text style={{ color: '#9061C2', fontWeight: 'bold' }}>Review Magnet Map.</Text></Text>
-                <Text style={{ color: '#888', fontSize: 10, fontStyle: 'italic', lineHeight: 14 }}>
-                    ATR &lt; 10: 1 M1 candle of stabilization is often sufficient.{"\n"}
-                    ATR 10–20: Wait for 2 M1 candles + clear rejection.{"\n"}
-                    ATR &gt; 20: Wait 3–5 M1 candles or sweep-and-reclaim.
-                </Text>
-            </View>
-        ),
-        icon: 'moon',
-        color: '#A855F7'
+        guideTarget: 'SHADOW_MODE',
+        label: 'Shadow BEARISH',
+        description: 'Liquidity Sweep Detection. High risk, high reward.',
+        icon: 'moon-outline',
+        color: '#9CA3AF'
     },
     {
         key: 'scalp_OverSold',
-        guideTarget: 'HORUS OVS',
-        label: 'Horus OVS',
-        description: (
-            <View>
-                <Text style={{ color: '#ccc', fontSize: 12, marginBottom: 6 }}>Extreme Statistical Anomaly. Counter-trend alert.</Text>
-                <Text style={{ color: '#888', fontSize: 10, fontStyle: 'italic', lineHeight: 14 }}>
-                    ATR &lt; 10: 1 M1 candle of stabilization typically enough.{"\n"}
-                    ATR 10–20: Need 2 M1 candles + clear rejection.{"\n"}
-                    ATR &gt; 20: Wait 3–5 M1 candles/sweep-reclaim or it may slide.
-                </Text>
-            </View>
-        ),
-        icon: 'arrow-down-circle-outline',
-        color: '#4ADE80'
-    },
-    {
-        key: 'scalp_OverBought',
-        guideTarget: 'HORUS OVB',
-        label: 'Horus OVB',
-        description: (
-            <View>
-                <Text style={{ color: '#ccc', fontSize: 12, marginBottom: 6 }}>Extreme Statistical Anomaly. Counter-trend alert.</Text>
-                <Text style={{ color: '#888', fontSize: 10, fontStyle: 'italic', lineHeight: 14 }}>
-                    ATR &lt; 10: 1 M1 candle of stabilization typically enough.{"\n"}
-                    ATR 10–20: Need 2 M1 candles + clear rejection.{"\n"}
-                    ATR &gt; 20: Wait 3–5 M1 candles/sweep-reclaim or it may slide.
-                </Text>
-            </View>
-        ),
-        icon: 'arrow-up-circle-outline',
-        color: '#EF4444'
-    },
-    {
-        key: 'horus_Adv_Buy',
-        guideTarget: 'Horus ADV',
-        label: 'Horus ADV Buy',
-        description: (
-            <View>
-                <Text style={{ color: '#ccc', fontSize: 12, marginBottom: 6 }}><Text style={{ color: '#4ADE80', fontWeight: 'bold', opacity: 0.8 }}>Expert.</Text> High precision entry.</Text>
-                <Text style={{ color: '#888', fontSize: 10, fontStyle: 'italic', lineHeight: 14 }}>
-                    ATR &lt; 10: 1 M1 candle of stabilization is sufficient.{"\n"}
-                    ATR 10–20: Wait 2 M1 candles + rejection.{"\n"}
-                    ATR &gt; 20: 3–5 M1 candles or sweep-reclaim required.
-                </Text>
-            </View>
-        ),
-        icon: 'flash',
+        guideTarget: 'SCALPING',
+        label: 'Scalp | Oversold',
+        description: 'Quick reaction scalp (Bullish). 10-15 points target.',
+        icon: 'flash-outline',
         color: '#00FF9D'
     },
     {
-        key: 'horus_Adv_Sell',
-        guideTarget: 'Horus ADV',
-        label: 'Horus ADV Sell',
-        description: (
-            <View>
-                <Text style={{ color: '#ccc', fontSize: 12, marginBottom: 6 }}><Text style={{ color: '#F87171', fontWeight: 'bold', opacity: 0.8 }}>Expert.</Text> High precision entry.</Text>
-                <Text style={{ color: '#888', fontSize: 10, fontStyle: 'italic', lineHeight: 14 }}>
-                    ATR &lt; 10: 1 M1 candle of stabilization is sufficient.{"\n"}
-                    ATR 10–20: Wait 2 M1 candles + rejection.{"\n"}
-                    ATR &gt; 20: 3–5 M1 candles or sweep-reclaim required.
-                </Text>
-            </View>
-        ),
-        icon: 'flash',
+        key: 'scalp_OverBought',
+        guideTarget: 'SCALPING',
+        label: 'Scalp | Overbought',
+        description: 'Quick reaction scalp (Bearish). 10-15 points target.',
+        icon: 'flash-outline',
         color: '#FF5252'
     },
     {
         key: 'scalp_TakeProfitPump',
-        guideTarget: 'Scalp | TP Pump',
-        label: 'TP Pump',
-        description: 'Aggressive buying exhausted. Profit taking zone.',
+        guideTarget: 'SCALPING',
+        label: 'TP Pump (Bullish)',
+        description: 'Take Profit alert for Bullish moves or Short Covering.',
         icon: 'arrow-up-circle-outline',
         color: '#FFD700'
     },
     {
         key: 'scalp_TakeProfitPush',
-        guideTarget: 'Scalp | TP Push',
-        label: 'TP Push',
-        description: 'Aggressive selling exhausted. Profit taking zone.',
+        guideTarget: 'SCALPING',
+        label: 'TP Push (Bearish)',
+        description: 'Take Profit alert for Bearish moves or Long Exits.',
         icon: 'arrow-down-circle-outline',
         color: '#FFD700'
     },
+    {
+        key: 'horus_Adv_Buy',
+        guideTarget: 'HORUS_ADV',
+        label: 'Horus ADV Bullish',
+        description: 'Institutional Scalping (Bullish). Requires Power/RSI confirmation.',
+        icon: 'flash',
+        color: '#00FF9D'
+    },
+    {
+        key: 'horus_Adv_Sell',
+        guideTarget: 'HORUS_ADV',
+        label: 'Horus ADV Bearish',
+        description: 'Institutional Scalping (Bearish). Requires Power/RSI confirmation.',
+        icon: 'flash',
+        color: '#FF5252'
+    }
 ];
 
 // 4. CONTEXT INFO
 const CONTEXT_ITEMS: SignalItem[] = [
     {
         key: 'h1_SyncroBullish',
-        guideTarget: 'Syncro Buy (H1) — SPX / ES / NQ',
-        label: 'Syncro Buy (H1)',
+        guideTarget: 'Syncro Long (H1) — SPX / ES / NQ',
+        label: 'Syncro Bullish (H1)',
         description: 'Context Alert. Major trend alignment. Safest institutional flow.',
         icon: 'caret-up-outline',
         color: '#4ADE80'
     },
     {
         key: 'h1_SyncroBearish',
-        guideTarget: 'Syncro Sell (H1) — SPX / ES / NQ',
-        label: 'Syncro Sell (H1)',
+        guideTarget: 'Syncro Short (H1) — SPX / ES / NQ',
+        label: 'Syncro Bearish (H1)',
         description: 'Context Alert. Major trend alignment. Safest institutional flow.',
         icon: 'caret-down-outline',
         color: '#EF4444'
@@ -471,7 +408,7 @@ export default function SettingsScreen() {
 
         h1_SyncroBullish: true, h1_SyncroBearish: true,
         m1_SyncroBullish: true, m1_SyncroBearish: true,
-        vol_Low: true, vol_High: true, vol_Extreme: true, vol_Regime: true,
+        vol_Low: true, vol_High: true, vol_Extreme: true, vol_Panic: true, vol_Regime: true,
         info_SupportBuy: true, info_SupportSell: true,
     });
 

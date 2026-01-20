@@ -97,6 +97,16 @@ const getSignalKeyFromStrategy = (strategy) => {
     }
 
     // PRO4X (Legacy)
+    // PRO4XX.2 (Specific Check)
+    if (normalized.includes('pro4xx')) {
+        if (normalized.includes('get_ready') || normalized.includes('getready')) {
+            if (normalized.includes('buy')) return 'pro4xx_GetReady_Buy';
+            if (normalized.includes('sell')) return 'pro4xx_GetReady_Sell';
+        }
+        if (normalized.includes('buy')) return 'pro4xx_Buy';
+        if (normalized.includes('sell')) return 'pro4xx_Sell';
+    }
+
     if (normalized.includes('pro4x')) {
         if (normalized.includes('get_ready') || normalized.includes('getready')) return 'pro4x_GetReady';
         if (normalized.includes('buy')) return 'pro4x_Buy';
@@ -356,32 +366,32 @@ app.post('/webhook', async (req, res) => {
     const STRATEGIES = {
         // PRO4XX.2
         'pro4xx_GetReady_Buy': {
-            title: 'Pro4xx | Get Ready (Buy)',
+            title: 'Pro4xx | Get Ready (Bullish)',
             emoji: '⚠️',
             icon: 'trending-up-outline',
             color: '#FFC107', // Primary Yellow
-            message: 'Pro4xx Algo: Watch for potential Buy entry. Market structure aligning.'
+            message: 'Pro4xx Algo: Watch for potential Bullish Signal. Market structure aligning.'
         },
         'pro4xx_GetReady_Sell': {
-            title: 'Pro4xx | Get Ready (Sell)',
+            title: 'Pro4xx | Get Ready (Bearish)',
             emoji: '⚠️',
             icon: 'trending-down-outline',
             color: '#FFC107', // Primary Yellow
-            message: 'Pro4xx Algo: Watch for potential Sell entry. Market structure aligning.'
+            message: 'Pro4xx Algo: Watch for potential Bearish Signal. Market structure aligning.'
         },
         'pro4xx_Buy': {
-            title: 'Pro4x.2 | Buy Confirmed',
+            title: 'Pro4x.2 | Bullish Confirmed',
             emoji: '✅',
             icon: 'trending-up-outline',
             color: '#4ADE80',
-            message: 'Pro4x.2 System: Buy Confirmed.\nTarget Scope: ~150 points Trend.\n*Note: Actual range depends on market volatility.*'
+            message: 'Pro4x.2 System: Bullish Signal Confirmed.\nTarget Scope: ~150 points Trend.\n*Note: Actual range depends on market volatility.*'
         },
         'pro4xx_Sell': {
-            title: 'Pro4x.2 | Sell Confirmed',
+            title: 'Pro4x.2 | Bearish Confirmed',
             emoji: '✅',
             icon: 'trending-down-outline',
             color: '#FF5252',
-            message: 'Pro4x.2 System: Sell Confirmed.\nTarget Scope: ~150 points Trend.\n*Note: Actual range depends on market volatility.*'
+            message: 'Pro4x.2 System: Bearish Signal Confirmed.\nTarget Scope: ~150 points Trend.\n*Note: Actual range depends on market volatility.*'
         },
 
         // PRO4X
@@ -390,14 +400,21 @@ app.post('/webhook', async (req, res) => {
             emoji: '⚠️',
             icon: 'pulse-outline', // Amber
             color: '#FFC107',
-            message: 'Pro4x Algo: Watch for potential entry. Market structure aligning.'
+            message: 'Pro4x Algo: Watch for potential Signal. Market structure aligning.'
         },
         'pro4x_Buy': {
-            title: 'Pro4x | Buy Confirmed',
+            title: 'Pro4x | Bullish Confirmed',
             emoji: '✅',
             icon: 'trending-up-outline', // Green
             color: '#4ADE80',
-            message: 'Pro4x Algo: Buy signal confirmed. Institutional volume detected. Execute Long.'
+            message: 'Pro4x Algo: Bullish Signal confirmed. Institutional volume detected. Execute Bullish Setup.'
+        },
+        'pro4x_Sell': {
+            title: 'Pro4x | Bearish Confirmed',
+            emoji: '✅',
+            icon: 'trending-down-outline', // Red
+            color: '#FF5252',
+            message: 'Pro4x Algo: Bearish Signal confirmed. Institutional volume detected. Execute Bearish Setup.'
         },
 
         // HORUS
@@ -406,35 +423,35 @@ app.post('/webhook', async (req, res) => {
             emoji: '👁️',
             icon: 'eye-outline',
             color: '#FFC107',
-            message: 'Horus Eye: Analyzing price action. Prepare for signal.'
+            message: 'Horus Eye: Analyzing price action. Prepare for Signal.'
         },
         'horus_Buy': {
-            title: 'Horus | Buy',
+            title: 'Horus | Bullish',
             emoji: '🦅',
             icon: 'trending-up-outline',
             color: '#4ADE80',
-            message: 'Horus God Mode: Buy signal. Trend Momentum aligning with Volume.'
+            message: 'Horus God Mode: Bullish Signal. Trend Momentum aligning with Volume.'
         },
         'horus_Sell': {
-            title: 'Horus | Sell',
+            title: 'Horus | Bearish',
             emoji: '🦅',
             icon: 'trending-down-outline',
             color: '#FF5252',
-            message: 'Horus God Mode: Sell signal. Trend Momentum aligning with Volume.'
+            message: 'Horus God Mode: Bearish Signal. Trend Momentum aligning with Volume.'
         },
         'horus_Adv_Buy': {
-            title: 'Horus ADV | Buy',
+            title: 'Horus ADV | Bullish',
             emoji: '',
             icon: 'flash',
             color: '#00FF9D',
-            message: 'Horus ADV: Institutional Scalping Buy. Check Power & RSI.'
+            message: 'Horus ADV: Institutional Scalping Bullish. Check Power & RSI.'
         },
         'horus_Adv_Sell': {
-            title: 'Horus ADV | Sell',
+            title: 'Horus ADV | Bearish',
             emoji: '',
             icon: 'flash',
             color: '#FF5252', // or Bright Red
-            message: 'Horus ADV: Institutional Scalping Sell. Check Power & RSI.'
+            message: 'Horus ADV: Institutional Scalping Bearish. Check Power & RSI.'
         },
 
         // SCALPING
@@ -443,14 +460,14 @@ app.post('/webhook', async (req, res) => {
             emoji: '',
             icon: 'arrow-up-circle-outline',
             color: '#00FF9D',
-            message: 'Scalp Buy | Oversold Condition. Target: 10-15 pts. Caution: Watch Magnet Levels 12/23/38/64/91 for rejection.'
+            message: 'Scalp Bullish | Oversold Condition. Target: 10-15 pts. Caution: Watch Magnet Levels 12/23/38/64/91 for rejection.'
         },
         'scalp_OverBought': {
             title: 'Horus OVB',
             emoji: '',
             icon: 'arrow-down-circle-outline',
             color: '#FF5252',
-            message: 'Scalp Sell | Overbought Condition. Target: 10-15 pts. Caution: Watch Magnet Levels 12/23/38/64/91 for rejection.'
+            message: 'Scalp Bearish | Overbought Condition. Target: 10-15 pts. Caution: Watch Magnet Levels 12/23/38/64/91 for rejection.'
         },
         'scalp_TakeProfitPump': {
             title: 'Scalp | TP Pump',
@@ -464,7 +481,7 @@ app.post('/webhook', async (req, res) => {
             emoji: '💰',
             icon: 'arrow-up-circle-outline',
             color: '#FFD700',
-            message: 'Take Profit Pump: Aggressive buying exhausted. Recommend securing profits on Short positions.'
+            message: 'Take Profit Pump: Aggressive buying exhausted. Recommend securing profits on Bearish positions.'
         },
         'scalp_TakeProfitPush': {
             title: 'Scalp | TP Push',
@@ -478,21 +495,21 @@ app.post('/webhook', async (req, res) => {
             emoji: '💰',
             icon: 'arrow-down-circle-outline',
             color: '#FFD700',
-            message: 'Take Profit Push: Aggressive selling exhausted. Recommend securing profits on Long positions.'
+            message: 'Take Profit Push: Aggressive selling exhausted. Recommend securing profits on Bullish positions.'
         },
         'scalp_SyncroResBuy': {
-            title: 'Syncro | Support Buy',
+            title: 'Syncro | Support Bullish',
             emoji: '🛡️',
             icon: 'shield-half-outline',
             color: '#4ADE80',
-            message: 'Syncro: Major Support Hit. High probability bounce. Look for Long.'
+            message: 'Syncro: Major Support Hit. High probability bounce. Look for Bullish Setup.'
         },
         'scalp_SyncroResSell': {
-            title: 'Syncro | Resistance Sell',
+            title: 'Syncro | Resistance Bearish',
             emoji: '🛡️',
             icon: 'shield-half-outline',
             color: '#FF5252',
-            message: 'Syncro: Major Resistance Hit. High probability rejection. Look for Short.'
+            message: 'Syncro: Major Resistance Hit. High probability rejection. Look for Bearish Setup.'
         },
 
         // VOLATILITY CONTEXT - GRANULAR
@@ -542,18 +559,18 @@ app.post('/webhook', async (req, res) => {
             message: 'Shadow Mode: High probability reversal zone detected. Watch for confirmation.'
         },
         'shadow_Buy': {
-            title: 'Shadow | BUY',
+            title: 'Shadow | BULLISH',
             emoji: '🌑',
             icon: 'moon-outline',
             color: '#9CA3AF',
-            message: 'Shadow BUY: Confluence CASH / FUTURES detected. Institutional liquidty sweep.'
+            message: 'Shadow BULLISH: Confluence CASH / FUTURES detected. Institutional liquidty sweep.'
         },
         'shadow_Sell': {
-            title: 'Shadow | SELL',
+            title: 'Shadow | BEARISH',
             emoji: '🌑',
             icon: 'moon-outline',
             color: '#9CA3AF',
-            message: 'Shadow SELL: Confluence CASH / FUTURES detected. Institutional liquidty sweep.'
+            message: 'Shadow BEARISH: Confluence CASH / FUTURES detected. Institutional liquidty sweep.'
         },
 
         // H1 TREND
@@ -756,10 +773,10 @@ app.post('/webhook', async (req, res) => {
                 `• One clean trade is enough`;
 
         } else if (strategy === 'TP PUMP' || strategy === 'scalp_TakeProfitPump' || strategy.includes('PUMP')) {
-            notificationTitle = `${ticker} — TP PUMP (BUY)`;
-            signal = 'BUY'; // Enforce UP direction
+            notificationTitle = `${ticker} — TP PUMP (BULLISH)`;
+            signal = 'BUY'; // Enforce UP direction (External Key)
             notificationBody = `Price surging upwards.\n` +
-                `Profit Opportunity on Longs or Cover Shorts.\n\n` +
+                `Profit Opportunity on Bullish Moves or Cover Bearish.\n\n` +
                 `Action:\n` +
                 `• Protect gains near magnet levels\n` +
                 `• Watch for potential reversal or continuation\n\n` +
@@ -767,10 +784,10 @@ app.post('/webhook', async (req, res) => {
                 `Don't give back open profits.`;
 
         } else if (strategy === 'TP PUSH' || strategy === 'scalp_TakeProfitPush' || strategy.includes('PUSH')) {
-            notificationTitle = `${ticker} — TP PUSH (SELL)`;
-            signal = 'SELL'; // Enforce DOWN direction
+            notificationTitle = `${ticker} — TP PUSH (BEARISH)`;
+            signal = 'SELL'; // Enforce DOWN direction (External Key)
             notificationBody = `Price pushing downwards.\n` +
-                `Profit Opportunity on Shorts or Sell Longs.\n\n` +
+                `Profit Opportunity on Bearish Moves or Sell Bullish.\n\n` +
                 `Action:\n` +
                 `• Protect gains near support levels\n` +
                 `• Watch for reaction at magnets\n\n` +
@@ -781,8 +798,9 @@ app.post('/webhook', async (req, res) => {
         } else if (strategy && (strategy.startsWith('shadow_') || strategy === 'SHADOW' || strategy.toLowerCase().includes('shadow'))) {
             // Append Direction if available
             let direction = '';
-            if (strategy.toLowerCase().includes('buy') || (signal && signal.toString().toUpperCase().includes('BUY'))) direction = 'Buy';
-            else if (strategy.toLowerCase().includes('sell') || (signal && signal.toString().toUpperCase().includes('SELL'))) direction = 'Sell';
+            // Use INTERNAL keys to determine direction, but output BULLISH/BEARISH
+            if (strategy.toLowerCase().includes('buy') || (signal && signal.toString().toUpperCase().includes('BUY'))) direction = 'BULLISH';
+            else if (strategy.toLowerCase().includes('sell') || (signal && signal.toString().toUpperCase().includes('SELL'))) direction = 'BEARISH';
 
             notificationTitle = `${ticker} — Shadow Mode ${direction}`;
             notificationBody = `Institutional liquidity sweep detected.\n` +
@@ -796,7 +814,7 @@ app.post('/webhook', async (req, res) => {
 
             // 5.5 HORUS ADV (INSTITUTIONAL SCALPING) - NEW SPECIAL MESSAGE
         } else if (strategy === 'horus_Adv_Buy' || strategy === 'horus_Adv_Sell' || strategy.includes('horus_Adv')) {
-            notificationTitle = strategy.includes('Buy') ? `Horus ADV | Buy` : `Horus ADV | Sell`;
+            notificationTitle = strategy.includes('Buy') ? `Horus ADV | Bullish` : `Horus ADV | Bearish`;
             notificationBody = `Performance Insight:\n` +
                 `System stability typically improves after 11:00 AM NY.\n\n` +
                 `Execution Strategy:\n` +
@@ -878,7 +896,7 @@ app.post('/webhook', async (req, res) => {
 
             // 6. BUY ENTRY (Generic Fallback)
         } else if (strategy === 'pro4x_Buy' || strategy === 'horus_Buy' || (strategy.includes('Buy') && !strategy.includes('GetReady') && !strategy.includes('horus_Adv'))) {
-            notificationTitle = `${ticker} — Buy Signal`;
+            notificationTitle = `${ticker} — Bullish Signal`;
             notificationBody = `Bullish confirmation detected\n\n` +
                 `Liquidity reaction aligns with upside bias.\n\n` +
                 `How to use this signal\n\n` +
@@ -900,7 +918,7 @@ app.post('/webhook', async (req, res) => {
 
             // 7. SELL ENTRY (Generic Fallback)
         } else if (strategy === 'pro4x_Sell' || strategy === 'horus_Sell' || (strategy.includes('Sell') && !strategy.includes('GetReady') && !strategy.includes('horus_Adv'))) {
-            notificationTitle = `${ticker} — Sell Signal`;
+            notificationTitle = `${ticker} — Bearish Signal`;
             notificationBody = `Bearish confirmation detected\n\n` +
                 `Liquidity reaction aligns with downside bias.\n\n` +
                 `How to use this signal\n\n` +
@@ -931,7 +949,10 @@ app.post('/webhook', async (req, res) => {
 
     } else if (signal) {
         // Fallback for generic signals - CLEAN FORMAT
-        const prettySignal = signal.toString().charAt(0).toUpperCase() + signal.toString().slice(1).toLowerCase(); // Buy / Sell
+        let prettySignal = signal.toString().toUpperCase();
+        if (prettySignal === 'BUY') prettySignal = 'BULLISH';
+        if (prettySignal === 'SELL') prettySignal = 'BEARISH';
+
         notificationTitle = `${ticker} — ${prettySignal}`;
         notificationBody = `Market Activity Detected\n\n` +
             `Price: ${price}\nTimeframe: ${timeframe || '1m'}\n\n` +

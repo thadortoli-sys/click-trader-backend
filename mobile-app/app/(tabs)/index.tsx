@@ -64,7 +64,7 @@ const SystemHUD = () => {
 
 // --- Signal Styles Configuration ---
 const SIGNAL_STYLES: Record<string, { icon: keyof typeof Ionicons.glyphMap, color: string, type: 'UP' | 'DOWN' | 'READY' | 'INFO' }> = {
-  // 1. BUY SIGNALS
+  // 1. BULLISH SIGNALS
   'pro4xx_Buy': { icon: 'trending-up-outline', color: '#4ADE80', type: 'UP' }, // PRO4XX Green
   'pro4xx_Sell': { icon: 'trending-down-outline', color: '#FF5252', type: 'DOWN' }, // PRO4XX Red
   'pro4xx_GetReady': { icon: 'pulse-outline', color: '#FFC107', type: 'READY' }, // Legacy Fallback
@@ -215,16 +215,25 @@ const SignalFeedItem = React.memo(({ pair, strategy, time, profit, message, sign
                     .replace('horus', 'HORUS')
                     .toUpperCase();
 
-                  if (!text.includes('BUY') && !text.includes('SELL') && !text.includes('LONG') && !text.includes('SHORT')) {
+                  if (!text.includes('BULLISH') && !text.includes('BEARISH')) {
                     const type = (signalType || '').toUpperCase();
-                    if (type.includes('BUY') || type.includes('LONG')) text += ' BUY';
-                    else if (type.includes('SELL') || type.includes('SHORT')) text += ' SELL';
+                    if (type.includes('BUY') || type.includes('LONG')) text += ' BULLISH';
+                    else if (type.includes('SELL') || type.includes('SHORT')) text += ' BEARISH';
                   }
-                  return text.replace('OVERSOLD', 'OVS').replace('OVERBOUGHT', 'OVB');
+
+                  // Final sanitizer for any remaining terms
+                  text = text
+                    .replace('BUY', 'BULLISH')
+                    .replace('SELL', 'BEARISH')
+                    .replace('LONG', 'BULLISH')
+                    .replace('SHORT', 'BEARISH')
+                    .replace('OVERSOLD', 'OVS')
+                    .replace('OVERBOUGHT', 'OVB'); // Keep abbreviated
+
+                  return text;
                 })()}
               </Text>
 
-              {/* Truly Opaque Masking Layer for Locked Alerts */}
               {locked && (
                 <View style={{
                   ...StyleSheet.absoluteFillObject,
