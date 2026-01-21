@@ -72,7 +72,7 @@ export default function TermsScreen() {
             >
                 <View>
                     <Text style={styles.header}>Terms of Service</Text>
-                    <Text style={styles.lastUpdated}>Last Updated: December 2024</Text>
+                    <Text style={styles.lastUpdated}>Last Updated: January 2026</Text>
                 </View>
 
                 <Section title="1. Nature of Service" index={0}>
@@ -86,7 +86,7 @@ export default function TermsScreen() {
                 </Section>
 
                 <Section title="2. Educational Purpose" index={1}>
-                    Our signals are educational notifications showing when pre-defined technical setups occur. These are based on mathematical calculations and algorithmic analysis—NOT predictions or recommendations.{'\n\n'}
+                    Our setups are educational notifications showing when pre-defined technical setups occur. These are based on mathematical calculations and algorithmic analysis—NOT predictions or recommendations.{'\n\n'}
                     Users must conduct their own research and risk assessment before making any trading decision.
                 </Section>
 
@@ -95,7 +95,7 @@ export default function TermsScreen() {
                     • You can lose more than your initial investment{'\n'}
                     • Leveraged products carry additional risk{'\n'}
                     • Market conditions can change rapidly{'\n'}
-                    • No signal or strategy is foolproof{'\n\n'}
+                    • No setup or strategy is foolproof{'\n\n'}
                     Only trade with capital you can afford to lose.
                 </Section>
 
@@ -111,7 +111,7 @@ export default function TermsScreen() {
                     You agree NOT to:{'\n'}
                     • Reverse engineer or copy our algorithms{'\n'}
                     • Share your account credentials{'\n'}
-                    • Resell or redistribute our signals{'\n'}
+                    • Resell or redistribute our technical setups{'\n'}
                     • Use the service for illegal activities{'\n'}
                     • Attempt to bypass payment systems
                 </Section>
@@ -120,7 +120,7 @@ export default function TermsScreen() {
                     TO THE MAXIMUM EXTENT PERMITTED BY LAW:{'\n\n'}
                     Click&Trader and its operators are NOT LIABLE for:{'\n'}
                     • Trading losses or missed opportunities{'\n'}
-                    • Signal delays or technical errors{'\n'}
+                    • Notification delays or technical errors{'\n'}
                     • Service interruptions{'\n'}
                     • Third-party platform issues{'\n\n'}
                     Our total liability is limited to the amount you paid in the last 12 months.

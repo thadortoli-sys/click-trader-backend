@@ -155,22 +155,22 @@ let testIndex = 0;
 const TEST_SCENARIOS = [
     {
         title: "NQ - PRO4X BULLISH",
-        body: "Signal: 20550 | TP: 20600 | SL: 20500",
+        body: "Setup Detected. Technical Alignment at 20550. Deviation extended.",
         data: { ticker: "NQ", signal: "BULLISH", price: "20550", strategy: "Pro4x Bullish" }
     },
     {
         title: "MNQ - PRO4X BEARISH",
-        body: "Signal: 20400 | TP: 20350 | SL: 20450",
+        body: "Setup Detected. Technical Alignment at 20400. Deviation extended.",
         data: { ticker: "MNQ", signal: "BEARISH", price: "20400", strategy: "Pro4x Bearish" }
     },
     {
         title: "NQ - GET READY",
-        body: "Scanning Key Levels... Wait for confirmation.",
+        body: "Scanning Key Levels... Wait for technical confirmation.",
         data: { ticker: "NQ", signal: "NEUTRAL", price: "20480", strategy: "Get Ready" }
     },
     {
         title: "MNQ - SYNCRO SUPPORT",
-        body: "H1/M5/M1 Alignment Detected.",
+        body: "H1/M5/M1 Alignment Detected. Institutional Flow.",
         data: { ticker: "MNQ", signal: "INFO", price: "20420", strategy: "Syncro Support" }
     }
 ];

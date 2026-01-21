@@ -56,7 +56,7 @@ const SECTION_0_DISCIPLINE: SignalGuideItem[] = [
         icon: 'shield-checkmark-outline',
         color: '#FF4444',
         description: 'Outside of Scalping Mode (where fixed TP/SL is suggested), this system does not send exit alerts.\n\nManagement is 100% at your discretion.',
-        action: 'Mandatory: Always set a Stop Loss.\nRecommended: Move to Break Even (BE) once secured.\nAdvanced: Use a Trailing Stop to ride the trend.',
+        action: 'Mandatory: Always define invalidation points.\nRecommended: Secure positions when market structure shifts.\nAdvanced: Trailing stops allow riding the institutional flow.',
     },
 ];
 
@@ -65,8 +65,8 @@ const SECTION_1_PRO4X: SignalGuideItem[] = [
         title: 'Get Ready (GR)',
         icon: 'pulse-outline',
         color: '#FFD700',
-        description: 'The key price levels have been reached.\n\nDepending on the context, this can already offer a scalping opportunity, but it is mainly a pre-signal.\n\nIt warns that a potential trade is setting up and that an Entry alert may follow — or not.\n\nN.B. You can expect an average of 8 Get Ready signals per US session.',
-        action: 'Best practice: wait for the system to confirm the level.',
+        description: 'The key price levels have been reached.\n\nDepending on the context, this can already offer a scalping setup, but it is mainly a pre-signal.\n\nIt warns that a potential trade is setting up and that an Entry alert may follow — or not.\n\nN.B. You can expect an average of 8 Get Ready signals per US session.',
+        action: 'Observation: Wait for the system to confirm the reaction at the level.',
         education: {
             theoryImage: require('../assets/images/education/get_ready.png'),
             realCapture: require('../assets/images/wtc_7_premium.png'),
@@ -79,7 +79,7 @@ const SECTION_1_PRO4X: SignalGuideItem[] = [
         icon: 'trending-up-outline',
         color: '#4ADE80',
         description: 'This is the confirmed bullish signal.\n\nAll required conditions are aligned at a key level, indicating a high-probability bullish opportunity.\n\nDepending on ATR volatility, the market may still push higher for a stop hunt before reversing.\n\nDuring these phases, multiple Bullish alerts in the same area are normal. (most rarely)\n\nAlways read the signal price displayed in the alert carefully.\n\nWait for the market to pull back and retest this exact level for the signal to be valid.\n\nDo not enter immediately when the alert triggers.\n\nN.B. You can expect between 5 and 7 confirmed signals per US session.\n\nImportant: If no signals appear, it means market conditions did not meet the strict parameters. This is normal behavior. Do not force the market.',
-        action: 'Before execution, ensure the price aligns with a 12/23/38/64/91 magnet level and a minimum H4 support, and that the higher-timeframe bias is not too strongly bearish.\n\nExecution discipline and patience are part of the system.\nAlerts indicate opportunity, not obligation.',
+        action: 'Technical Note: Ensure the price aligns with a 12/23/38/64/91 magnet level and a minimum H4 support. High timeframe context is key.\n\nExecution discipline and patience are part of the system.\nAlerts indicate high probability zones, not guarantees.',
         education: {
             theoryImage: require('../assets/images/education/pro4x_buy.png'),
             realCapture: require('../assets/images/wtc_2_premium.png'),
@@ -99,7 +99,7 @@ const SECTION_1_PRO4X: SignalGuideItem[] = [
         icon: 'trending-down-outline',
         color: '#EF4444',
         description: 'This is the confirmed bearish signal.\n\nAll required conditions are aligned at a key level, indicating a high-probability bearish opportunity.\n\nDepending on ATR volatility, the market may still push lower for a stop hunt before reversing.\n\nDuring these phases, multiple Bearish alerts in the same area are normal. (most rarely)\n\nAlways read the signal price displayed in the alert carefully.\n\nWait for the market to pull back and retest this exact level for the signal to be valid.\n\nDo not enter immediately when the alert triggers.\n\nN.B. You can expect between 5 and 7 confirmed signals per US session.\n\nImportant: If no signals appear, it means market conditions did not meet the strict parameters. This is normal behavior. Do not force the market.',
-        action: 'Before execution, ensure the price aligns with a 12/23/38/64/91 magnet level and a minimum H4 resistance, and that the higher-timeframe bias is not too strongly bullish.\n\nExecution discipline and patience are part of the system.\nAlerts indicate opportunity, not obligation.',
+        action: 'Technical Note: Ensure the price aligns with a 12/23/38/64/91 magnet level and a minimum H4 resistance. High timeframe context is key.\n\nExecution discipline and patience are part of the system.\nAlerts indicate high probability zones, not guarantees.',
         education: {
             theoryImage: require('../assets/images/education/pro4x_sell.png'),
             realCapture: require('../assets/images/wtc_3_premium.png'),
@@ -118,21 +118,21 @@ const SECTION_2_HORUS: SignalGuideItem[] = [
         icon: 'pulse',
         color: '#FFD700',
         description: 'This Get Ready signal is specific to the Horus system.\nIt indicates that the structure is forming at a key area. It\'s a different calculation of Pro4x.\nThis is a pre-signal, not a confirmed execution.\n\nA Bullish or Bearish Signal may follow — or not.\n\nN.B. You can expect an average of 8 signals per US session.',
-        action: 'Best practice: wait for the Signal alert.',
+        action: 'Observation: Wait for the Signal alert to confirm the setup.',
     },
     {
         title: 'Horus — Bullish Signal',
         icon: 'trending-up-outline',
         color: '#4ADE80',
         description: 'This is the confirmed bullish signal generated by Horus.\n\nAll required conditions are aligned.\n\nDue to volatility and ATR dynamics, the market may extend further for a stop hunt, triggering multiple Bullish alerts in the same area.\n\nAlways read the signal price shown in the alert carefully.\n\nWait for the price to retest this exact level.\n\nDo not enter immediately when the alert triggers.\n\nN.B. You can expect an average of 8 confirmed signals per US session.',
-        action: 'Works best on Key levels such as 12/23/38/64/91 with volume confirmation on your graph (Market Volume Delta).\n\nExecution discipline and patience are part of the system.\nAlerts indicate opportunity, not obligation.',
+        action: 'Technical Note: Works best on Key levels such as 12/23/38/64/91 with volume confirmation (Market Volume Delta).\n\nExecution discipline and patience are part of the system.\nAlerts indicate high probability zones, not guarantees.',
     },
     {
         title: 'Horus — Bearish Signal',
         icon: 'trending-down-outline',
         color: '#EF4444',
         description: 'This is the confirmed bearish signal generated by Horus.\n\nAll required conditions are aligned.\n\nDue to volatility and ATR dynamics, the market may extend further for a stop hunt, triggering multiple Bearish alerts in the same area.\n\nAlways read the signal price shown in the alert carefully.\n\nWait for the price to retest this exact level.\n\nDo not enter immediately when the alert triggers.\n\nN.B. You can expect an average of 8 confirmed signals per US session.',
-        action: 'Works best on Key levels such as 12/23/38/64/91 with volume confirmation on your graph (Market Volume Delta).\n\nExecution discipline and patience are part of the system.\nAlerts indicate opportunity, not obligation.',
+        action: 'Technical Note: Works best on Key levels such as 12/23/38/64/91 with volume confirmation (Market Volume Delta).\n\nExecution discipline and patience are part of the system.\nAlerts indicate high probability zones, not guarantees.',
     },
 ];
 
@@ -142,7 +142,7 @@ const SECTION_3_SCALPING: SignalGuideItem[] = [
         icon: 'moon-outline',
         color: '#A855F7',
         description: 'Shadow Mode is designed for pure scalping on institutional liquidity sweeps.\n\nIt focuses on the moments when large players hunt stops, sweep liquidity, and reverse price with precision.\n\nThis is not trend chasing.\nThis is trading the shadow of institutions.\n\nMost powerful alerts in the app.',
-        action: 'Best used during institutional stop-hunts.\nThe system is optimized for quick, precision moves.\nExpect short duration exposure.',
+        action: 'Technical Note: Often effective during institutional liquidity sweeps.\nThe system identifies precision setups.\nExpect short duration reactions.',
         education: {
             theoryImage: require('../assets/images/education/shadow_mode_nq.png'),
             realCapture: require('../assets/images/wtc_6_premium.png'),
@@ -168,7 +168,7 @@ const SECTION_3_SCALPING: SignalGuideItem[] = [
         icon: 'flash',
         color: '#4ADE80',
         description: 'HORUS OVERSOLD. This is the wildest alert for expert scalpers.\n\nIt indicates an extreme statistical anomaly where price MUST react.\n\nIf in confluence with SHADOW, it becomes extremely powerful.',
-        action: 'High probability of immediate reaction.\n\nEducational: Oversold markets can stay oversold. Waiting for confirmation is recommended.',
+        action: 'Technical Note: High probability of immediate reaction.\n\nEducational: Oversold markets can stay oversold. Waiting for confirmation is often prudent.',
         education: {
             theoryImage: require('../assets/images/education/horus_ovs.png'),
             realCapture: require('../assets/images/wtc_4_premium.png'),
@@ -188,7 +188,7 @@ const SECTION_3_SCALPING: SignalGuideItem[] = [
         icon: 'flash',
         color: '#EF4444',
         description: 'HORUS OVERBOUGHT. This is the wildest alert for expert scalpers.\n\nIt indicates an extreme statistical anomaly where price MUST react.\n\nIf in confluence with SHADOW, it becomes extremely powerful.',
-        action: 'High probability of immediate reaction.\n\nEducational: Momentum can persist. Fading the move requires clear momentum breakage.',
+        action: 'Technical Note: High probability of immediate reaction.\n\nEducational: Momentum can persist. Fading the move requires clear momentum breakage.',
         education: {
             theoryImage: require('../assets/images/education/horus_ovb.png'),
             realCapture: require('../assets/images/wtc_5_premium.png'),
@@ -201,7 +201,7 @@ const SECTION_3_SCALPING: SignalGuideItem[] = [
         icon: 'arrow-up-circle-outline',
         color: '#4ADE80',
         description: 'Sudden high-velocity vertical move up (Market Impulse).\n\nIf you are Bearish, the price is squeezing back towards equilibrium.',
-        action: 'System Indication: Bearish positions are statistically at risk here.\n\nOptional: If H1 is Bullish (Price > EMA 200) & ATR is High, this often signals a Momentum Scalp opportunity.',
+        action: 'Technical Note: Bearish positions are statistically at risk here.\n\nContext: If H1 is Bullish (Price > EMA 200) & ATR is High, this often signals a Momentum Scalp setup.',
         education: {
             theoryImage: require('../assets/images/education/tp_pump.png'),
             realCapture: require('../assets/images/education/tp_pump.png'), // Duplicate to avoid "Coming Soon" overlay
@@ -227,7 +227,7 @@ const SECTION_3_SCALPING: SignalGuideItem[] = [
         icon: 'arrow-down-circle-outline',
         color: '#EF4444',
         description: 'Sudden high-velocity vertical move down (Market Impulse).\n\nIf you are Bullish, the price is collapsing back towards equilibrium.',
-        action: 'System Indication: Bullish positions are statistically at risk here.\n\nOptional: If H1 is Bearish (Price < EMA 200) & ATR is High, this often signals a Momentum Scalp opportunity.',
+        action: 'Technical Note: Bullish positions are statistically at risk here.\n\nContext: If H1 is Bearish (Price < EMA 200) & ATR is High, this often signals a Momentum Scalp setup.',
         education: {
             theoryImage: require('../assets/images/education/tp_push.png'),
             realCapture: require('../assets/images/education/tp_push.png'), // Duplicate to avoid "Coming Soon" overlay
@@ -253,14 +253,14 @@ const SECTION_3_SCALPING: SignalGuideItem[] = [
         icon: 'flash-outline',
         color: '#4ADE80',
         description: 'Expert Scalping Signal. Advanced high-precision signal.\n\n3-Market Synchronization (SPX/ES/NQ) on a Support level. Indicates strong structural coherence for an immediate reaction.',
-        action: 'High-Risk, High-Reward.\n\nEducational: Confluence on a level increases the probability of a technical reaction.',
+        action: 'Technical Note: High-Volatility Setup.\n\nEducational: Confluence on a level increases the probability of a technical reaction.',
     },
     {
         title: 'Horus Adv. Bearish',
         icon: 'flash-outline',
         color: '#EF4444',
         description: 'Expert Scalping Signal. Advanced high-precision signal.\n\n3-Market Synchronization (SPX/ES/NQ) on a Resistance level. Indicates strong structural coherence for an immediate reaction.',
-        action: 'High-Risk, High-Reward.\n\nEducational: Confluence on a level increases the probability of a technical reaction.',
+        action: 'Technical Note: High-Volatility Setup.\n\nEducational: Confluence on a level increases the probability of a technical reaction.',
     },
 ];
 
@@ -270,14 +270,14 @@ const SECTION_4_H1: SignalGuideItem[] = [
         icon: 'caret-up-outline',
         color: '#4ADE80',
         description: 'This alert means the H1 bullish bias is synchronized across SPX, ES, and NQ.\n\nIt can be considered as a non-scalping opportunity for longer duration trades, PROVIDED that the market structure is clean and the next H4 Resistance is far enough to allow room.\n\nEducational: The Higher Timeframe always wins over the Lower Timeframe. A trend reversal is not confirmed until the price crosses the 200 EMA.',
-        action: 'Best practice: wait for the next GR Bullish and Bullish Signal (or a retest of the calculated execution price) before execution.\n\nWait 15mn after market open for validity.',
+        action: 'Observation: Wait for the next GR Bullish and Bullish Signal (or a retest of the calculated execution price) before decision.\n\nWait 15mn after market open for validity.',
     },
     {
         title: 'Syncro Bearish (H1) — SPX / ES / NQ',
         icon: 'caret-down-outline',
         color: '#EF4444',
         description: 'This alert means the H1 bearish bias is synchronized across SPX, ES, and NQ.\n\nIt can be considered as a non-scalping opportunity for longer duration trades, PROVIDED that the market structure is clean and the next H4 Support is far enough to allow room.\n\nEducational: The Higher Timeframe always wins over the Lower Timeframe. A trend reversal is not confirmed until the price crosses the 200 EMA.',
-        action: 'Best practice: wait for the next GR Bearish and Bearish Signal (or a retest of the calculated execution price) before execution.\n\nWait 15mn after market open for validity.',
+        action: 'Observation: Wait for the next GR Bearish and Bearish Signal (or a retest of the calculated execution price) before decision.\n\nWait 15mn after market open for validity.',
     },
 ];
 
@@ -288,7 +288,7 @@ const SECTION_ETHOS: SignalGuideItem[] = [
         icon: 'heart-circle-outline',
         color: '#A855F7',
         description: 'This system is not just code. Behind Click&Trader, are real traders.\n\nA message about the philosophy, the code, and the mindset.',
-        action: 'Read this when you need clarity or to reconnect with the purpose.',
+        action: 'Read this when you need clarity or to reconnect with the methodology.',
         education: {
             theoryImage: require('../assets/images/education/atom_zeus_shadow_v2.png'),
             realCapture: require('../assets/images/education/atom_zeus_shadow_v2.png'),
@@ -345,7 +345,7 @@ const SECTION_5_MASTERCLASS: SignalGuideItem[] = [
         icon: 'warning-outline',
         color: '#EF4444',
         description: 'Just because a Signal fires on a Key Level doesn\'t mean the train stops immediately.\n\nIf the price arrives with a FULL BODY H1 Candle (high velocity) without any wicks, the Momentum > The Level.\n\nAPPLIES TO: Pro4x Signal & HORUS Signal ONLY.',
-        action: 'AVOID FADING A FULL H1 CANDLE.\nWait for the rejection. The system logic relies on M1 stabilization.\n\nNote: Do not apply this filter to Scalping or Shadow signals.',
+        action: 'Technical Note: AVOID FADING A FULL H1 CANDLE.\nWait for the rejection. The system logic relies on M1 stabilization.\n\nNote: Do not apply this filter to Scalping or Shadow signals.',
         education: {
             theoryImage: require('../assets/images/education/momentum_trap.png'),
             realCapture: require('../assets/images/wtc_8_premium.png'),
@@ -377,7 +377,7 @@ const SECTION_5_MASTERCLASS: SignalGuideItem[] = [
         icon: 'git-network-outline',
         color: '#A855F7',
         description: 'Institutions often push price BEYOND the signal logic to hunt stops before the real reversal.\n\nEXAMPLE: A "Get Ready" fires at .38. The trend is vertical. DO NOT enter. Watch the reaction at .64. If still vertical, wait for .91.\n\n"Travel Light" (small size) during these extensions. We are hunting a major Trend Reversal; the higher the extension, the stronger the snap-back.',
-        action: 'Always aim for the HIGHER magnet level.',
+        action: 'Technical Note: Always aim for the HIGHER magnet level.',
         education: {
             theoryImage: require('../assets/images/education/shadow_mode_nq.png'),
             realCapture: require('../assets/images/education/shadow_mode_nq.png'), // Duplicate to avoid "Coming Soon" overlay
@@ -390,35 +390,35 @@ const SECTION_5_MASTERCLASS: SignalGuideItem[] = [
         icon: 'flash-outline',
         color: '#FFD700',
         description: 'When a GR (Get Ready) appears:\n\nIf it fires directly on a key magnet number (12/23/38/64/91) AND the curve is clean or shows a sharp spike/exhaustion.\n\n👉 You can consider the GR itself as a valid opportunity.',
-        action: 'If a Bullish or Bearish Signal confirms afterward, the setup becomes even stronger.',
+        action: 'Technical Note: If a Bullish or Bearish Signal confirms afterward, the setup becomes even stronger.',
     },
     {
         title: 'Capital Preservation — Trading Rules',
         icon: 'shield-checkmark-outline',
         color: '#4ADE80',
         description: 'GR / Bullish / Bearish Alerts:\n✔️ System designed for light positioning (e.g., 1 unit).\n✔️ Allows flexibility if a final stop-hunt occurs.\n✔️ Re-target entry if needed.\n✔️ Always anchor decisions around key magnet numbers (12/23/38/64/91).',
-        action: 'Strict Money Management.',
+        action: 'Technical Note: Strict Risk Management.',
     },
     {
         title: 'Scalping Management',
         icon: 'stopwatch-outline',
         color: '#FFA500',
         description: 'Oversold / Overbought & Shadow Alerts:\n✔️ Scalpers typically use slightly heavier sizing here (standard practice).\n✔️ These are fast liquidity reactions, not long trades.\n✔️ Best used during institutional stop-hunts.',
-        action: 'Exposure duration is usually short (approx. 20–25 points).',
+        action: 'Technical Note: Reaction duration is usually short (approx. 20–25 points).',
     },
     {
         title: 'H1 Trend Management',
         icon: 'trending-up-outline',
         color: '#4ADE80',
         description: 'H1 Sync Bullish / Bearish Alerts:\n✔️ Designed for standard positioning.\n✔️ Aimed at higher-timeframe reversals.\n✔️ Hold as long as the reversal structure remains valid.\n✔️ Historical success rate: ~75%.',
-        action: 'Wait 15 minutes after market open before acting.',
+        action: 'Technical Note: Wait 15 minutes after market open before valid analysis.',
     },
     {
         title: 'Final Principle',
         icon: 'diamond-outline',
         color: '#A855F7',
         description: 'An alert is not an obligation.\nIt is a signal to observe liquidity, magnets, and price behavior.\n\nShadow Mode rewards patience, precision, and discipline—exactly how institutions operate.',
-        action: 'Be the Sniper, not the Target.',
+        action: 'Be the Hunter, not the Hunted.',
     }
 ];
 

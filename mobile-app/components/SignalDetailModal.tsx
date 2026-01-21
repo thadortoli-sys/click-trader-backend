@@ -113,12 +113,10 @@ export const SignalDetailModal = ({ visible, onClose, onArchive, signal }: Signa
     if (strategyUpper.includes('PUMP') || typeLower.includes('sell position')) {
         type = 'PARTIAL TP / BULLISH';
     } else if (strategyUpper.includes('PUSH') || typeLower.includes('buy position')) {
-        type = 'PARTIAL TP / BEARISH';
+        type = 'PARTIAL REACTION / BEARISH';
     } else if (type.length > 15) {
-        if (typeLower.includes('short')) type = 'EXIT SHORT'; // Consider removing 'SHORT' too if strictly forbidden, but usually 'Short' is trading terminology. User asked for Buy/Sell/Long/Short removal.
-        // Let's replace Short/Long with Bearish/Bullish positions? Or just EXIT.
-        if (typeLower.includes('short')) type = 'EXIT BEARISH';
-        else if (typeLower.includes('long')) type = 'EXIT BULLISH';
+        if (typeLower.includes('short')) type = 'REACTION BEARISH';
+        else if (typeLower.includes('long')) type = 'REACTION BULLISH';
         else type = 'ALERT';
     }
 
@@ -152,8 +150,9 @@ export const SignalDetailModal = ({ visible, onClose, onArchive, signal }: Signa
     }
 
     const price = signal.data?.price !== undefined ? String(signal.data.price) : '---';
-    const tp = signal.data?.tp || 'OPEN';
-    const sl = signal.data?.sl || 'OPEN';
+    const tp = signal.data?.tp;
+    const sl = signal.data?.sl;
+    const hasRefLevels = tp && sl && tp !== 'OPEN' && sl !== 'OPEN';
     const isDemoPnL = signal.isDemoPnL;
 
     // Icon selection logic
@@ -179,7 +178,8 @@ export const SignalDetailModal = ({ visible, onClose, onArchive, signal }: Signa
             "Legal",
             "Context",
             "Market Context Checks",
-            "Risk Discipline"
+            "Risk Discipline",
+            "Technical Note"
         ];
 
         return (
@@ -356,10 +356,12 @@ export const SignalDetailModal = ({ visible, onClose, onArchive, signal }: Signa
                                         <Text style={styles.label}>TIME / TF</Text>
                                         <Text style={styles.value}>{signal.time || 'NOW'} • {signal.data?.timeframe || 'M1'}</Text>
                                     </View>
-                                    <View style={styles.row}>
-                                        <Text style={styles.label}>TP / SL</Text>
-                                        <Text style={styles.value}>{tp} / {sl}</Text>
-                                    </View>
+                                    {hasRefLevels && (
+                                        <View style={styles.row}>
+                                            <Text style={styles.label}>REF LEVELS</Text>
+                                            <Text style={styles.value}>{tp} / {sl}</Text>
+                                        </View>
+                                    )}
                                 </View>
 
                                 {/* 3. SYSTEM NOTE (OVS / OVB HIGHLIGHT) */}

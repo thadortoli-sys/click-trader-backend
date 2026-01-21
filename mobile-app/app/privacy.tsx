@@ -72,7 +72,7 @@ export default function PrivacyScreen() {
             >
                 <View>
                     <Text style={styles.header}>Privacy Policy</Text>
-                    <Text style={styles.lastUpdated}>Last Updated: December 2024</Text>
+                    <Text style={styles.lastUpdated}>Last Updated: January 2026</Text>
                 </View>
 
                 <Section title="1. Information We Collect" index={0}>
@@ -85,7 +85,7 @@ export default function PrivacyScreen() {
                     • Device token (for push notifications){'\n'}
                     • Device type and OS version{'\n'}
                     • App version{'\n'}
-                    • Signal preferences (which alerts you enable){'\n\n'}
+                    • Setup preferences (which alerts you enable){'\n\n'}
 
                     <Text style={styles.bold}>Usage Data:{'\n'}</Text>
                     • App interaction analytics{'\n'}
@@ -99,7 +99,7 @@ export default function PrivacyScreen() {
                 </Section>
 
                 <Section title="2. How We Use Your Data" index={1}>
-                    • Deliver signal notifications in real-time{'\n'}
+                    • Deliver setup notifications in real-time{'\n'}
                     • Provide customer support{'\n'}
                     • Improve app performance and features{'\n'}
                     • Prevent fraud and abuse{'\n'}
@@ -126,7 +126,7 @@ export default function PrivacyScreen() {
                 <Section title="4. Third-Party Services" index={3}>
                     We use the following services:{'\n\n'}
 
-                    • <Text style={styles.bold}>Expo Push Notifications</Text>: Delivery of signals{'\n'}
+                    • <Text style={styles.bold}>Expo Push Notifications</Text>: Delivery of setups{'\n'}
                     • <Text style={styles.bold}>Apple/Google Payment</Text>: Subscription billing{'\n'}
                     • <Text style={styles.bold}>Analytics</Text>: Crash reporting and usage stats{'\n\n'}
 

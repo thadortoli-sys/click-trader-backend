@@ -29,11 +29,12 @@ interface SignalItem {
 // 1. PRO4X SYSTEM (CLASSIC)
 // 1. BEGINNER (PRO4X.2)
 const BEGINNER_ITEMS: SignalItem[] = [
+
     {
         key: 'pro4xx_Buy',
         guideTarget: 'PRO4X',
         label: 'Pro4x.2 Bullish',
-        description: 'Trend Following. Targets moves from 20 up to 150 points. "Blindclick" style approach.',
+        description: 'Trend Following. High probability alignment. Monitors institutional market flow.',
         icon: 'trending-up-outline',
         color: '#4ADE80'
     },
@@ -41,46 +42,40 @@ const BEGINNER_ITEMS: SignalItem[] = [
         key: 'pro4xx_Sell',
         guideTarget: 'PRO4X',
         label: 'Pro4x.2 Bearish',
-        description: 'Trend Following. Targets moves from 20 up to 150 points. "Blindclick" style approach.',
+        description: 'Trend Following. High probability alignment. Monitors institutional market flow.',
         icon: 'trending-down-outline',
         color: '#FF5252'
     },
-    {
-        key: 'pro4x_Buy', // Generic Pro4x
-        guideTarget: 'PRO4X',
-        label: 'Pro4x Bullish',
-        description: 'Original Algorithm. Trend Following.',
-        icon: 'trending-up-outline',
-        color: '#4ADE80'
-    },
-    {
-        key: 'pro4x_Sell', // Generic Pro4x
-        guideTarget: 'PRO4X',
-        label: 'Pro4x Bearish',
-        description: 'Original Algorithm. Trend Following.',
-        icon: 'trending-down-outline',
-        color: '#FF5252'
-    }
 ];
 
 // 2. INTERMEDIATE (PRO4X & HORUS)
 const INTERMEDIATE_ITEMS: SignalItem[] = [
     {
-        key: 'horus_Buy',
-        guideTarget: 'HORUS',
-        label: 'Horus Bullish',
-        description: 'Reversal Sniper. Targets bottoms/tops with high precision.',
-        icon: 'eye-outline', // Changed to outline
+        key: 'pro4x_GetReady',
+        guideTarget: 'PRO4X',
+        label: 'PRO4X – Setup Forming',
+        description: 'Key price levels have been reached.\nDepending on the broader context, this setup highlights a potential short-term reaction zone.\nThis setup serves as a pre-analytical notification, indicating that market conditions are aligning for a potential reaction zone.',
+        icon: 'pulse-outline', // Amber
+        color: '#FFC107'
+    },
+    {
+        key: 'pro4x_Buy',
+        guideTarget: 'PRO4X',
+        label: 'PRO4X – Bullish Setup',
+        description: 'This setup indicates that technical bullish conditions have been met based on the PRO4X model.\nAnalytical parameters are aligned around a key price level, highlighting a potential directional market bias.',
+        icon: 'trending-up-outline',
         color: '#4ADE80'
     },
     {
-        key: 'horus_Sell',
-        guideTarget: 'HORUS',
-        label: 'Horus Bearish',
-        description: 'Reversal Sniper. Targets bottoms/tops with high precision.',
-        icon: 'eye-outline', // Changed to outline
+        key: 'pro4x_Sell',
+        guideTarget: 'PRO4X',
+        label: 'PRO4X – Bearish Setup',
+        description: 'This setup indicates that technical bearish conditions have been met based on the PRO4X model.\nAnalytical parameters are aligned around a key price level, highlighting a potential directional market bias.',
+        icon: 'trending-down-outline',
         color: '#FF5252'
-    }
+    },
+
+
 ];
 
 // 3. ADVANCED (SCALPING & SHADOW)
@@ -89,7 +84,7 @@ const ADVANCED_ITEMS: SignalItem[] = [
         key: 'shadow_Buy',
         guideTarget: 'SHADOW_MODE',
         label: 'Shadow BULLISH',
-        description: 'Liquidity Sweep Detection. High risk, high reward.',
+        description: 'Liquidity Sweep Detection. High volatility setup.',
         icon: 'moon-outline',
         color: '#9CA3AF'
     },
@@ -97,41 +92,25 @@ const ADVANCED_ITEMS: SignalItem[] = [
         key: 'shadow_Sell',
         guideTarget: 'SHADOW_MODE',
         label: 'Shadow BEARISH',
-        description: 'Liquidity Sweep Detection. High risk, high reward.',
+        description: 'Liquidity Sweep Detection. High volatility setup.',
         icon: 'moon-outline',
         color: '#9CA3AF'
     },
     {
-        key: 'scalp_OverSold',
-        guideTarget: 'SCALPING',
-        label: 'Scalp | Oversold',
-        description: 'Quick reaction scalp (Bullish). 10-15 points target.',
-        icon: 'flash-outline',
-        color: '#00FF9D'
+        key: 'horus_Buy',
+        guideTarget: 'HORUS',
+        label: 'Horus Bullish',
+        description: 'Reversal Analysis tool. Monitors potential bottoms/tops through high-density technical parameters.',
+        icon: 'eye-outline', // Changed to outline
+        color: '#4ADE80'
     },
     {
-        key: 'scalp_OverBought',
-        guideTarget: 'SCALPING',
-        label: 'Scalp | Overbought',
-        description: 'Quick reaction scalp (Bearish). 10-15 points target.',
-        icon: 'flash-outline',
+        key: 'horus_Sell',
+        guideTarget: 'HORUS',
+        label: 'Horus Bearish',
+        description: 'Reversal Analysis tool. Monitors potential bottoms/tops through high-density technical parameters.',
+        icon: 'eye-outline', // Changed to outline
         color: '#FF5252'
-    },
-    {
-        key: 'scalp_TakeProfitPump',
-        guideTarget: 'SCALPING',
-        label: 'TP Pump (Bullish)',
-        description: 'Take Profit alert for Bullish moves or Short Covering.',
-        icon: 'arrow-up-circle-outline',
-        color: '#FFD700'
-    },
-    {
-        key: 'scalp_TakeProfitPush',
-        guideTarget: 'SCALPING',
-        label: 'TP Push (Bearish)',
-        description: 'Take Profit alert for Bearish moves or Long Exits.',
-        icon: 'arrow-down-circle-outline',
-        color: '#FFD700'
     },
     {
         key: 'horus_Adv_Buy',
@@ -148,16 +127,48 @@ const ADVANCED_ITEMS: SignalItem[] = [
         description: 'Institutional Scalping (Bearish). Requires Power/RSI confirmation.',
         icon: 'flash',
         color: '#FF5252'
+    },
+    {
+        key: 'scalp_OverSold',
+        guideTarget: 'SCALPING',
+        label: 'Horus OVS',
+        description: 'Fast reaction technical zone (Bullish). Typical range 10-15 points.',
+        icon: 'flash-outline',
+        color: '#00FF9D'
+    },
+    {
+        key: 'scalp_OverBought',
+        guideTarget: 'SCALPING',
+        label: 'Horus OVB',
+        description: 'Fast reaction technical zone (Bearish). Typical range 10-15 points.',
+        icon: 'flash-outline',
+        color: '#FF5252'
     }
 ];
 
 // 4. CONTEXT INFO
 const CONTEXT_ITEMS: SignalItem[] = [
     {
+        key: 'scalp_TakeProfitPump',
+        guideTarget: 'SCALPING',
+        label: 'Re-integration Bullish',
+        description: 'Price extended from MA 50. Statistical probability of mean reversion.',
+        icon: 'arrow-up-circle-outline',
+        color: '#FFD700'
+    },
+    {
+        key: 'scalp_TakeProfitPush',
+        guideTarget: 'SCALPING',
+        label: 'Re-integration Bearish',
+        description: 'Price extended from MA 50. Statistical probability of mean reversion.',
+        icon: 'arrow-down-circle-outline',
+        color: '#FFD700'
+    },
+    {
         key: 'h1_SyncroBullish',
         guideTarget: 'Syncro Long (H1) — SPX / ES / NQ',
         label: 'Syncro Bullish (H1)',
-        description: 'Context Alert. Major trend alignment. Safest institutional flow.',
+        description: 'Context Setup. Major trend alignment. High probability institutional flow.',
         icon: 'caret-up-outline',
         color: '#4ADE80'
     },
@@ -165,18 +176,19 @@ const CONTEXT_ITEMS: SignalItem[] = [
         key: 'h1_SyncroBearish',
         guideTarget: 'Syncro Short (H1) — SPX / ES / NQ',
         label: 'Syncro Bearish (H1)',
-        description: 'Context Alert. Major trend alignment. Safest institutional flow.',
+        description: 'Context Setup. Major trend alignment. High probability institutional flow.',
         icon: 'caret-down-outline',
         color: '#EF4444'
     },
+
     {
         key: 'vol_High',
         guideTarget: undefined,
         label: 'Context: HOT',
         description: (
             <View>
-                <Text style={{ color: '#F59E0B', fontSize: 11, fontWeight: 'bold', marginBottom: 4 }}>SCALPING EXPERT (ATR M1 ≈ 12–17 pts):</Text>
-                <Text style={{ color: '#ccc', fontSize: 12 }}>“Volatility is active; continuation/sweep risk is higher. You may prefer 1–2 M1 stabilization candles + a clear rejection.”</Text>
+                <Text style={{ color: '#F59E0B', fontSize: 11, fontWeight: 'bold', marginBottom: 4 }}>HIGH VOLATILITY (ATR M1 ≈ 18–20 pts):</Text>
+                <Text style={{ color: '#ccc', fontSize: 12 }}>“Active Volatility: Increased probability of price sweeps. The technical context suggestion monitoring stabilization after 1–3 M1 candles as a common technical baseline.”</Text>
             </View>
         ),
         icon: 'flame-outline',
@@ -188,8 +200,9 @@ const CONTEXT_ITEMS: SignalItem[] = [
         label: 'Context: EXTREME',
         description: (
             <View>
-                <Text style={{ color: '#EF4444', fontSize: 11, fontWeight: 'bold', marginBottom: 4 }}>EXTREME (ATR M1 ≈ 18–22 pts):</Text>
-                <Text style={{ color: '#ccc', fontSize: 12, marginBottom: 8 }}>“Fast conditions; sweeps/overshoots are frequent. You may prefer 4–6 M1 candles or a clear sweep-and-reclaim.”</Text>
+                <Text style={{ color: '#EF4444', fontSize: 11, fontWeight: 'bold', marginBottom: 4 }}>EXTREME (ATR M1 ≈ 20–23 pts):</Text>
+                <Text style={{ color: '#ccc', fontSize: 12, marginBottom: 8 }}>“Fast Market Conditions: Frequent overshoots detected. Technical context suggests monitoring 3–5 M1 candles or a clear sweep-and-reclaim structure for data alignment.”</Text>
+                <Text style={{ color: '#aaa', fontSize: 11, fontStyle: 'italic', marginTop: 4 }}>Analysis Note: Monitoring 2 to 3 waves on the M1 timeframe is a primary requirement for technical validation if extreme or panic conditions are present.</Text>
             </View>
         ),
         icon: 'warning-outline',
@@ -202,7 +215,8 @@ const CONTEXT_ITEMS: SignalItem[] = [
         description: (
             <View>
                 <Text style={{ color: '#8B5CF6', fontSize: 11, fontWeight: 'bold', marginBottom: 4 }}>PANIC (ATR M1 ≥ 23 pts):</Text>
-                <Text style={{ color: '#ccc', fontSize: 12 }}>“Very high volatility; moves can overshoot. You may prefer 6–8 M1 candles or a strong reclaim; otherwise continuation is common.”</Text>
+                <Text style={{ color: '#ccc', fontSize: 12 }}>“Extreme Volatility: Significant overshoot risk. High-density analysis suggests observing 5–8 M1 candles or a strong price reclaim; otherwise, trend continuation is statistically common.”</Text>
+                <Text style={{ color: '#aaa', fontSize: 11, fontStyle: 'italic', marginTop: 4 }}>Analysis Note: Monitoring 2 to 3 waves on the M1 timeframe is a primary requirement for technical validation if extreme or panic conditions are present.</Text>
             </View>
         ),
         icon: 'nuclear-outline', // Or alert-circle-outline if unavailable
@@ -459,7 +473,7 @@ export default function SettingsScreen() {
                     <View style={{ paddingBottom: 100 }}>
                         <View style={styles.header}>
                             <View>
-                                <Text style={[styles.headerTitle, { fontSize: 24, marginBottom: 2, fontFamily: Platform.OS === 'ios' ? 'Avenir Next' : 'sans-serif' }]}>SETTING ALERTS</Text>
+                                <Text style={[styles.headerTitle, { fontSize: 24, marginBottom: 2, fontFamily: Platform.OS === 'ios' ? 'Avenir Next' : 'sans-serif' }]}>SETTING PARAMETERS</Text>
                                 <Text style={styles.headerTitle}>PRO4X & HORUS SYSTEM</Text>
                                 <Text style={styles.headerSubtitle}>{activeCount} / {totalCount} Active Filters</Text>
                             </View>
@@ -491,7 +505,7 @@ export default function SettingsScreen() {
                                 <Ionicons name="bulb-outline" size={20} color="#60A5FA" style={{ marginRight: 10 }} />
                                 <View style={{ flex: 1 }}>
                                     <Text style={{ color: '#60A5FA', fontSize: 11, fontWeight: '600', letterSpacing: 0.5 }}>
-                                        STRATEGY TIP: You do not need to enable all alerts. Choose the strategies that fit your style. Be aware that different strategies may have contradictory momentum signals at the same time. For example, PRO4X.2 is a Trending system, while Shadow Mode may signal a counter-trend reversal simultaneously.
+                                        STRATEGY TIP: You do not need to enable all setups. Choose the strategies that fit your style. Be aware that different strategies may show contradictory momentum readings at the same time. For example, PRO4X.2 is a Trending system, while Shadow Mode may identify a potential counter-trend reversal simultaneously.
                                     </Text>
                                     <Text style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: 11, fontWeight: '500', marginTop: 8 }}>
                                         Market inversion operate around 11/12 am US (17h/18h EU).
@@ -558,7 +572,7 @@ export default function SettingsScreen() {
                                             />
                                             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
                                                 <Ionicons name="book-outline" size={20} color="#FFFFFF" />
-                                                <Text style={{ color: '#FFFFFF', fontWeight: 'bold', fontSize: 12, letterSpacing: 1 }}>ALERTS GUIDE</Text>
+                                                <Text style={{ color: '#FFFFFF', fontWeight: 'bold', fontSize: 12, letterSpacing: 1 }}>SETUP GUIDE</Text>
                                             </View>
                                         </GlassCard>
                                     </TouchableOpacity>
@@ -580,14 +594,14 @@ export default function SettingsScreen() {
                             }}>
                                 <Ionicons name="warning-outline" size={20} color="#FFA500" style={{ marginRight: 10 }} />
                                 <Text style={{ color: '#FFA500', fontSize: 11, flex: 1, fontWeight: '600', letterSpacing: 0.5 }}>
-                                    NOTICE: Market opens at 9:30 AM. Alerts are optimized for active market hours.
+                                    NOTICE: Market opens at 9:30 AM. Setups are optimized for active market hours.
                                 </Text>
                             </View>
 
                             {/* SECTION 1: BEGINNER */}
                             <SectionTitle title="BEGINNER (TRAVEL LIGHT)" />
                             <Text style={{ color: '#888', fontSize: 11, marginBottom: 15, paddingHorizontal: 5 }}>
-                                Focus on PRO4X.2. Travel Light. Disable other alerts to avoid pollution. Trend Following. Targets moves from 20 up to 150-200 points. System invalidation: ~30 pts below the alert point. Low stress. Not all alerts must be taken: watch context and filter for high probability setups. Wait for a reclaim for a more precise entry depending on the structure. Note: 12/64/91 are the most powerful reversal numbers.
+                                Focus on PRO4X.2 using a travel light approach. Limit the number of active setups to reduce notification noise. This mode emphasizes trend-following market structure and broader directional context. Price reactions are typically observed around key institutional levels, with move magnitudes commonly ranging from approximately 20 to 200 points, depending on volatility and market conditions. Maintain a low-stress approach. Risk Management Note: Many market participants define a predefined risk threshold, often around 50 points, to help limit exposure during short-term volatility. Reference Levels: 12 / 64 / 91 are key reference levels often associated with historical price volatility areas.
                             </Text>
                             <View style={styles.gridContainer}>
                                 {BEGINNER_ITEMS.map((item, index) => (
@@ -603,9 +617,9 @@ export default function SettingsScreen() {
                             </View>
 
                             {/* SECTION 2: INTERMEDIATE */}
-                            <SectionTitle title="INTERMEDIATE (INSTITUTIONAL READING)" />
+                            <SectionTitle title="INTERMEDIATE (Institutional Analysis)" />
                             <Text style={{ color: '#888', fontSize: 11, marginBottom: 15, paddingHorizontal: 5 }}>
-                                Requires knowledge of the Magnet Map. Pre-signals + Validated Entries. Disable other alerts to avoid pollution (but keep PRO4X.2 enabled). Focus on finding the most relevant institutional level before interacting. System invalidation: ~30 pts below the alert point. Note: 12/64/91 are the most powerful reversal numbers.
+                                Requires understanding of the Magnet Map. Features pre-setups and notifications triggered when PRO4X analytical parameters are met. To maintain focus, we suggest silencing secondary setups (keep PRO4X.2 active). Prioritize identifying key institutional price levels. Invalidation logic: ~30 pts below the setup reference. Note: 12/64/91 are the primary technical reference numbers.
                             </Text>
                             <View style={styles.gridContainer}>
                                 {INTERMEDIATE_ITEMS.map((item, index) => (
@@ -621,9 +635,11 @@ export default function SettingsScreen() {
                             </View>
 
                             {/* SECTION 3: ADVANCED */}
-                            <SectionTitle title="ADVANCED (SCALPING MODE)" />
+                            <SectionTitle title="ADVANCED (HIGH PRECISION VOLATILITY ANALYSIS)" />
                             <Text style={{ color: '#888', fontSize: 11, marginBottom: 15, paddingHorizontal: 5 }}>
-                                Mapping the liquidity. Expert only. Counter-trend & high-precision moves. Designed for automatic TP & SL (close to entry). Requires fast reaction. Strong trend protocol: avoidance, trend scalping, or waiting for key institutional reversal number.
+                                Mapping the liquidity. Expert use only. Counter-trend & high-density technical moves.
+                                <Text style={{ color: '#F59E0B', fontWeight: 'bold' }}>{"\n\n"}⚠️ CONTEXT CROSS-REFERENCE: Shadow & Horus readings should be analyzed alongside Context Alerts (Section 4) for optimal technical precision.</Text>
+                                {"\n"}Designed to assist with TP & SL planning (near entries). Requires fast analysis. Strong trend protocol: avoidance, trend monitoring, or waiting for key institutional reversal numbers.
                             </Text>
                             <View style={styles.gridContainer}>
                                 {ADVANCED_ITEMS.map((item, index) => (
@@ -659,7 +675,7 @@ export default function SettingsScreen() {
                             {/* SECTION 5: CHART CONFIGURATION */}
                             <SectionTitle title="CHART CONFIGURATION" />
                             <Text style={{ color: '#888', fontSize: 11, marginBottom: 15, paddingHorizontal: 5 }}>
-                                How to set up your analysis platform for optimal signal reading.
+                                How to set up your analysis platform for optimal chart reading.
                             </Text>
 
                             <GlassCard
