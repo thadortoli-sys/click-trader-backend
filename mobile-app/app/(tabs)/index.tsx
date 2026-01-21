@@ -104,10 +104,10 @@ const SIGNAL_CONFIG: Record<string, { title: string, icon: keyof typeof Ionicons
   'Horus Bearish': { title: 'HORUS SYSTEM BEARISH', icon: 'trending-down-outline', color: '#FF5252' },
 
   // 6. SYNCRO
-  'Syncro Bullish': { title: 'SYNCRO PUMP', icon: 'trending-up-outline', color: '#4CAF50' },
-  'Syncro Bearish': { title: 'SYNCRO PUSH', icon: 'trending-down-outline', color: '#FF5252' },
-  'h1_SyncroBullish': { title: 'SYNCRO H1', icon: 'trending-up-outline', color: '#4CAF50' },
-  'h1_SyncroBearish': { title: 'SYNCRO H1', icon: 'trending-down-outline', color: '#FF5252' },
+  'Syncro Bullish': { title: 'SYNCRO BULLISH', icon: 'information-circle-outline', color: '#4ADE80' },
+  'Syncro Bearish': { title: 'SYNCRO BEARISH', icon: 'information-circle-outline', color: '#FF5252' },
+  'h1_SyncroBullish': { title: 'SYNCRO BULLISH H1', icon: 'information-circle-outline', color: '#4ADE80' },
+  'h1_SyncroBearish': { title: 'SYNCRO BEARISH H1', icon: 'information-circle-outline', color: '#FF5252' },
 
   // 7. GENERIC / FALLBACKS
   'GetReady': { title: 'SETUP FORMING', icon: 'pulse-outline', color: '#FFC107' },
@@ -160,16 +160,16 @@ const SignalFeedItem = React.memo(({ pair, strategy, time, profit, message, sign
     if (!displayTitle.includes('BULLISH') && !displayTitle.includes('BEARISH')) {
       if (combined.includes('BUY') || combined.includes('BULL') || combined.includes('UP') || combined.includes('HAUSSIER')) {
         displayTitle += ' BULLISH';
-        // Force green arrow UNLESS it's Reintegration (keep info icon)
-        if (!displayTitle.includes('REINTEGRATION')) {
+        // Force green arrow UNLESS it's Reintegration or Syncro (keep info icon)
+        if (!displayTitle.includes('REINTEGRATION') && !displayTitle.includes('SYNCRO')) {
           config = { ...config, icon: 'trending-up-outline', color: '#4ADE80' };
         } else {
           config = { ...config, color: '#4ADE80' };
         }
       } else if (combined.includes('SELL') || combined.includes('BEAR') || combined.includes('DOWN') || combined.includes('BAISSIER')) {
         displayTitle += ' BEARISH';
-        // Force red arrow UNLESS it's Reintegration (keep info icon)
-        if (!displayTitle.includes('REINTEGRATION')) {
+        // Force red arrow UNLESS it's Reintegration or Syncro (keep info icon)
+        if (!displayTitle.includes('REINTEGRATION') && !displayTitle.includes('SYNCRO')) {
           config = { ...config, icon: 'trending-down-outline', color: '#FF5252' };
         } else {
           config = { ...config, color: '#FF5252' };
