@@ -84,9 +84,11 @@ const SIGNAL_CONFIG: Record<string, { title: string, icon: keyof typeof Ionicons
   'vol_Low': { title: 'LOW VOLATILITY', icon: 'speedometer-outline', color: '#3B82F6' },
   'vol_Regime': { title: 'VOLATILITY REGIME', icon: 'compass-outline', color: '#A855F7' },
 
-  // 4. PRO4X (Prefix Logic will handle nuances, but strict keys first)
+  // 4. PRO4X (Differentiating Classic and V2)
   'Pro4x.2': { title: 'PRO4X.2', icon: 'trending-up-outline', color: '#4ADE80' },
+  'pro4xx': { title: 'PRO4X.2', icon: 'trending-up-outline', color: '#4ADE80' },
   'PRO4X': { title: 'PRO4X', icon: 'trending-up-outline', color: '#4ADE80' },
+  'pro4x': { title: 'PRO4X', icon: 'trending-up-outline', color: '#4ADE80' },
 
   // 5. SHADOW & LEGACY HORUS
   'Shadow Buy': { title: 'SHADOW MODE', icon: 'trending-up-outline', color: '#4ADE80' },
@@ -124,15 +126,22 @@ const SignalFeedItem = React.memo(({ pair, strategy, time, profit, message, sign
   // Style Logic
   // --- REFACTORED LOGIC: CONFIGURATION OVER GUESSWORK ---
   const s = strategy.trim();
+  const sUpper = s.toUpperCase();
 
-  // 1. Try EXACT Match
+  // 1. Try EXACT Match (Case Insensitive)
   let config = SIGNAL_CONFIG[s];
 
-  // 2. Try PREFIX Match (if no exact match)
+  if (!config) {
+    const exactKey = Object.keys(SIGNAL_CONFIG).find(k => k.toUpperCase() === sUpper);
+    if (exactKey) config = SIGNAL_CONFIG[exactKey];
+  }
+
+  // 2. Try INCLUSION Match (Case Insensitive)
   if (!config) {
     const keys = Object.keys(SIGNAL_CONFIG);
+    // Sort by length descending to match most specific first
     const sortedKeys = keys.sort((a, b) => b.length - a.length);
-    const matchedKey = sortedKeys.find(key => s.includes(key));
+    const matchedKey = sortedKeys.find(key => sUpper.includes(key.toUpperCase()));
     if (matchedKey) config = SIGNAL_CONFIG[matchedKey];
   }
 

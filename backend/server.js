@@ -119,6 +119,9 @@ app.post('/webhook', async (req, res) => {
     // 2. NORMALIZE DATA
     const timestamp = Date.now();
 
+    // Log normalized values for debugging
+    console.log(`[LOG] strategy: "${data.strategy}", ticker: "${data.ticker}", price: "${data.price}"`);
+
     // FUZZY KEY SEARCH HELPER
     const findValue = (obj, searchKeys) => {
         if (!obj || typeof obj !== 'object') return null;
@@ -174,14 +177,19 @@ app.post('/webhook', async (req, res) => {
         data: {
             strategy, ticker, price, timeframe, signal,
             message: notificationBody, title: notificationTitle,
-            icon, color, videoUrl
+            icon: data.icon || null,
+            color: data.color || null,
+            videoUrl: data.videoUrl || null
         }
     };
 
     try {
         const { error } = await supabase.from('signals').insert(signalRecord);
-        if (error) console.error('⚠️ Failed to save signal to DB:', error.message);
-        else console.log('✅ Signal saved to Supabase');
+        if (error) {
+            console.error('⚠️ Failed to save signal to DB:', error.message);
+        } else {
+            console.log('✅ Signal saved to Supabase');
+        }
     } catch (e) {
         console.error('❌ DB Insert Error:', e.message);
     }
