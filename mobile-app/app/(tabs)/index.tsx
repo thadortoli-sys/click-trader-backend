@@ -63,43 +63,54 @@ const SystemHUD = () => {
 
 
 // --- Signal Styles Configuration ---
-const SIGNAL_STYLES: Record<string, { icon: keyof typeof Ionicons.glyphMap, color: string, type: 'UP' | 'DOWN' | 'READY' | 'INFO' }> = {
-  // 1. BULLISH SIGNALS
-  'pro4xx_Buy': { icon: 'trending-up-outline', color: '#4ADE80', type: 'UP' }, // PRO4XX Green
-  'pro4xx_Sell': { icon: 'trending-down-outline', color: '#FF5252', type: 'DOWN' }, // PRO4XX Red
-  'pro4xx_GetReady': { icon: 'pulse-outline', color: '#FFC107', type: 'READY' }, // Legacy Fallback
-  'pro4xx_GetReady_Buy': { icon: 'trending-up-outline', color: '#FFC107', type: 'READY' }, // PRO4XX Amber + Up
-  'pro4xx_GetReady_Sell': { icon: 'trending-down-outline', color: '#FFC107', type: 'READY' }, // PRO4XX Amber + Down
-  'pro4x_Buy': { icon: 'trending-up-outline', color: '#4CAF50', type: 'UP' }, // Green
-  'horus_Buy': { icon: 'trending-up-outline', color: '#4CAF50', type: 'UP' },
-  'horus_Sell': { icon: 'trending-down-outline', color: '#FF5252', type: 'DOWN' },
-  'horus_Adv_Buy': { icon: 'flash', color: '#00FF9D', type: 'UP' },
-  'horus_Adv_Sell': { icon: 'flash', color: '#FF5252', type: 'DOWN' },
-  'scalp_TakeProfitPump': { icon: 'arrow-up-circle-outline', color: '#FFD700', type: 'UP' }, // Gold
-  'scalp_OverSold': { icon: 'arrow-up-circle-outline', color: '#00FF9D', type: 'UP' }, // Neon Green
-  'scalp_SyncroResBuy': { icon: 'shield-checkmark-outline', color: '#4CAF50', type: 'UP' },
-  'shadow_Buy': { icon: 'moon-outline', color: '#9CA3AF', type: 'UP' },
-  'shadow_Sell': { icon: 'moon-outline', color: '#9CA3AF', type: 'DOWN' },
+// --- Signal Configuration (Single Source of Truth) ---
+const SIGNAL_CONFIG: Record<string, { title: string, icon: keyof typeof Ionicons.glyphMap, color: string }> = {
+  // 1. HORUS ADVANCED (Strict Keys)
+  'horus_Adv_Buy': { title: 'HORUS ADV BULLISH', icon: 'trending-up-outline', color: '#00FF9D' },
+  'horus_Adv_Sell': { title: 'HORUS ADV BEARISH', icon: 'trending-down-outline', color: '#FF5252' },
 
-  // 3. GET READY
-  'pro4x_GetReady': { icon: 'pulse-outline', color: '#FFC107', type: 'READY' }, // Amber
-  'horus_GetReady': { icon: 'pulse', color: '#FFC107', type: 'READY' },
+  // 2. HORUS OVS / OVB (Specific Reversal setups)
+  'horus_OVS': { title: 'HORUS OVS', icon: 'trending-up-outline', color: '#00FF9D' },
+  'horus_OVB': { title: 'HORUS OVB', icon: 'trending-down-outline', color: '#FF5252' },
 
-  'h1_SyncroBullish': { icon: 'stats-chart-outline', color: '#4CAF50', type: 'INFO' },
-  'h1_SyncroBearish': { icon: 'stats-chart-outline', color: '#FF5252', type: 'INFO' },
-  'm1_SyncroBullish': { icon: 'cellular-outline', color: '#4CAF50', type: 'INFO' },
-  'm1_SyncroBearish': { icon: 'cellular-outline', color: '#FF5252', type: 'INFO' },
+  // 3. SCALP EXITS (Legacy Mapped to Reintegration)
+  'scalp_TakeProfitPump': { title: 'REINTEGRATION BULLISH', icon: 'information-circle-outline', color: '#4ADE80' },
+  'scalp_TakeProfitPush': { title: 'REINTEGRATION BEARISH', icon: 'information-circle-outline', color: '#FF5252' },
 
-  // 5. INFO SUPPORT
-  'info_SupportBuy': { icon: 'caret-up-circle-outline', color: '#4CAF50', type: 'UP' },
-  'info_SupportSell': { icon: 'caret-down-circle-outline', color: '#FF5252', type: 'DOWN' },
+  // 3. VOLATILITY
+  'vol_Panic': { title: 'MARKET PANIC', icon: 'nuclear-outline', color: '#8B5CF6' },
+  'vol_Extreme': { title: 'EXTREME VOLATILITY', icon: 'warning-outline', color: '#EF4444' },
+  'vol_High': { title: 'HIGH VOLATILITY', icon: 'flame-outline', color: '#F59E0B' },
+  'vol_Low': { title: 'LOW VOLATILITY', icon: 'speedometer-outline', color: '#3B82F6' },
+  'vol_Regime': { title: 'VOLATILITY REGIME', icon: 'compass-outline', color: '#A855F7' },
 
-  // 6. VOLATILITY CONTEXT
-  'vol_Low': { icon: 'speedometer-outline', color: '#3B82F6', type: 'INFO' },
-  'vol_High': { icon: 'flame-outline', color: '#F59E0B', type: 'INFO' },
-  'vol_Extreme': { icon: 'warning-outline', color: '#EF4444', type: 'INFO' },
-  'vol_Panic': { icon: 'nuclear-outline', color: '#8B5CF6', type: 'INFO' },
-  'vol_Regime': { icon: 'compass-outline', color: '#A855F7', type: 'INFO' },
+  // 4. PRO4X (Prefix Logic will handle nuances, but strict keys first)
+  'Pro4x.2': { title: 'PRO4X.2', icon: 'trending-up-outline', color: '#4ADE80' },
+  'PRO4X': { title: 'PRO4X', icon: 'trending-up-outline', color: '#4ADE80' },
+
+  // 5. SHADOW & LEGACY HORUS
+  'Shadow Buy': { title: 'SHADOW MODE', icon: 'trending-up-outline', color: '#4ADE80' },
+  'Shadow Sell': { title: 'SHADOW MODE', icon: 'trending-down-outline', color: '#FF5252' },
+
+  // REINTEGRATION (Previously TP PUMP/PUSH)
+  'Reintegration': { title: 'REINTEGRATION', icon: 'information-circle-outline', color: '#FFFFFF' },
+  'Reintegration Bullish': { title: 'REINTEGRATION BULLISH', icon: 'information-circle-outline', color: '#4ADE80' },
+  'Reintegration Bearish': { title: 'REINTEGRATION BEARISH', icon: 'information-circle-outline', color: '#FF5252' },
+
+  // Settings Keys (horus_Buy) vs Strategy Keys (Horus Bullish) - Supporting Both
+  'horus_Buy': { title: 'HORUS SYSTEM BULLISH', icon: 'trending-up-outline', color: '#4ADE80' },
+  'horus_Sell': { title: 'HORUS SYSTEM BEARISH', icon: 'trending-down-outline', color: '#FF5252' },
+  'Horus Bullish': { title: 'HORUS SYSTEM BULLISH', icon: 'trending-up-outline', color: '#4ADE80' },
+  'Horus Bearish': { title: 'HORUS SYSTEM BEARISH', icon: 'trending-down-outline', color: '#FF5252' },
+
+  // 6. SYNCRO
+  'Syncro Bullish': { title: 'SYNCRO PUMP', icon: 'trending-up-outline', color: '#4CAF50' },
+  'Syncro Bearish': { title: 'SYNCRO PUSH', icon: 'trending-down-outline', color: '#FF5252' },
+  'h1_SyncroBullish': { title: 'SYNCRO H1', icon: 'trending-up-outline', color: '#4CAF50' },
+  'h1_SyncroBearish': { title: 'SYNCRO H1', icon: 'trending-down-outline', color: '#FF5252' },
+
+  // 7. GENERIC / FALLBACKS
+  'GetReady': { title: 'SETUP FORMING', icon: 'pulse-outline', color: '#FFC107' },
 };
 
 // Fallback style
@@ -110,25 +121,76 @@ const DEFAULT_SIGNAL_STYLE = { icon: 'radio-outline' as const, color: '#AAAAAA',
 const SignalFeedItem = React.memo(({ pair, strategy, time, profit, message, signalType, isDemoPnL, index, icon, color, locked = false }: { pair: string, strategy: string, time: string, profit?: string, message?: string, signalType?: string, isDemoPnL?: boolean, index: number, icon?: string, color?: string, locked?: boolean }) => {
   const router = useRouter();
   // Style Logic
-  let styleConfig = SIGNAL_STYLES[strategy] || Object.values(SIGNAL_STYLES).find((_, i) => strategy.includes(Object.keys(SIGNAL_STYLES)[i]));
+  // Style Logic
+  // --- REFACTORED LOGIC: CONFIGURATION OVER GUESSWORK ---
+  const s = strategy.trim();
 
-  // Generic Fallback based on text content if no known strategy matched
-  if (!styleConfig) {
-    const s = strategy.toUpperCase();
-    if (s.includes('BUY') || s.includes('LONG') || s.includes('BULL')) {
-      styleConfig = { icon: 'trending-up-outline', color: '#4CAF50', type: 'UP' };
-    } else if (s.includes('SELL') || s.includes('SHORT') || s.includes('BEAR')) {
-      styleConfig = { icon: 'trending-down-outline', color: '#FF5252', type: 'DOWN' };
-    } else {
-      styleConfig = DEFAULT_SIGNAL_STYLE;
+  // 1. Try EXACT Match
+  let config = SIGNAL_CONFIG[s];
+
+  // 2. Try PREFIX Match (if no exact match)
+  if (!config) {
+    const keys = Object.keys(SIGNAL_CONFIG);
+    const sortedKeys = keys.sort((a, b) => b.length - a.length);
+    const matchedKey = sortedKeys.find(key => s.includes(key));
+    if (matchedKey) config = SIGNAL_CONFIG[matchedKey];
+  }
+
+  // FORCE OVERRIDE: SETUP FORMING / READY
+  // Must take precedence over generic strategy icons
+  const combinedCheck = (s + ' ' + (message || '') + ' ' + (signalType || '')).toUpperCase();
+  if (combinedCheck.includes('SETUP FORMING') || combinedCheck.includes('FORMING') || combinedCheck.includes('GETREADY') || combinedCheck.includes('PREPARE')) {
+    // Clone config to avoid mutating static object
+    config = { ... (config || { title: s }), icon: 'pulse-outline', color: '#FFC107' };
+  }
+
+  // 3. Fallback
+  if (!config) {
+    config = { title: 'SYSTEM ALERT', icon: 'notifications-outline', color: '#FFFFFF' };
+  }
+
+  // 4. Directional Suffix (Append Bullish/Bearish only if needed)
+  let displayTitle = config.title;
+  // If config title is generic like "PRO4X", append direction from message/type if available
+  // BUT avoid "MARKET PANIC BULLISH" -> Only for strategies that need it.
+  const needsDirection = ['PRO4X', 'PRO4X.2', 'SHADOW MODE', 'HORUS SYSTEM', 'SCALP', 'SYNCRO', 'REINTEGRATION'].some(k => displayTitle.includes(k));
+
+  if (needsDirection) {
+    const combined = (message + ' ' + (signalType || '')).toUpperCase();
+    if (!displayTitle.includes('BULLISH') && !displayTitle.includes('BEARISH')) {
+      if (combined.includes('BUY') || combined.includes('BULL') || combined.includes('UP') || combined.includes('HAUSSIER')) {
+        displayTitle += ' BULLISH';
+        // Force green arrow UNLESS it's Reintegration (keep info icon)
+        if (!displayTitle.includes('REINTEGRATION')) {
+          config = { ...config, icon: 'trending-up-outline', color: '#4ADE80' };
+        } else {
+          config = { ...config, color: '#4ADE80' };
+        }
+      } else if (combined.includes('SELL') || combined.includes('BEAR') || combined.includes('DOWN') || combined.includes('BAISSIER')) {
+        displayTitle += ' BEARISH';
+        // Force red arrow UNLESS it's Reintegration (keep info icon)
+        if (!displayTitle.includes('REINTEGRATION')) {
+          config = { ...config, icon: 'trending-down-outline', color: '#FF5252' };
+        } else {
+          config = { ...config, color: '#FF5252' };
+        }
+      }
     }
   }
 
-  // MONOCHROME DASHBOARD: Override colors to neutral
-  const activeIconColor = locked ? '#D4AF37' : '#E0E0E0'; // Gold if locked, else White
-  const activeIconName = locked ? 'lock-closed' : ((icon as any) || styleConfig.icon);
+  // Volatility Regime Dynamic Title
+  if (config.title === 'VOLATILITY REGIME') {
+    const combined = (message + ' ' + (signalType || '')).toUpperCase();
+    if (combined.includes('TREND')) {
+      displayTitle = 'REGIME TREND';
+    } else if (combined.includes('RANGE')) {
+      displayTitle = 'REGIME RANGE';
+    }
+  }
 
   // Formatting
+  const activeIconColor = locked ? '#D4AF37' : '#FFFFFF';
+  const activeIconName = locked ? 'lock-closed' : config.icon;
   const displayPrice = locked ? 'LOCKED' : (profit ? profit.replace('Entry: ', '') : (message?.match(/\$?\d{5}/)?.[0] || '---'));
 
   // Animation Refs
@@ -161,7 +223,7 @@ const SignalFeedItem = React.memo(({ pair, strategy, time, profit, message, sign
     <Animated.View style={{ opacity: fadeAnim, transform: [{ translateY: slideAnim }] }}>
       <GlassCard
         intensity={20}
-        rainbowBorder={false} // Disable rainbow even for PnL in monochrome mode? User said "toute les alertes". Let's verify. Assuming yes for now to be safe.
+        rainbowBorder={false}
         borderColor="#FFFFFF"
         borderWidth={0.1}
         borderRadius={16}
@@ -205,33 +267,7 @@ const SignalFeedItem = React.memo(({ pair, strategy, time, profit, message, sign
                 textShadowOffset: { width: 0, height: 0 },
                 textShadowRadius: 8
               }}>
-                {(() => {
-                  if (locked) return "INSTITUTIONAL ALERT";
-                  let text = strategy
-                    .replace('pro4xx', 'PRO4X.2')
-                    .replace(/_/g, ' ')
-                    .replace('pro4x', 'PRO4X')
-                    .replace('scalp', 'SCALP')
-                    .replace('horus', 'HORUS')
-                    .toUpperCase();
-
-                  if (!text.includes('BULLISH') && !text.includes('BEARISH')) {
-                    const type = (signalType || '').toUpperCase();
-                    if (type.includes('BUY') || type.includes('LONG')) text += ' BULLISH';
-                    else if (type.includes('SELL') || type.includes('SHORT')) text += ' BEARISH';
-                  }
-
-                  // Final sanitizer for any remaining terms
-                  text = text
-                    .replace('BUY', 'BULLISH')
-                    .replace('SELL', 'BEARISH')
-                    .replace('LONG', 'BULLISH')
-                    .replace('SHORT', 'BEARISH')
-                    .replace('OVERSOLD', 'OVS')
-                    .replace('OVERBOUGHT', 'OVB'); // Keep abbreviated
-
-                  return text;
-                })()}
+                {locked ? "INSTITUTIONAL ALERT" : displayTitle}
               </Text>
 
               {locked && (
@@ -245,7 +281,7 @@ const SignalFeedItem = React.memo(({ pair, strategy, time, profit, message, sign
                 }}>
                   <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                     <Ionicons name="lock-closed" size={12} color="#D4AF37" style={{ marginRight: 6 }} />
-                    <Text style={{ color: '#D4AF37', fontSize: 10, fontWeight: '900', letterSpacing: 1.5 }}>LOCKED SIGNAL</Text>
+                    <Text style={{ color: '#D4AF37', fontSize: 10, fontWeight: '900', letterSpacing: 1.5 }}>LOCKED SETUP</Text>
                   </View>
                 </View>
               )}
@@ -283,10 +319,16 @@ const SignalFeedItem = React.memo(({ pair, strategy, time, profit, message, sign
                 {(() => {
                   const s = strategy.toUpperCase();
                   const type = (signalType || '').toUpperCase();
-                  const combined = (s + ' ' + type);
-                  if (combined.includes('BUY') || combined.includes('LONG') || combined.includes('BULL') || combined.includes('UP')) return '▲ ';
-                  if (combined.includes('SELL') || combined.includes('SHORT') || combined.includes('BEAR') || combined.includes('DOWN')) return '▼ ';
-                  return '@ ';
+                  // INCLUDE MESSAGE IN SEARCH
+                  const combined = (s + ' ' + type + ' ' + (message || '')).toUpperCase();
+
+                  // PREVENT TRIANGLES FOR SETUP FORMING
+                  if (combined.includes('READY') || combined.includes('PREPARE') || combined.includes('FORMING')) return '';
+
+                  // STRICT TRIANGLE LOGIC
+                  if (combined.includes('BUY') || combined.includes('LONG') || combined.includes('BULL') || combined.includes('UP') || combined.includes('PUMP') || combined.includes('HAUSSIER')) return '▲ ';
+                  if (combined.includes('SELL') || combined.includes('SHORT') || combined.includes('BEAR') || combined.includes('DOWN') || combined.includes('DUMP') || combined.includes('BAISSIER')) return '▼ ';
+                  return '';
                 })()}{displayPrice}
               </Text>
               {locked && (
@@ -684,8 +726,8 @@ const RecentIntelligence = () => {
               >
                 <SignalFeedItem
                   index={index}
-                  pair={(signal.data as any)?.ticker || signal.title || 'SYSTEM'}
-                  strategy={(signal.data as any)?.strategy || 'SYSTEM_MSG'}
+                  pair={((signal.data as any)?.ticker && (signal.data as any)?.ticker !== 'UNKNOWN' && (signal.data as any)?.ticker !== 'System') ? (signal.data as any).ticker : (signal.title || 'SYSTEM')}
+                  strategy={((signal.data as any)?.strategy && (signal.data as any)?.strategy !== 'Unknown') ? (signal.data as any).strategy : (signal.body?.includes('Pro4x') ? 'Pro4x' : 'SYSTEM_MSG')}
                   time={new Date((signal.timestamp || 0)).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                   message={(signal.data as any)?.message || signal.body}
                   signalType={(signal.data as any)?.signal || 'INFO'}

@@ -127,7 +127,7 @@ export const SignalDetailModal = ({ visible, onClose, onArchive, signal }: Signa
     let accentColor = '#D4AF37';
     if (isBuy) accentColor = '#4ADE80';
     if (isSell) accentColor = '#EF4444';
-    if (strategy.includes('GetReady')) accentColor = '#FFD700'; // Force Gold for Get Ready
+    if (strategy.includes('GetReady') || strategy.includes('Forming')) accentColor = '#FFD700'; // Force Gold for Get Ready / Forming
 
     // IMAGE SELECTION LOGIC
     let illustration = null;
@@ -155,14 +155,16 @@ export const SignalDetailModal = ({ visible, onClose, onArchive, signal }: Signa
     const hasRefLevels = tp && sl && tp !== 'OPEN' && sl !== 'OPEN';
     const isDemoPnL = signal.isDemoPnL;
 
-    // Icon selection logic
+    // Icon selection logic (STRICT ARROWS)
     let iconName: keyof typeof Ionicons.glyphMap = "pulse";
-    if (strategy.includes('GetReady')) {
+
+    if (strategy.includes('GetReady') || strategy.includes('Setup Forming') || strategy.includes('Forming')) {
         iconName = "pulse";
-    } else if (isBuy) {
-        iconName = "trending-up-outline";
-    } else if (isSell) {
-        iconName = "trending-down-outline";
+    } else {
+        // DEFAULT TO ARROWS FOR EVERYTHING ELSE
+        if (isBuy) iconName = "trending-up-outline";
+        else if (isSell) iconName = "trending-down-outline";
+        else iconName = "pulse"; // True fallback only
     }
 
     // Structured Body Renderer

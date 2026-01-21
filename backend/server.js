@@ -89,22 +89,26 @@ app.get('/signals', async (req, res) => {
 app.post('/webhook', async (req, res) => {
     // 1. PARSE PAYLOAD
     let data = req.body;
+
+    // Ensure data is an object
     if (typeof data === 'string') {
         try {
             data = JSON.parse(data);
         } catch (e) {
             console.log('⚠️ Payload is raw string (Non-JSON). Using regex extraction.');
-            // Fallback Regex Extraction (same as before)
             const text = data;
             data = {};
+            // Regex helpers
             const extract = (key) => {
-                const match = text.match(new RegExp(`${key}\\s*[:=]\\s*([^\\n,]+)`));
+                // Look for Key: Value OR Key = Value, case insensitive
+                const match = text.match(new RegExp(`${key}\\s*[:=]\\s*([^\\n,]+)`, 'i'));
                 return match ? match[1].trim() : null;
             };
-            data.strategy = extract('strategy') || 'Unknown';
-            data.ticker = extract('ticker') || 'Unknown';
-            data.price = extract('price') || '0';
-            data.action = extract('action') || 'alert';
+            data.strategy = extract('strategy');
+            data.ticker = extract('ticker') || extract('symbol');
+            data.price = extract('price');
+            // Support both 'action' and 'signal' keys
+            data.action = extract('action') || extract('signal');
             data.message = text;
         }
     }
@@ -114,50 +118,54 @@ app.post('/webhook', async (req, res) => {
 
     // 2. NORMALIZE DATA
     const timestamp = Date.now();
-    const strategy = data.strategy || 'Unknown Strategy';
-    const ticker = data.ticker || 'Unknown Ticker';
-    const price = data.price || '0';
-    const timeframe = data.timeframe || 'M1';
-    const signal = data.action || 'alert'; // buy/sell/alert
+
+    // FUZZY KEY SEARCH HELPER
+    const findValue = (obj, searchKeys) => {
+        if (!obj || typeof obj !== 'object') return null;
+        const keys = Object.keys(obj);
+        for (let k of keys) {
+            const keyLower = k.toLowerCase();
+            for (let search of searchKeys) {
+                if (keyLower.includes(search)) return obj[k];
+            }
+        }
+        return null;
+    };
+
+    // Fallback logic: check typical aliases if primary keys are missing
+    let strategy = data.strategy || data.Strategy || findValue(data, ['strat', 'alert', 'name', 'type']) || 'System Message';
+    let ticker = data.ticker || data.symbol || data.Symbol || findValue(data, ['pair', 'sym', 'coin', 'asset']) || 'SYSTEM';
+    let price = data.price || data.close || findValue(data, ['price', 'val', 'level']) || '0';
+    const timeframe = data.timeframe || data.Timeframe || 'M1';
+    let signal = data.action || data.signal || findValue(data, ['action', 'side', 'direction']) || 'alert';
+
+    // Safety for objects
+    if (typeof strategy === 'object') strategy = JSON.stringify(strategy);
+    if (typeof ticker === 'object') ticker = JSON.stringify(ticker);
+
 
     // --- ENRICHMENT LOGIC (Icon/Color) ---
+    // --- ENRICHMENT LOGIC (Icon/Color) ---
     // (Kept same as before)
-    let icon = 'notifications-outline';
-    let color = '#ffffff';
-    // SAFE STORE UPDATE: "Signal" -> "Setup" / "Alignment"
-    let notificationTitle = `Setup: ${strategy}`;
-    let notificationBody = `Technical Alignment at ${price}`;
+    // --- ENRICHMENT LOGIC REMOVED ---
+    // Backend acts as a dumb pipe. Frontend handles all styling and titles via SIGNAL_CONFIG.
 
-    const s = strategy.toLowerCase();
-    const a = signal.toLowerCase();
+    // Default values if missing from payload
+    let notificationTitle = data.title || `Signal: ${strategy}`;
+    let notificationBody = data.message || `Alert for ${ticker}`;
 
-    // COLOR LOGIC
-    if (a.includes('buy') || a.includes('bullish') || s.includes('bullish')) color = '#4ADE80'; // Green
-    if (a.includes('sell') || a.includes('bearish') || s.includes('bearish')) color = '#EF4444'; // Red
-    if (s.includes('gold') || s.includes('ready')) color = '#FFD700'; // Gold
-
-    // ICON LOGIC
-    if (s.includes('pro4x') || s.includes('pro4xx')) icon = 'layers-outline';
-    if (s.includes('horus')) icon = 'eye-outline';
-    if (s.includes('shadow')) icon = 'moon-outline';
-    if (s.includes('scalp')) icon = 'flash-outline';
-    if (s.includes('money')) icon = 'cash-outline';
-
-    // TITLE LOGIC (Overrides)
-    if (s.includes('pro4x')) notificationTitle = `PRO4X | ${ticker}`;
-    if (s.includes('horus')) notificationTitle = `HORUS | ${ticker}`;
-    if (s.includes('shadow')) notificationTitle = `SHADOW MODE | ${ticker}`;
-
-    // BODY LOGIC (Overrides for specific strategies to be safer)
-    if (s.includes('pro4x')) notificationBody = `Trend Alignment Detected at ${price}`;
-    if (s.includes('horus')) notificationBody = `Reversal Readings at ${price}`;
-
-    // VIDEO LOGIC
-    let videoUrl = null;
-    if (s.includes('pro4x') && a.includes('buy')) videoUrl = 'https://www.example.com/videos/pro4x_buy.mp4';
+    // Validations are handled in the blocking block below.
 
 
-    // 3. PERSIST SIGNAL TO DB
+
+    // 3. VALIDATION / BLOCKING GHOST SIGNALS
+    // STRICT MODE: Block anything that looks like a ghost signal or system message
+    if (ticker === 'Unknown' || ticker === 'SYSTEM' || price === '0' || strategy === 'Unknown' || strategy === 'System Message') {
+        console.log('🚫 Blocking Ghost Signal:', { strategy, ticker, price });
+        return res.status(200).send({ status: 'ignored_ghost' });
+    }
+
+    // 4. PERSIST SIGNAL TO DB
     const signalRecord = {
         pair: ticker,
         type: signal,
@@ -181,8 +189,6 @@ app.post('/webhook', async (req, res) => {
     // 4. FETCH TOKENS & SEND NOTIFICATIONS
     try {
         // Fetch all tokens from Supabase
-        // Note: For 1000s of users, we would use pagination or batching. 
-        // For now (MVP), fetching all is okay (~100kb for 1000 users).
         const { data: users, error: userError } = await supabase
             .from('user_settings')
             .select('token, settings');
@@ -209,23 +215,16 @@ app.post('/webhook', async (req, res) => {
             let finalBody = notificationBody;
             let finalData = { ...signalRecord.data }; // Clone
 
+            const s = (strategy || '').toLowerCase();
             if (!isUserPro && !s.startsWith('vol_') && !s.includes('regime')) {
                 // console.log(`🔒 MASKING for: ${pushToken.slice(-4)}`);
-                finalTitle = "🔒 Institutional Signal Detected";
-                finalBody = "Premium signal. Tap to unlock.";
+                finalTitle = "🔒 Institutional Setup Detected";
+                finalBody = "Institutional Alert. Tap to unlock.";
                 finalData.message = "LOCKED";
                 finalData.price = "LOCKED";
             }
 
             // --- FILTERING ---
-            // Simplistic check for now. Ideally use 'getSignalKey' logic shared with frontend, 
-            // but backend doesn't have that file. 
-            // We'll trust the user sends 'keys' in settings that match our strategy names roughly
-            // OR implemented a simple backend filter mapping if strictly needed.
-            // For this step, we'll SKIP strict complex filtering to ensure delivery, 
-            // or check generic 'signals' toggle if present.
-
-            // Check if user has globally disabled notifications?
             if (userConfig.notificationsEnabled === false) continue;
 
             messages.push({

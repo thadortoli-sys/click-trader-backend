@@ -1,0 +1,2002 @@
+[
+  {
+    "id": "aae60ac7-a6f5-4bd5-abe4-a05d5e3e10d2",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769012700285,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T16:25:00.352176+00:00"
+  },
+  {
+    "id": "32068d71-c33c-4911-89e3-b00637718b34",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769012680268,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T16:24:40.335772+00:00"
+  },
+  {
+    "id": "27884a6a-38f0-49b9-93e3-bddae6bd8251",
+    "pair": "MNQ1!",
+    "type": "alert",
+    "price": "25444.50",
+    "timestamp": 1769012544088,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "25444.50",
+      "title": "Setup: TP PUMP",
+      "signal": "alert",
+      "ticker": "MNQ1!",
+      "message": "Technical Alignment at 25444.50",
+      "strategy": "TP PUMP",
+      "videoUrl": null,
+      "timeframe": "1"
+    },
+    "created_at": "2026-01-21T16:22:24.149284+00:00"
+  },
+  {
+    "id": "155c7865-7645-4783-92cb-47e550e01051",
+    "pair": "NQ-TEST",
+    "type": "INFO",
+    "price": "20500",
+    "timestamp": 1769012524886,
+    "data": {
+      "icon": null,
+      "color": "#ffffff",
+      "price": 20500,
+      "title": "Setup: vol_High",
+      "signal": "INFO",
+      "ticker": "NQ-TEST",
+      "message": "Technical Alignment at 20500",
+      "strategy": "vol_High",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T16:22:03.301804+00:00"
+  },
+  {
+    "id": "0e10cf73-4386-41f0-b88d-414a18a3d1be",
+    "pair": "NQ-TEST",
+    "type": "INFO",
+    "price": "20450",
+    "timestamp": 1769012522428,
+    "data": {
+      "icon": null,
+      "color": "#ffffff",
+      "price": 20450,
+      "title": "Setup: vol_Extreme",
+      "signal": "INFO",
+      "ticker": "NQ-TEST",
+      "message": "Technical Alignment at 20450",
+      "strategy": "vol_Extreme",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T16:22:00.842095+00:00"
+  },
+  {
+    "id": "9c59e13a-9801-4696-88a3-ecbc6ba4ff38",
+    "pair": "NQ-TEST",
+    "type": "INFO",
+    "price": "20400",
+    "timestamp": 1769012519348,
+    "data": {
+      "icon": null,
+      "color": "#ffffff",
+      "price": 20400,
+      "title": "Setup: vol_Panic",
+      "signal": "INFO",
+      "ticker": "NQ-TEST",
+      "message": "Technical Alignment at 20400",
+      "strategy": "vol_Panic",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T16:21:58.171603+00:00"
+  },
+  {
+    "id": "4031937e-7e03-4552-8f04-e0cbf2053ab2",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769012343176,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T16:19:03.263003+00:00"
+  },
+  {
+    "id": "6b9630be-c0fc-40d1-84c2-2d685a368250",
+    "pair": "MNQ1!",
+    "type": "alert",
+    "price": "25456.00",
+    "timestamp": 1769012289729,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "25456.00",
+      "title": "Setup: TP PUMP",
+      "signal": "alert",
+      "ticker": "MNQ1!",
+      "message": "Technical Alignment at 25456.00",
+      "strategy": "TP PUMP",
+      "videoUrl": null,
+      "timeframe": "1"
+    },
+    "created_at": "2026-01-21T16:18:09.794211+00:00"
+  },
+  {
+    "id": "9d2c3f26-59af-4dba-8086-a0df9c577424",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769012283429,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T16:18:03.510217+00:00"
+  },
+  {
+    "id": "13015e85-6868-4d0f-ac8a-bf56ae26e6fc",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769012229432,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T16:17:09.700139+00:00"
+  },
+  {
+    "id": "0433f7ad-5b40-4113-b7fc-5541952ddac6",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769012143686,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T16:15:43.750096+00:00"
+  },
+  {
+    "id": "c5b985aa-b8b8-43dc-828f-59ab427e3abc",
+    "pair": "MNQ1!",
+    "type": "alert",
+    "price": "25457.00",
+    "timestamp": 1769012100794,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "25457.00",
+      "title": "Setup: TP PUMP",
+      "signal": "alert",
+      "ticker": "MNQ1!",
+      "message": "Technical Alignment at 25457.00",
+      "strategy": "TP PUMP",
+      "videoUrl": null,
+      "timeframe": "1"
+    },
+    "created_at": "2026-01-21T16:15:00.876618+00:00"
+  },
+  {
+    "id": "1cf7019e-eacb-474f-862c-cc4e6f2b1864",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769012095346,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T16:14:55.414431+00:00"
+  },
+  {
+    "id": "9d2569d6-a5ad-40c4-80e1-6ed23ef00518",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769012072271,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T16:14:32.355225+00:00"
+  },
+  {
+    "id": "a05041d7-5b81-4e52-be1d-f1bf0eb4e9db",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769011973293,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T16:12:53.361618+00:00"
+  },
+  {
+    "id": "8f18dd8b-74f8-4a9a-85bf-208bcdfadfa1",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769011849279,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T16:10:49.366016+00:00"
+  },
+  {
+    "id": "e6173208-0543-492f-88f2-51825632ed04",
+    "pair": "MNQ1!",
+    "type": "alert",
+    "price": "25457.25",
+    "timestamp": 1769011784082,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "25457.25",
+      "title": "Setup: TP PUMP",
+      "signal": "alert",
+      "ticker": "MNQ1!",
+      "message": "Technical Alignment at 25457.25",
+      "strategy": "TP PUMP",
+      "videoUrl": null,
+      "timeframe": "1"
+    },
+    "created_at": "2026-01-21T16:09:44.320863+00:00"
+  },
+  {
+    "id": "329e4868-37a1-4016-9865-3cf19ff5ae5f",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769011563534,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T16:06:03.701289+00:00"
+  },
+  {
+    "id": "e0579f3e-3dc6-4f74-af88-d87fa16a6b19",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769011547275,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T16:05:47.560267+00:00"
+  },
+  {
+    "id": "bc96adb4-cb18-4cf8-a8eb-03207fd37b87",
+    "pair": "MNQ1!",
+    "type": "alert",
+    "price": "25454.25",
+    "timestamp": 1769011524091,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "25454.25",
+      "title": "Setup: TP PUMP",
+      "signal": "alert",
+      "ticker": "MNQ1!",
+      "message": "Technical Alignment at 25454.25",
+      "strategy": "TP PUMP",
+      "videoUrl": null,
+      "timeframe": "1"
+    },
+    "created_at": "2026-01-21T16:05:24.373785+00:00"
+  },
+  {
+    "id": "5d732971-b7b6-409f-b7bd-04663fd40a1c",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769011463184,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T16:04:23.436398+00:00"
+  },
+  {
+    "id": "f6640608-21f8-4192-85f5-8c03d2c2c43e",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769011434187,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T16:03:54.277844+00:00"
+  },
+  {
+    "id": "21d97204-2a99-4a3f-968f-d7e0b0fa1b99",
+    "pair": "NQ-TEST",
+    "type": "INFO",
+    "price": "20560",
+    "timestamp": 1769011411131,
+    "data": {
+      "icon": null,
+      "color": "#4ADE80",
+      "price": 20560,
+      "title": "Setup: h1_SyncroBullish",
+      "signal": "INFO",
+      "ticker": "NQ-TEST",
+      "message": "Technical Alignment at 20560",
+      "strategy": "h1_SyncroBullish",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T16:03:29.754948+00:00"
+  },
+  {
+    "id": "77e90cb9-abdc-46fe-99c2-757f724a0e34",
+    "pair": "NQ-TEST",
+    "type": "BUY",
+    "price": "20550",
+    "timestamp": 1769011402368,
+    "data": {
+      "icon": null,
+      "color": "#4ADE80",
+      "price": 20550,
+      "title": "Setup: scalp_OverSold",
+      "signal": "BUY",
+      "ticker": "NQ-TEST",
+      "message": "Technical Alignment at 20550",
+      "strategy": "scalp_OverSold",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T16:03:20.884445+00:00"
+  },
+  {
+    "id": "eaad1c37-6081-4579-87d7-2991bd3c4537",
+    "pair": "NQ-TEST",
+    "type": "BUY",
+    "price": "20540",
+    "timestamp": 1769011393521,
+    "data": {
+      "icon": null,
+      "color": "#4ADE80",
+      "price": 20540,
+      "title": "HORUS | NQ-TEST",
+      "signal": "BUY",
+      "ticker": "NQ-TEST",
+      "message": "Reversal Readings at 20540",
+      "strategy": "horus_Adv_Buy",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T16:03:12.058764+00:00"
+  },
+  {
+    "id": "2d69b080-a021-43b8-a2b4-c46fccb0676d",
+    "pair": "NQ-TEST",
+    "type": "BUY",
+    "price": "20530",
+    "timestamp": 1769011384508,
+    "data": {
+      "icon": null,
+      "color": "#4ADE80",
+      "price": 20530,
+      "title": "HORUS | NQ-TEST",
+      "signal": "BUY",
+      "ticker": "NQ-TEST",
+      "message": "Reversal Readings at 20530",
+      "strategy": "Horus Buy",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T16:03:03.024747+00:00"
+  },
+  {
+    "id": "f391afb9-413c-4559-91a1-6e98c39c9c64",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769011376182,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T16:02:56.252737+00:00"
+  },
+  {
+    "id": "f12f0090-d0ed-46c8-8610-8f40ca7d38d6",
+    "pair": "NQ-TEST",
+    "type": "BUY",
+    "price": "20520",
+    "timestamp": 1769011375275,
+    "data": {
+      "icon": null,
+      "color": "#4ADE80",
+      "price": 20520,
+      "title": "SHADOW MODE | NQ-TEST",
+      "signal": "BUY",
+      "ticker": "NQ-TEST",
+      "message": "Technical Alignment at 20520",
+      "strategy": "Shadow Buy",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T16:02:54.103405+00:00"
+  },
+  {
+    "id": "8e24b3d7-3016-4c0a-b779-780397164bd3",
+    "pair": "NQ-TEST",
+    "type": "INFO",
+    "price": "20510",
+    "timestamp": 1769011366021,
+    "data": {
+      "icon": null,
+      "color": "#ffffff",
+      "price": 20510,
+      "title": "PRO4X | NQ-TEST",
+      "signal": "INFO",
+      "ticker": "NQ-TEST",
+      "message": "Trend Alignment Detected at 20510",
+      "strategy": "Pro4x.2",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T16:02:44.597002+00:00"
+  },
+  {
+    "id": "782a7aec-c55a-4167-82f0-d548f325b426",
+    "pair": "NQ-TEST",
+    "type": "BUY",
+    "price": "20500",
+    "timestamp": 1769011356503,
+    "data": {
+      "icon": null,
+      "color": "#4ADE80",
+      "price": 20500,
+      "title": "PRO4X | NQ-TEST",
+      "signal": "BUY",
+      "ticker": "NQ-TEST",
+      "message": "Trend Alignment Detected at 20500",
+      "strategy": "Pro4x.2",
+      "videoUrl": "https://www.example.com/videos/pro4x_buy.mp4",
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T16:02:35.18149+00:00"
+  },
+  {
+    "id": "cb349974-5253-4620-bc1b-04571c2c70c2",
+    "pair": "MNQ1!",
+    "type": "alert",
+    "price": "25476.75",
+    "timestamp": 1769010810820,
+    "data": {
+      "icon": "layers-outline",
+      "color": "#ffffff",
+      "price": "25476.75",
+      "title": "PRO4X | MNQ1!",
+      "signal": "alert",
+      "ticker": "MNQ1!",
+      "message": "Trend Alignment Detected at 25476.75",
+      "strategy": "Pro4x.2 Entry Sell",
+      "videoUrl": null,
+      "timeframe": "15S"
+    },
+    "created_at": "2026-01-21T15:53:30.949831+00:00"
+  },
+  {
+    "id": "663c511c-ced4-4436-83e3-0fb23865640e",
+    "pair": "MNQ1!",
+    "type": "alert",
+    "price": "25464.00",
+    "timestamp": 1769010767614,
+    "data": {
+      "icon": "layers-outline",
+      "color": "#ffffff",
+      "price": "25464.00",
+      "title": "PRO4X | MNQ1!",
+      "signal": "alert",
+      "ticker": "MNQ1!",
+      "message": "Trend Alignment Detected at 25464.00",
+      "strategy": "Pro4x.2 Entry Sell",
+      "videoUrl": null,
+      "timeframe": "1"
+    },
+    "created_at": "2026-01-21T15:52:47.693493+00:00"
+  },
+  {
+    "id": "45e047c8-6309-4fed-9aa3-cfea3872f01a",
+    "pair": "MNQ1!",
+    "type": "alert",
+    "price": "25473.00",
+    "timestamp": 1769010765342,
+    "data": {
+      "icon": "eye-outline",
+      "color": "#ffffff",
+      "price": "25473.00",
+      "title": "HORUS | MNQ1!",
+      "signal": "alert",
+      "ticker": "MNQ1!",
+      "message": "Reversal Readings at 25473.00",
+      "strategy": "HORUS SELL",
+      "videoUrl": null,
+      "timeframe": "15S"
+    },
+    "created_at": "2026-01-21T15:52:45.726765+00:00"
+  },
+  {
+    "id": "eaff76c6-8a45-47c2-8a39-5122dd05fee0",
+    "pair": "MNQ1!",
+    "type": "alert",
+    "price": "25466.50",
+    "timestamp": 1769010420301,
+    "data": {
+      "icon": "layers-outline",
+      "color": "#ffffff",
+      "price": "25466.50",
+      "title": "PRO4X | MNQ1!",
+      "signal": "alert",
+      "ticker": "MNQ1!",
+      "message": "Trend Alignment Detected at 25466.50",
+      "strategy": "Pro4x.2 Entry Sell",
+      "videoUrl": null,
+      "timeframe": "15S"
+    },
+    "created_at": "2026-01-21T15:47:00.496122+00:00"
+  },
+  {
+    "id": "7d6794e2-e9cb-4e94-b225-2ea662ebf82c",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769010330699,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:45:30.764869+00:00"
+  },
+  {
+    "id": "39da7d2b-e4af-4716-8b63-7f13d6092853",
+    "pair": "MNQ1!",
+    "type": "alert",
+    "price": "25447.25",
+    "timestamp": 1769010240334,
+    "data": {
+      "icon": "layers-outline",
+      "color": "#ffffff",
+      "price": "25447.25",
+      "title": "PRO4X | MNQ1!",
+      "signal": "alert",
+      "ticker": "MNQ1!",
+      "message": "Trend Alignment Detected at 25447.25",
+      "strategy": "Pro4x.2 Entry Sell",
+      "videoUrl": null,
+      "timeframe": "15S"
+    },
+    "created_at": "2026-01-21T15:44:00.401861+00:00"
+  },
+  {
+    "id": "3d026851-a425-4ad1-8ac0-215efb9cc9e0",
+    "pair": "MNQ1!",
+    "type": "alert",
+    "price": "25447.00",
+    "timestamp": 1769010210320,
+    "data": {
+      "icon": "layers-outline",
+      "color": "#ffffff",
+      "price": "25447.00",
+      "title": "PRO4X | MNQ1!",
+      "signal": "alert",
+      "ticker": "MNQ1!",
+      "message": "Trend Alignment Detected at 25447.00",
+      "strategy": "Pro4x.2 Entry Sell",
+      "videoUrl": null,
+      "timeframe": "30S"
+    },
+    "created_at": "2026-01-21T15:43:30.379895+00:00"
+  },
+  {
+    "id": "31b4a7e6-efc1-435c-8b25-e1e3acd95da7",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769010120426,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:42:00.596757+00:00"
+  },
+  {
+    "id": "a2b3d564-8396-4138-adb0-00f5ea6570db",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769010060617,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:41:00.720911+00:00"
+  },
+  {
+    "id": "4dc93389-48bc-40e4-a48e-91bee213d4d4",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769010000948,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:40:01.148351+00:00"
+  },
+  {
+    "id": "aff22c19-3acf-4381-970a-32340a3c086f",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769009941104,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:39:01.231602+00:00"
+  },
+  {
+    "id": "09347c68-8023-4f1b-a9b5-5ab6a58ba599",
+    "pair": "MNQ1!",
+    "type": "alert",
+    "price": "25440.00",
+    "timestamp": 1769009880442,
+    "data": {
+      "icon": "eye-outline",
+      "color": "#ffffff",
+      "price": "25440.00",
+      "title": "HORUS | MNQ1!",
+      "signal": "alert",
+      "ticker": "MNQ1!",
+      "message": "Reversal Readings at 25440.00",
+      "strategy": "HORUS SELL",
+      "videoUrl": null,
+      "timeframe": "15S"
+    },
+    "created_at": "2026-01-21T15:38:00.662137+00:00"
+  },
+  {
+    "id": "a1c21a3a-fbda-4249-8011-5fd0c4918861",
+    "pair": "MNQ1!",
+    "type": "alert",
+    "price": "25434.00",
+    "timestamp": 1769009756924,
+    "data": {
+      "icon": "moon-outline",
+      "color": "#ffffff",
+      "price": "25434.00",
+      "title": "SHADOW MODE | MNQ1!",
+      "signal": "alert",
+      "ticker": "MNQ1!",
+      "message": "Technical Alignment at 25434.00",
+      "strategy": "SHADOW 3/3 min confluence",
+      "videoUrl": null,
+      "timeframe": "45S"
+    },
+    "created_at": "2026-01-21T15:35:57.064354+00:00"
+  },
+  {
+    "id": "87c197da-d593-4454-a01e-6f24cc029780",
+    "pair": "MNQ1!",
+    "type": "alert",
+    "price": "25434.00",
+    "timestamp": 1769009756688,
+    "data": {
+      "icon": "moon-outline",
+      "color": "#ffffff",
+      "price": "25434.00",
+      "title": "SHADOW MODE | MNQ1!",
+      "signal": "alert",
+      "ticker": "MNQ1!",
+      "message": "Technical Alignment at 25434.00",
+      "strategy": "SHADOW 3/3 min confluence",
+      "videoUrl": null,
+      "timeframe": "1"
+    },
+    "created_at": "2026-01-21T15:35:56.945667+00:00"
+  },
+  {
+    "id": "132cf091-cd61-487c-9f2c-16d1c09d47bd",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769009707443,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:35:07.505264+00:00"
+  },
+  {
+    "id": "a9e34e01-4c89-461e-b1b7-c30850027a23",
+    "pair": "MNQ1!",
+    "type": "alert",
+    "price": "25416.00",
+    "timestamp": 1769009703211,
+    "data": {
+      "icon": "eye-outline",
+      "color": "#ffffff",
+      "price": "25416.00",
+      "title": "HORUS | MNQ1!",
+      "signal": "alert",
+      "ticker": "MNQ1!",
+      "message": "Reversal Readings at 25416.00",
+      "strategy": "HORUS SELL",
+      "videoUrl": null,
+      "timeframe": "15S"
+    },
+    "created_at": "2026-01-21T15:35:03.271434+00:00"
+  },
+  {
+    "id": "7cef891c-7d4c-44c3-bad8-80c69c9256d8",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769009700796,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:35:00.860117+00:00"
+  },
+  {
+    "id": "5fb1ee94-8407-4f1a-b8eb-0b59143883e4",
+    "pair": "MNQ1!",
+    "type": "alert",
+    "price": "25418.75",
+    "timestamp": 1769009643615,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "25418.75",
+      "title": "Setup: INFO BULL TREND SYNC",
+      "signal": "alert",
+      "ticker": "MNQ1!",
+      "message": "Technical Alignment at 25418.75",
+      "strategy": "INFO BULL TREND SYNC",
+      "videoUrl": null,
+      "timeframe": "1"
+    },
+    "created_at": "2026-01-21T15:34:03.674938+00:00"
+  },
+  {
+    "id": "6d439a09-4802-401c-bcf8-bc7034199ef2",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769009640678,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:34:00.738494+00:00"
+  },
+  {
+    "id": "269eeadf-6fca-41b4-b1d8-97e8759e4f07",
+    "pair": "MNQ1!",
+    "type": "alert",
+    "price": "25420.00",
+    "timestamp": 1769009611718,
+    "data": {
+      "icon": "moon-outline",
+      "color": "#ffffff",
+      "price": "25420.00",
+      "title": "SHADOW MODE | MNQ1!",
+      "signal": "alert",
+      "ticker": "MNQ1!",
+      "message": "Technical Alignment at 25420.00",
+      "strategy": "SHADOW 3/3 min confluence",
+      "videoUrl": null,
+      "timeframe": "1"
+    },
+    "created_at": "2026-01-21T15:33:31.788316+00:00"
+  },
+  {
+    "id": "2be1d105-9094-44b9-9c9a-e4eda4c58d02",
+    "pair": "MNQ1!",
+    "type": "alert",
+    "price": "25421.25",
+    "timestamp": 1769009609725,
+    "data": {
+      "icon": "moon-outline",
+      "color": "#ffffff",
+      "price": "25421.25",
+      "title": "SHADOW MODE | MNQ1!",
+      "signal": "alert",
+      "ticker": "MNQ1!",
+      "message": "Technical Alignment at 25421.25",
+      "strategy": "SHADOW 3/3 min confluence",
+      "videoUrl": null,
+      "timeframe": "45S"
+    },
+    "created_at": "2026-01-21T15:33:29.790929+00:00"
+  },
+  {
+    "id": "346cb9be-11eb-46ae-8568-fdb1b7d7fb03",
+    "pair": "MNQ1!",
+    "type": "alert",
+    "price": "25411.50",
+    "timestamp": 1769009598943,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "25411.50",
+      "title": "Setup: INFO BULL TREND SYNC",
+      "signal": "alert",
+      "ticker": "MNQ1!",
+      "message": "Technical Alignment at 25411.50",
+      "strategy": "INFO BULL TREND SYNC",
+      "videoUrl": null,
+      "timeframe": "1"
+    },
+    "created_at": "2026-01-21T15:33:19.02242+00:00"
+  },
+  {
+    "id": "68e38497-1d06-4724-9d25-92f097b5a660",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769009400737,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:30:00.794387+00:00"
+  },
+  {
+    "id": "8487cf44-e486-44dc-a914-df395047fc4b",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769009340288,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:29:00.356928+00:00"
+  },
+  {
+    "id": "020f0c72-0a35-42e8-a998-4bcb066c0f9a",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769009330550,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:28:50.616652+00:00"
+  },
+  {
+    "id": "071a4005-227f-4a3a-a446-39f73c0429d2",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769009286153,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:28:06.218508+00:00"
+  },
+  {
+    "id": "94ca0765-7ebb-4fdd-a145-b6112a9944f3",
+    "pair": "MNQ1!",
+    "type": "alert",
+    "price": "25359.00",
+    "timestamp": 1769009254438,
+    "data": {
+      "icon": "eye-outline",
+      "color": "#ffffff",
+      "price": "25359.00",
+      "title": "HORUS | MNQ1!",
+      "signal": "alert",
+      "ticker": "MNQ1!",
+      "message": "Reversal Readings at 25359.00",
+      "strategy": "HORUS SELL",
+      "videoUrl": null,
+      "timeframe": "15S"
+    },
+    "created_at": "2026-01-21T15:27:34.512672+00:00"
+  },
+  {
+    "id": "97f42f11-0b2b-48cd-9523-e66d74f60f8e",
+    "pair": "MNQ1!",
+    "type": "alert",
+    "price": "25362.00",
+    "timestamp": 1769009190390,
+    "data": {
+      "icon": "eye-outline",
+      "color": "#ffffff",
+      "price": "25362.00",
+      "title": "HORUS | MNQ1!",
+      "signal": "alert",
+      "ticker": "MNQ1!",
+      "message": "Reversal Readings at 25362.00",
+      "strategy": "HORUS SELL",
+      "videoUrl": null,
+      "timeframe": "15S"
+    },
+    "created_at": "2026-01-21T15:26:30.446074+00:00"
+  },
+  {
+    "id": "c222ad79-0155-41ea-b349-9be0d7de4663",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769009160580,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:26:00.828461+00:00"
+  },
+  {
+    "id": "bb253a0f-2d64-4560-b284-1abf25bd71fd",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769009100381,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:25:00.457423+00:00"
+  },
+  {
+    "id": "85e5d259-df90-4640-8f7f-11b33c000a47",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769009040370,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:24:00.468344+00:00"
+  },
+  {
+    "id": "7e324ac7-ac87-4646-a68d-10441674e425",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769008999594,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:23:19.655367+00:00"
+  },
+  {
+    "id": "27362835-357c-458b-bf5c-16b1259d44f8",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769008980301,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:23:00.37121+00:00"
+  },
+  {
+    "id": "aa2c611f-ae75-4f79-938c-7dc1ea5d8896",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769008921788,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:22:01.849242+00:00"
+  },
+  {
+    "id": "8c91e492-ba13-4d53-b16a-e15886536d6e",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769008860417,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:21:00.48257+00:00"
+  },
+  {
+    "id": "78d1bad8-49c6-4648-b6e3-f6c0477b7252",
+    "pair": "MNQ1!",
+    "type": "alert",
+    "price": "25325.00",
+    "timestamp": 1769008854091,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "25325.00",
+      "title": "Setup: TP PUMP",
+      "signal": "alert",
+      "ticker": "MNQ1!",
+      "message": "Technical Alignment at 25325.00",
+      "strategy": "TP PUMP",
+      "videoUrl": null,
+      "timeframe": "1"
+    },
+    "created_at": "2026-01-21T15:20:54.165397+00:00"
+  },
+  {
+    "id": "cec34854-053b-4d76-841e-e5a0d70ac264",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769008800360,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:20:00.423898+00:00"
+  },
+  {
+    "id": "aa8ee7c1-4868-41ad-a7ed-35c9d1f7e75b",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769008740317,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:19:00.378068+00:00"
+  },
+  {
+    "id": "0be0d000-b9c8-4134-acf2-911da4e25cac",
+    "pair": "MNQ1!",
+    "type": "alert",
+    "price": "25347.75",
+    "timestamp": 1769008710340,
+    "data": {
+      "icon": "layers-outline",
+      "color": "#ffffff",
+      "price": "25347.75",
+      "title": "PRO4X | MNQ1!",
+      "signal": "alert",
+      "ticker": "MNQ1!",
+      "message": "Trend Alignment Detected at 25347.75",
+      "strategy": "Pro4x.2 Entry Sell",
+      "videoUrl": null,
+      "timeframe": "15S"
+    },
+    "created_at": "2026-01-21T15:18:30.407217+00:00"
+  },
+  {
+    "id": "ecbb5a2b-561e-4aa5-be50-276bdfeae476",
+    "pair": "MNQ1!",
+    "type": "alert",
+    "price": "25352.25",
+    "timestamp": 1769008681164,
+    "data": {
+      "icon": "layers-outline",
+      "color": "#ffffff",
+      "price": "25352.25",
+      "title": "PRO4X | MNQ1!",
+      "signal": "alert",
+      "ticker": "MNQ1!",
+      "message": "Trend Alignment Detected at 25352.25",
+      "strategy": "Pro4x.2 Entry Sell",
+      "videoUrl": null,
+      "timeframe": "30S"
+    },
+    "created_at": "2026-01-21T15:18:01.221446+00:00"
+  },
+  {
+    "id": "354054c0-6db7-40c3-9dac-49f384b467c4",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769008680272,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:18:00.333845+00:00"
+  },
+  {
+    "id": "73f6c2ef-f311-42a1-8de7-e7c91935c45b",
+    "pair": "MNQ1!",
+    "type": "alert",
+    "price": "25372.00",
+    "timestamp": 1769008597147,
+    "data": {
+      "icon": "moon-outline",
+      "color": "#ffffff",
+      "price": "25372.00",
+      "title": "SHADOW MODE | MNQ1!",
+      "signal": "alert",
+      "ticker": "MNQ1!",
+      "message": "Technical Alignment at 25372.00",
+      "strategy": "SHADOW 3/3 min confluence",
+      "videoUrl": null,
+      "timeframe": "1"
+    },
+    "created_at": "2026-01-21T15:16:37.21069+00:00"
+  },
+  {
+    "id": "c99e6e3b-aa04-4e60-a1be-ed7deb73ef8a",
+    "pair": "MNQ1!",
+    "type": "alert",
+    "price": "25371.50",
+    "timestamp": 1769008596171,
+    "data": {
+      "icon": "layers-outline",
+      "color": "#FFD700",
+      "price": "25371.50",
+      "title": "PRO4X | MNQ1!",
+      "signal": "alert",
+      "ticker": "MNQ1!",
+      "message": "Trend Alignment Detected at 25371.50",
+      "strategy": "GET READY SELL Pro4x",
+      "videoUrl": null,
+      "timeframe": "1"
+    },
+    "created_at": "2026-01-21T15:16:36.241381+00:00"
+  },
+  {
+    "id": "24fe68ab-0579-40e4-b3ab-a34f215e5ec6",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769008588460,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:16:28.564905+00:00"
+  },
+  {
+    "id": "ddabcd83-c596-40e2-a23a-26ca2d652d7d",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769008525486,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:15:25.723213+00:00"
+  },
+  {
+    "id": "13c38ae2-a8c1-4152-9791-16d4098aaf7b",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769008444570,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:14:04.835842+00:00"
+  },
+  {
+    "id": "67c6dd29-9fe0-4bca-aef0-ba6b93492621",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769008421192,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:13:41.258339+00:00"
+  },
+  {
+    "id": "c172c4d1-2904-461c-9756-dc68ee51ef46",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769008331992,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:12:12.181341+00:00"
+  },
+  {
+    "id": "28004e9e-055f-4eb9-a68b-b86d288adb49",
+    "pair": "MNQ",
+    "type": "SELL",
+    "price": "18600",
+    "timestamp": 1769008270653,
+    "data": {
+      "icon": null,
+      "color": "#FFD700",
+      "price": 18600,
+      "title": "Setup: GetReady",
+      "signal": "SELL",
+      "ticker": "MNQ",
+      "message": "Technical Alignment at 18600",
+      "strategy": "GetReady",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:11:10.83978+00:00"
+  },
+  {
+    "id": "ecb274e3-945a-437c-873a-17f2b262df42",
+    "pair": "NQ",
+    "type": "BUY",
+    "price": "20650",
+    "timestamp": 1769008265915,
+    "data": {
+      "icon": null,
+      "color": "#4ADE80",
+      "price": 20650,
+      "title": "PRO4X | NQ",
+      "signal": "BUY",
+      "ticker": "NQ",
+      "message": "Trend Alignment Detected at 20650",
+      "strategy": "pro4x_Buy",
+      "videoUrl": "https://www.example.com/videos/pro4x_buy.mp4",
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:11:05.994704+00:00"
+  },
+  {
+    "id": "24fc8012-b950-452d-aad6-adf9b25eafaf",
+    "pair": "MNQ",
+    "type": "BUY",
+    "price": "18550",
+    "timestamp": 1769008265137,
+    "data": {
+      "icon": null,
+      "color": "#FFD700",
+      "price": 18550,
+      "title": "Setup: GetReady",
+      "signal": "BUY",
+      "ticker": "MNQ",
+      "message": "Technical Alignment at 18550",
+      "strategy": "GetReady",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:11:05.236898+00:00"
+  },
+  {
+    "id": "3f6c9fd7-e3f9-47ae-b411-f0319db897ae",
+    "pair": "MNQ",
+    "type": "buy",
+    "price": "18500",
+    "timestamp": 1769008264524,
+    "data": {
+      "icon": null,
+      "color": "#FFD700",
+      "price": 18500,
+      "title": "Setup: GetReady",
+      "signal": "buy",
+      "ticker": "MNQ",
+      "message": "Technical Alignment at 18500",
+      "strategy": "GetReady",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:11:04.641872+00:00"
+  },
+  {
+    "id": "2d62588d-9b26-416f-8d75-6634d234078f",
+    "pair": "NQ-TEST-SHADOW-CUSTOM",
+    "type": "BUY",
+    "price": "20888",
+    "timestamp": 1769008263334,
+    "data": {
+      "icon": null,
+      "color": "#4ADE80",
+      "price": "20888",
+      "title": "SHADOW MODE | NQ-TEST-SHADOW-CUSTOM",
+      "signal": "BUY",
+      "ticker": "NQ-TEST-SHADOW-CUSTOM",
+      "message": "Technical Alignment at 20888",
+      "strategy": "shadow_BuyAbsolute",
+      "videoUrl": null,
+      "timeframe": "1m"
+    },
+    "created_at": "2026-01-21T15:11:03.585231+00:00"
+  },
+  {
+    "id": "8f24dc59-4670-4c37-8c83-72804968407b",
+    "pair": "MNQ1!",
+    "type": "alert",
+    "price": "25293.00",
+    "timestamp": 1769008244293,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "25293.00",
+      "title": "Setup: TP PUMP",
+      "signal": "alert",
+      "ticker": "MNQ1!",
+      "message": "Technical Alignment at 25293.00",
+      "strategy": "TP PUMP",
+      "videoUrl": null,
+      "timeframe": "1"
+    },
+    "created_at": "2026-01-21T15:10:44.373446+00:00"
+  },
+  {
+    "id": "5407f9eb-9c4a-4017-bb94-0950cb46c18e",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769008217993,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:10:18.056065+00:00"
+  },
+  {
+    "id": "773e0f7f-8d58-4356-8a69-51eda6f7febf",
+    "pair": "MNQ",
+    "type": "SELL",
+    "price": "18600",
+    "timestamp": 1769008155752,
+    "data": {
+      "icon": null,
+      "color": "#FFD700",
+      "price": 18600,
+      "title": "Setup: GetReady",
+      "signal": "SELL",
+      "ticker": "MNQ",
+      "message": "Technical Alignment at 18600",
+      "strategy": "GetReady",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:09:15.945361+00:00"
+  },
+  {
+    "id": "fb83c40f-214d-478a-9428-94e7add0a38f",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769008155449,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:09:15.511314+00:00"
+  },
+  {
+    "id": "236edca2-f483-42a4-8a57-711b3a14013e",
+    "pair": "MNQ",
+    "type": "BUY",
+    "price": "18550",
+    "timestamp": 1769008150222,
+    "data": {
+      "icon": null,
+      "color": "#FFD700",
+      "price": 18550,
+      "title": "Setup: GetReady",
+      "signal": "BUY",
+      "ticker": "MNQ",
+      "message": "Technical Alignment at 18550",
+      "strategy": "GetReady",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:09:10.409138+00:00"
+  },
+  {
+    "id": "67b9d43a-bb7f-4ff5-8042-841d8a8b15bb",
+    "pair": "MNQ",
+    "type": "buy",
+    "price": "18500",
+    "timestamp": 1769008149416,
+    "data": {
+      "icon": null,
+      "color": "#FFD700",
+      "price": 18500,
+      "title": "Setup: GetReady",
+      "signal": "buy",
+      "ticker": "MNQ",
+      "message": "Technical Alignment at 18500",
+      "strategy": "GetReady",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:09:09.52992+00:00"
+  },
+  {
+    "id": "21286a7f-3f34-4efb-9d27-c989125c3153",
+    "pair": "NQ-TEST-SHADOW-CUSTOM",
+    "type": "BUY",
+    "price": "20888",
+    "timestamp": 1769008146703,
+    "data": {
+      "icon": null,
+      "color": "#4ADE80",
+      "price": "20888",
+      "title": "SHADOW MODE | NQ-TEST-SHADOW-CUSTOM",
+      "signal": "BUY",
+      "ticker": "NQ-TEST-SHADOW-CUSTOM",
+      "message": "Technical Alignment at 20888",
+      "strategy": "shadow_BuyAbsolute",
+      "videoUrl": null,
+      "timeframe": "1m"
+    },
+    "created_at": "2026-01-21T15:09:07.003041+00:00"
+  },
+  {
+    "id": "a04cd09e-21fe-4224-b848-ba2e62f3f441",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769008140315,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:09:00.37478+00:00"
+  },
+  {
+    "id": "2e0ae6ea-963b-4214-916f-f863f7334d87",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769008135484,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:08:55.543348+00:00"
+  },
+  {
+    "id": "53925958-8150-4122-95e6-3e3c89884445",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769008080451,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:08:00.530718+00:00"
+  },
+  {
+    "id": "53e54b5d-72de-486f-bf19-fcdddedbf78e",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769008025439,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:07:05.500419+00:00"
+  },
+  {
+    "id": "5d9f6058-e5fc-4971-9939-e545d4574b0e",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769008014442,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:06:54.69341+00:00"
+  },
+  {
+    "id": "8b34cb18-3a6e-4c75-a498-990a352695b8",
+    "pair": "Unknown",
+    "type": "alert",
+    "price": "0",
+    "timestamp": 1769007917209,
+    "data": {
+      "icon": "notifications-outline",
+      "color": "#ffffff",
+      "price": "0",
+      "title": "Setup: Unknown",
+      "signal": "alert",
+      "ticker": "Unknown",
+      "message": "Technical Alignment at 0",
+      "strategy": "Unknown",
+      "videoUrl": null,
+      "timeframe": "M1"
+    },
+    "created_at": "2026-01-21T15:05:17.27212+00:00"
+  },
+  {
+    "id": "f8de3dab-75cc-4b29-ae35-97e1fd6b0bf3",
+    "pair": "NQ-TEST-SHADOW-CUSTOM",
+    "type": "BUY",
+    "price": "20888",
+    "timestamp": 1769007904805,
+    "data": {
+      "icon": null,
+      "color": "#4ADE80",
+      "price": "20888",
+      "title": "SHADOW MODE | NQ-TEST-SHADOW-CUSTOM",
+      "signal": "BUY",
+      "ticker": "NQ-TEST-SHADOW-CUSTOM",
+      "message": "Technical Alignment at 20888",
+      "strategy": "shadow_BuyAbsolute",
+      "videoUrl": null,
+      "timeframe": "1m"
+    },
+    "created_at": "2026-01-21T15:05:05.049568+00:00"
+  },
+  {
+    "id": "f33e6bdc-e8d5-4707-b739-0929a3eaeb62",
+    "pair": "MNQ1!",
+    "type": "alert",
+    "price": "25337.75",
+    "timestamp": 1769007852133,
+    "data": {
+      "icon": "moon-outline",
+      "color": "#ffffff",
+      "price": "25337.75",
+      "title": "SHADOW MODE | MNQ1!",
+      "signal": "alert",
+      "ticker": "MNQ1!",
+      "message": "Technical Alignment at 25337.75",
+      "strategy": "SHADOW 3/3 min confluence",
+      "videoUrl": null,
+      "timeframe": "1"
+    },
+    "created_at": "2026-01-21T15:04:12.216958+00:00"
+  },
+  {
+    "id": "3e492466-62ba-4a45-89a3-4545c723c9a1",
+    "pair": "MNQ1!",
+    "type": "alert",
+    "price": "25336.50",
+    "timestamp": 1769007840360,
+    "data": {
+      "icon": "moon-outline",
+      "color": "#ffffff",
+      "price": "25336.50",
+      "title": "SHADOW MODE | MNQ1!",
+      "signal": "alert",
+      "ticker": "MNQ1!",
+      "message": "Technical Alignment at 25336.50",
+      "strategy": "SHADOW 3/3 min confluence",
+      "videoUrl": null,
+      "timeframe": "1"
+    },
+    "created_at": "2026-01-21T15:04:00.432432+00:00"
+  },
+  {
+    "id": "046383a6-d0f8-44b0-8c9c-39553aa258b0",
+    "pair": "MNQ1!",
+    "type": "alert",
+    "price": "25323.50",
+    "timestamp": 1769007810285,
+    "data": {
+      "icon": "layers-outline",
+      "color": "#ffffff",
+      "price": "25323.50",
+      "title": "PRO4X | MNQ1!",
+      "signal": "alert",
+      "ticker": "MNQ1!",
+      "message": "Trend Alignment Detected at 25323.50",
+      "strategy": "Pro4x.2 Entry Sell",
+      "videoUrl": null,
+      "timeframe": "30S"
+    },
+    "created_at": "2026-01-21T15:03:30.355641+00:00"
+  }
+]
