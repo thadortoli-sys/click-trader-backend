@@ -63,6 +63,50 @@ const STRATEGY_IMAGES: Record<string, any> = {
     'scalp_SyncroResSell': require('../assets/images/education/pro4x_sell.png'),
 };
 
+// --- EDUCATIONAL CONTENT MAPPING ---
+const STRATEGY_CONTENT: Record<string, string> = {
+    // HORUS OVS/OVB
+    'horus_OVS': "Context\nThis is the most powerful analytical response in the app. It detects high-density technical rejection zones.\n\nHow to use this signal\nTarget: 10-15 points on NQ.\nInvalidation: A clear close beyond the rejection candle.\n\nDiscipline rules\nWait for the M1 candle to close.\nDo not chase if price has already moved more than 5 points from the level alignment.",
+    'horus_OVB': "Context\nThis is the most powerful analytical response in the app. It detects high-density technical rejection zones.\n\nHow to use this signal\nTarget: 10-15 points on NQ.\nInvalidation: A clear close beyond the rejection candle.\n\nDiscipline rules\nWait for the M1 candle to close.\nDo not chase if price has already moved more than 5 points from the level alignment.",
+
+    // HORUS ADV
+    'horus_Adv_Buy': "High-Density Reaction Detected\n\nTechnical friction identified at institutional liquidity zones.\n\nFramework & ATR Context\n• Volatility Filter: Alerts must be interpreted alongside current ATR levels for precise technical calibration.\n• Institutional Map: Primary focus on 12, 23, 38, 64, and 91 technical reference layers.\n• Behavior: Monitors fast liquidity taps and immediate bullish recoil zones.\n\nTechnical Note\nMonitoring M1 stabilization waves is a requirement for data alignment.\n\nDiscipline\nRigorous risk management is the sole responsibility of the user.",
+    'horus_Adv_Sell': "High-Density Reaction Detected\n\nTechnical friction identified at institutional liquidity zones.\n\nFramework & ATR Context\n• Volatility Filter: Alerts must be interpreted alongside current ATR levels to calibrate reaction expectations.\n• Institutional Map: Focus on the 12, 23, 38, 64, and 91 technical reference layers.\n• Behavior: Monitors fast liquidity taps and immediate recoil zones.\n\nTechnical Note\nObservation of M1 price stabilization is recommended for data validation.\n\nDiscipline\nRigorous risk management is the sole responsibility of the user.",
+
+    // PRO4X.2
+    'pro4xx_Buy': "Context\nTrend following alignment. Monitors institutional market flow.\n\nHow to use this signal\nIdentify the primary trend on M15 before executing.\nLook for a reclaim of the key level if the first touch is too fast.\n\nExecution\nEntry on technical alignment.\nCommon TP: 20-50 points.",
+    'pro4xx_Sell': "Context\nTrend following alignment. Monitors institutional market flow.\n\nHow to use this signal\nIdentify the primary trend on M15 before executing.\nLook for a reclaim of the key level if the first touch is too fast.\n\nExecution\nEntry on technical alignment.\nCommon TP: 20-50 points.",
+
+    // PRO4X CLASSIC
+    'pro4x_Buy': "Context\nThis setup indicates that technical bullish conditions have been met based on the PRO4X model.\n\nHow to use this signal\nAnalytical parameters are aligned around a key level alignment, highlighting a potential directional market bias.\nDepending on the broader context, this setup highlights a potential short-term reaction zone.",
+    'pro4x_Sell': "Context\nThis setup indicates that technical bearish conditions have been met based on the PRO4X model.\n\nHow to use this signal\nAnalytical parameters are aligned around a key level alignment, highlighting a potential directional market bias.\nDepending on the broader context, this setup highlights a potential short-term reaction zone.",
+
+    // SHADOW
+    'shadow_Buy': "Context\nShadow of Liquidity. Detects sweeps of previous highs/lows.\n\nTechnical Note\nHigher volatility is expected.\nWait for the reclaim of the sweep level to confirm the trap.",
+    'shadow_Sell': "Context\nShadow of Liquidity. Detects sweeps of previous highs/lows.\n\nTechnical Note\nHigher volatility is expected.\nWait for the reclaim of the sweep level to confirm the trap.",
+
+    // VOLATILITY
+    'vol_Panic': "Extreme Market Volatility Warning\n\nCurrent data indicates critical price velocity with a very high probability of significant overshoots.\n\nATR & Technical Context\n• Volatility Threshold: ATR M1 is currently ≥ 23 pts.\n• Observation Note: In these conditions, price moves can frequently overshoot technical layers. High-density analysis suggests observing 5–8 M1 candles or a strong price reclaim for data alignment.\n• Market Structure: Trend continuation is statistically common during panic phases. Exercise extreme caution as price reactions may be delayed.\n\nSystem Behavior\nThis alert identifies \"Black Swan\" or high-impact news environments. It is designed to prioritize data stabilization over immediate reaction.\n\nDiscipline\nCapital preservation is the primary focus. All trading decisions and risk management remain the sole responsibility of the user.",
+    'vol_Extreme': "Extreme Market Conditions Detected\n\nCurrent data indicates a significant increase in price velocity and overshoot risk.\n\nATR & Technical Context\n• Volatility Threshold: ATR M1 is currently between 20–23 pts.\n• Observation Note: Fast market conditions often result in frequent overshoots. Technical context suggests monitoring for 3–5 M1 candles or a clear sweep-and-reclaim structure for data alignment.\n• Validation Requirement: Monitoring 2 to 3 waves on the M1 timeframe is a primary requirement for technical validation under these conditions.\n\nSystem Behavior\nThis alert serves as a technical warning for high-density price movements. Statistical trend continuation is common during these phases.\n\nDiscipline\nRigorous risk management and capital protection are the sole responsibility of the user.",
+    'vol_High': "Active Market Volatility\n\nCurrent data indicates a sustained increase in price velocity and a higher risk of price sweeps.\n\nATR & Technical Context\n• Volatility Threshold: ATR M1 is currently between 18–20 pts.\n• Observation Note: The technical context suggests monitoring for stabilization after 1–3 M1 candles as a common technical baseline.\n• Market Structure: Continuation or sweep-and-reclaim structures are frequently identified at this volatility level.\n\nSystem Behavior\nThis alert serves as a technical monitoring tool for active trend phases. It is designed to assist in identifying potential volatility shifts.\n\nDiscipline\nAdapt your analysis to current volatility. Risk management remains the sole responsibility of the user.",
+
+    // REINTEGRATION
+    'scalp_TakeProfitPump': "Context\nRe-integration setup. Price extended from MA 50.\n\nTechnical Note\nStatistical probability of mean reversion. Target the MA 50 as a primary target.",
+    'scalp_TakeProfitPush': "Context\nRe-integration setup. Price extended from MA 50.\n\nTechnical Note\nStatistical probability of mean reversion. Target the MA 50 as a primary target.",
+
+    // MARKET REGIMES
+    'vol_Regime_Trend': "Directional Momentum Alignment\n\nCurrent data indicates a sustained directional flow with structural stability.\n\nATR & Technical Context\n• Volatility Threshold: ATR M1 is currently in a Normal/Standard range (< 18 pts).\n• Observation Note: Price action shows clear higher highs or lower lows. The technical context suggests monitoring for pullbacks to institutional Magnet Levels for trend continuation.\n• Market Structure: High probability of directional follow-through. Technical validation is primarily based on M1 wave alignment.\n\nSystem Behavior\nThis alert identifies phases where momentum outweighs mean-reversion. It is designed to assist in monitoring trend health.\n\nDiscipline\nAvoid counter-trend bias during active regimes. Risk management remains the sole responsibility of the user.",
+    'vol_Regime_Range': "Mean-Reversion Context Identified\n\nCurrent data indicates a lack of directional momentum, with price oscillating between defined technical boundaries.\n\nATR & Technical Context\n• Volatility Threshold: ATR M1 is in a Stable/Low range (< 18 pts).\n• Observation Note: Price action shows back-and-forth behavior within a horizontal corridor. Technical context suggests monitoring for rejections at the extremes of the range.\n• Market Structure: High density of \"Magnet Level\" interactions. The model prioritizes identification of exhaustion points over breakout attempts.\n\nSystem Behavior\nThis alert identifies rotational market phases. It is designed to assist in monitoring price stabilization within fixed limits.\n\nDiscipline\nAnticipate rotational behavior; avoid chasing moves at the range boundaries. All decisions are the sole responsibility of the user.",
+    'Trend': "Directional Momentum Alignment\n\nCurrent data indicates a sustained directional flow with structural stability.\n\nATR & Technical Context\n• Volatility Threshold: ATR M1 is currently in a Normal/Standard range (< 18 pts).\n• Observation Note: Price action shows clear higher highs or lower lows. The technical context suggests monitoring for pullbacks to institutional Magnet Levels for trend continuation.\n• Market Structure: High probability of directional follow-through. Technical validation is primarily based on M1 wave alignment.\n\nSystem Behavior\nThis alert identifies phases where momentum outweighs mean-reversion. It is designed to assist in monitoring trend health.\n\nDiscipline\nAvoid counter-trend bias during active regimes. Risk management remains the sole responsibility of the user.",
+    'Range': "Mean-Reversion Context Identified\n\nCurrent data indicates a lack of directional momentum, with price oscillating between defined technical boundaries.\n\nATR & Technical Context\n• Volatility Threshold: ATR M1 is in a Stable/Low range (< 18 pts).\n• Observation Note: Price action shows back-and-forth behavior within a horizontal corridor. Technical context suggests monitoring for rejections at the extremes of the range.\n• Market Structure: High density of \"Magnet Level\" interactions. The model prioritizes identification of exhaustion points over breakout attempts.\n\nSystem Behavior\nThis alert identifies rotational market phases. It is designed to assist in monitoring price stabilization within fixed limits.\n\nDiscipline\nAnticipate rotational behavior; avoid chasing moves at the range boundaries. All decisions are the sole responsibility of the user.",
+    'REGIME RANGE': "Mean-Reversion Context Identified\n\nCurrent data indicates a lack of directional momentum, with price oscillating between defined technical boundaries.\n\nATR & Technical Context\n• Volatility Threshold: ATR M1 is in a Stable/Low range (< 18 pts).\n• Observation Note: Price action shows back-and-forth behavior within a horizontal corridor. Technical context suggests monitoring for rejections at the extremes of the range.\n• Market Structure: High density of \"Magnet Level\" interactions. The model prioritizes identification of exhaustion points over breakout attempts.\n\nSystem Behavior\nThis alert identifies rotational market phases. It is designed to assist in monitoring price stabilization within fixed limits.\n\nDiscipline\nAnticipate rotational behavior; avoid chasing moves at the range boundaries. All decisions are the sole responsibility of the user.",
+    'REGIME TREND': "Directional Momentum Alignment\n\nCurrent data indicates a sustained directional flow with structural stability.\n\nATR & Technical Context\n• Volatility Threshold: ATR M1 is currently in a Normal/Standard range (< 18 pts).\n• Observation Note: Price action shows clear higher highs or lower lows. The technical context suggests monitoring for pullbacks to institutional Magnet Levels for trend continuation.\n• Market Structure: High probability of directional follow-through. Technical validation is primarily based on M1 wave alignment.\n\nSystem Behavior\nThis alert identifies phases where momentum outweighs mean-reversion. It is designed to assist in monitoring trend health.\n\nDiscipline\nAvoid counter-trend bias during active regimes. Risk management remains the sole responsibility of the user.",
+
+    // GET READY
+    'pro4x_GetReady': "Structural Zone Identified\n\nThe market has reached a high-density technical coordinate. Analytical parameters suggest a potential shift in liquidity.\n\nTechnical Context & ATR\n\n• Status: This is a pre-analytical notification (GR). It identifies institutional magnet levels before data validation occurs.\n\n• Volatility Filter: The current reaction must be interpreted through the ATR (Hot/Extreme/Panic) to define the required stabilization period.\n\n• Institutional Map: Monitoring focus is now on the 12, 23, 38, 64, or 91 reference layers.\n\nObservation Phase\n\nAwaiting technical reclaim or rejection at the magnet level. This is a monitoring phase, not a directional validation.\n\nPRO TIP: View \"Pro4x Set up Forming\" as a volatility compass. It eliminates noise by focusing your attention on the only numbers that historically influence institutional flow.",
+};
+
+
 export const SignalDetailModal = ({ visible, onClose, onArchive, signal }: SignalDetailModalProps) => {
     // Animation Values
     const scaleAnim = useRef(new Animated.Value(0.9)).current;
@@ -102,7 +146,7 @@ export const SignalDetailModal = ({ visible, onClose, onArchive, signal }: Signa
     if (!visible || !signal) return null;
 
     // Extract Data
-    const strategy = String(signal.data?.strategy || signal.strategyLabel || signal.title || 'System Alert');
+    const strategy = String(signal.data?.strategy || signal.strategyLabel || signal.title || 'System Alert').replace(/Signal/gi, '').trim();
     const ticker = String(signal.data?.ticker || signal.data?.pair || signal.pair || 'UNKNOWN');
     let type = String(signal.data?.signal || signal.type || 'ALERT').toUpperCase();
 
@@ -155,6 +199,44 @@ export const SignalDetailModal = ({ visible, onClose, onArchive, signal }: Signa
     const hasRefLevels = tp && sl && tp !== 'OPEN' && sl !== 'OPEN';
     const isDemoPnL = signal.isDemoPnL;
 
+    // MESSAGE ENRICHMENT LOGIC
+    let finalBody = signal.data?.message || signal.body;
+
+    // If message is short or missing, try to enrich it with educational content
+    if (!finalBody || finalBody.length < 50) {
+        let contentKey = strategy;
+        const sLower = strategy.toLowerCase();
+        const bUpper = (signal.data?.message || signal.body || '').toUpperCase();
+
+        // 1. PRIORITIZE REGIME DETECTION
+        if (sLower.includes('regime') || sLower.includes('vol_regime')) {
+            if (sLower.includes('trend') || bUpper.includes('DIRECTIONAL') || bUpper.includes('MOMENTUM') || (bUpper.includes('TREND') && !bUpper.includes('RANGE'))) {
+                contentKey = 'vol_Regime_Trend';
+            } else if (sLower.includes('range') || bUpper.includes('REVERSION') || bUpper.includes('MEAN') || bUpper.includes('HORIZONTAL') || bUpper.includes('RANGE')) {
+                contentKey = 'vol_Regime_Range';
+            }
+        }
+
+        // 2. TRY DIRECT OR FUZZY MATCH
+        if (STRATEGY_CONTENT[contentKey]) {
+            finalBody = STRATEGY_CONTENT[contentKey];
+        } else {
+            // IMPROVED FUZZY MATCH (Bidirectional)
+            const match = Object.keys(STRATEGY_CONTENT).find(k =>
+                sLower.includes(k.toLowerCase()) || k.toLowerCase().includes(sLower)
+            );
+            if (match) finalBody = STRATEGY_CONTENT[match];
+        }
+    }
+
+    // SANITIZE FINAL BODY: Replace "Entry Price" or "entry" in generic cases
+    if (finalBody) {
+        finalBody = finalBody.replace(/entry price/gi, 'level alignment')
+            .replace(/signal price/gi, 'level alignment')
+            .replace(/execution price/gi, 'level alignment');
+    }
+
+
     // Icon selection logic (STRICT ARROWS)
     let iconName: keyof typeof Ionicons.glyphMap = "pulse";
 
@@ -166,6 +248,7 @@ export const SignalDetailModal = ({ visible, onClose, onArchive, signal }: Signa
         else if (isSell) iconName = "trending-down-outline";
         else iconName = "pulse"; // True fallback only
     }
+
 
     // Structured Body Renderer
     const renderStructuredBody = (text: string | null | undefined) => {
@@ -181,7 +264,14 @@ export const SignalDetailModal = ({ visible, onClose, onArchive, signal }: Signa
             "Context",
             "Market Context Checks",
             "Risk Discipline",
-            "Technical Note"
+            "Technical Note",
+            "Framework & ATR Context",
+            "ATR & Technical Context",
+            "Market Structure",
+            "System Behavior",
+            "Discipline",
+            "Directional Momentum Alignment",
+            "Mean-Reversion Context Identified"
         ];
 
         return (
@@ -295,7 +385,8 @@ export const SignalDetailModal = ({ visible, onClose, onArchive, signal }: Signa
                                     <Text style={[styles.strategy, { color: '#FFFFFF', marginTop: 10 }]}>
                                         {(signal.data?.title || signal.title || strategy.replace('Entry', '').replace('_', ' ').trim())
                                             .replace(/Buy/g, 'Bullish').replace(/Sell/g, 'Bearish')
-                                            .replace(/BUY/g, 'BULLISH').replace(/SELL/g, 'BEARISH')}
+                                            .replace(/BUY/g, 'BULLISH').replace(/SELL/g, 'BEARISH')
+                                            .replace(/Signal/gi, '').trim()}
                                     </Text>
                                     <Text style={styles.ticker}>{ticker}</Text>
                                 </View>
@@ -351,7 +442,7 @@ export const SignalDetailModal = ({ visible, onClose, onArchive, signal }: Signa
                                 {/* 2. DATA GRID */}
                                 <View style={styles.grid}>
                                     <View style={styles.row}>
-                                        <Text style={styles.label}>ENTRY PRICE</Text>
+                                        <Text style={styles.label}>LEVEL ALIGNMENT</Text>
                                         <Text style={styles.value}>{price}</Text>
                                     </View>
                                     <View style={styles.row}>
@@ -392,13 +483,14 @@ export const SignalDetailModal = ({ visible, onClose, onArchive, signal }: Signa
                                             lineHeight: 18,
                                             fontWeight: '400'
                                         }}>
-                                            This is <Text style={{ fontWeight: 'bold' }}>the most powerful</Text> scalping signal in the app. Many traders focus solely on these alerts to reach their daily targets.
+                                            This is <Text style={{ fontWeight: 'bold' }}>the most powerful</Text> analytical detection in the app. Many traders focus solely on these alerts to reach their daily targets.
                                         </Text>
                                     </View>
                                 )}
 
                                 {/* 4. BODY with STRUCTURED RENDERING */}
-                                {renderStructuredBody(signal.data?.message || signal.body)}
+                                {renderStructuredBody(finalBody)}
+
 
                                 {/* 5. VIDEO ATTACHMENT */}
                                 {signal.data?.videoUrl && (

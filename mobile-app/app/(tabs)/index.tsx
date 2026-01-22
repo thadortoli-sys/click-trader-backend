@@ -112,7 +112,7 @@ const SIGNAL_CONFIG: Record<string, { title: string, icon: keyof typeof Ionicons
   'h1_SyncroBearish': { title: 'SYNCRO BEARISH H1', icon: 'information-circle-outline', color: '#FF5252' },
 
   // 7. GENERIC / FALLBACKS
-  'GetReady': { title: 'SETUP FORMING', icon: 'pulse-outline', color: '#FFC107' },
+  'GetReady': { title: 'PRO4X SET UP FORMING', icon: 'pulse-outline', color: '#FFC107' },
 };
 
 // Fallback style
@@ -150,7 +150,8 @@ const SignalFeedItem = React.memo(({ pair, strategy, time, profit, message, sign
   const combinedCheck = (s + ' ' + (message || '') + ' ' + (signalType || '')).toUpperCase();
   if (combinedCheck.includes('SETUP FORMING') || combinedCheck.includes('FORMING') || combinedCheck.includes('GETREADY') || combinedCheck.includes('PREPARE')) {
     // Clone config to avoid mutating static object
-    config = { ... (config || { title: s }), icon: 'pulse-outline', color: '#FFC107' };
+    // FORCE the title to SETUP FORMING to avoid it being called "PRO4X"
+    config = { ... (config || { title: s }), title: 'SETUP FORMING', icon: 'pulse-outline', color: '#FFC107' };
   }
 
   // 3. Fallback

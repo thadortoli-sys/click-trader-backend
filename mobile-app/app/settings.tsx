@@ -53,7 +53,7 @@ const INTERMEDIATE_ITEMS: SignalItem[] = [
     {
         key: 'pro4x_GetReady',
         guideTarget: 'PRO4X',
-        label: 'PRO4X – Setup Forming',
+        label: 'PRO4X – Set up Forming',
         description: 'Key price levels have been reached.\nDepending on the broader context, this setup highlights a potential short-term reaction zone.\nThis setup serves as a pre-analytical notification, indicating that market conditions are aligning for a potential reaction zone.',
         icon: 'pulse-outline', // Amber
         color: '#FFC107'
@@ -62,7 +62,7 @@ const INTERMEDIATE_ITEMS: SignalItem[] = [
         key: 'pro4x_Buy',
         guideTarget: 'PRO4X',
         label: 'PRO4X – Bullish Setup',
-        description: 'This setup indicates that technical bullish conditions have been met based on the PRO4X model.\nAnalytical parameters are aligned around a key price level, highlighting a potential directional market bias.',
+        description: 'This setup indicates that technical bullish conditions have been met based on the PRO4X model.\nAnalytical parameters are aligned around a key level alignment, highlighting a potential directional market bias.',
         icon: 'trending-up-outline',
         color: '#4ADE80'
     },
@@ -70,7 +70,7 @@ const INTERMEDIATE_ITEMS: SignalItem[] = [
         key: 'pro4x_Sell',
         guideTarget: 'PRO4X',
         label: 'PRO4X – Bearish Setup',
-        description: 'This setup indicates that technical bearish conditions have been met based on the PRO4X model.\nAnalytical parameters are aligned around a key price level, highlighting a potential directional market bias.',
+        description: 'This setup indicates that technical bearish conditions have been met based on the PRO4X model.\nAnalytical parameters are aligned around a key level alignment, highlighting a potential directional market bias.',
         icon: 'trending-down-outline',
         color: '#FF5252'
     },
@@ -116,7 +116,7 @@ const ADVANCED_ITEMS: SignalItem[] = [
         key: 'horus_Adv_Buy',
         guideTarget: 'HORUS_ADV',
         label: 'Horus ADV Bullish',
-        description: 'Institutional Scalping (Bullish). Requires Power/RSI confirmation.',
+        description: 'Institutional Precision (Bullish). Based on high-density technical alignment.',
         icon: 'flash',
         color: '#00FF9D'
     },
@@ -124,7 +124,7 @@ const ADVANCED_ITEMS: SignalItem[] = [
         key: 'horus_Adv_Sell',
         guideTarget: 'HORUS_ADV',
         label: 'Horus ADV Bearish',
-        description: 'Institutional Scalping (Bearish). Requires Power/RSI confirmation.',
+        description: 'Institutional Precision (Bearish). Based on high-density technical alignment.',
         icon: 'flash',
         color: '#FF5252'
     },
