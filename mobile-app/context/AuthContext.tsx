@@ -39,6 +39,31 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [loading, setLoading] = useState(true);
     const [isPro, setIsPro] = useState(false);
 
+    // --- GOD MODE HELPER ---
+    const checkGodMode = (currentSession: Session | null) => {
+        if (!currentSession?.user?.email) return;
+
+        const email = currentSession.user.email;
+        const WHITELIST = [
+            'th.a.dortoli@gmail.com',
+            'adortoli@icloud.com',
+            'apple_reviewer@clickandtrader.com',
+            'google_reviewer@clickandtrader.com'
+        ];
+
+        if (WHITELIST.includes(email)) {
+            console.log(`[AuthContext] 👑 GOD MODE RE-ACTIVATED for ${email}`);
+            setIsPro(true);
+            registerForPushNotificationsAsync().then(async (token) => {
+                if (token) {
+                    const settings = await getSettings();
+                    const s = settings.signals || {};
+                    await sendSettingsToBackend(token, s, true);
+                }
+            });
+        }
+    };
+
     useEffect(() => {
         let purchasesListener: any = null;
         let authSubscription: any = null;
@@ -62,6 +87,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 if (data?.session) {
                     setSession(data.session);
                     console.log('[AuthContext] Session Found');
+                    checkGodMode(data.session); // CHECK 1: ON MOUNT
                 }
             } catch (e) {
                 console.warn('[AuthContext] Supabase check skipped/timed out');
@@ -76,12 +102,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                     console.log('[AuthContext] Checking status...');
                     const info = await withTimeout(Purchases.getCustomerInfo(), 1500, 'Purchases.getInfo') as CustomerInfo;
                     if (info) {
-                        setIsPro(!!info.entitlements.active[ENTITLEMENT_ID]);
+                        setIsPro(prev => prev || !!info.entitlements.active[ENTITLEMENT_ID]); // Keep God Mode if active
                     }
 
                     if (typeof Purchases.addCustomerInfoUpdateListener === 'function') {
                         purchasesListener = Purchases.addCustomerInfoUpdateListener((customerInfo) => {
-                            setIsPro(!!customerInfo.entitlements.active[ENTITLEMENT_ID]);
+                            setIsPro(prev => prev || !!customerInfo.entitlements.active[ENTITLEMENT_ID]);
                         });
                     }
                 } catch (e: any) {
@@ -102,6 +128,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         try {
             const { data } = supabase.auth.onAuthStateChange((_event, session) => {
                 setSession(session);
+                checkGodMode(session); // CHECK 2: ON LOGIN/LOGOUT
                 // Don't modify loading state here to avoid race conditions with initializeAuth
             });
             authSubscription = data.subscription;
