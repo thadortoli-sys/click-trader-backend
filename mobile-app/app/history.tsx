@@ -133,6 +133,7 @@ export default function HistoryScreen() {
 
                                         // Force Replacement
                                         text = text
+                                            .replace(/INSTITUTIONAL ALERT/gi, 'INSTITUTIONAL ALIGNMENT')
                                             .replace('BUY', 'BULLISH')
                                             .replace('SELL', 'BEARISH')
                                             .replace('LONG', 'BULLISH')

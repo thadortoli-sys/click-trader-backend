@@ -116,7 +116,7 @@ const ADVANCED_ITEMS: SignalItem[] = [
         key: 'horus_Adv_Buy',
         guideTarget: 'HORUS_ADV',
         label: 'Horus ADV Bullish',
-        description: 'Institutional Precision (Bullish). Based on high-density technical alignment.',
+        description: 'Setup Precision (Bullish). Based on high-density technical alignment.',
         icon: 'flash',
         color: '#00FF9D'
     },
@@ -124,7 +124,7 @@ const ADVANCED_ITEMS: SignalItem[] = [
         key: 'horus_Adv_Sell',
         guideTarget: 'HORUS_ADV',
         label: 'Horus ADV Bearish',
-        description: 'Institutional Precision (Bearish). Based on high-density technical alignment.',
+        description: 'Setup Precision (Bearish). Based on high-density technical alignment.',
         icon: 'flash',
         color: '#FF5252'
     },
@@ -505,7 +505,7 @@ export default function SettingsScreen() {
                                 <Ionicons name="bulb-outline" size={20} color="#60A5FA" style={{ marginRight: 10 }} />
                                 <View style={{ flex: 1 }}>
                                     <Text style={{ color: '#60A5FA', fontSize: 11, fontWeight: '600', letterSpacing: 0.5 }}>
-                                        STRATEGY TIP: You do not need to enable all setups. Choose the strategies that fit your style. Be aware that different strategies may show contradictory momentum readings at the same time. For example, PRO4X.2 is a Trending system, while Shadow Mode may identify a potential counter-trend reversal simultaneously.
+                                        STRATEGY TIP: Enabling all setups is not required. Users can select the strategies that fit their analytical profile. Be aware that different strategies may show contradictory momentum readings at the same time. For example, PRO4X.2 is a Trending system, while Shadow Mode may identify a potential counter-trend reversal simultaneously.
                                     </Text>
                                     <Text style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: 11, fontWeight: '500', marginTop: 8 }}>
                                         Market inversion operate around 11/12 am US (17h/18h EU).
@@ -601,7 +601,7 @@ export default function SettingsScreen() {
                             {/* SECTION 1: BEGINNER */}
                             <SectionTitle title="BEGINNER (TRAVEL LIGHT)" />
                             <Text style={{ color: '#888', fontSize: 11, marginBottom: 15, paddingHorizontal: 5 }}>
-                                Focus on PRO4X.2 using a travel light approach. Limit the number of active setups to reduce notification noise. This mode emphasizes trend-following market structure and broader directional context. Price reactions are typically observed around key institutional levels, with move magnitudes commonly ranging from approximately 20 to 200 points, depending on volatility and market conditions. Maintain a low-stress approach. Risk Management Note: Many market participants define a predefined risk threshold, often around 50 points, to help limit exposure during short-term volatility. Reference Levels: 12 / 64 / 91 are key reference levels often associated with historical price volatility areas.
+                                This configuration focuses on PRO4X.2 using a 'travel light' approach. Limiting the number of active setups is recommended to reduce notification noise. This mode emphasizes trend-following market structure and broader directional context. Price reactions are typically observed around key institutional levels, with move magnitudes commonly ranging from approximately 20 to 200 points, depending on volatility and market conditions. A low-stress approach is maintained. Risk Management Note: Many market participants define a predefined risk threshold, often around 50 points, to help limit exposure during short-term volatility. Reference Levels: 12 / 64 / 91 are key reference levels often associated with historical price volatility areas.
                             </Text>
                             <View style={styles.gridContainer}>
                                 {BEGINNER_ITEMS.map((item, index) => (
@@ -617,9 +617,9 @@ export default function SettingsScreen() {
                             </View>
 
                             {/* SECTION 2: INTERMEDIATE */}
-                            <SectionTitle title="INTERMEDIATE (Institutional Analysis)" />
+                            <SectionTitle title="INTERMEDIATE (Setup Analysis)" />
                             <Text style={{ color: '#888', fontSize: 11, marginBottom: 15, paddingHorizontal: 5 }}>
-                                Requires understanding of the Magnet Map. Features pre-setups and notifications triggered when PRO4X analytical parameters are met. To maintain focus, we suggest silencing secondary setups (keep PRO4X.2 active). Prioritize identifying key institutional price levels. Invalidation logic: ~30 pts below the setup reference. Note: 12/64/91 are the primary technical reference numbers.
+                                This configuration utilizes the Magnet Map logic. Features pre-setups and notifications triggered when PRO4X analytical parameters are met. To maintain focus, silencing secondary setups is often preferred (keeping PRO4X.2 active). Identification of key institutional price levels is prioritized. Invalidation logic: ~30 pts below the setup reference. Note: 12/64/91 are the primary technical reference numbers.
                             </Text>
                             <View style={styles.gridContainer}>
                                 {INTERMEDIATE_ITEMS.map((item, index) => (
@@ -637,9 +637,9 @@ export default function SettingsScreen() {
                             {/* SECTION 3: ADVANCED */}
                             <SectionTitle title="ADVANCED (HIGH PRECISION VOLATILITY ANALYSIS)" />
                             <Text style={{ color: '#888', fontSize: 11, marginBottom: 15, paddingHorizontal: 5 }}>
-                                Mapping the liquidity. Expert use only. Counter-trend & high-density technical moves.
+                                Mapping the liquidity. For advanced analysis. Counter-trend & high-density technical moves.
                                 <Text style={{ color: '#F59E0B', fontWeight: 'bold' }}>{"\n\n"}⚠️ CONTEXT CROSS-REFERENCE: Shadow & Horus readings should be analyzed alongside Context Alerts (Section 4) for optimal technical precision.</Text>
-                                {"\n"}Designed to assist with TP & SL planning (near entries). Requires fast analysis. Strong trend protocol: avoidance, trend monitoring, or waiting for key institutional reversal numbers.
+                                {"\n"}Designed to assist with TP & SL planning (near entries). Requires fast analysis. Strong trend protocol: involves trend monitoring or waiting for key institutional reversal numbers.
                             </Text>
                             <View style={styles.gridContainer}>
                                 {ADVANCED_ITEMS.map((item, index) => (

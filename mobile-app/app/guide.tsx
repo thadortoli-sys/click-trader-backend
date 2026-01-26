@@ -100,7 +100,7 @@ export default function SignalGuideScreen() {
                     onPress={() => router.push('/guide-manual-v3')}
                 />
                 <TabButton
-                    title="TRADING TIPS"
+                    title="OPERATIONAL LOGIC"
                     isActive={true}
                     onPress={() => { }} // Already Here
                 />
@@ -124,14 +124,14 @@ export default function SignalGuideScreen() {
                                 color="#FFD700"
                                 icon="hourglass-outline"
                                 title="PATIENCE IS THE EDGE"
-                                content="The market is a transfer mechanism from the impatient to the patient. Do not chase price. Wait for the alert. Wait for the confirmation. Let the trade come to you."
+                                content="The market is a transfer mechanism from the impatient to the patient. System logic prioritizes waiting for the alert and confirmation over chasing price action."
                             />
                             <ProtocolCard
                                 number="02"
                                 color="#4ADE80"
                                 icon="flash-outline"
                                 title="EXECUTION"
-                                content="When a confirmed signal appears at a key level, execution must be flawless. No hesitation, but no anticipation. We trade what we see, not what we think."
+                                content="When a confirmed signal appears at a key level, technical execution is validated. The system is designed to trade visible data rather than anticipated moves."
                             />
                             <ProtocolCard
                                 number="03"
@@ -167,7 +167,7 @@ export default function SignalGuideScreen() {
                                 color="#4ADE80"
                                 icon="trending-up-outline"
                                 title="CONTEXT IS KING (H1)"
-                                content={`The H1 timeframe always dominates M1 or ticks.\n\n• In a Bullish H1 Trend: A pullback to a level like 12 is a natural buying opportunity.\n• In a Bearish H1 Trend: High levels (91, 64) become prime selling zones.\n\nScalping without checking the H1 context exposes you to unnecessary losses.`}
+                                content={`The H1 timeframe always dominates M1 or ticks.\n\n• In a Bullish H1 Trend: A pullback to a level like 12 is a natural buying opportunity.\n• In a Bearish H1 Trend: High levels (91, 64) become prime selling zones.\n\nScalping without observing the H1 context reduces the statistical probability of the setup.`}
                             />
 
                             <ProtocolCard
@@ -175,7 +175,7 @@ export default function SignalGuideScreen() {
                                 color="#A855F7"
                                 icon="pulse-outline"
                                 title="MARKET RHYTHM"
-                                content={`Watch for a polarity inversion around the European Close / US Mid-session (~17:00 CET). If there are no major news events, the market often "breathes" here.\n\n• Strong drop before? Expect a technical bounce.\n• Strong rally before? Expect a technical pullback.`}
+                                content={`Observation of polarity inversion around the European Close / US Mid-session (~17:00 CET) is key. If there are no major news events, the market often "breathes" here.\n\n• Strong drop before? A technical bounce is statistically common.\n• Strong rally before? A technical pullback is often observed.`}
                             />
 
                             <ProtocolCard
@@ -183,7 +183,7 @@ export default function SignalGuideScreen() {
                                 color="#FFD700"
                                 icon="cash-outline"
                                 title="CASH & CONFLUENCE"
-                                content={`Cash indices (Spot) often lead Futures. When Cash, Nasdaq Futures, and S&P Futures all align on magnetic levels simultaneously, the signal probability explodes.\n\nThis is CONFLUENCE. Levels are stronger together than in isolation.`}
+                                content={`Cash indices (Spot) often lead Futures. When Cash, Nasdaq Futures, and S&P Futures all align on magnetic levels simultaneously, the signal probability increases significantly.\n\nThis is CONFLUENCE. Levels are stronger together than in isolation.`}
                             />
 
                             <ProtocolCard
@@ -191,7 +191,7 @@ export default function SignalGuideScreen() {
                                 color="#EF4444"
                                 icon="alert-circle-outline"
                                 title="ATR & STOP HUNTS"
-                                content={`If volatility (ATR) is high, the market loves to hunt liquidity before reversing.\n\nExample: A sell signal at 64 with high ATR might mean the price will extend to 91 to trigger stops before actually dropping. Patience pays.`}
+                                content={`If volatility (ATR) is high, the market typically hunts liquidity before reversing.\n\nExample: A sell signal at 64 with high ATR often implies price will extend to 91 to trigger stops before actually dropping. System logic waits for this extension.`}
                             />
 
                             <ProtocolCard
@@ -207,7 +207,7 @@ export default function SignalGuideScreen() {
                                 color="#FFD700"
                                 icon="sunny-outline"
                                 title="THE GOLDEN HOURS"
-                                content={`Don't stop trading too early. Some of the best institutional setups appear AFTER the U.S. lunch break (~18:30 CET).\n\nWhen Wall Street returns from lunch, they take full control. From then until the close, volume and intent are driven by U.S. desks.\n\nKEY INSIGHT: Europe follows. The U.S. decides. Shadow Mode excels in capturing these late-session power moves (19:00 - 20:00 CET).`}
+                                content={`Institutional flow often extends beyond standard European hours. Late session setups (~18:30 CET) frequently carry significant structural weight.\n\nWhen Wall Street returns from lunch, they often take full control. From then until the close, volume and intent are driven by U.S. desks.\n\nKEY INSIGHT: Europe follows. The U.S. decides. Shadow Mode excels in capturing these late-session power moves (19:00 - 20:00 CET).`}
                             />
 
                             <View style={{ marginTop: 40, marginBottom: 50, alignItems: 'center', opacity: 0.5 }}>
