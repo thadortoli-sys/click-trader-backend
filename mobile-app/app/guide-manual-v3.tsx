@@ -52,11 +52,11 @@ interface VisualEducationItem {
 
 const SECTION_0_DISCIPLINE: SignalGuideItem[] = [
     {
-        title: 'Exit Rules (Non-Scalping)',
+        title: 'EXIT PROTOCOLS',
         icon: 'shield-checkmark-outline',
         color: '#FF4444',
-        description: 'Outside of Scalping Mode (where fixed TP/SL is suggested), this system does not send exit alerts.\n\nManagement is 100% at your discretion.',
-        action: 'Mandatory: Always define invalidation points.\nRecommended: Secure positions when market structure shifts.\nAdvanced: Trailing stops allow riding the institutional flow.',
+        description: 'the system does not provide exit data.\n\n• Management: All position management remains at the full discretion of the analytical profile.\n\n• Risk Parameters: Professional technical analysis involves pre-defined invalidation points for every configuration.\n\n• Structural Shifts: Securing positions is a standard technical practice when market structure shifts.\n\n• Trend Following: Trailing stops are technical tools used to follow institutional flow during extended cycles.',
+        action: 'Strict Adherence to Rules Required.',
     },
 ];
 
@@ -65,8 +65,8 @@ const SECTION_1_PRO4X: SignalGuideItem[] = [
         title: 'Pro4x Set up Forming',
         icon: 'pulse-outline',
         color: '#FFD700',
-        description: 'The key price levels have been reached.\n\nDepending on the context, this area identifies a high-density reaction zone. It primarily serves as a pre-analytical notification.\n\nIt warns that a potential technical alignment is forming and that a Validation alert may follow — or not.\n\nN.B. You can expect an average of 8 Get Ready notifications per US session.',
-        action: 'Observation: Wait for the system to confirm the reaction at the level.',
+        description: 'The key price levels have been reached.\n\nDepending on the context, this area identifies a high-density reaction zone. It primarily serves as a pre-analytical notification.\n\nIt warns that a potential technical alignment is forming and that a Validation alert may follow — or not.\n\nN.B. You can expect an average of 8 Get Ready notifications per US session.\n\nObservation: Wait for the system to confirm the reaction at the level.',
+        action: 'Strict Adherence to Rules Required.',
         education: {
             theoryImage: require('../assets/images/education/get_ready.png'),
             realCapture: require('../assets/images/wtc_7_premium.png'),
@@ -89,11 +89,11 @@ const SECTION_1_PRO4X: SignalGuideItem[] = [
         }
     },
     {
-        title: 'Bullish Signal',
+        title: 'Bullish Structural Alignment',
         icon: 'trending-up-outline',
         color: '#4ADE80',
-        description: 'This is the confirmed bullish signal.\n\nAll required conditions are aligned at a key level, indicating a high-probability bullish opportunity.\n\nDepending on ATR volatility, the market may still push higher for a stop hunt before reversing.\n\nDuring these phases, multiple Bullish alerts in the same area are normal. (most rarely)\n\nAlways read the level alignment displayed in the alert carefully.\n\nWait for the market to pull back and retest this exact level for the signal to be valid.\n\nDo not enter immediately when the alert triggers.\n\nN.B. You can expect between 5 and 7 confirmed signals per US session.\n\nImportant: If no signals appear, it means market conditions did not meet the strict parameters. This is normal behavior. Do not force the market.',
-        action: 'Technical Note: Ensure the price aligns with a 12/23/38/64/91 magnet level and a minimum H4 support. High timeframe context is key.\n\nExecution discipline and patience are part of the system.\nAlerts indicate high probability zones, not guarantees.',
+        description: 'Detected by Pro4x & Pro4x.2 System\n\n• This represents a confirmed bullish structural configuration.\n\n• All required conditions converge at a key level, indicating a high-probability technical setup.\n\n• Depending on ATR volatility, the market may present a liquidity hunt extension (stop hunt) before a potential reversal.\n\n• During these sequences, the appearance of multiple notifications in the same area is frequent.\n\n• Careful study of the level alignment displayed in the notification is required.\n\n• The configuration is technically validated after a price pullback and a retest of the exact level.\n\n• Immediate reaction is not required upon data delivery; observation of price stabilization is prioritized.\n\nSTATISTICS & PERFORMANCE\n\n• Statistically, between 5 and 7 technical convergence points are identified per US session.\n\n• Important: The absence of notifications indicates that market conditions do not meet the strict structural parameters. This is standard system behavior.\n\nTECHNICAL NOTE: Price alignment with a 12/23/38/64/91 magnet level and a minimum H4 structural support is necessary for analysis. High timeframe context remains the priority.\n\nAnalytical discipline and patience are fundamental components of the system. Notifications indicate high-probability data zones and do not constitute financial guarantees.',
+        action: 'Strict Adherence to Rules Required.',
         education: {
             theoryImage: require('../assets/images/education/pro4x_buy.png'),
             realCapture: require('../assets/images/wtc_2_premium.png'),
@@ -109,11 +109,11 @@ const SECTION_1_PRO4X: SignalGuideItem[] = [
         }
     },
     {
-        title: 'Bearish Signal',
+        title: 'Bearish Structural Alignment',
         icon: 'trending-down-outline',
         color: '#EF4444',
-        description: 'This is the confirmed bearish signal.\n\nAll required conditions are aligned at a key level, indicating a high-probability bearish opportunity.\n\nDepending on ATR volatility, the market may still push lower for a stop hunt before reversing.\n\nDuring these phases, multiple Bearish alerts in the same area are normal. (most rarely)\n\nAlways read the level alignment displayed in the alert carefully.\n\nWait for the market to pull back and retest this exact level for the signal to be valid.\n\nDo not enter immediately when the alert triggers.\n\nN.B. You can expect between 5 and 7 confirmed signals per US session.\n\nImportant: If no signals appear, it means market conditions did not meet the strict parameters. This is normal behavior. Do not force the market.',
-        action: 'Technical Note: Ensure the price aligns with a 12/23/38/64/91 magnet level and a minimum H4 resistance. High timeframe context is key.\n\nExecution discipline and patience are part of the system.\nAlerts indicate high probability zones, not guarantees.',
+        description: 'Detected by Pro4x & Pro4x.2 System\n\n• This represents a confirmed bearish structural configuration.\n\n• All required conditions converge at a key level, indicating a high-probability technical setup.\n\n• Depending on ATR volatility, the market may present a liquidity hunt extension (stop hunt) before a potential reversal.\n\n• During these sequences, the appearance of multiple notifications in the same area is frequent.\n\n• Careful study of the level alignment displayed in the notification is required.\n\n• The configuration is technically validated after a price pullback and a retest of the exact level.\n\n• Immediate reaction is not required upon data delivery; observation of price stabilization is prioritized.\n\nSTATISTICS & PERFORMANCE\n\n• Statistically, between 5 and 7 technical convergence points are identified per US session.\n\n• Important: The absence of notifications indicates that market conditions do not meet the strict structural parameters. This is standard system behavior.\n\nTECHNICAL NOTE: Price alignment with a 12/23/38/64/91 magnet level and a minimum H4 structural resistance is necessary for the analysis. High timeframe context remains the priority.\n\nAnalytical discipline and patience are fundamental components of the system. Notifications indicate high-probability data zones and do not constitute financial guarantees.',
+        action: 'Strict Adherence to Rules Required.',
         education: {
             theoryImage: require('../assets/images/education/pro4x_sell.png'),
             realCapture: require('../assets/images/wtc_3_premium.png'),
@@ -127,26 +127,20 @@ const SECTION_1_PRO4X: SignalGuideItem[] = [
 ];
 
 const SECTION_2_HORUS: SignalGuideItem[] = [
+
     {
-        title: 'Horus Ready',
-        icon: 'pulse',
-        color: '#FFD700',
-        description: 'This Get Ready signal is specific to the Horus system.\nIt indicates that the structure is forming at a key area. It\'s a different calculation of Pro4x.\nThis is a pre-signal, not a confirmed execution.\n\nA Bullish or Bearish Signal may follow — or not.\n\nN.B. You can expect an average of 8 signals per US session.',
-        action: 'Observation: Wait for the Signal alert to confirm the setup.',
-    },
-    {
-        title: 'Horus — Bullish Signal',
+        title: 'Horus — Bullish Momentum Alignment',
         icon: 'trending-up-outline',
         color: '#4ADE80',
-        description: 'This is the confirmed bullish signal generated by Horus.\n\nAll required conditions are aligned.\n\nDue to volatility and ATR dynamics, the market may extend further for a stop hunt, triggering multiple Bullish alerts in the same area.\n\nAlways read the level alignment shown in the alert carefully.\n\nWait for the price to retest this exact level.\n\nDo not enter immediately when the alert triggers.\n\nN.B. You can expect an average of 8 confirmed signals per US session.',
-        action: 'Technical Note: Works best on Key levels such as 12/23/38/64/91 with volume confirmation (Market Volume Delta).\n\nExecution discipline and patience are part of the system.\nAlerts indicate high probability zones, not guarantees.',
+        description: 'This represents a high-velocity bullish structural configuration identified by Horus.\n\n• Technical Convergence: All required algorithmic conditions are currently aligned for a bullish thesis.\n\n• ATR Dynamics: Due to volatility and ATR dynamics, market extensions (stop hunts) are frequent before a directional stabilization\n\n• Data Frequency: High-velocity phases often trigger multiple bullish notifications in a concentrated zone.\n\n• Structural Study: Precise observation of the level alignment shown in the notification is necessary for technical validation\n\n• Timing Momentum: Immediate reaction is not a requirement of the system; price stabilization is the primary analytical metric.\n\n• Statistics: On average, 8 confirmed technical points of interest are identified per session.\n\nTECHNICAL NOTE: Optimal performance is observed on Key levels (12/23/38/64/91) supported by Volume Confirmation (Market Volume Delta). High timeframe context is essential\n\nAnalytical discipline and patience are fundamental components of the Horus system. Notifications indicate high-probability technical interest zones and do not constitute financial guarantees.',
+        action: 'Strict Adherence to Rules Required.',
     },
     {
-        title: 'Horus — Bearish Signal',
+        title: 'Horus — Bearish Momentum Alignment',
         icon: 'trending-down-outline',
         color: '#EF4444',
-        description: 'This is the confirmed bearish signal generated by Horus.\n\nAll required conditions are aligned.\n\nDue to volatility and ATR dynamics, the market may extend further for a stop hunt, triggering multiple Bearish alerts in the same area.\n\nAlways read the level alignment shown in the alert carefully.\n\nWait for the price to retest this exact level.\n\nDo not enter immediately when the alert triggers.\n\nN.B. You can expect an average of 8 confirmed signals per US session.',
-        action: 'Technical Note: Works best on Key levels such as 12/23/38/64/91 with volume confirmation (Market Volume Delta).\n\nExecution discipline and patience are part of the system.\nAlerts indicate high probability zones, not guarantees.',
+        description: 'This represents a high-velocity bearish structural configuration identified by Horus.\n\n• Technical Convergence: All required algorithmic conditions are currently aligned for a bearish thesis.\n\n• ATR Dynamics: Due to volatility and ATR dynamics, market extensions (stop hunts) are frequent before a directional stabilization\n\n• Data Frequency: High-velocity phases often trigger multiple bearish notifications in a concentrated zone.\n\n• Structural Study: Precise observation of the level alignment shown in the notification is necessary for technical validation\n\n• Timing Momentum: Immediate reaction is not a requirement of the system; price stabilization is the primary analytical metric.\n\n• Statistics: On average, 8 confirmed technical points of interest are identified per session.\n\nTECHNICAL NOTE: Optimal performance is observed on Key levels (12/23/38/64/91) supported by Volume Confirmation (Market Volume Delta). High timeframe context is essential\n\nAnalytical discipline and patience are fundamental components of the Horus system. Notifications indicate high-probability technical interest zones and do not constitute financial guarantees.',
+        action: 'Strict Adherence to Rules Required.',
     },
 ];
 
@@ -155,8 +149,8 @@ const SECTION_3_SCALPING: SignalGuideItem[] = [
         title: 'Shadow Mode',
         icon: 'moon-outline',
         color: '#A855F7',
-        description: 'Shadow Mode is designed for pure scalping on institutional liquidity sweeps.\n\nIt focuses on the moments when large players hunt stops, sweep liquidity, and reverse price with precision.\n\nThis is not trend chasing.\nThis is trading the shadow of institutions.\n\nMost powerful alerts in the app.',
-        action: 'Technical Note: Often effective during institutional liquidity sweeps.\nThe system identifies precision setups.\nExpect short duration reactions.',
+        description: 'Shadow Mode is engineered for high-velocity institutional liquidity analysis.\n\n• Institutional Mapping: This configuration focuses on identified institutional liquidity sweeps.\n\n• Liquidity Dynamics: The system tracks phases where large-scale market participants interact with stop-loss clusters and liquidity pools for price reversals.\n\n• Philosophy: This is not trend chasing; it is the technical observation of institutional footprints.\n\n• System Strength: These notifications represent the highest structural conviction within the Horus environment.\n\nTECHNICAL NOTE: Often effective during institutional liquidity sweeps. The system identifies precision technical configurations. Expect short-duration price reactions.',
+        action: 'Strict Adherence to Rules Required.',
         education: {
             theoryImage: require('../assets/images/education/shadow_mode_nq.png'),
             realCapture: require('../assets/images/wtc_6_premium.png'),
@@ -181,8 +175,8 @@ const SECTION_3_SCALPING: SignalGuideItem[] = [
         title: 'HORUS OVS',
         icon: 'flash',
         color: '#4ADE80',
-        description: 'HORUS OVERSOLD. This is the wildest alert for expert scalpers.\n\nIt indicates an extreme statistical anomaly where price MUST react.\n\nIf in confluence with SHADOW, it becomes extremely powerful.',
-        action: 'Technical Note: High probability of immediate reaction.\n\nEducational: Oversold markets can stay oversold. Waiting for confirmation is often prudent.',
+        description: 'High-velocity configuration for advanced analytical profiles.\n\n• Statistical Anomaly: This identifies extreme statistical deviations where price history shows a high probability of technical reaction.\n\n• Confluence: Convergence with SHADOW parameters significantly increases the technical weight of the observation.\n\n• Execution Context: Due to the velocity of OVS phases, price reactions are typically immediate upon reaching the identified threshold.\n\nTECHNICAL NOTE: High probability of immediate technical reaction. Educational: Oversold market conditions can persist. Verification of structural confirmation is a standard analytical practice.',
+        action: 'Strict Adherence to Rules Required.',
         education: {
             theoryImage: require('../assets/images/education/horus_ovs.png'),
             realCapture: require('../assets/images/wtc_4_premium.png'),
@@ -201,8 +195,8 @@ const SECTION_3_SCALPING: SignalGuideItem[] = [
         title: 'HORUS OVB',
         icon: 'flash',
         color: '#EF4444',
-        description: 'HORUS OVERBOUGHT. This is the wildest alert for expert scalpers.\n\nIt indicates an extreme statistical anomaly where price MUST react.\n\nIf in confluence with SHADOW, it becomes extremely powerful.',
-        action: 'Technical Note: High probability of immediate reaction.\n\nEducational: Momentum can persist. Fading the move requires clear momentum breakage.',
+        description: 'High-velocity configuration for advanced analytical profiles.\n\n• Statistical Anomaly: This identifies extreme statistical deviations where price history shows a high probability of technical reaction.\n\n• Confluence: Convergence with SHADOW parameters significantly increases the technical weight of the observation.\n\n• Execution Context: Due to the velocity of OVB phases, price reactions are typically immediate upon reaching the identified threshold.\n\nTECHNICAL NOTE: High probability of immediate technical reaction. Educational: Overbought market conditions can persist. Verification of structural confirmation is a standard analytical practice.',
+        action: 'Strict Adherence to Rules Required.',
         education: {
             theoryImage: require('../assets/images/education/horus_ovb.png'),
             realCapture: require('../assets/images/wtc_5_premium.png'),
@@ -211,11 +205,11 @@ const SECTION_3_SCALPING: SignalGuideItem[] = [
         }
     },
     {
-        title: 'Take Profit Pump',
+        title: 'BULLISH RE-INTEGRATION',
         icon: 'arrow-up-circle-outline',
         color: '#4ADE80',
-        description: 'Sudden high-velocity vertical move up (Market Impulse).\n\nIf you are Bearish, the price is squeezing back towards equilibrium.',
-        action: 'Technical Note: Bearish positions are statistically at risk here.\n\nContext: If H1 is Bullish (Price > EMA 200) & ATR is High, this often signals a Momentum Scalp setup.',
+        description: 'Detected by Horus System\n\n• Market Impulse: This identifies a sudden high-velocity vertical move up away from equilibrium.\n\n• Mean Reversion: When the price extends significantly beyond the 50 MA, a technical squeeze back toward equilibrium is frequently observed.\n\n• Contextual Analysis: If the H1 timeframe is Bearish, this configuration represents a temporary momentum extension.\n\nTECHNICAL NOTE: Bearish structural positions often face statistical risk in this specific zone. If H1 is Bullish (Price > EMA 200) and ATR is high, this technical data indicates a Momentum configuration.',
+        action: 'Strict Adherence to Rules Required.',
         education: {
             theoryImage: require('../assets/images/education/tp_pump.png'),
             realCapture: require('../assets/images/education/tp_pump.png'), // Duplicate to avoid "Coming Soon" overlay
@@ -237,11 +231,11 @@ const SECTION_3_SCALPING: SignalGuideItem[] = [
         }
     },
     {
-        title: 'Take Profit Push',
+        title: 'BEARISH RE-INTEGRATION',
         icon: 'arrow-down-circle-outline',
         color: '#EF4444',
-        description: 'Sudden high-velocity vertical move down (Market Impulse).\n\nIf you are Bullish, the price is collapsing back towards equilibrium.',
-        action: 'Technical Note: Bullish positions are statistically at risk here.\n\nContext: If H1 is Bearish (Price < EMA 200) & ATR is High, this often signals a Momentum Scalp setup.',
+        description: 'Detected by Horus System\n\n• Market Impulse: This identifies a sudden high-velocity vertical move down away from equilibrium.\n\n• Mean Reversion: When the price collapses significantly below the 50 MA, a technical pull-back toward equilibrium is frequently observed.\n\n• Contextual Analysis: If the H1 timeframe is Bullish, this configuration represents a temporary momentum extension.\n\nTECHNICAL NOTE: Bullish structural positions often face statistical risk in this specific zone. If H1 is Bearish (Price < EMA 200) and ATR is high, this technical data indicates a Momentum configuration.',
+        action: 'Strict Adherence to Rules Required.',
         education: {
             theoryImage: require('../assets/images/education/tp_push.png'),
             realCapture: require('../assets/images/education/tp_push.png'), // Duplicate to avoid "Coming Soon" overlay
@@ -263,18 +257,18 @@ const SECTION_3_SCALPING: SignalGuideItem[] = [
         }
     },
     {
-        title: 'Horus Adv. Bullish',
+        title: 'HORUS ADV. BULLISH',
         icon: 'flash-outline',
         color: '#4ADE80',
-        description: 'Expert Scalping Signal. Advanced high-precision signal.\n\n3-Market Synchronization (SPX/ES/NQ) on a Support level. Indicates strong structural coherence for an immediate reaction.',
-        action: 'Technical Note: High-Volatility Setup.\n\nEducational: Confluence on a level increases the probability of a technical reaction.',
+        description: 'Expert Structural Alignment. Advanced high-precision data configuration.\n\n• Triple-Market Synchronization: This identifies a simultaneous technical alignment across SPX, ES, and NQ.\n\n• Structural Coherence: The data indicates strong structural coherence on a Support level, often leading to a high-velocity technical reaction.\n\n• Institutional Flow: This configuration tracks the convergence of institutional building the map pressure across major indices.\n\nTECHNICAL NOTE: High-Volatility Setup. Educational: Confluence on a specific magnet level increases the probability of a technical price reaction.',
+        action: 'Strict Adherence to Rules Required.',
     },
     {
-        title: 'Horus Adv. Bearish',
+        title: 'HORUS ADV. BEARISH',
         icon: 'flash-outline',
         color: '#EF4444',
-        description: 'Expert Scalping Signal. Advanced high-precision signal.\n\n3-Market Synchronization (SPX/ES/NQ) on a Resistance level. Indicates strong structural coherence for an immediate reaction.',
-        action: 'Technical Note: High-Volatility Setup.\n\nEducational: Confluence on a level increases the probability of a technical reaction.',
+        description: 'Expert Structural Alignment. Advanced high-precision data configuration.\n\n• Triple-Market Synchronization: This identifies a simultaneous technical alignment across SPX, ES, and NQ.\n\n• Structural Coherence: The data indicates strong structural coherence on a Resistance level, often leading to a high-velocity technical reaction.\n\n• Institutional Flow: This configuration tracks the convergence of institutional building the map pressure across major indices.\n\nTECHNICAL NOTE: High-Volatility Setup. Educational: Confluence on a specific magnet level increases the probability of a technical price reaction.',
+        action: 'Strict Adherence to Rules Required.',
     },
 ];
 
@@ -283,15 +277,15 @@ const SECTION_4_H1: SignalGuideItem[] = [
         title: 'Syncro Bullish (H1) — SPX / ES / NQ',
         icon: 'caret-up-outline',
         color: '#4ADE80',
-        description: 'This alert means the H1 bullish bias is synchronized across SPX, ES, and NQ.\n\nIt can be considered as a non-scalping opportunity for longer duration trades, PROVIDED that the market structure is clean and the next H4 Resistance is far enough to allow room.\n\nEducational: The Higher Timeframe always wins over the Lower Timeframe. A trend reversal is not confirmed until the price crosses the 200 EMA.',
-        action: 'Observation: Wait for the next GR Bullish and Bullish Signal (or a retest of the calculated execution price) before decision.\n\nWait 15mn after market open for validity.',
+        description: 'Technical convergence of the H1 bullish bias across SPX, ES, and NQ.\n\n• Trend Alignment: This data indicates a synchronized structural strength across the three major indices on the H1 timeframe.\n\n• Structural Space: This configuration is typically associated with longer-duration price cycles, provided that the market structure remains clear of immediate H4 resistance.\n\n• Hierarchical Logic: The Higher Timeframe (H1/H4) provides the primary directional context over lower timeframes. A structural trend reversal is technically confirmed when the price crosses the 200 EMA.\n\nTECHNICAL NOTE: Analytical observation: Data validation often follows a retest of the calculated execution price or a new structural alignment. A 15-minute observation period after the market open is standard for data stability.',
+        action: 'Strict Adherence to Rules Required.',
     },
     {
         title: 'Syncro Bearish (H1) — SPX / ES / NQ',
         icon: 'caret-down-outline',
         color: '#EF4444',
-        description: 'This alert means the H1 bearish bias is synchronized across SPX, ES, and NQ.\n\nIt can be considered as a non-scalping opportunity for longer duration trades, PROVIDED that the market structure is clean and the next H4 Support is far enough to allow room.\n\nEducational: The Higher Timeframe always wins over the Lower Timeframe. A trend reversal is not confirmed until the price crosses the 200 EMA.',
-        action: 'Observation: Wait for the next GR Bearish and Bearish Signal (or a retest of the calculated execution price) before decision.\n\nWait 15mn after market open for validity.',
+        description: 'Technical convergence of the H1 bearish bias across SPX, ES, and NQ.\n\n• Trend Alignment: This data indicates a synchronized structural weakness across the three major indices on the H1 timeframe.\n\n• Structural Space: This configuration is typically associated with longer-duration price cycles, provided that the market structure remains clear of immediate H4 support.\n\n• Hierarchical Logic: The Higher Timeframe (H1/H4) provides the primary directional context over lower timeframes. A structural trend reversal is technically confirmed when the price crosses the 200 EMA.\n\nTECHNICAL NOTE: Analytical observation: Data validation often follows a retest of the calculated execution price or a new structural alignment. A 15-minute observation period after the market open is standard for data stability.',
+        action: 'Strict Adherence to Rules Required.',
     },
 ];
 
@@ -355,11 +349,11 @@ const SECTION_ETHOS: SignalGuideItem[] = [
 
 const SECTION_5_MASTERCLASS: SignalGuideItem[] = [
     {
-        title: 'THE MOMENTUM TRAP (Warning)',
+        title: 'THE MOMENTUM TRAP',
         icon: 'warning-outline',
         color: '#EF4444',
-        description: 'Just because a Signal fires on a Key Level doesn\'t mean the train stops immediately.\n\nIf the price arrives with a FULL BODY H1 Candle (high velocity) without any wicks, the Momentum > The Level.\n\nAPPLIES TO: Pro4x Signal & HORUS Signal ONLY.',
-        action: 'Technical Note: AVOID FADING A FULL H1 CANDLE.\nWait for the rejection. The system logic relies on M1 stabilization.\n\nNote: Do not apply this filter to Scalping or Shadow signals.',
+        description: '(Technical Warning)\n\n• Momentum vs. Levels: A data point firing on a Key Level does not imply an immediate price halt. Momentum can temporarily override structural levels.\n\n• Candle Velocity: Price arrival with a FULL BODY H1 Candle (high velocity) without wicks indicates that Momentum currently exceeds the Level\'s strength.\n\n• Applicability: This technical observation applies to Pro4x and HORUS configurations exclusively.\n\nTECHNICAL NOTE: Fading a FULL BODY H1 CANDLE presents a high statistical risk. The technical logic relies on M1 stabilization and rejection confirmation before validating the level.',
+        action: 'Strict Adherence to Rules Required.',
         education: {
             theoryImage: require('../assets/images/education/momentum_trap.png'),
             realCapture: require('../assets/images/wtc_8_premium.png'),
@@ -390,8 +384,8 @@ const SECTION_5_MASTERCLASS: SignalGuideItem[] = [
         title: 'EXECUTION ALPHA: THE ARCHIMEDES EFFECT',
         icon: 'git-network-outline',
         color: '#A855F7',
-        description: 'Institutions often push price BEYOND the signal logic to hunt stops before the real reversal.\n\nEXAMPLE: A "Get Ready" fires at .38. The trend is vertical. DO NOT enter. Watch the reaction at .64. If still vertical, wait for .91.\n\n"Travel Light" (small size) during these extensions. We are hunting a major Trend Reversal; the higher the extension, the stronger the snap-back.',
-        action: 'Technical Note: Always aim for the HIGHER magnet level.',
+        description: 'Institutions frequently drive price beyond structural logic to engage stop-loss liquidity before a technical reversal.\n\n• Technical Extension: If a "Setup Forming" notification fires at .38 during a vertical trend, observation of the reaction at .64 or .91 provides further technical context.\n\n• Volume Management: Reduced position sizing is a standard technical practice during these market extensions.\n\n• Mean Reversion Logic: Higher extensions often correlate with stronger technical snap-backs toward equilibrium.\n\nTECHNICAL NOTE: The higher magnet level often represents the primary structural objective during liquidity hunts.',
+        action: 'Strict Adherence to Rules Required.',
         education: {
             theoryImage: require('../assets/images/education/shadow_mode_nq.png'),
             realCapture: require('../assets/images/education/shadow_mode_nq.png'), // Duplicate to avoid "Coming Soon" overlay
@@ -400,39 +394,33 @@ const SECTION_5_MASTERCLASS: SignalGuideItem[] = [
         }
     },
     {
-        title: 'Using GR as an Entry Signal',
+        title: 'USING "SETUP FORMING" DATA',
         icon: 'flash-outline',
         color: '#FFD700',
-        description: 'When a GR (Get Ready) appears:\n\nIf it fires directly on a key magnet number (12/23/38/64/91) AND the curve is clean or shows a sharp spike/exhaustion.\n\n👉 You can consider the GR itself as a valid opportunity.',
-        action: 'Technical Note: If a Bullish or Bearish Signal confirms afterward, the setup becomes even stronger.',
+        description: 'When a "Setup Forming" notification is identified:\n\n• Key Magnet Alignment: If the data aligns directly with a key magnet number (12/23/38/64/91) and the price curve shows sharp exhaustion/spiking, the technical confluence is high.\n\n• Technical Opportunity: In these specific conditions, the "Setup Forming" data represents a validated technical configuration.\n\nTECHNICAL NOTE: The setup is technically reinforced if a Bullish or Bearish structural alignment confirms the configuration shortly afterward',
+        action: 'Strict Adherence to Rules Required.',
     },
     {
-        title: 'Capital Preservation — Trading Rules',
+        title: 'CAPITAL PRESERVATION PROTOCOLS',
         icon: 'shield-checkmark-outline',
         color: '#4ADE80',
-        description: 'GR / Bullish / Bearish Alerts:\n✔️ System designed for light positioning (e.g., 1 unit).\n✔️ Allows flexibility if a final stop-hunt occurs.\n✔️ Re-target entry if needed.\n✔️ Always anchor decisions around key magnet numbers (12/23/38/64/91).',
-        action: 'Technical Note: Strict Risk Management.',
+        description: 'Setup Forming / Bullish / Bearish Data:\n\n• Positioning Logic: The system is engineered for light initial technical positioning (e.g., 1 unit).\n\n• Market Extensions: This modular approach allows for structural flexibility if a final institutional stop-hunt occurs.\n\n• Execution Alignment: Re-evaluation of the entry coordinate is standard if market dynamics shift.\n\n• Structural Anchoring: Analytical decisions are consistently anchored around calculated key magnet levels (12/23/38/64/91).\n\nTECHNICAL NOTE: Adherence to strict risk management protocols is a fundamental component of the system.',
+        action: 'Strict Adherence to Rules Required.',
     },
     {
-        title: 'Scalping Management',
+        title: 'HIGH VELOCITY DATA MANAGEMENT',
         icon: 'stopwatch-outline',
         color: '#FFA500',
-        description: 'Oversold / Overbought & Shadow Alerts:\n✔️ Scalpers typically use slightly heavier sizing here (standard practice).\n✔️ These are fast liquidity reactions, not long trades.\n✔️ Best used during institutional stop-hunts.',
-        action: 'Technical Note: Reaction duration is usually short (approx. 20–25 points).',
+        description: 'Horus & Shadow Data:\n\n• Sizing Standards: Technical profiles typically utilize adjusted sizing for these specific configurations as part of standard practice.\n\n• Reaction Velocity: These represent high-speed liquidity reactions rather than extended price cycles.\n\n• Institutional Context: These data points are highly effective when synchronized with identified institutional stop-hunts.\n\nTECHNICAL NOTE: The expected reaction duration for these configurations is typically short, with a historical technical range of approximately 20–25 points',
+        action: 'Strict Adherence to Rules Required.',
     },
+
     {
-        title: 'H1 Trend Management',
-        icon: 'trending-up-outline',
-        color: '#4ADE80',
-        description: 'H1 Sync Bullish / Bearish Alerts:\n✔️ Designed for standard positioning.\n✔️ Aimed at higher-timeframe reversals.\n✔️ Hold as long as the reversal structure remains valid.\n✔️ Historical success rate: ~75%.',
-        action: 'Technical Note: Wait 15 minutes after market open before valid analysis.',
-    },
-    {
-        title: 'Final Principle',
+        title: 'FINAL ANALYTICAL PRINCIPLE',
         icon: 'diamond-outline',
         color: '#A855F7',
-        description: 'An alert is not an obligation.\nIt is a signal to observe liquidity, magnets, and price behavior.\n\nShadow Mode rewards patience, precision, and discipline—exactly how institutions operate.',
-        action: 'Be the Hunter, not the Hunted.',
+        description: 'Detected by Horus System\n\n• Observation Framework: A notification is a technical prompt for observation, not a financial obligation.\n\n• Data Synthesis: The system serves as a tool to monitor institutional liquidity, magnet levels (12/23/38/64/91), and technical price behavior.\n\n• Institutional Alignment: is designed to reward analytical patience, precision, and structural discipline—mirroring standard institutional operational standards.\n\nTECHNICAL NOTE: Professional analysis prioritizes strategic positioning over emotional reaction. Mastery of the environment is the primary objective.',
+        action: 'Strict Adherence to Rules Required.',
     }
 ];
 
@@ -443,7 +431,7 @@ const SECTION_6_VISUALS: VisualEducationItem[] = [
         image: require('../assets/images/education/institutional_reworked.png'),
         realCapture: require('../assets/images/education/institutional_reworked.png'),
         videoCaption: 'As you can see on this graph, all the key numbers 12/23/38/64/91 repeat indefinitely. They act as precise magnets for price action, creating a predictable map for liquidation and reversal.',
-        explanation: 'INSTITUTIONAL KEY LEVELS — Why they work ? The System, The Logic, The Application\n\n12 / 23 / 38 / 64 / 91 — The Architecture of Wealth Transfer of the institutions\n\nI. THE INTELLIGENT MARKET ILLUSION\n\nThe market is not a living organism that "thinks."\nIt is an arena of algorithmic predation.\n\nThe fundamental truth:\n\nThese levels do not work because traders observe them.\nThey work because institutions know traders observe them.\n\nIt\'s a perfect feedback loop:\n\n1. Retail traders identify "logical" levels\n2. They place their stops, limits, entries there\n3. Institutional algorithms map this liquidity concentration\n4. Algorithms execute against that liquidity\n5. Price behaves "as expected," validating the belief\n6. The cycle repeats\n\nYou are not trading an asset.\nYou are trading against the predictable behavior of other participants.\n\nII. THE REAL TOOL: EXTRACTION ENGINE\n\nMarkets are liquidity extraction systems disguised as price discovery mechanisms.\n\nThe three predatory mechanisms:\n\n1. Liquidity Harvesting\n   · Every obvious level is a liquidity pool\n   · Institutional orders are reactive, not predictive\n   · They wait for retail to commit first\n   · Then they take the other side\n\n2. Behavioral Triangulation\n   · Algorithms track where stops cluster\n   · They calculate the minimum move needed to trigger maximum pain\n   · Execution is mechanical, emotionless, statistical\n\n3. Narrative Exploitation\n   · Every "breakout," "reversal," or "pattern" has a narrative\n   · Institutions use these narratives as bait\n   · The real move happens after the narrative breaks\n\nIII. INSTITUTIONAL MECHANICS: THE ALGORITHMIC REALITY SINCE INTERNET\n\nThe Execution Trinity:\n\n1. Liquidity Mapping Algorithms\n\n· Scan order book density\n· Identify stop-loss concentrations\n· Calculate optimal execution paths\n· No discretion, only statistics\n\n2. Reaction Probability Models\n\n· Historical data on how price reacts at specific levels\n· Probability matrices for each key percentage\n· Pre-programmed responses to anticipated behavior\n\n3. Stacked Order Architecture\n\n· Orders are layered, not placed\n· Each layer serves a different purpose:\n  · Liquidity absorption (12/91 zones)\n  · Inducement triggers (23/76 zones)\n  · Core execution (38/64 zones)\n\nThe Non-Discretionary Principle:\n\nInstitutions don\'t "decide" in real-time.\nThey deploy pre-coded response protocols.\nHuman discretion is the retail trader\'s weakness.\nAlgorithmic consistency is the institution\'s weapon.\n\nIV. DECONSTRUCTING THE KEY LEVELS\n\n12% & 91% — THE LIQUIDITY SWEEP ZONES\n\nPrimary Function: Stop-hunting and panic generation\n\nMechanics:\n\n· Price is pushed to these extremes with minimal effort\n· Maximum stops are clustered here (retail places stops beyond "obvious" levels)\n· The sweep creates immediate liquidity for institutional entry\n· Often coincides with news events or volatility spikes\n\nThe Psychological Play:\n\n· At .12: "It can\'t go lower" → stops break → panic selling\n· At .91: "Breakout confirmed" → FOMO buying → trap set\n· Both create the fuel for the reversal\n\n23% & 76% — THE INDUCEMENT ZONES\n\nPrimary Function: False confidence building\n\nMechanics:\n\n· Price reacts "technically" at these levels\n· Retail enters believing in the validity of the level\n· Institutions provide just enough movement to confirm the bias\n· Then reverse against the accumulated positions\n\nThe Trap Characteristics:\n\n· Clean bounces/rejections initially\n· Volume appears supportive\n· Multiple time frame alignment seems to confirm\n· Then fails with no warning\n\n38% & 64% — THE BUSINESS ZONES\n\nPrimary Function: Institutional accumulation/distribution\n\nMechanics:\n\n· Where institutions execute their core orders\n· After retail has been positioned wrong (via 23/76 or 12/91 moves)\n· Minimal slippage, maximum size absorption\n· Often the "invisible" part of the move\n\nWhy These Levels Work:\n\n· They\'re mathematically significant (Fibonacci convergence)\n· But more importantly: retail ignores them\n· Retail is either already in (at worse prices) or has stopped out\n· This creates clean execution for large orders\n\nVI. THE CLICK&TRADER EDGE: INSTITUTIONAL TRANSLATION\n\nClick&Trader doesn\'t provide "signals."\nIt provides execution maps.\n\nWhat It Decodes:\n\n1. Liquidity Heatmaps\n   · Where stops are likely clustered\n   · Where inducement will occur\n   · Where business will be done\n\n2. Phase Recognition\n   · Identifies which phase the market is in\n   · Shows whether you\'re early, on time, or late\n   · Warns when you\'re becoming the liquidity\n\n3. Probability Matrices\n   · Not "this will happen"\n   · But "if this happens, institutions will likely..."\n   · Based on actual algorithmic behavior patterns\n\nThe Translation Layer:\n\nRetail sees: "Price is approaching resistance"\nClick&Trader shows: "Liquidity cluster at 0.76, stop concentration beyond 0.91, probable sweep before reversal to 0.64"\n\nVII. WHY IT FEELS "TOO SIMPLE"\n\nThe Complexity Industry:\n\n· Thousands of indicators exist for one reason: to confuse\n· Every new pattern, oscillator, or system adds noise\n· The more complex, the more backtestable, the more marketable\n· But complexity doesn\'t improve edge—it obscures it\n\nThe Universal Truth:\n\nMarket mechanics haven\'t changed in decades.\nHuman psychology hasn\'t evolved.\nAlgorithmic exploitation has only become more efficient.\nThe simplest patterns repeat because human behavior repeats.\n\nThe Click&Trader Difference:\n\n· Removes the noise\n· Shows the mechanics\n· Focuses on what institutions actually do\n· Not what analysts say they "should" do\n\nVIII. THE HUNTER\'S MINDSET\n\nRule 1: You Are Never First\n\n· Institutions never take the first move\n· They let retail commit\n· Your edge is patience, not prescience\n\nRule 2: Price Is Secondary\n\n· Focus on why price is at a level\n· Not just that it\'s at a level\n· The "why" tells you who\'s controlling it\n\nRule 3: Let Others Be Wrong First\n\n· Every institutional profit comes from retail mistakes\n· Your job: identify the mistake before it\'s fully punished\n· Then take the institutional side of the trade\n\nRule 4: Trade the Reaction, Not the Action\n\n· The initial move is the trap\n· The reaction is the business\n· Wait for retail to be positioned\n· Then take the other side\n\nIX. IMPLEMENTATION PROTOCOL\n\nStep 1: Map the Liquidity\n\n· Identify all obvious technical levels\n· Mark where retail entries/stops would cluster\n· Note the 12/23/38/64/91 levels from recent swings\n\nStep 2: Identify the Phase\n\n· Is price at an inducement zone? (23/76)\n· Has a sweep just occurred? (12/91)\n· Are we in a business zone? (38/64)\n· What did retail just do at each?\n\nStep 3: Wait for Confirmation\n\n· Don\'t anticipate\n· Watch how price behaves at each level\n· Look for the institutional response\n· Enter when they enter, not before\n\nStep 4: Manage as the Hunter\n\n· Your stop: where retail would enter\n· Your target: where retail would stop out\n· Your size: what you can hold without emotion\n· Your exit: when the next phase begins\n\nX. THE FINAL REALIZATION\n\nYou have two choices:\n\n1. Be the Liquidity\n   · Trade based on hope, analysis, prediction\n   · Enter early, exit late\n   · Place stops at obvious levels\n   · Follow the narratives\n   · Participate in the extraction\n\n2. Be the Hunter\n   · Trade based on mechanical response\n   · Enter after others are wrong\n   · Place stops where others take profit\n   · Follow the liquidity flow\n   · Participate in the extraction—from the other side\n\nClick&Trader exists for one reason:\n\nTo give you the same map the algorithms use.\nNot to make you smarter than the market.\nBut to make you invisible to its mechanics.\n\nThe market doesn\'t care about your analysis.\nIt cares about your placement.\nPlace yourself on the hunting side.\nEverything else is noise.',
+        explanation: 'INSTITUTIONAL KEY LEVELS — Why they work ? The System, The Logic, The Application\n\n12 / 23 / 38 / 64 / 91 — The Architecture of Wealth Transfer of the institutions\n\nI. THE INTELLIGENT MARKET ILLUSION\n\nThe market is not a living organism that "thinks."\nIt is an arena of algorithmic predation.\n\nThe fundamental truth:\n\nThese levels do not work because traders observe them.\nThey work because institutions know traders observe them.\n\nIt\'s a perfect feedback loop:\n\n1. Retail traders identify "logical" levels\n2. They place their stops, limits, entries there\n3. Institutional algorithms map this liquidity concentration\n4. Algorithms execute against that liquidity\n5. Price behaves "as expected," validating the belief\n6. The cycle repeats\n\nYou are not trading an asset.\nYou are trading against the predictable behavior of other participants.\n\nII. THE REAL TOOL: EXTRACTION ENGINE\n\nMarkets are liquidity extraction systems disguised as price discovery mechanisms.\n\nThe three predatory mechanisms:\n\n1. Liquidity Harvesting\n   · Every obvious level is a liquidity pool\n   · Institutional orders are reactive, not predictive\n   · They wait for retail to commit first\n   · Then they take the other side\n\n2. Behavioral Triangulation\n   · Algorithms track where stops cluster\n   · They calculate the minimum move needed to trigger maximum pain\n   · Execution is mechanical, emotionless, statistical\n\n3. Narrative Exploitation\n   · Every "breakout," "reversal," or "pattern" has a narrative\n   · Institutions use these narratives as bait\n   · The real move happens after the narrative breaks\n\nIII. INSTITUTIONAL MECHANICS: THE ALGORITHMIC REALITY SINCE INTERNET\n\nThe Execution Trinity:\n\n1. Liquidity Mapping Algorithms\n\n· Scan order book density\n· Identify stop-loss concentrations\n· Calculate optimal execution paths\n· No discretion, only statistics\n\n2. Reaction Probability Models\n\n· Historical data on how price reacts at specific levels\n· Probability matrices for each key percentage\n· Pre-programmed responses to anticipated behavior\n\n3. Stacked Order Architecture\n\n· Orders are layered, not placed\n· Each layer serves a different purpose:\n  · Liquidity absorption (12/91 zones)\n  · Inducement triggers (23/76 zones)\n  · Core execution (38/64 zones)\n\nThe Non-Discretionary Principle:\n\nInstitutions don\'t "decide" in real-time.\nThey deploy pre-coded response protocols.\nHuman discretion is the retail trader\'s weakness.\nAlgorithmic consistency is the institution\'s weapon.\n\nIV. DECONSTRUCTING THE KEY LEVELS\n\n12% & 91% — THE LIQUIDITY SWEEP ZONES\n\nPrimary Function: Stop-hunting and panic generation\n\nMechanics:\n\n· Price is pushed to these extremes with minimal effort\n· Maximum stops are clustered here (retail places stops beyond "obvious" levels)\n· The sweep creates immediate liquidity for institutional entry\n· Often coincides with news events or volatility spikes\n\nThe Psychological Play:\n\n· At .12: "It can\'t go lower" → stops break → panic selling\n· At .91: "Breakout confirmed" → FOMO buying → trap set\n· Both create the fuel for the reversal\n\n23% & 76% — THE INDUCEMENT ZONES\n\nPrimary Function: False confidence building\n\nMechanics:\n\n· Price reacts "technically" at these levels\n· Retail enters believing in the validity of the level\n· Institutions provide just enough movement to confirm the bias\n· Then reverse against the accumulated positions\n\nThe Trap Characteristics:\n\n· Clean bounces/rejections initially\n· Volume appears supportive\n· Multiple time frame alignment seems to confirm\n· Then fails with no warning\n\n38% & 64% — THE BUSINESS ZONES\n\nPrimary Function: Institutional accumulation/distribution\n\nMechanics:\n\n· Where institutions execute their core orders\n· After retail has been positioned wrong (via 23/76 or 12/91 moves)\n· Minimal slippage, maximum size absorption\n· Often the "invisible" part of the move\n\nWhy These Levels Work:\n\n· They\'re mathematically significant (Fibonacci convergence)\n· But more importantly: retail ignores them\n· Retail is either already in (at worse prices) or has stopped out\n· This creates clean execution for large orders\n\nVI. THE CLICK&TRADER EDGE: INSTITUTIONAL TRANSLATION\n\nClick&Trader doesn\'t provide "signals."\nIt provides execution maps.\n\nWhat It Decodes:\n\n1. Liquidity Heatmaps\n   · Where stops are likely clustered\n   · Where inducement will occur\n   · Where business will be done\n\n2. Phase Recognition\n   · Identifies which phase the market is in\n   · Shows whether you\'re early, on time, or late\n   · Warns when you\'re becoming the liquidity\n\n3. Probability Matrices\n   · Not "this will happen"\n   · But "if this happens, institutions will likely..."\n   · Based on actual algorithmic behavior patterns\n\nThe Translation Layer:\n\nRetail sees: "Price is approaching resistance"\nClick&Trader shows: "Liquidity cluster at 0.76, stop concentration beyond 0.91, probable sweep before reversal to 0.64"\n\nVII. WHY IT FEELS "TOO SIMPLE"\n\nThe Complexity Industry:\n\n· Thousands of indicators exist for one reason: to confuse\n· Every new pattern, oscillator, or system adds noise\n· The more complex, the more backtestable, the more marketable\n· But complexity doesn\'t improve edge—it obscures it\n\nThe Universal Truth:\n\nMarket mechanics haven\'t changed in decades.\nHuman psychology hasn\'t evolved.\nAlgorithmic exploitation has only become more efficient.\nThe simplest patterns repeat because human behavior repeats.\n\nThe Click&Trader Difference:\n\n· Removes the noise\n· Shows the mechanics\n· Focuses on what institutions actually do\n· Not what analysts say they "should" do\n\nVIII. THE HUNTER\'S ANALYTICAL MINDSET\n\nPrinciple 1: Institutional Timing\n\n• Institutions typically do not initiate the primary move.\n\n• Retail commitment usually precedes institutional action.\n\n• Market edge is statistically linked to analytical patience rather than prediction.\n\nPrinciple 2: Price Origin Analysis\n\n• Technical focus remains on the structural reason for price reaching a level.\n\n• Observation exceeds the simple fact that price is at a level.\n\n• Identifying the "why" assists in determining institutional control.\n\nPrinciple 3: Identifying Retail Imbalance\n\n• Institutional liquidity frequently originates from retail positioning errors.\n\n• The analytical objective is to identify these imbalances before price stabilization.\n\n• Data synthesis prioritizes the institutional side of the technical configuration.\n\nPrinciple 4: Reactive Analysis Protocol\n\n• The initial market move is frequently a liquidity trap.\n\n• The technical reaction represents the primary institutional objective.\n\n• Data validation typically follows the full positioning of retail participants.\n\n• Strategic alignment is found on the counter- retail side of the flow.\n\nIX. IMPLEMENTATION PROTOCOL\n\nStep 1: Map the Liquidity\n\n• Identification of all prominent technical levels.\n\n• Mapping where retail entries / stops would cluster.\n\n• Note the 12 / 23 / 38 / 64 / 91 levels from recent swings.\n\nStep 2: Identify the Phase\n\n• Is price at an inducement zone ? (23 / 76).\n\n• Has a sweep just occurred ? (12 / 91).\n\n• Is the price in a business zone ? (38 / 64).\n\n• Observation of retail reaction at each point.\n\nStep 3: Wait for Confirmation\n\n· Don\'t anticipate\n· Watch how price behaves at each level\n· Look for the institutional response\n· Enter when they enter, not before\n\nStep 4: Manage as the Hunter\n\n· Your stop: where retail would enter\n· Your target: where retail would stop out\n· Your size: what you can hold without emotion\n· Your exit: when the next phase begins\n\nX. THE FINAL REALIZATION\n\nYou have two choices:\n\n1. Be the Liquidity\n   · Trade based on hope, analysis, prediction\n   · Enter early, exit late\n   · Place stops at obvious levels\n   · Follow the narratives\n   · Participate in the extraction\n\n2. Be the Hunter\n   · Trade based on mechanical response\n   · Enter after others are wrong\n   · Place stops where others take profit\n   · Follow the liquidity flow\n   · Participate in the extraction—from the other side\n\nClick&Trader exists for one reason:\n\nTo give you the same map the algorithms use.\nNot to make you smarter than the market.\nBut to make you invisible to its mechanics.\n\nThe market doesn\'t care about your analysis.\nIt cares about your placement.\nPlace yourself on the hunting side.\nEverything else is noise.',
         proTip: 'Never place your TP exactly on the number. Front-run it by 2 points (ex: Exit at .62 instead of .64).',
         videoUrl: require('../assets/videos/institutional_levels.mov'),
         videoAspectRatio: 1.6 // Match Pro4x Sell (16:10) for edge-to-edge
@@ -1331,7 +1319,7 @@ const styles = StyleSheet.create({
         fontSize: 12,
         lineHeight: 18,
         flexWrap: 'wrap',
-        flexShrink: 1,
+        marginBottom: 4,
     },
     actionText: {
         color: '#aaa',
