@@ -246,54 +246,54 @@ const SECTION_4_H1: SignalGuideItem[] = [
 
 const SECTION_ETHOS: SignalGuideItem[] = [
     {
-        title: 'Origins: Technical Philosophy',
+        title: 'Developer\'s Ethos: From Traders to Traders',
         icon: 'heart-circle-outline',
         color: '#A855F7',
-        description: 'This system represents a technical methodology derived from institutional trading logic.\n\nAn overview of the philosophy, the code, and the analytical mindset.',
-        action: 'Technical documentation of system philosophy.',
+        description: 'This system is not just code. Behind Click&Trader, are real traders.\n\nA message about the philosophy, the code, and the mindset.',
+        action: 'Read this when you need clarity or to reconnect with the methodology.',
         education: {
             theoryImage: require('../assets/images/education/atom_zeus_shadow_v2.png'),
             realCapture: require('../assets/images/education/atom_zeus_shadow_v2.png'),
             explanation: [
                 {
-                    title: 'System Origins',
-                    content: 'This system is not just code.\nIt is built upon the experience of market participants.\n\nThe logic reflects an understanding of market pressure, statistical probability, and execution dynamics.\n\nSystem Utility: The platform is engineered to support the analytical process, providing calculated data to assist decision-making.\n\nThe objective is technical clarity and consistency.',
+                    title: 'From traders to traders',
+                    content: 'This system is not just code.\nBehind Click&Trader, there are real traders.\nSome have been on both sides of the screen.\n\nThey know the pressure, the doubt, the excitement.\n\nThis system is built to support you, not to replace you.\nYou are not alone in this process.\n\nWe genuinely wish you clarity, consistency, and long-term success.',
                 },
                 {
-                    title: 'System Logic: Algorithmic Assistance',
-                    content: 'The system operates on an assistive algorithmic model.\n\nIt mirrors institutional behavior patterns,\nwhile the user retains final decision authority.\n\nThe Workflow:\nThe system provides precise, stable calculations\nThe user applies judgment and protocol adherence\n\nThis structure mimics professional desk workflows.',
+                    title: 'Like Real Steel — you control, the system assists',
+                    content: 'Think of Click&Trader like ATOM in Real Steel.\n\nThe system mirrors institutional behavior,\nbut you are still the one executing.\n\nThe app calculates.\nYou decide.\n\nIt’s a two-person game:\nThe system provides precise, stable calculations\nYou provide judgment, patience, and discipline\n\nThis is how professionals trade.',
                 },
                 {
-                    title: 'Operational Timing: Europe vs US',
-                    content: 'For participants operating from Europe, the session extends beyond the standard close.\n\nInstitutional data frequently highlights technical interest after the US lunch break.\n\nMarket Mechanics:\nUS participation rotates around 12:00 US time\n(approx. 18:30–19:00 Europe)\n\nUpon return from this interval, institutional control often dictates the market trend until the close.\n\nThis identifies 19h–20h (Europe) as a statistically significant technical window.',
+                    title: 'A Word About Trading Hours (Europe vs US)',
+                    content: 'For participants operating from Europe, the session extends beyond the standard close.\n\nInstitutional data frequently highlights technical interest after the US lunch break.\n\nWhy?\nUS traders start their day in the morning (your afternoon)\nAround 12:00 US time, participation rotates\n→ that’s 18:30–19:00 in Europe\nEuropean markets are closed\n\nWhen US institutions return from lunch,\nthey often dominate market control until the close\n\nThis is why 19h–20h (Europe) is often a statistically specific window.',
                 },
                 {
-                    title: 'The Magnet Map (Core Logic)',
-                    content: 'Price movement follows a technical map defined by key coordinates:\n12 / 23 / 38 / 64 / 91\n\nThese levels function as institutional magnets.\nAlgorithmic rotation occurs from one coordinate to another.\n\nThe analytical objective is to identify the next high-probability institutional target.\n\nOperational Note:\nWhen SPX, ES, and NQ/MNQ align on their respective magnet levels, technical confluence is maximized.\n\nHierarchy:\nSPX typically reacts first\nES follows\nNQ/MNQ reacts last\n\nMarket structure is often dictated by the primary index (SPX).',
+                    title: 'The Magnet Map (Core of the System)',
+                    content: 'Price moves like on a map, not randomly.\n\nThe key numbers:\n12 / 23 / 38 / 64 / 91\n\nThese levels act as institutional magnets.\nInstitutions rotate from one number to another.\n\nThe goal is to identify which one is the next institutional target.\n\nWhen:\nMNQ / NQ\nES\nSPX (the boss)\nare aligned on their respective magnet levels,\nconfluence becomes extremely powerful.\n\nRemember:\nSPX reacts first\nES follows\nNQ/MNQ reacts last\n\nIf the boss moves — the rest will follow.',
                 },
                 {
-                    title: 'Risk Management Protocols',
-                    content: 'Risk management is the primary technical parameter.\n\nMethodology:\nThe logic favors reduced position sizing for:\nSetup Forming (GR)\nBullish / Bearish Data\n\nRationale:\nIf a liquidity stop-hunt occurs, capital preservation allows for re-evaluation.\nRe-execution is then possible at a more advantageous magnet level.\n\nKey Focus: 12 / 23 / 38 / 64 / 91\n\nObservation regarding H1 Sync:\nCurrent market context can shift rapidly.\nTechnical observation allows for market stabilization.\nValidity is maintained as long as the reversal logic holds.\n\nTiming Note:\nSystem signals generally stabilize 1 hour after the US market open.\nEarly alerts may be triggered by initial volatility.\nOpen data is often volatility-driven rather than structural.',
+                    title: 'Capital Preservation — Very Important',
+                    content: 'Safety is the priority.\n\nRisk management is key:\nThe logic favors small position sizing for:\nGet Ready (GR)\nBullish / Bearish Signals\n\nWhen liquidity stop-hunts occur, capital preservation allows for analytical clarity.\nRe-execution is then possible at a more advantageous magnet level.\n\nKey Focus: 12 / 23 / 38 / 64 / 91\n\nH1 Sync Bullish / Bearish are context info and can change a few minutes after in the opposite direction.\n\nTechnical validity is maintained as long as the reversal logic holds.\n\nImportant:\nThe system signals stabilize generally 1 hour after the US market open.\nEarly alerts may be triggered by initial volatility.\nAfter that window, the signal quality stabilizes\n\nHigh probability institutional setup.\n\nAt the market open:\nSystem calculation requires at least 1 minute\nVolume and volatility can trigger many alerts at once\nAt the US open, volatility-driven alerts may occur.\n\nNote: The open is often volatility-driven rather than structural.\nInstitutional algorithms typically stabilize after the initial storm.',
                 },
                 {
-                    title: 'High-Velocity Market Conditions',
-                    content: 'During strong directional trends:\n\nInstitutional models typically avoid chasing Bullish/Bearish reversals.\nPreference is given to pullbacks via:\nOversold (OVS) in an uptrend\nOverbought (OVB) in a downtrend\n\nStructural Behavior:\nIn strong trends, price may bypass the initial coordinate.\n\nExample:\nA Bearish configuration at .90 may extend to the next .90 level before reacting.\n\nAnalytical patience increases statistical alignment.\n\nWave Analysis:\nIf H1 is highly directional, standard analysis involves waiting for stabilization (e.g., 3 M1 waves) before validating a signal.',
+                    title: 'Strong Trend Days — Adjust Your Behavior',
+                    content: 'When the market is strongly trending:\n\nInstitutional models avoid chasing Bullish/Bearish reversals\nThey prefer pullbacks via:\nOversold (OVS) in an uptrend\nOverbought (OVB) in a downtrend\n\nSometimes, in strong trends,\nprice will skip the first number.\n\nExample:\nA Bearish Signal at .90\nPrice pushes to the next .90 below\nThen reacts\n\nPatience puts odds on your side.\n\nWaves :\nIf H1 is very directional:\nStandard analysis involves waiting for 3 M1 waves before acting on a signal\nLet the market show its intention.',
                 },
                 {
-                    title: 'Technical Implementation',
-                    content: 'The system provides a level alignment calculated from multiple market parameters.\n\nIt operates on fixed logic, not AI.\n\nPrior to execution:\nVisual confirmation of price structure is required.\nThe configuration requires time to develop.\n\nDesign Philosophy:\nThe system is designed for light positioning.\nPosition management remains critical.',
+                    title: 'Technical Insight (Important)',
+                    content: 'The system gives you a level alignment\ncalculated from multiple  parameters.\n\nIt is not AI-based.\nIt will never be AI-based.\n\nBefore executing:\nThe price structure must visually match\nBe patient\nGive the trade a chance to develop\n\nThe system is designed for light positioning.\nPosition management is critical.\n“Voyagez léger en position.”',
                 },
                 {
-                    title: 'Technical Observations',
-                    content: 'Standard practice involves:\nPlotting system key levels every 100 points.\nKeeping H4 pivots visible.\n\nMarket Context:\nThe Nasdaq Futures market constitutes a high-volatility environment.\n\nHierarchy check is standard:\nSPX (Primary)\nES\nUS Cash 100\nNQ / MNQ\n\nReaction on the primary index often precedes moves in correlated assets.',
+                    title: 'Best Practices',
+                    content: 'On your chart (app or desktop):\nContinuously plot system key levels\nEvery 100 points\nKeep H4 pivots visible\n\nYou are trading the Nasdaq Futures — the wild one.\n\nHierarchy matters:\nSPX (the boss)\nES\nUS Cash 100\nNQ / MNQ\n\nIf the boss reacts at a level,\nthe rest will follow — often after.',
                 },
                 {
-                    title: 'Filtering M1 Data',
-                    content: 'When an H1 candle presents a full body, it represents a directional barrier.\nMomentum often exceeds M1 reversal capabilities in these conditions.\n\nStatistical Probability:\n• H1 structure dominates M1 structure.\n• M1 signals against a strong H1 candle carry reduced probability.\n• Institutional levels alone may not hold when H1 momentum is active.\n\nAlternative Logic:\nWhen the H1 candle is extended:\n1. Observe trajectory.\n2. Estimate structural termination point.\n3. Determine phase (pause, continuation, transition).\n\nValidation:\nA full body H1 candle typically reacts near a key institutional number (64 / 91 / 12). At this point, M1 reversal data regains validity.\n\nSummary:\nM1 reversals are statistically valid when H1 is balanced.\nM1 reversals are less reliable when H1 is impulsive.\n\nContextual awareness is required for all system data.',
+                    title: 'Why some M1 signals should NOT be taken',
+                    content: 'When an H1 candle is a full body, it acts like a directional wall.\nThe momentum is too strong for M1 reversal signals to work properly.\n\nEven if an M1 signal appears in the app,\nprobabilities are reduced while the H1 candle is still full and aggressive.\n\nKey rule to understand:\n• H1 always dominates M1\n• M1 signals against a strong H1 candle have low probability\n• Institutional levels alone are not enough when H1 momentum is active\n\nAlternative Logic:\nWhen the H1 candle has already made a large move:\n1. Observe where it is heading\n2. Estimate where it is likely to stop\n3. Determine whether the next move is:\n• a pause\n• a continuation\n• or a transition into the next H1 candle\n\nIn practice, a full body H1 candle will always react near a key institutional number\n(64 / 91 / 12)\n\nOnly at that moment,\nM1 reversal signals become validated again.\n\nWhen markets are normal:\nIn normal market conditions,\nM1 signals work as expected, including reversal signals.\n\nWhen H1 candles show balanced structure\n(wicks, pauses, rotation, no full body pressure),\nM1 reversals are reliable.\n\nKey distinction:\n• Normal market → M1 signals (trend & reversal) work well\n• Strong full body H1 candle → M1 reversals lose reliability\n\nThe system still displays signals,\nbut context must be respected.\n\nRule to remember:\n• M1 reversals are statistically valid when H1 is balanced\n• M1 reversals are less reliable when H1 is full body and impulsive\n\nSimple takeaway:\nM1 reversals are designed to work\nunless higher timeframe momentum is actively dominating',
                 },
                 {
-                    title: 'Conclusion',
-                    content: 'Click&Trader functions as a technical companion.\n\nObjectives:\nReduce noise\nSimplify decision trees\nFacilitate consistency\n\nThe app provides precise calculation.\nUser judgment remains essential.\n\nThis constitutes a dual-process partnership.\n\nThe system aims to facilitate discipline, patience, and technical success.\n\nClick&Trader',
+                    title: 'Final Words',
+                    content: 'Click&Trader is built as\n"your trading companion in the palm of your hand".\n\nTo:\nReduce noise\nSimplify decisions\nHelp you trade with confidence and consistency\n\nThe app calculates precisely.\nBut it cannot think for you.\n\nThis is a 2-way partnership.\n\nWith all my deep intention to be beneficial to you,\nI wish you discipline, patience, and success.\n\nWelcome to Click&Trader\nRibong&Milam',
                 }
             ],
             proTip: null
