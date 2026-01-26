@@ -116,29 +116,29 @@ export default function SignalGuideScreen() {
                     <View pointerEvents={isPro ? 'auto' : 'none'}>
                         <View style={{ paddingTop: 10 }}>
                             <Text style={styles.introText}>
-                                The Click&Trader system is a high-precision tool. To use it effectively, you must abide by the core principles of institutional trading.
+                                The Click&Trader system is a high-precision tool. Effective use involves adherence to the structural principles of institutional market mechanics.
                             </Text>
 
                             <ProtocolCard
                                 number="01"
                                 color="#FFD700"
                                 icon="hourglass-outline"
-                                title="PATIENCE IS THE EDGE"
-                                content="The market is a transfer mechanism from the impatient to the patient. System logic prioritizes waiting for the alert and confirmation over chasing price action."
+                                title="TECHNICAL PATIENCE"
+                                content="Market mechanics often favor participants who wait for structural confirmation. The system logic is based on waiting for data synchronization rather than anticipating price movement."
                             />
                             <ProtocolCard
                                 number="02"
                                 color="#4ADE80"
                                 icon="flash-outline"
-                                title="EXECUTION"
-                                content="When a confirmed signal appears at a key level, technical execution is validated. The system is designed to trade visible data rather than anticipated moves."
+                                title="DATA VALIDATION"
+                                content="When a configuration aligns at a key level, technical validity is identified. The system is engineered to analyze visible data points rather than subjective projections."
                             />
                             <ProtocolCard
                                 number="03"
                                 color="#EF4444"
                                 icon="shield-checkmark-outline"
-                                title="RISK MANAGEMENT"
-                                content="No signal is a guarantee. Probability is not certainty. Standard educational practice suggests risking 1-2% of capital per trade. Live to trade another day."
+                                title="RISK PARAMETERS"
+                                content="Every configuration represents a statistical probability, not a certainty. Risk management is a fundamental component of institutional logic. Technical stability is prioritized over exposure."
                             />
 
                             <View style={{ alignItems: 'center', marginVertical: 30 }}>
@@ -150,64 +150,64 @@ export default function SignalGuideScreen() {
                                 number="04"
                                 color="#A855F7"
                                 icon="magnet-outline"
-                                title="THE MAGNETIC LEVELS"
-                                content={`The levels 12, 23, 38, 64, and 91 are not random. They are magnetic zones where price statistically tends to slow down, stabilize, bounce, or reverse.\n\nThese are psychological and algorithmic attraction zones used by institutional traders and market makers. Price doesn't go there by chance; it is drawn there.`}
+                                title="THE MAGNITUDE LEVELS"
+                                content={`The coordinates 12, 23, 38, 64, and 91 represent key institutional magnets. These are zones where price typically presents structural stabilization, rotation, or technical reactions.\n\nTechnically, these levels act as mathematical attraction points within the algorithmic environment. Price movement often follows these specific coordinates.`}
                             />
 
                             <ProtocolCard
                                 number="05"
                                 color="#D4AF37"
                                 icon="layers-outline"
-                                title="LEVEL HIERARCHY"
-                                content={`Not all levels carry the same weight:\n\n• 91 (MAJOR): The most powerful pivot. Frequent zone for stabilization or reversal.\n• 64 / 38 (INTERMEDIATE): Transition zones, often used for extensions or pullbacks.\n• 23 / 12 (LOW): Very effective for bullish bounces after a drop.\n\nRULE: Low numbers favor bullish bounces. High numbers favor bearish reversals.`}
+                                title="STRUCTURAL HIERARCHY"
+                                content={`Institutional coordinates carry different technical weight:\n\n• 91 (MAJOR): High-density structural pivot. Frequent zone for technical stabilization.\n• 64 / 38 (INTERMEDIATE): Transition coordinates, often identifying extensions or pullbacks.\n• 23 / 12 (LOW): Technical areas frequently associated with bullish re-alignments.\n\nObservation: Lower coordinates often correlate with bullish reactions, while higher coordinates correlate with bearish re-alignments.`}
                             />
 
                             <ProtocolCard
                                 number="06"
                                 color="#4ADE80"
                                 icon="trending-up-outline"
-                                title="CONTEXT IS KING (H1)"
-                                content={`The H1 timeframe always dominates M1 or ticks.\n\n• In a Bullish H1 Trend: A pullback to a level like 12 is a natural buying opportunity.\n• In a Bearish H1 Trend: High levels (91, 64) become prime selling zones.\n\nScalping without observing the H1 context reduces the statistical probability of the setup.`}
+                                title="H1 TIME FRAME DOMINANCE"
+                                content={`The H1 timeframe typically dictates the primary market structure over M1 or ticks.\n\n• In a Bullish H1 Trend: Interactions with lower coordinates (e.g., 12) represent standard pullbacks.\n• In a Bearish H1 Trend: Higher coordinates (91, 64) function as primary structural resistance.\n\nTechnical probability is maximized when alignment matches the H1 structural context.`}
                             />
 
                             <ProtocolCard
                                 number="07"
                                 color="#A855F7"
                                 icon="pulse-outline"
-                                title="MARKET RHYTHM"
-                                content={`Observation of polarity inversion around the European Close / US Mid-session (~17:00 CET) is key. If there are no major news events, the market often "breathes" here.\n\n• Strong drop before? A technical bounce is statistically common.\n• Strong rally before? A technical pullback is often observed.`}
+                                title="MARKET EQUILIBRIUM"
+                                content={`A technical shift often occurs around the European Close / US Mid-session (~17:00 CET). During this window, price frequently returns to a state of equilibrium.\n\n• Vertical downward extension? A technical correction is statistically frequent.\n• Vertical upward extension? A technical pullback is often observed.`}
                             />
 
                             <ProtocolCard
                                 number="08"
                                 color="#FFD700"
                                 icon="cash-outline"
-                                title="CASH & CONFLUENCE"
-                                content={`Cash indices (Spot) often lead Futures. When Cash, Nasdaq Futures, and S&P Futures all align on magnetic levels simultaneously, the signal probability increases significantly.\n\nThis is CONFLUENCE. Levels are stronger together than in isolation.`}
+                                title="MULTIPLE ASSET CONFLUENCE"
+                                content={`Primary indices typically precede move stability in correlated markets. When Cash, Nasdaq Futures, and S&P Futures align on institutional coordinates simultaneously, technical confluence is maximized.\n\nThis identifies zones of high institutional commitment.`}
                             />
 
                             <ProtocolCard
                                 number="09"
                                 color="#EF4444"
                                 icon="alert-circle-outline"
-                                title="ATR & STOP HUNTS"
-                                content={`If volatility (ATR) is high, the market typically hunts liquidity before reversing.\n\nExample: A sell signal at 64 with high ATR often implies price will extend to 91 to trigger stops before actually dropping. System logic waits for this extension.`}
+                                title="ATR EXTENSIONS"
+                                content={`In high-volatility environments (high ATR), the market often extends beyond initial coordinates to engage liquidity before stabilization.\n\nExample: A Bearish configuration at 64 during high ATR often extends toward 91 before a structural reaction occurs. The system logic accounts for these technical extensions.`}
                             />
 
                             <ProtocolCard
                                 number="10"
                                 color="#A855F7"
                                 icon="moon-outline"
-                                title="THE SHADOW PHILOSOPHY"
-                                content={`Think of it like 'Atom' in Real Steel.\nSilent. Precise. Powerful.\n\nInstitutions don't chase price. They wait. \n\nThis app IS your Shadow Mode. It is hard-coded to replicate this behavior, helping you move WITH the giants, not against them.`}
+                                title="SHADOW LOGIC"
+                                content={`Conceptually similar to the 'Shadow' system: stealthy, precise, and calculated. Market participants typically wait for structural completion.\n\nThis app is engineered to identify these institutional footprints, allowing for alignment with professional market mechanics.`}
                             />
 
                             <ProtocolCard
                                 number="11"
                                 color="#FFD700"
                                 icon="sunny-outline"
-                                title="THE GOLDEN HOURS"
-                                content={`Institutional flow often extends beyond standard European hours. Late session setups (~18:30 CET) frequently carry significant structural weight.\n\nWhen Wall Street returns from lunch, they often take full control. From then until the close, volume and intent are driven by U.S. desks.\n\nKEY INSIGHT: Europe follows. The U.S. decides. Shadow Mode excels in capturing these late-session power moves (19:00 - 20:00 CET).`}
+                                title="INSTITUTIONAL WINDOWS"
+                                content={`For participants operating from Europe, market observation continues throughout the full US session (until 22:00 CET). Late session configurations frequently carry significant structural weight.\n\nUpon the return of US desks from the mid-day break (~19:00 CET), volume and technical intent typically stabilize. The system identifies these institutional movements until the US close.`}
                             />
 
                             <View style={{ marginTop: 40, marginBottom: 50, alignItems: 'center', opacity: 0.5 }}>

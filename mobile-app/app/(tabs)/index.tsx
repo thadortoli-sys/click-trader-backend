@@ -163,7 +163,7 @@ const SignalFeedItem = React.memo(({ pair, strategy, time, profit, message, sign
   let displayTitle = config.title;
   // If config title is generic like "PRO4X", append direction from message/type if available
   // BUT avoid "MARKET PANIC BULLISH" -> Only for strategies that need it.
-  const needsDirection = ['PRO4X', 'PRO4X.2', 'SHADOW MODE', 'HORUS SYSTEM', 'SCALP', 'SYNCRO', 'REINTEGRATION'].some(k => displayTitle.includes(k));
+  const needsDirection = ['PRO4X', 'PRO4X.2', 'SHADOW MODE', 'HORUS SYSTEM', 'HIGH VELOCITY', 'SYNCRO', 'REINTEGRATION'].some(k => displayTitle.includes(k));
 
   if (needsDirection) {
     const combined = (message + ' ' + (signalType || '')).toUpperCase();

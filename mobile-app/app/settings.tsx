@@ -78,7 +78,7 @@ const INTERMEDIATE_ITEMS: SignalItem[] = [
 
 ];
 
-// 3. ADVANCED (SCALPING & SHADOW)
+// 3. ADVANCED (HIGH-VELOCITY & SHADOW)
 const ADVANCED_ITEMS: SignalItem[] = [
     {
         key: 'shadow_Buy',
@@ -130,7 +130,7 @@ const ADVANCED_ITEMS: SignalItem[] = [
     },
     {
         key: 'scalp_OverSold',
-        guideTarget: 'SCALPING',
+        guideTarget: 'HIGH VELOCITY DATA',
         label: 'Horus OVS',
         description: 'Fast reaction technical zone (Bullish). Typical range 10-15 points.',
         icon: 'flash-outline',
@@ -138,7 +138,7 @@ const ADVANCED_ITEMS: SignalItem[] = [
     },
     {
         key: 'scalp_OverBought',
-        guideTarget: 'SCALPING',
+        guideTarget: 'HIGH VELOCITY DATA',
         label: 'Horus OVB',
         description: 'Fast reaction technical zone (Bearish). Typical range 10-15 points.',
         icon: 'flash-outline',
@@ -150,7 +150,7 @@ const ADVANCED_ITEMS: SignalItem[] = [
 const CONTEXT_ITEMS: SignalItem[] = [
     {
         key: 'scalp_TakeProfitPump',
-        guideTarget: 'SCALPING',
+        guideTarget: 'HIGH VELOCITY DATA',
         label: 'Re-integration Bullish',
         description: 'Price extended from MA 50. Statistical probability of mean reversion.',
         icon: 'arrow-up-circle-outline',
@@ -158,7 +158,7 @@ const CONTEXT_ITEMS: SignalItem[] = [
     },
     {
         key: 'scalp_TakeProfitPush',
-        guideTarget: 'SCALPING',
+        guideTarget: 'HIGH VELOCITY DATA',
         label: 'Re-integration Bearish',
         description: 'Price extended from MA 50. Statistical probability of mean reversion.',
         icon: 'arrow-down-circle-outline',
@@ -415,7 +415,7 @@ export default function SettingsScreen() {
         shadow_Buy: true,
         shadow_Sell: true,
 
-        // Scalp
+        // HIGH VELOCITY
         scalp_OverSold: true, scalp_OverBought: true,
         scalp_TakeProfitPump: true, scalp_TakeProfitPush: true,
         scalp_SyncroResBuy: true, scalp_SyncroResSell: true,

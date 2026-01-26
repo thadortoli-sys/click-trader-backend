@@ -78,7 +78,7 @@ export default function HistoryScreen() {
         const activeIconName = (item.data as any)?.icon || styleConfig.icon;
 
         // Clean Strategy Name
-        const displayStrategy = String(rawStrategy || '').replace(/_/g, ' ').replace('pro4x', 'PRO4X').replace('scalp', 'SCALP').replace('horus', 'HORUS');
+        const displayStrategy = String(rawStrategy || '').replace(/_/g, ' ').replace('pro4x', 'PRO4X').replace('scalp', 'HIGH VELOCITY').replace('horus', 'HORUS');
 
         return (
             <TouchableOpacity
@@ -128,7 +128,7 @@ export default function HistoryScreen() {
                                         if (combined.includes('BUY') || combined.includes('LONG') || combined.includes('BULL') || combined.includes('UP')) prefix = '▲ ';
                                         else if (combined.includes('SELL') || combined.includes('SHORT') || combined.includes('BEAR') || combined.includes('DOWN')) prefix = '▼ ';
 
-                                        let text = s.replace(/_/g, ' ').replace('PRO4X', 'PRO4X').replace('SCALP', 'SCALP').replace('HORUS', 'HORUS');
+                                        let text = s.replace(/_/g, ' ').replace('PRO4X', 'PRO4X').replace('SCALP', 'HIGH VELOCITY').replace('HORUS', 'HORUS');
                                         text = text.replace('OVERSOLD', 'OVS').replace('OVERBOUGHT', 'OVB');
 
                                         // Force Replacement

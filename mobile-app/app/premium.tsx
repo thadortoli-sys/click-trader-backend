@@ -211,7 +211,7 @@ export default function PremiumScreen() {
                                 <Text style={styles.featureItem}>• Shadow of Liquidity</Text>
                                 <Text style={styles.featureItem}>• Real-Time Execution</Text>
                                 <Text style={styles.featureItem}>• Nasdaq future (suitable CFD)</Text>
-                                <Text style={styles.featureItem}>• Scalping mode</Text>
+                                <Text style={styles.featureItem}>• High velocity modes</Text>
                             </View>
 
                             <TouchableOpacity
