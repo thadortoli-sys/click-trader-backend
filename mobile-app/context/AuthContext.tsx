@@ -3,7 +3,7 @@ import { supabase } from '../utils/supabase';
 import { Session } from '@supabase/supabase-js';
 import { Platform } from 'react-native';
 import Purchases, { CustomerInfo } from 'react-native-purchases';
-import { ENTITLEMENT_ID, configurePurchases } from '../utils/purchases';
+import { ENTITLEMENT_ID, configurePurchases, isExpoGo } from '../utils/purchases';
 import { sendSettingsToBackend, registerForPushNotificationsAsync } from '../utils/notifications';
 import { getSettings } from '../utils/storage';
 
@@ -15,6 +15,7 @@ interface AuthContextProps {
     user: any | null;
     isPro: boolean;
     setSimulatedPro: (status: boolean) => void;
+    proDebugInfo: string | null;
 }
 
 const AuthContext = createContext<AuthContextProps>({
@@ -24,6 +25,7 @@ const AuthContext = createContext<AuthContextProps>({
     user: null,
     isPro: false,
     setSimulatedPro: () => { },
+    proDebugInfo: null,
 });
 
 // Helper for timeout
@@ -38,6 +40,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [session, setSession] = useState<Session | null>(null);
     const [loading, setLoading] = useState(true);
     const [isPro, setIsPro] = useState(false);
+    const [proDebugInfo, setProDebugInfo] = useState<string | null>('INITIALIZING...');
 
     // --- GOD MODE HELPER ---
     const checkGodMode = (currentSession: Session | null) => {
@@ -93,8 +96,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 console.warn('[AuthContext] Supabase check skipped/timed out');
             }
 
-            // 2. RevenueCat (Only on Mobile)
-            if (Platform.OS !== 'web') {
+            // 2. RevenueCat (Only on Mobile & Real Device)
+            if (Platform.OS !== 'web' && !isExpoGo) {
                 try {
                     console.log('[AuthContext] Configuring RevenueCat...');
                     await withTimeout(configurePurchases(), 2000, 'Purchases.configure');
@@ -102,17 +105,44 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                     console.log('[AuthContext] Checking status...');
                     const info = await withTimeout(Purchases.getCustomerInfo(), 1500, 'Purchases.getInfo') as CustomerInfo;
                     if (info) {
-                        setIsPro(prev => prev || !!info.entitlements.active[ENTITLEMENT_ID]); // Keep God Mode if active
+                        // Check for ANY common Pro entitlement (pro, lifetime, perpetual, premium)
+                        const activeKeys = Object.keys(info.entitlements.active);
+                        const foundKey = activeKeys.find(key =>
+                            ['pro', 'lifetime', 'perpetual', 'premium', 'founder'].includes(key.toLowerCase())
+                        );
+
+                        // DEBUG MODE: ALWAYS SET DEBUG INFO
+                        // If foundKey exists, we are PRO. If not, we just show what keys we found.
+                        setProDebugInfo(activeKeys.length > 0 ? activeKeys.join(', ') : 'NO ENTITLEMENTS (0)');
+
+                        if (foundKey) {
+                            setIsPro(true);
+                            // setProDebugInfo(foundKey); // Already set above with potentially more info
+                        }
+                    } else {
+                        setProDebugInfo('RC INFO IS NULL');
                     }
 
                     if (typeof Purchases.addCustomerInfoUpdateListener === 'function') {
                         purchasesListener = Purchases.addCustomerInfoUpdateListener((customerInfo) => {
-                            setIsPro(prev => prev || !!customerInfo.entitlements.active[ENTITLEMENT_ID]);
+                            const activeKeys = Object.keys(customerInfo.entitlements.active);
+                            const foundKey = activeKeys.find(key =>
+                                ['pro', 'lifetime', 'perpetual', 'premium', 'founder'].includes(key.toLowerCase())
+                            );
+
+                            setProDebugInfo(activeKeys.length > 0 ? activeKeys.join(', ') : 'NO ENTITLEMENTS (0)');
+
+                            if (foundKey) {
+                                setIsPro(true);
+                            }
                         });
                     }
                 } catch (e: any) {
                     console.warn('[AuthContext] RevenueCat skipped/timed out:', e?.message || e);
+                    setProDebugInfo(`RC ERROR: ${e?.message || 'Unknown'}`);
                 }
+            } else {
+                setProDebugInfo(isExpoGo ? 'EXPO GO (SIMULATION)' : 'WEB/DESKTOP MODE');
             }
 
             // Always finish
@@ -153,7 +183,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ session, loading, signOut, user: session?.user ?? null, isPro, setSimulatedPro }}>
+        <AuthContext.Provider value={{ session, loading, signOut, user: session?.user ?? null, isPro, setSimulatedPro, proDebugInfo }}>
             {children}
         </AuthContext.Provider>
     );

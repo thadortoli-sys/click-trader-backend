@@ -7,15 +7,15 @@ import { ThemedButton } from '../components/ThemedButton';
 import { GlassCard } from '../components/GlassCard';
 import { HolographicGradient } from '../components/HolographicGradient';
 import { registerForPushNotificationsAsync, sendSettingsToBackend } from '../utils/notifications';
-import { getSettings, saveSettings, SignalKey } from '../utils/storage';
+import { getSettings, saveSettings, ANALYSISKey } from '../utils/storage';
 import { useAuth } from '../context/AuthContext';
 import { PremiumTeaserOverlay } from '../components/PremiumTeaserOverlay';
 
 const { width } = Dimensions.get('window');
 const isTablet = width > 768;
 
-interface SignalItem {
-    key: SignalKey;
+interface ANALYSISItem {
+    key: ANALYSISKey;
     label: string;
     description: string | React.ReactNode;
     icon: keyof typeof Ionicons.glyphMap;
@@ -28,7 +28,7 @@ interface SignalItem {
 // 1. BEGINNER — "TRAVEL LIGHT"
 // 1. PRO4X SYSTEM (CLASSIC)
 // 1. BEGINNER (PRO4X.2)
-const BEGINNER_ITEMS: SignalItem[] = [
+const BEGINNER_ITEMS: ANALYSISItem[] = [
 
     {
         key: 'pro4xx_Buy',
@@ -49,7 +49,7 @@ const BEGINNER_ITEMS: SignalItem[] = [
 ];
 
 // 2. INTERMEDIATE (PRO4X & HORUS)
-const INTERMEDIATE_ITEMS: SignalItem[] = [
+const INTERMEDIATE_ITEMS: ANALYSISItem[] = [
     {
         key: 'pro4x_GetReady',
         guideTarget: 'PRO4X',
@@ -79,7 +79,7 @@ const INTERMEDIATE_ITEMS: SignalItem[] = [
 ];
 
 // 3. ADVANCED (HIGH-VELOCITY & SHADOW)
-const ADVANCED_ITEMS: SignalItem[] = [
+const ADVANCED_ITEMS: ANALYSISItem[] = [
     {
         key: 'shadow_Buy',
         guideTarget: 'SHADOW_MODE',
@@ -147,7 +147,7 @@ const ADVANCED_ITEMS: SignalItem[] = [
 ];
 
 // 4. CONTEXT INFO
-const CONTEXT_ITEMS: SignalItem[] = [
+const CONTEXT_ITEMS: ANALYSISItem[] = [
     {
         key: 'scalp_TakeProfitPump',
         guideTarget: 'HIGH VELOCITY DATA',
@@ -219,7 +219,7 @@ const CONTEXT_ITEMS: SignalItem[] = [
                 <Text style={{ color: '#aaa', fontSize: 11, fontStyle: 'italic', marginTop: 4 }}>Analysis Note: Monitoring 2 to 3 waves on the M1 timeframe is a primary requirement for technical validation if extreme or panic conditions are present.</Text>
             </View>
         ),
-        icon: 'nuclear-outline', // Or alert-circle-outline if unavailable
+        icon: 'nuclear-outline', // Or DETECTION-circle-outline if unavailable
         color: '#8B5CF6'
     },
     {
@@ -258,7 +258,7 @@ const SectionTitle = ({ title }: { title: string }) => (
 // Add component imports if needed (ensure TouchableOpacity, View, Text are imported)
 
 
-const SignalCard = React.memo(({ item, value, onToggle, index }: { item: SignalItem, value: boolean, onToggle: () => void, index: number }) => {
+const ANALYSISCard = React.memo(({ item, value, onToggle, index }: { item: ANALYSISItem, value: boolean, onToggle: () => void, index: number }) => {
     const router = useRouter(); // Use router
     // ... animation logic ...
     const pulseAnim = useRef(new Animated.Value(1)).current;
@@ -391,17 +391,17 @@ export default function SettingsScreen() {
         registerForPushNotificationsAsync().then(token => setPushToken(token));
 
         getSettings().then(settings => {
-            if (settings.signals) {
-                setSignals(prev => ({ ...prev, ...settings.signals }));
+            if (settings.ANALYSISs) {
+                setANALYSISs(prev => ({ ...prev, ...settings.ANALYSISs }));
                 // Sync initial settings if token is already known or when it becomes known
                 if (pushToken) {
-                    sendSettingsToBackend(pushToken, settings.signals, isPro);
+                    sendSettingsToBackend(pushToken, settings.ANALYSISs, isPro);
                 }
             }
         });
     }, [pushToken]); // Re-run when pushToken is acquired to sync initial state
 
-    const [signals, setSignals] = useState<Record<SignalKey, boolean>>({
+    const [ANALYSISs, setANALYSISs] = useState<Record<ANALYSISKey, boolean>>({
         // PRO4XX.2
         pro4xx_Buy: true, pro4xx_Sell: true,
         pro4xx_GetReady_Buy: true, pro4xx_GetReady_Sell: true,
@@ -427,12 +427,12 @@ export default function SettingsScreen() {
     });
 
     const toggleAll = useCallback(async (value: boolean) => {
-        setSignals(prev => {
+        setANALYSISs(prev => {
             const newState = { ...prev };
-            (Object.keys(newState) as SignalKey[]).forEach(key => {
+            (Object.keys(newState) as ANALYSISKey[]).forEach(key => {
                 newState[key] = value;
             });
-            saveSettings({ signals: newState });
+            saveSettings({ ANALYSISs: newState });
             if (pushToken) {
                 sendSettingsToBackend(pushToken, newState);
             }
@@ -440,10 +440,10 @@ export default function SettingsScreen() {
         });
     }, [pushToken]);
 
-    const toggleSignal = useCallback(async (key: SignalKey) => {
-        setSignals(prev => {
+    const toggleANALYSIS = useCallback(async (key: ANALYSISKey) => {
+        setANALYSISs(prev => {
             const newState = { ...prev, [key]: !prev[key] };
-            saveSettings({ signals: newState });
+            saveSettings({ ANALYSISs: newState });
             if (pushToken) {
                 sendSettingsToBackend(pushToken, newState);
             }
@@ -451,8 +451,8 @@ export default function SettingsScreen() {
         });
     }, [pushToken]);
 
-    const activeCount = Object.values(signals).filter(Boolean).length;
-    const totalCount = Object.keys(signals).length;
+    const activeCount = Object.values(ANALYSISs).filter(Boolean).length;
+    const totalCount = Object.keys(ANALYSISs).length;
 
     return (
         <View style={styles.container}>
@@ -606,10 +606,10 @@ export default function SettingsScreen() {
                             <View style={styles.gridContainer}>
                                 {BEGINNER_ITEMS.map((item, index) => (
                                     <View key={item.key} style={styles.gridItem}>
-                                        <SignalCard
+                                        <ANALYSISCard
                                             item={item}
-                                            value={signals[item.key]}
-                                            onToggle={() => toggleSignal(item.key)}
+                                            value={ANALYSISs[item.key]}
+                                            onToggle={() => toggleANALYSIS(item.key)}
                                             index={index}
                                         />
                                     </View>
@@ -624,10 +624,10 @@ export default function SettingsScreen() {
                             <View style={styles.gridContainer}>
                                 {INTERMEDIATE_ITEMS.map((item, index) => (
                                     <View key={item.key} style={styles.gridItem}>
-                                        <SignalCard
+                                        <ANALYSISCard
                                             item={item}
-                                            value={signals[item.key]}
-                                            onToggle={() => toggleSignal(item.key)}
+                                            value={ANALYSISs[item.key]}
+                                            onToggle={() => toggleANALYSIS(item.key)}
                                             index={index + 10}
                                         />
                                     </View>
@@ -638,16 +638,16 @@ export default function SettingsScreen() {
                             <SectionTitle title="ADVANCED (HIGH PRECISION VOLATILITY ANALYSIS)" />
                             <Text style={{ color: '#888', fontSize: 11, marginBottom: 15, paddingHorizontal: 5 }}>
                                 Mapping the liquidity. For advanced analysis. Counter-trend & high-density technical moves.
-                                <Text style={{ color: '#F59E0B', fontWeight: 'bold' }}>{"\n\n"}⚠️ CONTEXT CROSS-REFERENCE: Shadow & Horus readings should be analyzed alongside Context Alerts (Section 4) for optimal technical precision.</Text>
+                                <Text style={{ color: '#F59E0B', fontWeight: 'bold' }}>{"\n\n"}⚠️ CONTEXT CROSS-REFERENCE: Shadow & Horus readings should be analyzed alongside Context DETECTIONs (Section 4) for optimal technical precision.</Text>
                                 {"\n"}Designed to assist with TP & SL planning (near entries). Requires fast analysis. Strong trend protocol: involves trend monitoring or waiting for key institutional reversal numbers.
                             </Text>
                             <View style={styles.gridContainer}>
                                 {ADVANCED_ITEMS.map((item, index) => (
                                     <View key={item.key} style={styles.gridItem}>
-                                        <SignalCard
+                                        <ANALYSISCard
                                             item={item}
-                                            value={signals[item.key]}
-                                            onToggle={() => toggleSignal(item.key)}
+                                            value={ANALYSISs[item.key]}
+                                            onToggle={() => toggleANALYSIS(item.key)}
                                             index={index + 20}
                                         />
                                     </View>
@@ -662,10 +662,10 @@ export default function SettingsScreen() {
                             <View style={styles.gridContainer}>
                                 {CONTEXT_ITEMS.map((item, index) => (
                                     <View key={item.key} style={styles.gridItem}>
-                                        <SignalCard
+                                        <ANALYSISCard
                                             item={item}
-                                            value={signals[item.key]}
-                                            onToggle={() => toggleSignal(item.key)}
+                                            value={ANALYSISs[item.key]}
+                                            onToggle={() => toggleANALYSIS(item.key)}
                                             index={index + 30}
                                         />
                                     </View>

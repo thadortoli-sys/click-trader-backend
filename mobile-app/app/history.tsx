@@ -160,7 +160,7 @@ export default function HistoryScreen() {
 
                             {/* BOTTOM: Body Text */}
                             <Text style={{ color: '#888', fontSize: 11, maxWidth: '98%', marginTop: 4 }} numberOfLines={2}>
-                                {item.body || item.data?.message || `Level Alignment: ${item.entry}`}
+                                {!isPro ? "Institutional Alert - Tap to Unlock" : (item.body || item.data?.message || `Level Alignment: ${item.entry}`)}
                             </Text>
                         </View>
                     </View>

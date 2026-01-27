@@ -3,7 +3,7 @@ import Purchases from 'react-native-purchases';
 import Constants from 'expo-constants';
 
 // Check if running in Expo Go
-const isExpoGo = Constants.appOwnership === 'expo';
+export const isExpoGo = Constants.appOwnership === 'expo';
 
 // TODO: Replace with your actual RevenueCat API Keys
 const API_KEYS = {

@@ -12,7 +12,7 @@ import { useAuth } from '../context/AuthContext';
 
 export default function ProfileScreen() {
     const router = useRouter();
-    const { user, signOut, isPro, setSimulatedPro } = useAuth();
+    const { user, signOut, isPro, setSimulatedPro, proDebugInfo } = useAuth();
 
     const DopamineCard = ({ children, style }: { children: React.ReactNode, style?: any }) => (
         <View style={[{
@@ -92,6 +92,9 @@ export default function ProfileScreen() {
                                 <Text style={styles.planName}>{isPro ? 'PRO4X & HORUS ACCESS' : 'FREE VERSION'}</Text>
                                 <Text style={styles.planStatus}>
                                     {isPro ? 'Active • Perpetual License' : 'Limited features • Upgrade to Pro'}
+                                </Text>
+                                <Text style={{ color: '#D4AF37', fontSize: 10, marginTop: 4, fontWeight: 'bold' }}>
+                                    DEBUG: {proDebugInfo || 'LOADING...'}
                                 </Text>
                             </View>
                             <View style={[styles.badge, !isPro && { backgroundColor: 'rgba(255,255,255,0.05)', borderColor: '#333' }]}>

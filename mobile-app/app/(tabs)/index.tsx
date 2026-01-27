@@ -91,6 +91,7 @@ const SIGNAL_CONFIG: Record<string, { title: string, icon: keyof typeof Ionicons
   'pro4x': { title: 'PRO4X', icon: 'trending-up-outline', color: '#4ADE80' },
 
   // 5. SHADOW & LEGACY HORUS
+  'SHADOW MODE': { title: 'SHADOW MODE', icon: 'trending-up-outline', color: '#4ADE80' },
   'Shadow Buy': { title: 'SHADOW MODE', icon: 'trending-up-outline', color: '#4ADE80' },
   'Shadow Sell': { title: 'SHADOW MODE', icon: 'trending-down-outline', color: '#FF5252' },
 
@@ -98,6 +99,8 @@ const SIGNAL_CONFIG: Record<string, { title: string, icon: keyof typeof Ionicons
   'Reintegration': { title: 'REINTEGRATION', icon: 'information-circle-outline', color: '#FFFFFF' },
   'Reintegration Bullish': { title: 'REINTEGRATION BULLISH', icon: 'information-circle-outline', color: '#4ADE80' },
   'Reintegration Bearish': { title: 'REINTEGRATION BEARISH', icon: 'information-circle-outline', color: '#FF5252' },
+  'TP PUMP': { title: 'REINTEGRATION BULLISH', icon: 'information-circle-outline', color: '#4ADE80' },
+  'TP PUSH': { title: 'REINTEGRATION BEARISH', icon: 'information-circle-outline', color: '#FF5252' },
 
   // Settings Keys (horus_Buy) vs Strategy Keys (Horus Bullish) - Supporting Both
   'horus_Buy': { title: 'HORUS SYSTEM BULLISH', icon: 'trending-up-outline', color: '#4ADE80' },
@@ -113,6 +116,12 @@ const SIGNAL_CONFIG: Record<string, { title: string, icon: keyof typeof Ionicons
 
   // 7. GENERIC / FALLBACKS
   'GetReady': { title: 'PRO4X SET UP FORMING', icon: 'pulse-outline', color: '#FFC107' },
+
+  // Case-Insensitive / Space-Friendly Overrides
+  'HORUS OVS': { title: 'HORUS OVS', icon: 'trending-up-outline', color: '#00FF9D' },
+  'HORUS OVB': { title: 'HORUS OVB', icon: 'trending-down-outline', color: '#FF5252' },
+  'SHADOW BULLISH': { title: 'SHADOW MODE BULLISH', icon: 'trending-up-outline', color: '#4ADE80' },
+  'SHADOW BEARISH': { title: 'SHADOW MODE BEARISH', icon: 'trending-down-outline', color: '#FF5252' },
 };
 
 // Fallback style
@@ -132,7 +141,10 @@ const SignalFeedItem = React.memo(({ pair, strategy, time, profit, message, sign
   let config = SIGNAL_CONFIG[s];
 
   if (!config) {
-    const exactKey = Object.keys(SIGNAL_CONFIG).find(k => k.toUpperCase() === sUpper);
+    const exactKey = Object.keys(SIGNAL_CONFIG).find(k =>
+      k.toUpperCase() === sUpper ||
+      k.toUpperCase().replace(/_/g, ' ') === sUpper.replace(/_/g, ' ')
+    );
     if (exactKey) config = SIGNAL_CONFIG[exactKey];
   }
 
@@ -141,14 +153,19 @@ const SignalFeedItem = React.memo(({ pair, strategy, time, profit, message, sign
     const keys = Object.keys(SIGNAL_CONFIG);
     // Sort by length descending to match most specific first
     const sortedKeys = keys.sort((a, b) => b.length - a.length);
-    const matchedKey = sortedKeys.find(key => sUpper.includes(key.toUpperCase()));
+    const normalizedSUpper = sUpper.replace(/_/g, ' ');
+    const matchedKey = sortedKeys.find(key => {
+      const normalizedKey = key.toUpperCase().replace(/_/g, ' ');
+      return normalizedSUpper.includes(normalizedKey) || normalizedKey.includes(normalizedSUpper);
+    });
     if (matchedKey) config = SIGNAL_CONFIG[matchedKey];
   }
 
   // FORCE OVERRIDE: SETUP FORMING / READY
   // Must take precedence over generic strategy icons
   const combinedCheck = (s + ' ' + (message || '') + ' ' + (signalType || '')).toUpperCase();
-  if (combinedCheck.includes('SETUP FORMING') || combinedCheck.includes('FORMING') || combinedCheck.includes('GETREADY') || combinedCheck.includes('PREPARE')) {
+  const isReintegration = combinedCheck.includes('REINTEGRATION') || combinedCheck.includes('PUMP') || combinedCheck.includes('PUSH');
+  if (!isReintegration && (combinedCheck.includes('SETUP FORMING') || combinedCheck.includes('FORMING') || combinedCheck.includes('GETREADY') || combinedCheck.includes('PREPARE') || combinedCheck.includes('APPROACHING') || combinedCheck.includes('WATCH'))) {
     // Clone config to avoid mutating static object
     // FORCE the title to SETUP FORMING to avoid it being called "PRO4X"
     config = { ... (config || { title: s }), title: 'SETUP FORMING', icon: 'pulse-outline', color: '#FFC107' };
@@ -156,7 +173,7 @@ const SignalFeedItem = React.memo(({ pair, strategy, time, profit, message, sign
 
   // 3. Fallback
   if (!config) {
-    config = { title: 'SYSTEM ALERT', icon: 'notifications-outline', color: '#FFFFFF' };
+    config = { title: 'SYSTEM ANALYSIS', icon: 'notifications-outline', color: '#FFFFFF' };
   }
 
   // 4. Directional Suffix (Append Bullish/Bearish only if needed)
@@ -277,40 +294,22 @@ const SignalFeedItem = React.memo(({ pair, strategy, time, profit, message, sign
                 textShadowOffset: { width: 0, height: 0 },
                 textShadowRadius: 8
               }}>
-                {locked ? "INSTITUTIONAL ALERT" : displayTitle}
+                {displayTitle} {/* TITLE ALWAYS VISIBLE */}
               </Text>
-
-              {locked && (
-                <View style={{
-                  ...StyleSheet.absoluteFillObject,
-                  backgroundColor: '#000000', // Pitch black
-                  borderRadius: 4,
-                  justifyContent: 'center',
-                  paddingHorizontal: 10,
-                  zIndex: 20
-                }}>
-                  <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                    <Ionicons name="lock-closed" size={12} color="#D4AF37" style={{ marginRight: 6 }} />
-                    <Text style={{ color: '#D4AF37', fontSize: 10, fontWeight: '900', letterSpacing: 1.5 }}>LOCKED SETUP</Text>
-                  </View>
-                </View>
-              )}
             </View>
 
-            {/* Row 2: TICKER (Smaller/Grey) */}
+            {/* Row 2: TICKER (Or Locked Message) */}
             <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 4 }}>
-              <View>
+              {locked ? (
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                  <Ionicons name="lock-closed" size={10} color="#D4AF37" style={{ marginRight: 4 }} />
+                  <Text style={{ color: '#D4AF37', fontSize: 10, fontWeight: '700', letterSpacing: 1 }}>TAP TO UNLOCK</Text>
+                </View>
+              ) : (
                 <Text style={{ color: '#9CA3AF', fontSize: 10, fontWeight: '400', letterSpacing: 0.3 }}>
                   {pair.toUpperCase()}
                 </Text>
-                {locked && (
-                  <View style={{
-                    ...StyleSheet.absoluteFillObject,
-                    backgroundColor: '#000000',
-                    zIndex: 20
-                  }} />
-                )}
-              </View>
+              )}
             </View>
           </View>
 
@@ -665,7 +664,7 @@ const RecentIntelligence = () => {
   return (
     <View style={styles.section}>
       <SectionTitle
-        title="LATEST ALERTS"
+        title="LATEST DETECTIONS"
         rightElement={<LiveBadge />}
         afterLineElement={
           <View style={{
@@ -681,7 +680,7 @@ const RecentIntelligence = () => {
               fontSize: 8,
               fontWeight: '700',
               letterSpacing: 1,
-            }}>NQ FUTURES</Text>
+            }}>FUTURES</Text>
           </View>
         }
       />
@@ -852,8 +851,8 @@ export default function CommandCenterScreen() {
         <View style={styles.section}>
           <View style={styles.actionsGrid}>
             <QuickAction icon="card-outline" route="/premium" label={"MY\nSUBSCRIPTION"} locked={false} />
-            <QuickAction icon="hardware-chip-outline" route="/settings" label={"SETTINGS ALERTS\nPro4x & Horus"} locked={false} />
-            <QuickAction icon="stats-chart-outline" route="/guide-manual-v3" label={"INTERPRET\nALERTS & MASTERCLASS"} locked={false} />
+            <QuickAction icon="hardware-chip-outline" route="/settings" label={"SETTINGS DATA\nPro4x & Horus"} locked={false} />
+            <QuickAction icon="stats-chart-outline" route="/guide-manual-v3" label={"INTERPRET\nDATA & MASTERCLASS"} locked={false} />
           </View>
         </View>
 
