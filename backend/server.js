@@ -13,6 +13,77 @@ const app = express();
 const expo = new Expo();
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
+// --- HELPER: STRATEGY MAPPING (Sync with Frontend) ---
+const getSignalKeyFromStrategy = (strategy) => {
+    if (!strategy) return null;
+    const normalized = strategy.replace(/\s+/g, '_').toLowerCase();
+
+    // 1. Partial / Fuzzy Match
+    if (normalized.includes('pro4x_buy')) return 'pro4x_Buy';
+    if (normalized.includes('pro4x_sell')) return 'pro4x_Sell';
+
+    // Get Ready
+    if (normalized.includes('get_ready') || normalized.includes('getready')) {
+        if (normalized.includes('horus')) return 'horus_GetReady';
+        return 'pro4x_GetReady';
+    }
+
+    // Horus ADV
+    if (normalized.includes('horus') && (normalized.includes('adv') || normalized.includes('advanced') || (normalized.includes('institutional') && normalized.includes('scalping')))) {
+        if (normalized.includes('buy')) return 'horus_Adv_Buy';
+        if (normalized.includes('sell')) return 'horus_Adv_Sell';
+    }
+
+    // Horus Standard
+    if (normalized.includes('horus')) {
+        if (normalized.includes('buy')) return 'horus_Buy';
+        if (normalized.includes('sell')) return 'horus_Sell';
+    }
+
+    // Scalping (OVS/OVB)
+    if (normalized.includes('ovs') || normalized.includes('oversold')) return 'scalp_OverSold';
+    if (normalized.includes('ovb') || normalized.includes('overbought')) return 'scalp_OverBought';
+
+    // Reintegration (Take Profit/Context)
+    if (normalized.includes('re-integration') || normalized.includes('reintegration') || normalized.includes('pump') || normalized.includes('push')) {
+        if (normalized.includes('bullish') || normalized.includes('pump')) return 'scalp_TakeProfitPump';
+        if (normalized.includes('bearish') || normalized.includes('push')) return 'scalp_TakeProfitPush';
+    }
+
+    // Syncro
+    if (normalized.includes('syncro')) {
+        // H1
+        if (normalized.includes('h1')) {
+            if (normalized.includes('bullish') || normalized.includes('buy')) return 'h1_SyncroBullish';
+            if (normalized.includes('bearish') || normalized.includes('sell')) return 'h1_SyncroBearish';
+        }
+        // Syncro Res/Sup (likely scalp)
+        if (normalized.includes('resistance')) return 'scalp_SyncroResSell';
+        if (normalized.includes('support')) return 'scalp_SyncroResBuy';
+    }
+
+    // Shadow
+    if (normalized.includes('shadow')) {
+        if (normalized.includes('buy')) return 'shadow_Buy';
+        if (normalized.includes('sell')) return 'shadow_Sell';
+    }
+
+    // Volatility
+    if (normalized.includes('vol_low')) return 'vol_Low';
+    if (normalized.includes('vol_high')) return 'vol_High';
+    if (normalized.includes('vol_extreme')) return 'vol_Extreme';
+    if (normalized.includes('panic')) return 'vol_Panic';
+    if (normalized.includes('regime')) return 'vol_Regime';
+
+    // Info Support
+    if (normalized.includes('info') || normalized.includes('support')) {
+        if (normalized.includes('buy')) return 'info_SupportBuy';
+        if (normalized.includes('sell')) return 'info_SupportSell';
+    }
+
+    return null;
+};
+
 app.use(cors());
 app.use(bodyParser.json({
     verify: (req, res, buf) => {
@@ -63,6 +134,52 @@ app.post('/register', async (req, res) => {
     } catch (e) {
         console.error('❌ Database Error:', e.message);
         res.status(500).send({ error: 'Failed to save token' });
+    }
+});
+
+// 1.5 UPDATE SETTINGS
+app.post('/settings', async (req, res) => {
+    const { token, signals, isPro } = req.body;
+
+    if (!token) return res.status(400).send({ error: 'Token required' });
+
+    try {
+        console.log(`Updating settings for: ${token.slice(-4)}`);
+
+        // Get existing to merge? For now just upsert the object
+        // We construct the settings object. 
+        // Note: Frontend sends 'signals' and 'isPro'. 
+        // We should preserve existing 'notificationsEnabled' if it exists in DB, but fetching first adds latency.
+        // For now, let's assume we can overwrite 'signals' key in the JSONB if we use jsonb_set, 
+        // but Supabase/Postgres simple update overwrites the column.
+
+        // Simpler approach: Upsert with merged data if possible, or just overwrite 'settings' column with what we have.
+        // Since frontend is source of truth for settings, we can overwrite 'signals'.
+
+        // Let's FIRST fetch existing to be safe
+        const { data: existing } = await supabase.from('user_settings').select('settings').eq('token', token).single();
+
+        const currentSettings = existing?.settings || {};
+        const newSettings = {
+            ...currentSettings,
+            signals: signals || currentSettings.signals,
+            isPro: isPro !== undefined ? isPro : currentSettings.isPro,
+            // Ensure timestamp
+            last_updated: new Date()
+        };
+
+        const { error } = await supabase
+            .from('user_settings')
+            .update({ settings: newSettings, updated_at: new Date() })
+            .eq('token', token);
+
+        if (error) throw error;
+
+        console.log('✅ Settings updated');
+        res.send({ status: 'Settings updated' });
+    } catch (e) {
+        console.error('❌ Settings Update Error:', e.message);
+        res.status(500).send({ error: 'Failed to update settings' });
     }
 });
 
@@ -154,7 +271,7 @@ app.post('/webhook', async (req, res) => {
     // Backend acts as a dumb pipe. Frontend handles all styling and titles via SIGNAL_CONFIG.
 
     // Default values if missing from payload
-    let notificationTitle = data.title || `Signal: ${strategy}`;
+    let notificationTitle = data.title || strategy; // REMOVED "Signal: " prefix
     let notificationBody = data.message || `Alert for ${ticker}`;
 
     // Validations are handled in the blocking block below.
@@ -224,21 +341,86 @@ app.post('/webhook', async (req, res) => {
             let finalData = { ...signalRecord.data }; // Clone
 
             const s = (strategy || '').toLowerCase();
-            if (!isUserPro && !s.startsWith('vol_') && !s.includes('regime')) {
-                // console.log(`🔒 MASKING for: ${pushToken.slice(-4)}`);
-                finalTitle = "🔒 Institutional Setup Detected";
-                finalBody = "Institutional Alert. Tap to unlock.";
-                finalData.message = "LOCKED";
-                finalData.price = "LOCKED";
+
+
+            // --- UNIVERSAL STANDARDIZATION & SANITIZATION (ALL USERS) ---
+            // STRICT RULE: NO Direction (Buy/Sell/Bullish/Bearish), NO Price, NO "Signal:" prefix.
+
+            // 1. Pro4x
+            if (s.includes('pro4x')) {
+                if (s.includes('forming') || s.includes('approaching') || s.includes('get ready') || s.includes('prepare')) {
+                    finalTitle = "Pro4x Set up forming";
+                } else {
+                    finalTitle = "Pro4x Set up";
+                }
+                finalBody = "Technical Alignment";
+            }
+            // 2. Horus
+            else if (s.includes('horus')) {
+                finalTitle = "Horus Set up";
+                finalBody = "Technical Alignment";
+            }
+            // 3. Shadow
+            else if (s.includes('shadow')) {
+                finalTitle = "Shadow Set up";
+                finalBody = "Technical Alignment";
+            }
+            // 4. Reintegration / Context
+            else if (s.includes('reintegration') || s.includes('re-integration')) {
+                finalTitle = "Market Context";
+                finalBody = "Reintegration Zone Active";
+            }
+            // 5. Volatility -> "Market Context" 
+            else if (s.startsWith('vol_') || s.includes('volatility') || s.includes('panic') || s.includes('regime')) {
+                finalTitle = "Market Context";
+                if (s.includes('panic')) finalBody = "Panic Selling / Extreme Fear";
+                else if (s.includes('extreme')) finalBody = "Extreme Volatility Warning";
+                else if (s.includes('high')) finalBody = "High Volatility";
+                else if (s.includes('low')) finalBody = "Low Volatility";
+                else finalBody = "Volatility Regime Change";
+            }
+            // 6. Generic / Fallback
+            else {
+                finalTitle = "Market Alert";
+                finalBody = "New Activity Detected";
             }
 
+            // DOUBLE CHECK: Ensure no directional words leaked into Body (Paranoia check)
+            const FORBIDDEN = ['buy', 'sell', 'bullish', 'bearish', 'long', 'short'];
+            if (FORBIDDEN.some(word => finalBody.toLowerCase().includes(word))) {
+                finalBody = "Market Update"; // Fallback if safe body leaked direction
+            }
+
+            // --- END SANITIZATION ---
+
             // --- FILTERING ---
+            // 1. Global Disable
             if (userConfig.notificationsEnabled === false) continue;
+
+            // 2. Strategy Specific Disable
+            // Try to map strategy to a key
+            const signalKey = getSignalKeyFromStrategy(strategy);
+
+            // If we found a key, and the user has it explicitly disabled, SKIP.
+            // If data is missing in user settings (undefined), default to TRUE (Alert Enabled)
+            if (signalKey && userConfig.signals) {
+                if (userConfig.signals[signalKey] === false) {
+                    // console.log(`🔕 Skipped ${signalKey} for user (Disabled)`);
+                    continue;
+                }
+            }
+
+            // --- FINAL SAFETY CHECK ---
+            if (finalTitle.includes('Signal:')) {
+                finalTitle = finalTitle.replace('Signal:', '').trim();
+            }
+
+            console.log(`[PUSH PREVIEW] To: ${pushToken.slice(-4)} | Title: "${finalTitle}" | Body: "${finalBody}"`);
 
             messages.push({
                 to: pushToken,
                 sound: 'default',
-                title: finalTitle,
+                title: finalTitle, // CLEAN TITLE (No prefixes)
                 body: finalBody,
                 data: finalData,
                 priority: 'high',
