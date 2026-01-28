@@ -118,7 +118,7 @@ export default function PremiumScreen() {
                                     marginTop: 2,
                                     flexWrap: 'wrap',
                                 }}>
-                                    Your trading companion in the palm of your hand
+                                    Your set up companion in the palm of your hand
                                 </Text>
                             </View>
                         </View>

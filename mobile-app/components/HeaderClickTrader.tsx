@@ -15,7 +15,7 @@ export default function HeaderClickTrader() {
             <View style={styles.textBlock}>
                 <Text style={styles.title}>Click&Trader</Text>
                 <Text style={styles.tagline}>
-                    Your trading companion in the palm of your hand
+                    Your set up companion in the palm of your hand
                 </Text>
             </View>
         </View>

@@ -7,15 +7,15 @@ import { ThemedButton } from '../components/ThemedButton';
 import { GlassCard } from '../components/GlassCard';
 import { HolographicGradient } from '../components/HolographicGradient';
 import { registerForPushNotificationsAsync, sendSettingsToBackend } from '../utils/notifications';
-import { getSettings, saveSettings, ANALYSISKey } from '../utils/storage';
+import { getSettings, saveSettings, SignalKey } from '../utils/storage';
 import { useAuth } from '../context/AuthContext';
 import { PremiumTeaserOverlay } from '../components/PremiumTeaserOverlay';
 
 const { width } = Dimensions.get('window');
 const isTablet = width > 768;
 
-interface ANALYSISItem {
-    key: ANALYSISKey;
+interface SignalItem {
+    key: SignalKey;
     label: string;
     description: string | React.ReactNode;
     icon: keyof typeof Ionicons.glyphMap;
@@ -28,7 +28,7 @@ interface ANALYSISItem {
 // 1. BEGINNER — "TRAVEL LIGHT"
 // 1. PRO4X SYSTEM (CLASSIC)
 // 1. BEGINNER (PRO4X.2)
-const BEGINNER_ITEMS: ANALYSISItem[] = [
+const BEGINNER_ITEMS: SignalItem[] = [
 
     {
         key: 'pro4xx_Buy',
@@ -49,7 +49,7 @@ const BEGINNER_ITEMS: ANALYSISItem[] = [
 ];
 
 // 2. INTERMEDIATE (PRO4X & HORUS)
-const INTERMEDIATE_ITEMS: ANALYSISItem[] = [
+const INTERMEDIATE_ITEMS: SignalItem[] = [
     {
         key: 'pro4x_GetReady',
         guideTarget: 'PRO4X',
@@ -79,12 +79,12 @@ const INTERMEDIATE_ITEMS: ANALYSISItem[] = [
 ];
 
 // 3. ADVANCED (HIGH-VELOCITY & SHADOW)
-const ADVANCED_ITEMS: ANALYSISItem[] = [
+const ADVANCED_ITEMS: SignalItem[] = [
     {
         key: 'shadow_Buy',
         guideTarget: 'SHADOW_MODE',
         label: 'Shadow BULLISH',
-        description: 'Liquidity Sweep Detection. High volatility setup.',
+        description: 'Liquidity Sweep Detection. Optimized for high-volatility regimes. Identification of technical coordinates is contingent upon ATR magnitude.',
         icon: 'moon-outline',
         color: '#9CA3AF'
     },
@@ -92,7 +92,7 @@ const ADVANCED_ITEMS: ANALYSISItem[] = [
         key: 'shadow_Sell',
         guideTarget: 'SHADOW_MODE',
         label: 'Shadow BEARISH',
-        description: 'Liquidity Sweep Detection. High volatility setup.',
+        description: 'Liquidity Sweep Detection. Optimized for high-volatility regimes. Identification of technical coordinates is contingent upon ATR magnitude.',
         icon: 'moon-outline',
         color: '#9CA3AF'
     },
@@ -116,7 +116,7 @@ const ADVANCED_ITEMS: ANALYSISItem[] = [
         key: 'horus_Adv_Buy',
         guideTarget: 'HORUS_ADV',
         label: 'Horus ADV Bullish',
-        description: 'Setup Precision (Bullish). Based on high-density technical alignment.',
+        description: 'High-density technical precision. Optimized for high-volatility regimes. Identification of technical coordinates is contingent upon ATR magnitude.',
         icon: 'flash',
         color: '#00FF9D'
     },
@@ -124,7 +124,7 @@ const ADVANCED_ITEMS: ANALYSISItem[] = [
         key: 'horus_Adv_Sell',
         guideTarget: 'HORUS_ADV',
         label: 'Horus ADV Bearish',
-        description: 'Setup Precision (Bearish). Based on high-density technical alignment.',
+        description: 'High-density technical precision. Optimized for high-volatility regimes. Identification of technical coordinates is contingent upon ATR magnitude.',
         icon: 'flash',
         color: '#FF5252'
     },
@@ -132,7 +132,7 @@ const ADVANCED_ITEMS: ANALYSISItem[] = [
         key: 'scalp_OverSold',
         guideTarget: 'HIGH VELOCITY DATA',
         label: 'Horus OVS',
-        description: 'Fast reaction technical zone (Bullish). Typical range 10-15 points.',
+        description: 'Fast reaction technical zone. Observed structural amplitude: 10-15+ points depending on volatility. Optimized for high-ATR regimes; coordinates are contingent upon ATR magnitude.',
         icon: 'flash-outline',
         color: '#00FF9D'
     },
@@ -140,14 +140,14 @@ const ADVANCED_ITEMS: ANALYSISItem[] = [
         key: 'scalp_OverBought',
         guideTarget: 'HIGH VELOCITY DATA',
         label: 'Horus OVB',
-        description: 'Fast reaction technical zone (Bearish). Typical range 10-15 points.',
+        description: 'Fast reaction technical zone. Observed structural amplitude: 10-15+ points depending on volatility. Optimized for high-ATR regimes; coordinates are contingent upon ATR magnitude.',
         icon: 'flash-outline',
         color: '#FF5252'
     }
 ];
 
 // 4. CONTEXT INFO
-const CONTEXT_ITEMS: ANALYSISItem[] = [
+const CONTEXT_ITEMS: SignalItem[] = [
     {
         key: 'scalp_TakeProfitPump',
         guideTarget: 'HIGH VELOCITY DATA',
@@ -201,8 +201,8 @@ const CONTEXT_ITEMS: ANALYSISItem[] = [
         description: (
             <View>
                 <Text style={{ color: '#EF4444', fontSize: 11, fontWeight: 'bold', marginBottom: 4 }}>EXTREME (ATR M1 ≈ 20–23 pts):</Text>
-                <Text style={{ color: '#ccc', fontSize: 12, marginBottom: 8 }}>“Fast Market Conditions: Frequent overshoots detected. Technical context suggests monitoring 3–5 M1 candles or a clear sweep-and-reclaim structure for data alignment.”</Text>
-                <Text style={{ color: '#aaa', fontSize: 11, fontStyle: 'italic', marginTop: 4 }}>Analysis Note: Monitoring 2 to 3 waves on the M1 timeframe is a primary requirement for technical validation if extreme or panic conditions are present.</Text>
+                <Text style={{ color: '#ccc', fontSize: 12, marginBottom: 8 }}>“Fast Market Conditions: Frequent overshoots detected. Technical context involves observation of 3–5 M1 candles or a clear sweep-and-reclaim structure for data alignment.”</Text>
+                <Text style={{ color: '#aaa', fontSize: 11, fontStyle: 'italic', marginTop: 4 }}>Analysis Note: Observation of 2 to 3 waves on the M1 timeframe is a standard technical practice for validation once extreme or panic conditions are identified.</Text>
             </View>
         ),
         icon: 'warning-outline',
@@ -215,8 +215,8 @@ const CONTEXT_ITEMS: ANALYSISItem[] = [
         description: (
             <View>
                 <Text style={{ color: '#8B5CF6', fontSize: 11, fontWeight: 'bold', marginBottom: 4 }}>PANIC (ATR M1 ≥ 23 pts):</Text>
-                <Text style={{ color: '#ccc', fontSize: 12 }}>“Extreme Volatility: Significant overshoot risk. High-density analysis suggests observing 5–8 M1 candles or a strong price reclaim; otherwise, trend continuation is statistically common.”</Text>
-                <Text style={{ color: '#aaa', fontSize: 11, fontStyle: 'italic', marginTop: 4 }}>Analysis Note: Monitoring 2 to 3 waves on the M1 timeframe is a primary requirement for technical validation if extreme or panic conditions are present.</Text>
+                <Text style={{ color: '#ccc', fontSize: 12 }}>“Extreme Volatility: Significant overshoot risk. High-density analysis involves observation of 5–8 M1 candles or a strong price reclaim; otherwise, trend continuation is statistically common.”</Text>
+                <Text style={{ color: '#aaa', fontSize: 11, fontStyle: 'italic', marginTop: 4 }}>Analysis Note: Observation of 2 to 3 waves on the M1 timeframe is a standard technical practice for validation once extreme or panic conditions are identified.</Text>
             </View>
         ),
         icon: 'nuclear-outline', // Or DETECTION-circle-outline if unavailable
@@ -258,7 +258,7 @@ const SectionTitle = ({ title }: { title: string }) => (
 // Add component imports if needed (ensure TouchableOpacity, View, Text are imported)
 
 
-const ANALYSISCard = React.memo(({ item, value, onToggle, index }: { item: ANALYSISItem, value: boolean, onToggle: () => void, index: number }) => {
+const SignalCard = React.memo(({ item, value, onToggle, index }: { item: SignalItem, value: boolean, onToggle: () => void, index: number }) => {
     const router = useRouter(); // Use router
     // ... animation logic ...
     const pulseAnim = useRef(new Animated.Value(1)).current;
@@ -391,17 +391,17 @@ export default function SettingsScreen() {
         registerForPushNotificationsAsync().then(token => setPushToken(token));
 
         getSettings().then(settings => {
-            if (settings.ANALYSISs) {
-                setANALYSISs(prev => ({ ...prev, ...settings.ANALYSISs }));
+            if (settings.signals) {
+                setSignals(prev => ({ ...prev, ...settings.signals }));
                 // Sync initial settings if token is already known or when it becomes known
                 if (pushToken) {
-                    sendSettingsToBackend(pushToken, settings.ANALYSISs, isPro);
+                    sendSettingsToBackend(pushToken, settings.signals, isPro);
                 }
             }
         });
     }, [pushToken]); // Re-run when pushToken is acquired to sync initial state
 
-    const [ANALYSISs, setANALYSISs] = useState<Record<ANALYSISKey, boolean>>({
+    const [signals, setSignals] = useState<Record<SignalKey, boolean>>({
         // PRO4XX.2
         pro4xx_Buy: true, pro4xx_Sell: true,
         pro4xx_GetReady_Buy: true, pro4xx_GetReady_Sell: true,
@@ -427,12 +427,12 @@ export default function SettingsScreen() {
     });
 
     const toggleAll = useCallback(async (value: boolean) => {
-        setANALYSISs(prev => {
+        setSignals(prev => {
             const newState = { ...prev };
-            (Object.keys(newState) as ANALYSISKey[]).forEach(key => {
+            (Object.keys(newState) as SignalKey[]).forEach(key => {
                 newState[key] = value;
             });
-            saveSettings({ ANALYSISs: newState });
+            saveSettings({ signals: newState });
             if (pushToken) {
                 sendSettingsToBackend(pushToken, newState);
             }
@@ -440,10 +440,10 @@ export default function SettingsScreen() {
         });
     }, [pushToken]);
 
-    const toggleANALYSIS = useCallback(async (key: ANALYSISKey) => {
-        setANALYSISs(prev => {
+    const toggleSignal = useCallback(async (key: SignalKey) => {
+        setSignals(prev => {
             const newState = { ...prev, [key]: !prev[key] };
-            saveSettings({ ANALYSISs: newState });
+            saveSettings({ signals: newState });
             if (pushToken) {
                 sendSettingsToBackend(pushToken, newState);
             }
@@ -451,8 +451,8 @@ export default function SettingsScreen() {
         });
     }, [pushToken]);
 
-    const activeCount = Object.values(ANALYSISs).filter(Boolean).length;
-    const totalCount = Object.keys(ANALYSISs).length;
+    const activeCount = Object.values(signals).filter(Boolean).length;
+    const totalCount = Object.keys(signals).length;
 
     return (
         <View style={styles.container}>
@@ -505,10 +505,13 @@ export default function SettingsScreen() {
                                 <Ionicons name="bulb-outline" size={20} color="#60A5FA" style={{ marginRight: 10 }} />
                                 <View style={{ flex: 1 }}>
                                     <Text style={{ color: '#60A5FA', fontSize: 11, fontWeight: '600', letterSpacing: 0.5 }}>
-                                        STRATEGY TIP: Enabling all setups is not required. Users can select the strategies that fit their analytical profile. Be aware that different strategies may show contradictory momentum readings at the same time. For example, PRO4X.2 is a Trending system, while Shadow Mode may identify a potential counter-trend reversal simultaneously.
+                                        STRATEGY CONTEXT: Discrete configurations are available for selection based on analytical profiles. Different strategies may present divergent technical readings simultaneously. For example, PRO4X.2 utilizes trending parameters, while Shadow Mode identifies potential reversals.
                                     </Text>
                                     <Text style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: 11, fontWeight: '500', marginTop: 8 }}>
-                                        Market inversion operate around 11/12 am US (17h/18h EU).
+                                        Technical Observation: Price reversals are frequently noted during the 11/12 AM US window (17h/18h EU).
+                                    </Text>
+                                    <Text style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: 11, fontWeight: '500', marginTop: 8 }}>
+                                        Trend Protocol: In high-velocity H1 directional markets, technical focus is often shifted toward OVS/OVB parameters. For PRO4X and PRO4X.2 reversal logic, technical alignment is typically observed around the H1 candle extremes (High/Low).
                                     </Text>
                                 </View>
                             </View>
@@ -580,6 +583,54 @@ export default function SettingsScreen() {
                             </View>
 
 
+                            {/* KEY LEVELS (COORDINATES) - NEW */}
+                            <View style={{
+                                marginBottom: 20,
+                                padding: 15,
+                                backgroundColor: 'rgba(212, 175, 55, 0.1)',
+                                borderRadius: 16,
+                                borderWidth: 1,
+                                borderColor: 'rgba(212, 175, 55, 0.3)',
+                            }}>
+                                <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 12 }}>
+                                    <View style={{
+                                        width: 32, height: 32,
+                                        borderRadius: 8,
+                                        backgroundColor: 'rgba(212, 175, 55, 0.2)',
+                                        alignItems: 'center', justifyContent: 'center',
+                                        marginRight: 12
+                                    }}>
+                                        <Ionicons name="layers-outline" size={18} color="#D4AF37" />
+                                    </View>
+                                    <Text style={{ color: '#D4AF37', fontSize: 13, fontWeight: '700', letterSpacing: 1 }}>KEY LEVELS (COORDINATES)</Text>
+                                </View>
+
+                                <Text style={{ color: '#DDD', fontSize: 12, lineHeight: 18, marginBottom: 12 }}>
+                                    These represent Algorithmic Triggers based on historical volume distribution:
+                                </Text>
+
+                                <View style={{ gap: 8 }}>
+                                    <View style={{ flexDirection: 'row' }}>
+                                        <Text style={{ color: '#D4AF37', fontWeight: 'bold', fontSize: 11, width: 85 }}>11-12 & 88-91</Text>
+                                        <Text style={{ color: '#AAA', fontSize: 11, flex: 1 }}>Technical Rejection Zones. Where liquidity is often tested.</Text>
+                                    </View>
+                                    <View style={{ flexDirection: 'row' }}>
+                                        <Text style={{ color: '#D4AF37', fontWeight: 'bold', fontSize: 11, width: 85 }}>23 & 76</Text>
+                                        <Text style={{ color: '#AAA', fontSize: 11, flex: 1 }}>Inducement Zones. Where structural traps are commonly identified.</Text>
+                                    </View>
+                                    <View style={{ flexDirection: 'row' }}>
+                                        <Text style={{ color: '#D4AF37', fontWeight: 'bold', fontSize: 11, width: 85 }}>38 & 64</Text>
+                                        <Text style={{ color: '#AAA', fontSize: 11, flex: 1 }}>Fair Value Zones. Where high-density institutional volume is processed.</Text>
+                                    </View>
+                                </View>
+
+                                <Text style={{ color: 'rgba(212, 175, 55, 0.8)', fontSize: 10, fontWeight: 'bold', marginTop: 12 }}>
+                                    Analytical Protocol: Coordinates are identified at 100-point intervals across both Cash and Futures markets (NQ / ES / SPX).
+                                </Text>
+                                <Text style={{ color: 'rgba(212, 175, 55, 0.6)', fontSize: 10, fontStyle: 'italic', marginTop: 4 }}>
+                                    Note: Analysis often focuses on reactions at these structural edges.
+                                </Text>
+                            </View>
 
                             {/* MARKET OPEN WARNING */}
                             <View style={{
@@ -594,22 +645,22 @@ export default function SettingsScreen() {
                             }}>
                                 <Ionicons name="warning-outline" size={20} color="#FFA500" style={{ marginRight: 10 }} />
                                 <Text style={{ color: '#FFA500', fontSize: 11, flex: 1, fontWeight: '600', letterSpacing: 0.5 }}>
-                                    NOTICE: Market opens at 9:30 AM. Setups are optimized for active market hours.
+                                    TECHNICAL NOTE: Market hours (9:30 AM Open) typically represent high-velocity volatility regimes.
                                 </Text>
                             </View>
 
                             {/* SECTION 1: BEGINNER */}
                             <SectionTitle title="BEGINNER (TRAVEL LIGHT)" />
                             <Text style={{ color: '#888', fontSize: 11, marginBottom: 15, paddingHorizontal: 5 }}>
-                                This configuration focuses on PRO4X.2 using a 'travel light' approach. Limiting the number of active setups is recommended to reduce notification noise. This mode emphasizes trend-following market structure and broader directional context. Price reactions are typically observed around key institutional levels, with move magnitudes commonly ranging from approximately 20 to 200 points, depending on volatility and market conditions. A low-stress approach is maintained. Risk Management Note: Many market participants define a predefined risk threshold, often around 50 points, to help limit exposure during short-term volatility. Reference Levels: 12 / 64 / 91 are key reference levels often associated with historical price volatility areas.
+                                This configuration focuses on PRO4X.2 using a 'travel light' approach. Technical selection is utilized to mitigate data saturation and focus on high-probability directional context. This mode emphasizes trend-following market structure. Price reactions are typically observed around key institutional levels, with structural amplitude commonly ranging from approximately 20 to 200 points, depending on volatility and market conditions. Risk Management Framework: Market participants often define technical thresholds, such as 50 points, to neutralize exposure during short-term volatility. Reference Levels: 12 / 64 / 91 are primary historical volatility coordinates.
                             </Text>
                             <View style={styles.gridContainer}>
                                 {BEGINNER_ITEMS.map((item, index) => (
                                     <View key={item.key} style={styles.gridItem}>
-                                        <ANALYSISCard
+                                        <SignalCard
                                             item={item}
-                                            value={ANALYSISs[item.key]}
-                                            onToggle={() => toggleANALYSIS(item.key)}
+                                            value={signals[item.key]}
+                                            onToggle={() => toggleSignal(item.key)}
                                             index={index}
                                         />
                                     </View>
@@ -619,16 +670,16 @@ export default function SettingsScreen() {
                             {/* SECTION 2: INTERMEDIATE */}
                             <SectionTitle title="INTERMEDIATE (Setup Analysis)" />
                             <Text style={{ color: '#888', fontSize: 11, marginBottom: 15, paddingHorizontal: 5 }}>
-                                This configuration utilizes the Magnet Map logic. Features pre-setups and notifications triggered when PRO4X analytical parameters are met. To maintain focus, silencing secondary setups is often preferred (keeping PRO4X.2 active). Identification of key institutional price levels is prioritized. Invalidation logic: ~30 pts below the setup reference. Note: 12/64/91 are the primary technical reference numbers.
+                                This configuration utilizes the Magnet Map logic. Features pre-setups and notifications triggered when institutional analytical parameters are met. Identification of key structural price levels is prioritized. Invalidation logic: typically observed ~30 pts from the setup reference. Note: 12/64/91 represent primary technical reference coordinates.
                             </Text>
                             <View style={styles.gridContainer}>
                                 {INTERMEDIATE_ITEMS.map((item, index) => (
                                     <View key={item.key} style={styles.gridItem}>
-                                        <ANALYSISCard
+                                        <SignalCard
                                             item={item}
-                                            value={ANALYSISs[item.key]}
-                                            onToggle={() => toggleANALYSIS(item.key)}
-                                            index={index + 10}
+                                            value={signals[item.key]}
+                                            onToggle={() => toggleSignal(item.key)}
+                                            index={index + 30}
                                         />
                                     </View>
                                 ))}
@@ -637,17 +688,17 @@ export default function SettingsScreen() {
                             {/* SECTION 3: ADVANCED */}
                             <SectionTitle title="ADVANCED (HIGH PRECISION VOLATILITY ANALYSIS)" />
                             <Text style={{ color: '#888', fontSize: 11, marginBottom: 15, paddingHorizontal: 5 }}>
-                                Mapping the liquidity. For advanced analysis. Counter-trend & high-density technical moves.
-                                <Text style={{ color: '#F59E0B', fontWeight: 'bold' }}>{"\n\n"}⚠️ CONTEXT CROSS-REFERENCE: Shadow & Horus readings should be analyzed alongside Context DETECTIONs (Section 4) for optimal technical precision.</Text>
-                                {"\n"}Designed to assist with TP & SL planning (near entries). Requires fast analysis. Strong trend protocol: involves trend monitoring or waiting for key institutional reversal numbers.
+                                Mapping the liquidity for high-precision volatility analysis. Counter-trend & high-density technical movements.
+                                <Text style={{ color: '#F59E0B', fontWeight: 'bold' }}>{"\n\n"}⚠️ CONTEXT CROSS-REFERENCE: Shadow & Horus readings are typically analyzed alongside Context DETECTIONs (Section 4) for structural precision.</Text>
+                                {"\n"}Assists with technical boundary identification relative to structural coordinates. Requires technical agility. Structural alignment protocol involves monitoring institutional pivot coordinates.
                             </Text>
                             <View style={styles.gridContainer}>
                                 {ADVANCED_ITEMS.map((item, index) => (
                                     <View key={item.key} style={styles.gridItem}>
-                                        <ANALYSISCard
+                                        <SignalCard
                                             item={item}
-                                            value={ANALYSISs[item.key]}
-                                            onToggle={() => toggleANALYSIS(item.key)}
+                                            value={signals[item.key]}
+                                            onToggle={() => toggleSignal(item.key)}
                                             index={index + 20}
                                         />
                                     </View>
@@ -662,11 +713,11 @@ export default function SettingsScreen() {
                             <View style={styles.gridContainer}>
                                 {CONTEXT_ITEMS.map((item, index) => (
                                     <View key={item.key} style={styles.gridItem}>
-                                        <ANALYSISCard
+                                        <SignalCard
                                             item={item}
-                                            value={ANALYSISs[item.key]}
-                                            onToggle={() => toggleANALYSIS(item.key)}
-                                            index={index + 30}
+                                            value={signals[item.key]}
+                                            onToggle={() => toggleSignal(item.key)}
+                                            index={index + 50}
                                         />
                                     </View>
                                 ))}
@@ -675,7 +726,7 @@ export default function SettingsScreen() {
                             {/* SECTION 5: CHART CONFIGURATION */}
                             <SectionTitle title="CHART CONFIGURATION" />
                             <Text style={{ color: '#888', fontSize: 11, marginBottom: 15, paddingHorizontal: 5 }}>
-                                How to set up your analysis platform for optimal chart reading.
+                                Platform parameters for institutional chart visualization.
                             </Text>
 
                             <GlassCard
@@ -832,7 +883,13 @@ export default function SettingsScreen() {
                                     <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
                                         <View style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: '#475569', marginTop: 7, marginRight: 12 }} />
                                         <Text style={{ color: '#E0E0E0', fontSize: 13, flex: 1, lineHeight: 20 }}>
-                                            <Text style={{ fontWeight: 'bold', color: '#FFF' }}>Execution:</Text> <Text style={{ color: '#FFF', fontWeight: '400' }}>1000T</Text> or <Text style={{ color: '#FFF', fontWeight: '400' }}>M1</Text> (Timeframe).
+                                            <Text style={{ fontWeight: 'bold', color: '#FFF' }}>System Resolution:</Text> <Text style={{ color: '#FFF', fontWeight: '400' }}>1000T</Text> or <Text style={{ color: '#FFF', fontWeight: '400' }}>M1</Text> (Data Sampling).
+                                        </Text>
+                                    </View>
+                                    <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
+                                        <View style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: '#D4AF37', marginTop: 7, marginRight: 12 }} />
+                                        <Text style={{ color: '#E0E0E0', fontSize: 13, flex: 1, lineHeight: 20 }}>
+                                            <Text style={{ fontWeight: 'bold', color: '#FFF' }}>Key Levels (Coordinates):</Text> Structural mapping identified at <Text style={{ color: '#D4AF37', fontWeight: '400' }}>12 / 23 / 38 / 64 / 91</Text> calculated at <Text style={{ color: '#FFF', fontWeight: '400' }}>every 100-point interval</Text> across <Text style={{ color: '#FFF', fontWeight: '400' }}>CASH</Text> and <Text style={{ color: '#FFF', fontWeight: '400' }}>FUTURES</Text> (NQ / ES / SPX).
                                         </Text>
                                     </View>
                                     <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
@@ -859,21 +916,21 @@ export default function SettingsScreen() {
                                     <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
                                         <View style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: '#475569', marginTop: 7, marginRight: 12 }} />
                                         <Text style={{ color: '#E0E0E0', fontSize: 13, flex: 1, lineHeight: 20 }}>
-                                            <Text style={{ fontWeight: 'bold', color: '#FFF' }}>Timeframe & ATR:</Text> Use <Text style={{ color: '#FFF', fontWeight: '400' }}>M1</Text> for entry and <Text style={{ color: '#FFF', fontWeight: '400' }}>H1</Text> for context. ATR Period: <Text style={{ color: '#FFF', fontWeight: '400' }}>14</Text>.
+                                            <Text style={{ fontWeight: 'bold', color: '#FFF' }}>Timeframe & ATR:</Text> <Text style={{ color: '#FFF', fontWeight: '400' }}>M1</Text> utilized for high-density analysis and <Text style={{ color: '#FFF', fontWeight: '400' }}>H1</Text> for institutional context. ATR Period: <Text style={{ color: '#FFF', fontWeight: '400' }}>14</Text>.
                                         </Text>
                                     </View>
 
                                     <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
                                         <View style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: '#475569', marginTop: 7, marginRight: 12 }} />
                                         <Text style={{ color: '#E0E0E0', fontSize: 13, flex: 1, lineHeight: 20 }}>
-                                            <Text style={{ fontWeight: 'bold', color: '#FFF' }}>Pivots:</Text> Monitor <Text style={{ color: '#FFF', fontWeight: '400' }}>H4</Text>, <Text style={{ color: '#FFF', fontWeight: '400' }}>Daily</Text>, and <Text style={{ color: '#FFF', fontWeight: '400' }}>Weekly</Text> levels.
+                                            <Text style={{ fontWeight: 'bold', color: '#FFF' }}>Pivots:</Text> Institutional coordinates identified at <Text style={{ color: '#FFF', fontWeight: '400' }}>H4</Text>, <Text style={{ color: '#FFF', fontWeight: '400' }}>Daily</Text>, and <Text style={{ color: '#FFF', fontWeight: '400' }}>Weekly</Text> levels.
                                         </Text>
                                     </View>
 
                                     <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
                                         <View style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: '#475569', marginTop: 7, marginRight: 12 }} />
                                         <Text style={{ color: '#E0E0E0', fontSize: 13, flex: 1, lineHeight: 20 }}>
-                                            <Text style={{ fontWeight: 'bold', color: '#FFF' }}>Charts:</Text> Open <Text style={{ color: '#FFF', fontWeight: '400' }}>ES Futures</Text> (H1), <Text style={{ color: '#FFF', fontWeight: '400' }}>SPX Cash</Text> (M15/M5), and <Text style={{ color: '#FFF', fontWeight: '400' }}>NQ Cash</Text> (H1).
+                                            <Text style={{ fontWeight: 'bold', color: '#FFF' }}>Analytical Matrix:</Text> Inclusive of <Text style={{ color: '#FFF', fontWeight: '400' }}>ES Futures</Text> (H1), <Text style={{ color: '#FFF', fontWeight: '400' }}>SPX Cash</Text> (M15/M5), and <Text style={{ color: '#FFF', fontWeight: '400' }}>NQ Cash</Text> (H1).
                                         </Text>
                                     </View>
                                 </View>
@@ -944,7 +1001,7 @@ export default function SettingsScreen() {
                                     <Text style={{ color: '#FFF', fontSize: 12, fontWeight: '600', letterSpacing: 1 }}>METHODOLOGY CONCEPT</Text>
                                 </View>
                                 <Text style={{ color: '#E0E0E0', fontSize: 12, lineHeight: 19 }}>
-                                    The strategy emphasizes <Text style={{ fontWeight: 'bold', color: '#FFF' }}>technical patience</Text> during strong trends. It prioritizes observing market stabilization (typically <Text style={{ color: '#FFF', fontWeight: 'bold' }}>3 M1 waves</Text>) and identifying clear structural extremes. Institutional algorithms typically stabilize <Text style={{ color: '#FFF', fontWeight: 'bold' }}>1 hour</Text> after the US Open. Monitoring the <Text style={{ color: '#94A3B8', fontWeight: 'bold' }}>ATR</Text> is vital as it provides higher probability context for technical analysis.
+                                    The strategy emphasizes <Text style={{ fontWeight: 'bold', color: '#FFF' }}>technical patience</Text> during strong trends. It prioritizes observing market stabilization (typically <Text style={{ color: '#FFF', fontWeight: 'bold' }}>3 M1 waves</Text>) and identifying clear structural extremes. Institutional algorithms typically stabilize <Text style={{ color: '#FFF', fontWeight: 'bold' }}>1 hour</Text> after the US Open. Technical <Text style={{ color: '#94A3B8', fontWeight: 'bold' }}>ATR</Text> observation provides higher probability context for structural analysis.
                                 </Text>
                             </View>
 
@@ -964,7 +1021,7 @@ export default function SettingsScreen() {
                                 <Ionicons name="calendar-outline" size={20} color="#FFA500" style={{ marginRight: 10 }} />
                                 <View style={{ flex: 1 }}>
                                     <Text style={{ color: '#FFA500', fontSize: 11, fontWeight: '600', letterSpacing: 0.5 }}>
-                                        NOTICE: Monitor the Economic Calendar for high-impact events (FOMC, CPI, Tariffs, etc.). These events cause abnormal volatility.
+                                        TECHNICAL NOTE: High-impact economic data (FOMC, CPI, Tariffs, etc.) typically results in abnormal volatility regimes.
                                     </Text>
                                     <Text style={{ color: 'rgba(255, 165, 0, 0.8)', fontSize: 11, fontWeight: '500', marginTop: 8 }}>
                                         Context: ~1.5 days/week are directional (~1.5% range). Normal days range 0.50%-0.60%. Once a quarter, moves {'>'}3% occur, with rare extreme days hitting 5%.

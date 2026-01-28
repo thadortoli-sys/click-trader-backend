@@ -42,56 +42,56 @@ export default function QAScreen() {
                 <QASection title="PHILOSOPHY & BASICS">
                     <QAItem
                         question="Is this a 'Signal Service'?"
-                        answer="No. Click&Trader is an Institutional Execution System. 'Signals' tell you what to do. Our system tells you where the institutions are doing business. We map liquidity, stop hunts, and algorithmic triggers so you can trade with the market makers, not against them."
+                        answer="No. Click&Trader is an Institutional Analysis System. Standard tools often provide prescriptive advice. Our system identifies where institutions are conducting business by mapping structural liquidity and algorithmic triggers, facilitating market observation with institutional precision."
                     />
                     <QAItem
-                        question="Why do you talk about 'Algorithms' and 'Institutions'?"
-                        answer="Retail traders move price by emotion (FOMO, panic). Institutions move price by liquidity. They use algorithms to target specific zones where retail orders are clustered. Our system detects when these algorithms are active—specifically when they are trapping traders (Stop Hunts) or initiating a trend (Expansion)."
+                        question="Why do you reference 'Algorithms' and 'Institutions'?"
+                        answer="The market landscape is driven by institutional liquidity. These entities utilize advanced algorithms to target specific zones where high concentrations of retail orders are clustered. Our system detects when these algorithms are active—specifically during structural traps or trend expansions."
                     />
                 </QASection>
 
-                <QASection title="THE ALERTS EXPLAINED">
+                <QASection title="THE ALIGNMENTS EXPLAINED">
                     <QAItem
-                        question="What is the difference between Pro4x and Horus?"
-                        answer={`Think of them as two different gears:\n\n• Pro4x.2 (Trend): The "Travel Light" system. It follows the main flow. It targets larger moves (20-150 points). It's patient and slower.\n\n• Horus (Volatility): The "Sniper" system. It hunts for exhaustion and reversals. It targets quick precision strikes (10-15 points) at key levels.`}
+                        question="What is the distinction between Pro4x and Horus?"
+                        answer={`Think of them as two distinct analytical modes:\n\n• Pro4x.2 (Trend): The "Macro Flow" system. Operating on the M1 timeframe, it identifies primary directional momentum. Observed structural amplitude: 20-200 points.\n\n• Horus (Volatility): The "Precision" system. It identifies exhaustion and potential technical reactions at specific coordinates. Observed structural amplitude: 10-15+ points depending on volatility magnitude and the specific magnet coordinate.`}
                     />
                     <QAItem
-                        question="What does 'Get Ready' (GR) mean?"
-                        answer="DO NOT ENTER. GR means 'Put your hands on the mouse, but wait.' The system detects early positioning, but the trap isn't closed yet. Price often pushes one last time into a Magnet Level to clear stops before reversing. Making the entry on GR is the #1 mistake of rookies."
+                        question="What is the 'Set up Forming' stage?"
+                        answer="OBSERVATION ONLY. This stage indicates the system has detected preliminary positioning, but the alignment is not yet confirmed. Price often oscillates into structural levels to clear remaining liquidity before an expansion. Premature identification of the coordinate is a common technical error."
                     />
                     <QAItem
                         question="What is 'Shadow Mode'?"
-                        answer={`Shadow Mode creates visibility on Liquidity Sweeps. It triggers when price aggressively hunts stops beyond the normal range.\n\nWarning: These are high-volatility, counter-trend setups.\nFor who: Experts only. If you are new, disable "Shadow" in your settings.`}
+                        answer={`Shadow Mode provides visibility on Liquidity Sweeps. It triggers when price action extends aggressively beyond normal statistical ranges.\n\nContext: These are high-volatility, counter-trend alignments.\nRequirement: High-density data observation. Operational complexity: Advanced.`}
                     />
                     <QAItem
-                        question="What are the 'Syncro' alerts?"
-                        answer={`Syncro checks the Higher Timeframe (H1) context.\n\nIf you get a Pro4x Buy AND an H1 Syncro Bullish, the probability is maximal because the trend is aligned on multiple timeframes.\n\nIf you trade against the Syncro (e.g., Shorting while Syncro is Bullish), you are operating against the tide. Be quick or stay out.`}
+                        question="What are 'Syncro' Alignments?"
+                        answer={`Syncro validates the Higher Timeframe (H1) context.\n\nWhen a Pro4x alignment occurs simultaneously with an H1 Syncro Bullish, the statistical probability is enhanced due to timeframe confluence.\n\nOperating against the Syncro (e.g., Bearish positioning while Syncro is Bullish) indicates observation against the primary structural tide.`}
                     />
                 </QASection>
 
-                <QASection title="KEY LEVELS (MAGNETS)">
+                <QASection title="KEY LEVELS (COORDINTATES)">
                     <QAItem
                         question="What are the 12 / 23 / 38 / 64 / 91 levels?"
-                        answer={`These are not random Fibonacci numbers. They are Algorithmic Triggers.\n\n• 11-12% & 88-91%: The "Kill Zones". Where stops are hunted.\n• 23% & 76%: The "Inducement Zones". Where retail gets trapped.\n• 38% & 64%: The "Fair Value". Where real business volume happens.\n\nTip: We rarely enter "in the middle". We wait for price to react at these edges.`}
+                        answer={`These are not random numbers; they represent Algorithmic Triggers based on historical volume distribution.\n\n• 11-12 & 88-91: Technical Rejection Zones. Where liquidity is often tested.\n• 23 & 76: Inducement Zones. Where structural traps are commonly identified.\n• 38 & 64: Fair Value Zones. Where high-density institutional volume is typically processed.\n\nNote: Analysis often focuses on reactions at these structural edges.`}
                     />
                     <QAItem
-                        question="What if price blows through a level?"
-                        answer="That's information too. If price ignores a magnet level with high velocity, it's not a reversal—it's an Expansion. Wait for the next magnet. Never stand in front of a freight train."
+                        question="What if price moves through a level with high velocity?"
+                        answer="That is a critical data point. If price ignores a coordinate with significant momentum, it indicates an Expansion rather than a reaction. The system then shifts focus to the next structural coordinate."
                     />
                 </QASection>
 
-                <QASection title="RISK & DISCIPLINE">
+                <QASection title="TECHNICAL BOUNDARIES & DISCIPLINE">
                     <QAItem
-                        question="Where should I place my Stop Loss?"
-                        answer={`An institutional stop is never random.\n\n• For a Reversal (Horus/Shadow): Your stop goes below the liquidity sweep (below the 91 or 12).\n\n• For a Trend (Pro4x): Your stop goes below the structure that validated the trend.\n\nGold Rule: If your stop is hit, the institutional thesis is invalid. Get out. Don't pray.`}
+                        question="Where is the Technical Boundary (Invalidation)?"
+                        answer={`An institutional technical boundary is never arbitrary.\n\n• For Reversal Alignments (Horus/Shadow): The boundary is identified beyond the liquidity sweep (e.g., beyond the 91 or 12 levels).\n\n• For Trend Alignments (Pro4x): The boundary is located at the structural pivot that validated the momentum.\n\nTechnical Principle: If price crosses the technical boundary, the institutional thesis is invalidated.`}
                     />
                     <QAItem
-                        question="I'm getting too many alerts. What should I do?"
-                        answer={`Go to Settings.\n\n• Beginner? Turn OFF Shadow, Horus OVS/OVB, and Syncro. Keep only Pro4x.2 (Buy/Sell). Focus on 1-2 good trades a day.\n\n• Intermediate? Add Horus Buy/Sell for more frequency.\n\n• Advanced? Turn everything on, but filter with your eyes.`}
+                        question="What are the frequency levels?"
+                        answer={`Filtering is available in Settings based on institutional consistency objectives:\n\n• Level 1: Pro4x, Pro4x.2, and Horus Bullish/Bearish. Analyzed with Syncro H1 and ATR context.\n\n• Level 2 (High Frequency): Inclusion of Horus OVS/OVB and Shadow data. Utilizing Horus ADV context, ATR, and Syncro H1.\n\n• Level 3 (Pure High Frequency Data): Focus on Horus OVS/OVB, Shadow, and ATR.`}
                     />
                     <QAItem
-                        question="Why do you say 'One clean trade is enough'?"
-                        answer="Overtrading is the casino's edge. One precision execution captures the daily range. The rest is just noise and risk. The goal is not to trade more, it's to trade less but better."
+                        question="What is the importance of 'One precision execution'?"
+                        answer="Market noise can lead to over-analysis. One precision execution captures the core institutional move. The objective is refined identification of high-probability confluence, rather than high-frequency participation."
                     />
                 </QASection>
 

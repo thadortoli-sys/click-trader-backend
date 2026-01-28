@@ -68,7 +68,7 @@ export default function AboutScreen() {
                     </TouchableOpacity>
                     <Image source={require('../assets/images/logo-ct.png')} style={{ width: 60, height: 60, marginBottom: 15 }} resizeMode="contain" />
                     <Text style={styles.appTitle}>Click&Trader</Text>
-                    <Text style={styles.appSubtitle}>Your trading companion in the palm of your hand</Text>
+                    <Text style={styles.appSubtitle}>Your set up companion in the palm of your hand</Text>
                 </View>
 
                 {/* Origin Story */}

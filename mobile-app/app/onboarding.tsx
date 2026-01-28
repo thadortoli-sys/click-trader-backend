@@ -71,7 +71,7 @@ export default function OnboardingScreen() {
                         style={styles.logo}
                     />
                     <Text style={styles.title}>Click&Trader</Text>
-                    <Text style={styles.subtitle}>Your trading companion in the palm of your hand</Text>
+                    <Text style={styles.subtitle}>Your set up companion in the palm of your hand</Text>
                 </View>
 
                 {/* Action Button */}

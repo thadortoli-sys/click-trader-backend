@@ -262,84 +262,93 @@ export const syncHistoryWithBackend = async (): Promise<boolean> => {
 export const getSignalKeyFromStrategy = (strategy: string): SignalKey | null => {
     if (!strategy) return null;
 
-    // Normalize string (remove spaces, lowercase check)
-    const normalized = strategy.replace(/\s+/g, '_'); // "Pro4x Buy" -> "Pro4x_Buy"
+    // 1. CLEANING & NORMALIZATION
+    const raw = strategy.toLowerCase();
+    const normalized = raw.replace(/\s+/g, '_'); // "Pro4x Buy" -> "pro4x_buy"
+    const isBull = raw.includes('buy') || raw.includes('bullish') || raw.includes('long');
+    const isBear = raw.includes('sell') || raw.includes('bearish') || raw.includes('short');
+    const isGetReady = raw.includes('get_ready') || raw.includes('getready') || raw.includes('forming') || raw.includes('approaching');
 
-    // Direct match check (Case sensitive adjustment might be needed)
-    // We try to match with the keys in DEFAULT_SETTINGS.signals
-    const validKeys = Object.keys(DEFAULT_SETTINGS.signals) as SignalKey[];
+    // 2. STRATEGY DETECTION
 
-    // 1. Exact Match
-    if (validKeys.includes(strategy as SignalKey)) return strategy as SignalKey;
-
-    // 2. Case Insensitive Match
-    const keyMatch = validKeys.find(k => k.toLowerCase() === normalized.toLowerCase());
-    if (keyMatch) return keyMatch;
-
-    // 3. Partial / Fuzzy Match (for complex backend names)
-    // Example: "Pro4x Buy Signal" -> "pro4x_Buy"
-    if (normalized.toLowerCase().includes('pro4x_buy')) return 'pro4x_Buy';
-    if (normalized.toLowerCase().includes('pro4x_sell')) return 'pro4x_Sell';
-    if (normalized.toLowerCase().includes('get_ready') || normalized.toLowerCase().includes('getready')) {
-        if (normalized.toLowerCase().includes('horus')) return 'horus_GetReady';
-        return 'pro4x_GetReady';
+    // PRO4X.2 (pro4xx)
+    if (raw.includes('pro4x.2') || raw.includes('pro4xx')) {
+        if (isGetReady) return 'pro4xx_GetReady'; // Note: settings only has one general ready for pro4xx
+        if (isBull) return 'pro4xx_Buy';
+        if (isBear) return 'pro4xx_Sell';
     }
 
-    // HORUS ADV (INSTITUTIONAL SCALPING)
-    if (normalized.toLowerCase().includes('institutional') && normalized.toLowerCase().includes('scalping')) {
-        if (normalized.toLowerCase().includes('buy')) return 'horus_Adv_Buy';
-        if (normalized.toLowerCase().includes('sell')) return 'horus_Adv_Sell';
-    }
-    // HORUS ADV (EXPLICIT CHECK - NEW)
-    if (normalized.toLowerCase().includes('horus') && (normalized.toLowerCase().includes('adv') || normalized.toLowerCase().includes('advanced'))) {
-        if (normalized.toLowerCase().includes('buy')) return 'horus_Adv_Buy';
-        if (normalized.toLowerCase().includes('sell')) return 'horus_Adv_Sell';
+    // PRO4X (Standard)
+    if (raw.includes('pro4x')) {
+        if (isGetReady) return 'pro4x_GetReady';
+        if (isBull) return 'pro4x_Buy';
+        if (isBear) return 'pro4x_Sell';
     }
 
-    // 4. Info Support Match
-    if (normalized.toLowerCase().includes('support') && normalized.toLowerCase().includes('buy')) return 'info_SupportBuy';
-    if (normalized.toLowerCase().includes('support') && normalized.toLowerCase().includes('sell')) return 'info_SupportSell';
+    // HORUS ADV
+    if (raw.includes('horus') && (raw.includes('adv') || raw.includes('advanced') || raw.includes('institutional'))) {
+        if (isBull) return 'horus_Adv_Buy';
+        if (isBear) return 'horus_Adv_Sell';
+    }
 
-    // 5. M1 Syncro & Syncro Resistance/Support
-    if (normalized.toLowerCase().includes('syncro')) {
-        if (normalized.toLowerCase().includes('resistance') || normalized.toLowerCase().includes('sell')) return 'scalp_SyncroResSell';
-        if (normalized.toLowerCase().includes('support') || normalized.toLowerCase().includes('buy')) return 'scalp_SyncroResBuy';
+    // HORUS OVS/OVB
+    if (raw.includes('ovs') || (raw.includes('horus') && raw.includes('oversold'))) return 'scalp_OverSold';
+    if (raw.includes('ovb') || (raw.includes('horus') && raw.includes('overbought'))) return 'scalp_OverBought';
 
-        // M1 Trend Sync fallback
-        if (normalized.toLowerCase().includes('m1')) {
-            if (normalized.toLowerCase().includes('bullish') || normalized.toLowerCase().includes('buy')) return 'm1_SyncroBullish';
-            if (normalized.toLowerCase().includes('bearish') || normalized.toLowerCase().includes('sell')) return 'm1_SyncroBearish';
+    // HORUS STANDARD
+    if (raw.includes('horus')) {
+        if (isGetReady) return 'horus_GetReady';
+        if (isBull) return 'horus_Buy';
+        if (isBear) return 'horus_Sell';
+    }
+
+    // SHADOW MODE
+    if (raw.includes('shadow')) {
+        if (isBull) return 'shadow_Buy';
+        if (isBear) return 'shadow_Sell';
+    }
+
+    // REINTEGRATION / SCALPING
+    if (raw.includes('reintegration') || raw.includes('re-integration') || raw.includes('tp_pump') || raw.includes('tp_push')) {
+        if (isBull || raw.includes('pump')) return 'scalp_TakeProfitPump';
+        if (isBear || raw.includes('push')) return 'scalp_TakeProfitPush';
+    }
+
+    // SYNCRO RES/SUP
+    if (raw.includes('syncro')) {
+        if (raw.includes('resistance')) return 'scalp_SyncroResSell';
+        if (raw.includes('support')) return 'scalp_SyncroResBuy';
+
+        // SYNCRO H1/M1
+        if (raw.includes('h1')) {
+            if (isBull) return 'h1_SyncroBullish';
+            if (isBear) return 'h1_SyncroBearish';
+        }
+        if (raw.includes('m1')) {
+            if (isBull) return 'm1_SyncroBullish';
+            if (isBear) return 'm1_SyncroBearish';
         }
     }
 
-    // SHADOW MODE (Fallback Return)
-    if (normalized.toLowerCase().includes('shadow')) {
-        if (normalized.toLowerCase().includes('buy')) return 'shadow_Buy';
-        if (normalized.toLowerCase().includes('sell')) return 'shadow_Sell';
-        // 'shadow_Mode' key is NOT in SignalKey type yet, likely handled as generic or needs type update.
-        // Checking SignalKey definition... it has 'shadow_Buy', 'shadow_Sell'.
-        // If we return 'shadow_Mode' but it's not in SignalKey, TS might complain if strictly typed.
-        // But the return type is SignalKey | null.
-        // Let's check SignalKey definition in file...
-        // It has 'pro4x_Buy' etc.
-        // I should probably stick to known keys or update SignalKey.
-        // For now, let's map generic shadow to shadow_Buy/Sell if possible or just null if we don't want to filter it?
-        // Actually, user settings has shadow_Buy/Sell.
-        // Let's safe return null for generic shadow if we can't map it, or map to a default if they exist.
+    // VOLATILITY
+    if (raw.includes('vol_low') || (raw.includes('vol') && raw.includes('low'))) return 'vol_Low';
+    if (raw.includes('vol_high') || (raw.includes('vol') && raw.includes('high'))) return 'vol_High';
+    if (raw.includes('vol_extreme') || (raw.includes('vol') && raw.includes('extreme'))) return 'vol_Extreme';
+    if (raw.includes('panic')) return 'vol_Panic';
+    if (raw.includes('regime')) return 'vol_Regime';
+
+    // INFO SUPPORT
+    if (raw.includes('support')) {
+        if (isBull) return 'info_SupportBuy';
+        if (isBear) return 'info_SupportSell';
     }
 
-    // VOLATILITY CONTEXT - Mapped on Backend mostly, but for robust filtering:
-    // We can no longer map generic "VOL_CONTEXT" string effectively without the level info 
-    // BUT backend sends specific strategy keys now (vol_Low etc). 
-    // This helper checks fuzzy matches if strategy name is loose.
-    if (normalized.toLowerCase().includes('vol_low')) return 'vol_Low';
-    if (normalized.toLowerCase().includes('vol_high')) return 'vol_High';
-    if (normalized.toLowerCase().includes('vol_extreme')) return 'vol_Extreme';
-    if (normalized.toLowerCase().includes('panic') || normalized.toLowerCase().includes('vol_panic')) return 'vol_Panic';
-    if (normalized.toLowerCase().includes('vol_regime') || normalized.toLowerCase().includes('regime')) return 'vol_Regime';
+    // 3. FINAL FALLBACKS
+    const validKeys = Object.keys(DEFAULT_SETTINGS.signals) as SignalKey[];
 
-    // Legacy Fallback for "Vol Context" string if backend ever sent it: Default to Low?
-    if (normalized.toLowerCase().includes('vol_context')) return 'vol_Low';
+    // Direct or normalized match
+    const keyMatch = validKeys.find(k => k.toLowerCase() === raw || k.toLowerCase() === normalized);
+    if (keyMatch) return keyMatch;
 
     return null;
 };

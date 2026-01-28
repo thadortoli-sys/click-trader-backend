@@ -113,7 +113,8 @@ export default function PrivacyScreen() {
 
                 <Section title="3. Data Storage & Security" index={2}>
                     <Text style={styles.bold}>Storage:{'\n'}</Text>
-                    • Data stored on secure cloud servers (EU region){'\n'}
+                    • Data stored on secure cloud servers (US region){'\n'}
+                    • Infrastructure provided by DigitalOcean (NYC) and Supabase{'\n'}
                     • Encrypted in transit (TLS 1.3){'\n'}
                     • Passwords hashed with industry-standard algorithms{'\n\n'}
 
@@ -126,11 +127,13 @@ export default function PrivacyScreen() {
                 <Section title="4. Third-Party Services" index={3}>
                     We use the following services:{'\n\n'}
 
+                    • <Text style={styles.bold}>DigitalOcean</Text>: Backend server infrastructure (US){'\n'}
+                    • <Text style={styles.bold}>Supabase</Text>: Database and authentication services (US){'\n'}
                     • <Text style={styles.bold}>Expo Push Notifications</Text>: Delivery of setups{'\n'}
                     • <Text style={styles.bold}>Apple/Google Payment</Text>: Subscription billing{'\n'}
                     • <Text style={styles.bold}>Analytics</Text>: Crash reporting and usage stats{'\n\n'}
 
-                    Each has its own privacy policy. We require all partners to comply with GDPR and data protection standards.
+                    Each has its own privacy policy. We require all partners to comply with data protection standards (GDPR/SCCs).
                 </Section>
 
                 <Section title="5. Your Rights (GDPR)" index={4}>
@@ -161,9 +164,9 @@ export default function PrivacyScreen() {
                 </Section>
 
                 <Section title="8. International Transfers" index={7}>
-                    Data is primarily stored in EU data centers.{'\n\n'}
+                    As the platform infrastructure is based in the United States (DigitalOcean & Supabase), your data is transferred to and processed in the US.{'\n\n'}
 
-                    If transferred outside the EU, we ensure adequate protections (Standard Contractual Clauses, Privacy Shield equivalents).
+                    We ensure adequate protections for these transfers through standard data protection clauses (Standard Contractual Clauses - SCCs) as approved by the European Commission.
                 </Section>
 
                 <Section title="9. Data Breach Notification" index={8}>

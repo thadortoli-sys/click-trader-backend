@@ -247,19 +247,21 @@ function AuthGuard({ children }: { children: React.ReactNode }) {
     // Wait for both session check and onboarding check
     if (loading || isOnboarded === null) return;
 
-    const inAuthGroup = segments[0] === 'login' || segments[0] === 'terms' || segments[0] === 'privacy';
+    const isLegalPage = segments[0] === 'terms' || segments[0] === 'privacy';
+    const isLoginPage = segments[0] === 'login';
     const inOnboarding = segments[0] === 'onboarding';
 
-    if (!session && !inAuthGroup) {
-      // 1. Not logged in -> Go to Login
+    if (!session && !isLoginPage && !isLegalPage) {
+      // 1. Not logged in -> Go to Login (unless it's a legal page or login itself)
       router.replace('/login');
     } else if (session) {
       // 2. Logged in logic
-      if (!isOnboarded && !inOnboarding) {
+      if (!isOnboarded && !inOnboarding && !isLegalPage) {
         // New user -> Go to Onboarding (Setup)
         router.replace('/onboarding');
-      } else if (isOnboarded && (inAuthGroup || inOnboarding)) {
+      } else if (isOnboarded && (isLoginPage || inOnboarding)) {
         // User trying to access Login or Onboarding again -> Go to Dashboard
+        // BUT allow them to stay on legal pages if they click them from profile
         router.replace('/');
 
         // If coming from Onboarding, show Premium Offer immediately

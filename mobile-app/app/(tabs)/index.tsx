@@ -589,8 +589,8 @@ const RecentIntelligence = () => {
       if (!s) return false;
       const t = s.timestamp || s.receivedAt || 0;
 
-      // 1. FRESHNESS CHECK (10 Minutes)
-      const isFresh = (now - t) < 600000; // 10 minutes in milliseconds
+      // 1. FRESHNESS CHECK (1 Minute)
+      const isFresh = (now - t) < 60000; // 1 minute in milliseconds
       if (!isFresh) return false;
 
       // 2. Filter by User Settings
@@ -621,7 +621,7 @@ const RecentIntelligence = () => {
     // 3. Load FULL history from disk
     const fullHistory = await getHistory();
 
-    // 4. Filter with FRESH settings and time window (90s)
+    // 4. Filter with FRESH settings and time window (60s)
     const freshSignals = filterRecentSignals(fullHistory);
     setSignals(freshSignals);
   };
@@ -825,7 +825,7 @@ export default function CommandCenterScreen() {
                 marginTop: 2,
                 flexWrap: 'wrap',
               }}>
-                Your trading companion in the palm of your hand
+                Your set up companion in the palm of your hand
               </Text>
             </View>
           </View>

@@ -14,72 +14,99 @@ const expo = new Expo();
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // --- HELPER: STRATEGY MAPPING (Sync with Frontend) ---
+// --- HELPER: STRATEGY MAPPING (Sync with Frontend) ---
 const getSignalKeyFromStrategy = (strategy) => {
     if (!strategy) return null;
-    const normalized = strategy.replace(/\s+/g, '_').toLowerCase();
 
-    // 1. Partial / Fuzzy Match
+    // 1. CLEANING & NORMALIZATION
+    const raw = strategy.toLowerCase();
+    const isBull = raw.includes('buy') || raw.includes('bullish') || raw.includes('long') || raw.includes('pump');
+    const isBear = raw.includes('sell') || raw.includes('bearish') || raw.includes('short') || raw.includes('push');
+    const isGetReady = raw.includes('get_ready') || raw.includes('getready') || raw.includes('forming') || raw.includes('approaching');
+
+    // 2. STRATEGY DETECTION
+
+    // PRO4X.2 (pro4xx)
+    if (raw.includes('pro4x.2') || raw.includes('pro4xx')) {
+        if (isGetReady) return 'pro4xx_GetReady';
+        if (isBull) return 'pro4xx_Buy';
+        if (isBear) return 'pro4xx_Sell';
+    }
+
+    // PRO4X (Standard)
+    if (raw.includes('pro4x')) {
+        if (isGetReady) return 'pro4x_GetReady';
+        if (isBull) return 'pro4x_Buy';
+        if (isBear) return 'pro4x_Sell';
+    }
+
+    // HORUS ADV
+    if (raw.includes('horus') && (raw.includes('adv') || raw.includes('advanced') || raw.includes('institutional'))) {
+        if (isBull) return 'horus_Adv_Buy';
+        if (isBear) return 'horus_Adv_Sell';
+    }
+
+    // HORUS OVS/OVB
+    if (raw.includes('ovs') || (raw.includes('horus') && raw.includes('oversold'))) return 'scalp_OverSold';
+    if (raw.includes('ovb') || (raw.includes('horus') && raw.includes('overbought'))) return 'scalp_OverBought';
+
+    // HORUS STANDARD
+    if (raw.includes('horus')) {
+        if (isGetReady) return 'horus_GetReady';
+        if (isBull) return 'horus_Buy';
+        if (isBear) return 'horus_Sell';
+    }
+
+    // SHADOW MODE
+    if (raw.includes('shadow')) {
+        if (isBull) return 'shadow_Buy';
+        if (isBear) return 'shadow_Sell';
+    }
+
+    // REINTEGRATION / SCALPING
+    if (raw.includes('reintegration') || raw.includes('re-integration') || raw.includes('tp_pump') || raw.includes('tp_push') || raw.includes('pump') || raw.includes('push')) {
+        if (isBull || raw.includes('pump')) return 'scalp_TakeProfitPump';
+        if (isBear || raw.includes('push')) return 'scalp_TakeProfitPush';
+    }
+
+    // SYNCRO RES/SUP
+    if (raw.includes('syncro')) {
+        if (raw.includes('resistance')) return 'scalp_SyncroResSell';
+        if (raw.includes('support')) return 'scalp_SyncroResBuy';
+
+        // SYNCRO H1/M1
+        if (raw.includes('h1')) {
+            if (isBull) return 'h1_SyncroBullish';
+            if (isBear) return 'h1_SyncroBearish';
+        }
+        if (raw.includes('m1')) {
+            if (isBull) return 'm1_SyncroBullish';
+            if (isBear) return 'm1_SyncroBearish';
+        }
+    }
+
+    // VOLATILITY
+    if (raw.includes('vol_low') || (raw.includes('vol') && raw.includes('low'))) return 'vol_Low';
+    if (raw.includes('vol_high') || (raw.includes('vol') && raw.includes('high'))) return 'vol_High';
+    if (raw.includes('vol_extreme') || (raw.includes('vol') && raw.includes('extreme'))) return 'vol_Extreme';
+    if (raw.includes('panic')) return 'vol_Panic';
+    if (raw.includes('regime')) return 'vol_Regime';
+
+    // INFO SUPPORT
+    if (raw.includes('support') || raw.includes('info')) {
+        if (isBull) return 'info_SupportBuy';
+        if (isBear) return 'info_SupportSell';
+    }
+
+    // 3. FINAL FALLBACK: RAW KEY MATCH
+    // (Note: Backend doesn't have DEFAULT_SETTINGS object, but we can match common keys)
+    const normalized = raw.replace(/\s+/g, '_');
+    if (normalized.includes('pro4xx_buy')) return 'pro4xx_Buy';
+    if (normalized.includes('pro4xx_sell')) return 'pro4xx_Sell';
     if (normalized.includes('pro4x_buy')) return 'pro4x_Buy';
     if (normalized.includes('pro4x_sell')) return 'pro4x_Sell';
-
-    // Get Ready
-    if (normalized.includes('get_ready') || normalized.includes('getready')) {
-        if (normalized.includes('horus')) return 'horus_GetReady';
-        return 'pro4x_GetReady';
-    }
-
-    // Horus ADV
-    if (normalized.includes('horus') && (normalized.includes('adv') || normalized.includes('advanced') || (normalized.includes('institutional') && normalized.includes('scalping')))) {
-        if (normalized.includes('buy')) return 'horus_Adv_Buy';
-        if (normalized.includes('sell')) return 'horus_Adv_Sell';
-    }
-
-    // Horus Standard
-    if (normalized.includes('horus')) {
-        if (normalized.includes('buy')) return 'horus_Buy';
-        if (normalized.includes('sell')) return 'horus_Sell';
-    }
-
-    // Scalping (OVS/OVB)
-    if (normalized.includes('ovs') || normalized.includes('oversold')) return 'scalp_OverSold';
-    if (normalized.includes('ovb') || normalized.includes('overbought')) return 'scalp_OverBought';
-
-    // Reintegration (Take Profit/Context)
-    if (normalized.includes('re-integration') || normalized.includes('reintegration') || normalized.includes('pump') || normalized.includes('push')) {
-        if (normalized.includes('bullish') || normalized.includes('pump')) return 'scalp_TakeProfitPump';
-        if (normalized.includes('bearish') || normalized.includes('push')) return 'scalp_TakeProfitPush';
-    }
-
-    // Syncro
-    if (normalized.includes('syncro')) {
-        // H1
-        if (normalized.includes('h1')) {
-            if (normalized.includes('bullish') || normalized.includes('buy')) return 'h1_SyncroBullish';
-            if (normalized.includes('bearish') || normalized.includes('sell')) return 'h1_SyncroBearish';
-        }
-        // Syncro Res/Sup (likely scalp)
-        if (normalized.includes('resistance')) return 'scalp_SyncroResSell';
-        if (normalized.includes('support')) return 'scalp_SyncroResBuy';
-    }
-
-    // Shadow
-    if (normalized.includes('shadow')) {
-        if (normalized.includes('buy')) return 'shadow_Buy';
-        if (normalized.includes('sell')) return 'shadow_Sell';
-    }
-
-    // Volatility
-    if (normalized.includes('vol_low')) return 'vol_Low';
-    if (normalized.includes('vol_high')) return 'vol_High';
-    if (normalized.includes('vol_extreme')) return 'vol_Extreme';
-    if (normalized.includes('panic')) return 'vol_Panic';
-    if (normalized.includes('regime')) return 'vol_Regime';
-
-    // Info Support
-    if (normalized.includes('info') || normalized.includes('support')) {
-        if (normalized.includes('buy')) return 'info_SupportBuy';
-        if (normalized.includes('sell')) return 'info_SupportSell';
-    }
+    if (normalized.includes('horus_buy')) return 'horus_Buy';
+    if (normalized.includes('horus_sell')) return 'horus_Sell';
 
     return null;
 };
@@ -365,7 +392,13 @@ app.post('/webhook', async (req, res) => {
                 finalTitle = "Shadow Set up";
                 finalBody = "Technical Alignment";
             }
-            // 4. Reintegration / Context
+            // 4. Syncro H1
+            else if (s.includes('syncro')) {
+                const dir = (s.includes('bull') || s.includes('buy') || s.includes('long')) ? "Bullish" : "Bearish";
+                finalTitle = `Syncro (H1) ${dir}`;
+                finalBody = "Technical Alignment";
+            }
+            // 5. Reintegration / Context
             else if (s.includes('reintegration') || s.includes('re-integration')) {
                 finalTitle = "Market Context";
                 finalBody = "Reintegration Zone Active";
