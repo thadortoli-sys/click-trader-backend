@@ -9,10 +9,13 @@ import { LinearGradient } from 'expo-linear-gradient';
 export default function ConfirmationScreen() {
     const router = useRouter();
     const params = useLocalSearchParams();
-    const plan = params.plan === 'premium' ? 'PREMIUM' : 'BASIC';
+    // Rename PREMIUM -> PRO for display
+    const planDisplay = params.plan === 'premium' ? 'PRO' : 'BASIC'; // Used for logic/display
 
-    const priceText = plan === 'BASIC' ? '$9.99' : '$44.95';
-    const periodText = plan === 'BASIC' ? '/ 1st month' : '/ month';
+    // We only display "PRO", not "PRO PLAN" anymore.
+
+    const priceText = params.plan === 'basic' ? '$9.99' : '$44.95';
+    const periodText = params.plan === 'basic' ? '/ 1st month' : '/ month';
 
     return (
         <View style={styles.container}>
@@ -29,7 +32,7 @@ export default function ConfirmationScreen() {
                     <View style={styles.contentWrapper}>
 
                         {/* Header - Simplified */}
-                        <View style={[styles.header, { flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }]}>
+                        <View style={[styles.header, { flexDirection: 'row', alignItems: 'center', width: '100%', paddingHorizontal: 20 }]}>
                             {/* Logo Left */}
                             <Image
                                 source={require('../assets/images/logo-ct.png')}
@@ -37,9 +40,9 @@ export default function ConfirmationScreen() {
                             />
 
                             {/* Text Column */}
-                            <View style={{ marginLeft: 12 }}>
+                            <View style={{ marginLeft: 12, flex: 1, justifyContent: 'center' }}>
                                 <Text style={{
-                                    fontSize: 26,
+                                    fontSize: 26, // Matched Dashboard/Premium (was 22)
                                     fontWeight: 'bold',
                                     color: 'white',
                                     letterSpacing: 0.5,
@@ -75,11 +78,12 @@ export default function ConfirmationScreen() {
                                         end={{ x: 0, y: 1 }}
                                         style={[StyleSheet.absoluteFill, { zIndex: -1 }]}
                                     />
-                                    <Ionicons name="checkmark" size={45} color="white" />
+                                    <Ionicons name="checkmark" size={30} color="white" />
                                 </View>
                             </View>
                         </View>
 
+                        {/* Divider */}
                         {/* Divider */}
                         <View style={styles.dividerContainer}>
                             <View style={styles.dividerLine} />
@@ -110,13 +114,14 @@ export default function ConfirmationScreen() {
                                 end={{ x: 0, y: 1 }}
                                 style={[StyleSheet.absoluteFill, { zIndex: -1 }]}
                             />
-                            <Text style={styles.planName}>{plan} PLAN</Text>
+                            {/* Just "PRO" - Emphasized */}
+                            <Text style={styles.planName}>{planDisplay}</Text>
                             <View style={{ flexDirection: 'row', alignItems: 'baseline', justifyContent: 'center', marginTop: 15, marginBottom: 20 }}>
                                 <Text style={styles.planPrice}>{priceText}</Text>
                                 <Text style={styles.planPeriod}> {periodText}</Text>
                             </View>
 
-                            {plan === 'PREMIUM' && (
+                            {planDisplay === 'PRO' && (
                                 <View style={styles.trialBadge}>
                                     <Ionicons name="star" size={14} color="#fff" />
                                     <Text style={styles.trialText}>7-day free trial</Text>
@@ -124,7 +129,7 @@ export default function ConfirmationScreen() {
                             )}
 
                             <Text style={styles.description}>
-                                Unlock full access to institutional-grade signals, real-time alerts, and priority support.
+                                Unlock full access to institutional-grade analytics, real-time data stream, and priority support.
                             </Text>
 
                             <TouchableOpacity
@@ -156,7 +161,7 @@ export default function ConfirmationScreen() {
                                             letterSpacing: 2,
                                             textTransform: 'uppercase'
                                         }}>
-                                            START TRADING
+                                            ACCESS TERMINAL
                                         </Text>
                                     </View>
                                 </LinearGradient>
@@ -206,8 +211,8 @@ const styles = StyleSheet.create({
     },
     header: {
         alignItems: 'center',
-        marginBottom: 40,
-        marginTop: 10,
+        marginBottom: 30, // Adjusted for balance
+        marginTop: 15,
     },
     appTitle: {
         fontSize: 36,
@@ -228,15 +233,15 @@ const styles = StyleSheet.create({
     },
     socialContainer: {
         gap: 15,
-        marginBottom: 20,
-        marginTop: 40, // Descend further
+        marginBottom: 10, // Reduced from 20 to bring closer to divider
+        marginTop: 30,
         alignItems: 'center',
         zIndex: 10,
     },
     iconCircle: {
-        width: 90,
-        height: 90,
-        borderRadius: 45,
+        width: 70, // Reduced from 90
+        height: 70, // Reduced from 90
+        borderRadius: 35,
         borderWidth: 0.1, // Visual stroke
         borderColor: '#FFFFFF',
         alignItems: 'center',
@@ -247,7 +252,7 @@ const styles = StyleSheet.create({
     dividerContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginBottom: 5, // Reduced from 15 (closer to card)
+        marginBottom: 0, // Reduced from 5 to touch card
     },
     dividerLine: {
         flex: 1,
@@ -262,19 +267,22 @@ const styles = StyleSheet.create({
         textTransform: 'uppercase',
     },
     formGlass: {
-        padding: 25,
-        marginBottom: 10, // Reduced from 30
+        padding: 20,
+        marginBottom: 10,
+        marginTop: 10, // Reduced from 40 to bring closer to divider
     },
     planName: {
-        fontSize: 20,
-        fontWeight: 'bold',
+        fontSize: 16, // Reduced from 24 (not shouting)
+        fontWeight: '600', // Semi-bold/medium (not heavy)
         color: '#fff',
         textAlign: 'center',
-        letterSpacing: 2,
+        letterSpacing: 6, // WIDE spacing for premium look
+        marginTop: 5,
+        textTransform: 'uppercase',
     },
     planPrice: {
-        fontSize: 48,
-        fontWeight: 'bold',
+        fontSize: 42, // Matched premium.tsx
+        fontWeight: 'bold', // Matched premium.tsx
         color: '#fff',
     },
     planPeriod: {

@@ -92,8 +92,8 @@ export default function PremiumScreen() {
                             <Ionicons name="close" size={24} color="#fff" />
                         </TouchableOpacity>
 
-                        {/* Header */}
-                        <View style={[styles.header, { flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }]}>
+                        {/* Header - Matched to Dashboard */}
+                        <View style={[styles.header, { flexDirection: 'row', alignItems: 'center', width: '100%', paddingHorizontal: 20 }]}>
                             {/* Logo Left */}
                             <Image
                                 source={require('../assets/images/logo-ct.png')}
@@ -101,7 +101,7 @@ export default function PremiumScreen() {
                             />
 
                             {/* Text Column */}
-                            <View style={{ marginLeft: 12 }}>
+                            <View style={{ marginLeft: 12, flex: 1, justifyContent: 'center' }}>
                                 <Text style={{
                                     fontSize: 26,
                                     fontWeight: 'bold',
@@ -206,11 +206,10 @@ export default function PremiumScreen() {
                             <View style={styles.divider} />
 
                             <View style={styles.featuresList}>
-                                <Text style={styles.featureItem}>• Unlimited Session Alerts (Pro4x & Horus)</Text>
+                                <Text style={styles.featureItem}>• Unlimited Session Stream (Pro4x & Horus)</Text>
                                 <Text style={styles.featureItem}>• Institutional Grade Setup</Text>
                                 <Text style={styles.featureItem}>• Shadow of Liquidity</Text>
-                                <Text style={styles.featureItem}>• Real-Time Execution</Text>
-                                <Text style={styles.featureItem}>• Nasdaq future (suitable CFD)</Text>
+                                <Text style={styles.featureItem}>• Nasdaq future (suitable cash indices in correlation)</Text>
                                 <Text style={styles.featureItem}>• High velocity modes</Text>
                             </View>
 

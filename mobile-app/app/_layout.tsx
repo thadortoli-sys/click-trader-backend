@@ -231,6 +231,8 @@ function AuthGuard({ children }: { children: React.ReactNode }) {
   const segments = useSegments();
   const router = useRouter();
   const [isOnboarded, setIsOnboarded] = useState<boolean | null>(null);
+  // Track if we've shown the intro/onboarding in this session
+  const [hasSeenIntro, setHasSeenIntro] = useState(false);
 
   // Check onboarding status & Listen for updates
   useEffect(() => {
@@ -256,21 +258,40 @@ function AuthGuard({ children }: { children: React.ReactNode }) {
       router.replace('/login');
     } else if (session) {
       // 2. Logged in logic
-      if (!isOnboarded && !inOnboarding && !isLegalPage) {
-        // New user -> Go to Onboarding (Setup)
-        router.replace('/onboarding');
-      } else if (isOnboarded && (isLoginPage || inOnboarding)) {
-        // User trying to access Login or Onboarding again -> Go to Dashboard
-        // BUT allow them to stay on legal pages if they click them from profile
-        router.replace('/');
 
-        // If coming from Onboarding, show Premium Offer immediately
+      // A. Always force Onboarding on first load of the session (Cold Start)
+      if (!hasSeenIntro && !isLegalPage) {
+        if (!inOnboarding) {
+          router.replace('/onboarding');
+        }
+        // We mark it as seen immediately so we don't loop, 
+        // but we rely on the route change to stick.
+        // Actually, we should only set true once we are ON the page or if we decide to skip.
+        // For simplicity: If we are not on it, go to it. 
+        // If we ARE on it, we just wait for user to click "Tap to Initialize".
+
+        // However, we need to distinguish "Checking" vs "Done".
+        // Let's simplified: 
+        // If session && !hasSeenIntro -> Go Onboarding.
+        // inside Onboarding component, we don't do anything special.
+        // But we need to set hasSeenIntro = true somewhere? 
+        // Actually, we can just let the AuthGuard redirect once.
         if (inOnboarding) {
-          setTimeout(() => {
-            router.push('/premium');
-          }, 500);
+          setHasSeenIntro(true);
         }
       }
+      // B. Standard Routing after Intro
+      else if (!isOnboarded && !inOnboarding && !isLegalPage && hasSeenIntro) {
+        // Fallback for weird state, but generally covered above
+        router.replace('/onboarding');
+      }
+      else if (isOnboarded && isLoginPage && hasSeenIntro) {
+        // User trying to access Login -> Go to Dashboard
+        router.replace('/');
+      }
+      // Note: We REMOVED the check that auto-redirects AWAY from onboarding.
+      // Now, even if isOnboarded=true, if they are 'inOnboarding', we let them stay
+      // until they tap the button (which navigates to /).
     }
   }, [session, loading, segments, isOnboarded]);
 

@@ -107,6 +107,10 @@ const SIGNAL_CONFIG: Record<string, { title: string, icon: keyof typeof Ionicons
   'horus_Sell': { title: 'HORUS SYSTEM BEARISH', icon: 'trending-down-outline', color: '#FF5252' },
   'Horus Bullish': { title: 'HORUS SYSTEM BULLISH', icon: 'trending-up-outline', color: '#4ADE80' },
   'Horus Bearish': { title: 'HORUS SYSTEM BEARISH', icon: 'trending-down-outline', color: '#FF5252' },
+  'Horus System Bullish': { title: 'HORUS SYSTEM BULLISH', icon: 'trending-up-outline', color: '#4ADE80' },
+  'Horus System Bearish': { title: 'HORUS SYSTEM BEARISH', icon: 'trending-down-outline', color: '#FF5252' },
+  'HORUS SYSTEM BULLISH': { title: 'HORUS SYSTEM BULLISH', icon: 'trending-up-outline', color: '#4ADE80' },
+  'HORUS SYSTEM BEARISH': { title: 'HORUS SYSTEM BEARISH', icon: 'trending-down-outline', color: '#FF5252' },
 
   // 6. SYNCRO
   'Syncro Bullish': { title: 'SYNCRO BULLISH', icon: 'information-circle-outline', color: '#4ADE80' },

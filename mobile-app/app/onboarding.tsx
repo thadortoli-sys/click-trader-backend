@@ -111,7 +111,16 @@ export default function OnboardingScreen() {
                     )}
 
 
-                    <View style={{ marginTop: 40, alignItems: 'center' }}>
+                    <View style={{ marginTop: 20, alignItems: 'center' }}>
+                        <Text style={{
+                            color: '#FFFFFF',
+                            fontSize: 10,
+                            fontWeight: '400',
+                            letterSpacing: 2,
+                            opacity: 0.9,
+                            textTransform: 'uppercase',
+                            marginBottom: 20
+                        }}>Witness the map for the first time</Text>
                         <Text style={{
                             color: '#FFFFFF',
                             fontSize: 9,
